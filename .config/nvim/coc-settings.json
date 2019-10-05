@@ -1,0 +1,18 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": ["html", "javascript", "javascriptreact", "python","css", "Markdown", "cpp","c","h"],
+  "snippets.extends": {"javascriptreact": ["javascript"]},
+  "languageserver": {
+  "ccls": {
+    "command": "ccls",
+    "filetypes": ["c", "cpp", "objc", "objcpp"],
+    "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+    "initializationOptions": {
+       "cache": {
+         "directory": "/tmp/ccls"
+       },
+       "highlight": { "lsRanges" : true }
+     }
+  }
+  }
+}
+
