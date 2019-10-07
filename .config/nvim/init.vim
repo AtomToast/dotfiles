@@ -133,12 +133,12 @@ nmap <silent><leader>bq :bp <BAR> bd #<CR>
 nmap <silent><leader>a :A<CR>
 
 " shortcuts for moving lines
-nnoremap <silent> <A-j> :m .+1<CR>==
-nnoremap <silent> <A-k> :m .-2<CR>==
-inoremap <silent> <A-j> <Esc>:m .+1<CR>==gi
-inoremap <silent> <A-k> <Esc>:m .-2<CR>==gi
-vnoremap <silent> <A-j> :m '>+1<CR>gv=gv
-vnoremap <silent> <A-k> :m '<-2<CR>gv=gv
+nnoremap <silent> <C-A-j> :m .+1<CR>==
+nnoremap <silent> <C-A-k> :m .-2<CR>==
+inoremap <silent> <C-A-j> <Esc>:m .+1<CR>==gi
+inoremap <silent> <C-A-k> <Esc>:m .-2<CR>==gi
+vnoremap <silent> <C-A-j> :m '>+1<CR>gv=gv
+vnoremap <silent> <C-A-k> :m '<-2<CR>gv=gv
 
 " ctrl+s saving
 noremap  <silent> <C-S> :update<CR>
