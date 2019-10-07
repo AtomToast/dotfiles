@@ -157,12 +157,6 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" make the mousewheel scroll
-map <ScrollWheelUp> <C-Y>
-map <S-ScrollWheelUp> <C-U>
-map <ScrollWheelDown> <C-E>
-map <S-ScrollWheelDown> <C-D>
-
 " configure ctrlp
 let g:ctrlp_map = '<leader>p'
 nmap <silent><leader>bb :CtrlPBuffer<CR>
