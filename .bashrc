@@ -152,11 +152,12 @@ declare -A TRUELINE_COLORS=(
 
 declare -a TRUELINE_SEGMENTS=(
     'user,black,white,normal',
+    'host,black,grey,normal',
     'venv,black,purple,normal',
     'working_dir,black,lightgreen,normal',
     'git,black,orange,normal',
     'read_only,red,lightgrey,bold',
-    'prompt,white,special_grey,bold'
+    'prompt,white,special_grey,bold',
 )
 
 declare -A TRUELINE_SYMBOLS=(
@@ -184,6 +185,17 @@ _trueline_prompt_segment() {
     _last_color=$bg_color
 }
 
+
+_trueline_host_segment() {
+    local fg_color="$1"
+    local bg_color="$2"
+    local font_style="$3"
+    local host="$HOSTNAME"
+    local segment="$(_trueline_separator)"
+    segment+="$(_trueline_content "$fg_color" "$bg_color" "$font_style" " $host ")"
+    PS1+="$segment"
+    _last_color=$bg_color
+}
 source ~/.trueline/trueline.sh
 
 #function _update_ps1() {
