@@ -197,7 +197,7 @@ autocmd FileType text,markdown,tex setlocal textwidth=80
 set complete=.,w,b,u,t,i,kspell
 
 " coc config
-call coc#add_extension('coc-pairs', 'coc-marketplace', 'coc-texlab', 'coc-highlight', 'coc-yank', 'coc-prettier', 'coc-snippets', 'coc-emoji', 'coc-html', 'coc-yaml', 'coc-css', 'coc-python', 'coc-tsserver', 'coc-json', 'coc-ccls')
+call coc#add_extension('coc-pairs', 'coc-marketplace', 'coc-texlab', 'coc-highlight', 'coc-yank', 'coc-prettier', 'coc-snippets', 'coc-emoji', 'coc-html', 'coc-yaml', 'coc-css', 'coc-python', 'coc-tsserver', 'coc-json')
 set hidden
 set nobackup
 set nowritebackup
