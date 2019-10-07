@@ -146,10 +146,10 @@ vnoremap <silent> <C-S> <C-C>:update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
 
 " make arrows resize splits
-nnoremap <Up>    :resize +2<CR>
-nnoremap <Down>  :resize -2<CR>
-nnoremap <Left>  :vertical resize +2<CR>
-nnoremap <Right> :vertical resize -2<CR>
+nnoremap <silent><Up>    :resize +2<CR>
+nnoremap <silent><Down>  :resize -2<CR>
+nnoremap <silent><Left>  :vertical resize +2<CR>
+nnoremap <silent><Right> :vertical resize -2<CR>
 
 " do not require ctrl+w to switch between windows
 nnoremap <C-J> <C-W><C-J>
@@ -157,8 +157,15 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" make the mousewheel scroll
+map <ScrollWheelUp> <C-Y>
+map <S-ScrollWheelUp> <C-U>
+map <ScrollWheelDown> <C-E>
+map <S-ScrollWheelDown> <C-D>
+
 " configure ctrlp
 let g:ctrlp_map = '<leader>p'
+nmap <silent><leader>bb :CtrlPBuffer<CR>
 
 " esc to exit terminal mode
 tnoremap <Esc> <C-\><C-n>
