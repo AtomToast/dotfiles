@@ -26,7 +26,7 @@ Plug 'elzr/vim-json'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'airblade/vim-gitgutter'
-"Plug 'liuchengxu/vista.vim'
+Plug 'liuchengxu/vista.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tsony-tsonev/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -132,6 +132,9 @@ nmap <silent><leader>bq :bp <BAR> bd #<CR>
 " switch to/from  header file
 nmap <silent><leader>a :A<CR>
 
+" toggle vista
+nmap <silent><leader>v :Vista!!<CR>
+
 " shortcuts for moving lines
 nnoremap <silent> <C-A-j> :m .+1<CR>==
 nnoremap <silent> <C-A-k> :m .-2<CR>==
@@ -170,6 +173,9 @@ tnoremap <Esc> <C-\><C-n>
 
 " enable relative numbers
 set number relativenumber
+
+" enable autoreload
+set autoreload
 
 " enable system clipboard
 set clipboard+=unnamedplus
