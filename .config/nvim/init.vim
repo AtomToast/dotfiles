@@ -1,8 +1,9 @@
-""            _
-"  _ ____   _(_)_ __ ___  _ __ ___
-" | '_ \ \ / / | '_ ` _ \| '__/ __|
-" | | | \ V /| | | | | | | | | (__
-" |_| |_|\_/ |_|_| |_| |_|_|  \___|
+""
+"  _       _ _         _
+" (_)_ __ (_) |___   _(_)_ __ ___
+" | | '_ \| | __\ \ / / | '_ ` _ \
+" | | | | | | |_ \ V /| | | | | | |
+" |_|_| |_|_|\__(_)_/ |_|_| |_| |_|
 "
 ""
 
@@ -30,6 +31,7 @@ Plug 'liuchengxu/vista.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tsony-tsonev/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'djoshea/vim-autoread'
 Plug 'tpope/vim-fugitive'
 Plug 'honza/vim-snippets'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -173,9 +175,6 @@ tnoremap <Esc> <C-\><C-n>
 
 " enable relative numbers
 set number relativenumber
-
-" enable autoreload
-set autoreload
 
 " enable system clipboard
 set clipboard+=unnamedplus
