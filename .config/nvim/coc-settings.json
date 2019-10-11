@@ -1,5 +1,5 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["html", "javascript", "javascriptreact", "python","css", "Markdown", "json"],
+  "coc.preferences.formatOnSaveFiletypes": ["html", "javascript", "javascriptreact", "python","css", "Markdown", "json", "c", "cpp", "h"],
   "snippets.extends": {"javascriptreact": ["javascript"]},
   "languageserver": {
     "ccls": {
