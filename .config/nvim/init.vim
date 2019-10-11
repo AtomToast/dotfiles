@@ -162,6 +162,8 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+nmap dx "_dd
+
 " configure ctrlp
 let g:ctrlp_map = '<leader>p'
 nmap <silent><leader>bb :CtrlPBuffer<CR>
@@ -231,7 +233,9 @@ function! s:check_back_space() abort
 endfunction
 
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+autocmd FileType vim let b:coc_pairs_disabled = ['"']
 
 " autoremove trailing whitespaces
 autocmd BufWritePre * %s/\s\+$//e
