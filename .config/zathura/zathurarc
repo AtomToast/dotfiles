@@ -1,0 +1,9 @@
+map i recolor
+map p print
+map d scroll half-down
+map u scroll half-up
+map D toggle_page_mode
+map <A-j> zoom in
+map <A-k> zoom out
+map r reload
+map R rotate
