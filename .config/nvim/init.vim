@@ -239,7 +239,15 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR
 autocmd FileType vim let b:coc_pairs_disabled = ['"']
 
 " autoremove trailing whitespaces
-autocmd BufWritePre * %s/\s\+$//e
+fun! StripTrailingWhitespace()
+    " Don't strip on these filetypes
+    if &ft =~ 'markdown'
+        return
+    endif
+    %s/\s\+$//e
+endfun
+
+autocmd BufWritePre * call StripTrailingWhitespace()
 
 " configure nerdtree
 autocmd StdinReadPre * let s:std_in=1
