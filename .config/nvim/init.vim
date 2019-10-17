@@ -121,6 +121,9 @@ nmap <leader>hk <Plug>GitGutterPrevHunk
 " remove search highlighting shortcut
 nmap <leader>s :nohlsearch<CR>
 
+" toggle spelling
+nmap <leader>S :set spell!<CR>
+
 " buffer shortcuts
 nmap <leader>bl :ls<CR>
 nmap <silent><leader>bn :bnext<CR>
