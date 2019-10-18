@@ -73,6 +73,7 @@ let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '·'
 "let g:indentLine_setConceal = 0
 let g:indentLine_concealcursor="nc"
+let g:indentLine_faster = 1
 
 " set colorscheme
 colorscheme agila " monokai
@@ -115,8 +116,11 @@ set splitbelow splitright
 let mapleader = " "
 
 "set gitgutter shortcuts
-nmap <leader>hj <Plug>GitGutterNextHunk
-nmap <leader>hk <Plug>GitGutterPrevHunk
+nmap <leader>hj <Plug>(GitGutterNextHunk)
+nmap <leader>hk <Plug>(GitGutterPrevHunk)
+nmap <leader>hp <Plug>(GitGutterPreviewHunk)
+nmap <leader>hs <Plug>(GitGutterStageHunk)
+nmap <leader>hu <Plug>(GitGutterUndoHunk)
 
 " remove search highlighting shortcut
 nmap <leader>s :nohlsearch<CR>
@@ -254,6 +258,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 nmap <silent><leader>n :NERDTreeToggle<CR>
+nmap <silent><leader>f :NERDTreeFind<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " disable indentLine in NERDTree
