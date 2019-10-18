@@ -17,6 +17,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'sickill/vim-monokai'
 Plug 'nerdypepper/agila.vim'
+Plug 'norcalli/nvim-colorizer.lua'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdcommenter'
 Plug 'Yggdroot/indentLine'
@@ -75,11 +76,17 @@ let g:indentLine_leadingSpaceChar = '·'
 let g:indentLine_concealcursor="nc"
 let g:indentLine_faster = 1
 
+" set termguicolors
+set termguicolors
+
 " set colorscheme
 colorscheme agila " monokai
 
 " set Visual mode color
 highlight Visual guibg=#555585
+
+" set up colorizer
+lua require'colorizer'.setup()
 
 " NERDTree remove padding before icons
 let g:WebDevIconsNerdTreeBeforeGlyphPadding = ''
@@ -209,7 +216,7 @@ autocmd FileType text,markdown,tex setlocal textwidth=80
 set complete=.,w,b,u,t,i,kspell
 
 " coc config
-call coc#add_extension('coc-pairs', 'coc-marketplace', 'coc-texlab', 'coc-highlight', 'coc-yank', 'coc-prettier', 'coc-snippets', 'coc-emoji', 'coc-html', 'coc-yaml', 'coc-css', 'coc-python', 'coc-tsserver', 'coc-json')
+call coc#add_extension('coc-pairs', 'coc-marketplace', 'coc-texlab',  'coc-yank', 'coc-prettier', 'coc-snippets', 'coc-emoji', 'coc-html', 'coc-yaml', 'coc-css', 'coc-python', 'coc-tsserver', 'coc-json')
 set hidden
 set nobackup
 set nowritebackup
@@ -218,7 +225,6 @@ set shortmess+=c
 set cmdheight=2
 set updatetime=300
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
-set termguicolors
 
 imap <C-l> <Plug>(coc-snippets-expand)
 vmap <C-j> <Plug>(coc-snippets-select)
