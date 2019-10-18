@@ -21,6 +21,7 @@ Plug 'nerdypepper/agila.vim'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Yggdroot/indentLine'
+Plug 'chaoren/vim-wordmotion'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'plasticboy/vim-markdown'
 Plug 'elzr/vim-json'
@@ -174,7 +175,22 @@ nnoremap <silent><Right> :vertical resize -2<CR>
 "nnoremap <C-L> <C-W><C-L>
 "nnoremap <C-H> <C-W><C-H>
 
+" create a shortcut for deleting to black hole register
 nmap dx "_dd
+
+" use alt + word motion keys for special behaviour
+let g:wordmotion_mappings = {
+\ 'w' : '<A-w>',
+\ 'b' : '<A-b>',
+\ 'e' : '<A-e>',
+\ 'ge' : 'g<A-e>',
+\ 'aw' : 'a<A-w>',
+\ 'iw' : 'i<A-w>',
+\ '<C-R><C-W>' : '<C-R><A-w>'
+\ }
+
+" set additional characters as space characters
+let g:wordmotion_spaces = '_-.'
 
 " configure ctrlp
 let g:ctrlp_map = '<leader>p'
