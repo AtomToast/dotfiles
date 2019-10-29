@@ -73,9 +73,9 @@ plugins=(git fast-syntax-highlighting zsh-autosuggestions zsh-vim-mode)
 source $ZSH/oh-my-zsh.sh
 
 # plugins config
-MODE_CURSOR_VICMD="green block"
-MODE_CURSOR_VIINS="#20d08a bar"
-MODE_CURSOR_SEARCH="#ff00ff steady underline"
+# MODE_CURSOR_VICMD="green block"
+# MODE_CURSOR_VIINS="#20d08a bar"
+# MODE_CURSOR_SEARCH="#ff00ff steady underline"
 
 # User configuration
 
@@ -118,7 +118,29 @@ alias :q="exit"
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
 bindkey -v
+KEYTIMEOUT=1
 
 export PATH="$HOME/bin:$PATH"
 
 neofetch
+
+# Change cursor shape for different vi modes.
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[2 q'
+
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'bar' ]]; then
+    echo -ne '\e[6 q'
+  fi
+}
+zle -N zle-keymap-select
+
+_fix_cursor() {
+   echo -ne '\e[6 q'
+}
+
+precmd_functions+=(_fix_cursor)
