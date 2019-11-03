@@ -103,7 +103,9 @@ export EDITOR='nvim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ll="ls -lah"
+alias ls="exa -F"
+alias ll="ls -lahF"
+alias cat="bat"
 alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
@@ -121,6 +123,8 @@ bindkey -v
 KEYTIMEOUT=1
 
 export PATH="$HOME/bin:$PATH"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export BAT_PAGER="less -RF"
 
 neofetch
 
