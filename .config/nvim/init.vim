@@ -81,7 +81,8 @@ let g:indentLine_faster = 1
 set termguicolors
 
 " set colorscheme
-colorscheme agila " monokai
+colorscheme  monokai " agila
+highlight Normal guibg=#282828
 
 " set Visual mode color
 highlight Visual guibg=#555585
