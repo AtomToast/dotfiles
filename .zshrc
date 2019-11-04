@@ -113,6 +113,10 @@ alias sv="sudoedit"
 alias vcfg="nvim ~/.config/nvim/init.vim"
 alias zcfg="nvim ~/.zshrc"
 alias :q="exit"
+alias pfzf="fzf --preview=\"bat {} --color=always\""
+
+export PATH="$HOME/.config/vifm/scripts:$PATH"
+alias vifm="vifmrun"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
