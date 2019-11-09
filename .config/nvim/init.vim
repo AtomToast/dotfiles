@@ -84,9 +84,6 @@ set termguicolors
 colorscheme  monokai " agila
 highlight Normal guibg=#282828
 
-" set Visual mode color
-highlight Visual guibg=#555585
-
 " set up colorizer
 lua require'colorizer'.setup()
 
@@ -144,6 +141,15 @@ nmap <silent><leader>bp :bprevious<CR>
 nmap <silent><leader>bd :bdelete<CR>
 nmap <silent><leader>ba :enew <BAR> :CtrlP<CR>
 nmap <silent><leader>bq :bp <BAR> bd #<CR>
+
+" git/fugitive shortcuts
+nmap <leader>ga :Gwrite<CR>
+nmap <leader>gs :Gstatus<CR>
+nmap <leader>gd :Gdiff<CR>
+nmap <leader>gc :Gcommit<CR>
+nmap <leader>gp :Gpush<CR>
+nmap <leader>gb :Gblame<CR>
+nmap <leader>gl :Glog<CR>
 
 " switch to/from  header file
 nmap <silent><leader>a :A<CR>
