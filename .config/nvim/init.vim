@@ -182,6 +182,7 @@ nnoremap <silent><Right> :vertical resize -2<CR>
 "nnoremap <C-L> <C-W><C-L>
 "nnoremap <C-H> <C-W><C-H>
 
+" create an empty line above/below
 nmap <A-o> o<Esc>k
 nmap <A-O> O<Esc>j
 
