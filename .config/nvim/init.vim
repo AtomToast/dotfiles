@@ -34,7 +34,8 @@ Plug 'tsony-tsonev/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'djoshea/vim-autoread'
 Plug 'honza/vim-snippets'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'nacitar/a.vim'
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
@@ -207,10 +208,14 @@ let g:wordmotion_mappings = {
 " set additional characters as space characters
 let g:wordmotion_spaces = '_-.'
 
-" configure ctrlp
-let g:ctrlp_map = '<leader>p'
-nmap <silent><leader>bb :CtrlPBuffer<CR>
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+" configure fzf
+nmap <silent><leader>p :Files<CR>
+nmap <silent><leader>bb :Buffers<CR>
+nmap <silent><leader>l :Lines<CR>
+nmap <silent><leader>bl :BLines<CR>
+nmap <silent><leader>t :Tags<CR>
+nmap <silent><leader>bt :BTags<CR>
+nmap <silent><leader>rg :Rg<CR>
 
 " esc to exit terminal mode
 tnoremap <Esc> <C-\><C-n>
