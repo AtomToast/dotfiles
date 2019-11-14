@@ -122,7 +122,7 @@ set splitbelow splitright
 " set leader to <space>
 let mapleader = " "
 
-"set gitgutter shortcuts
+" set gitgutter shortcuts
 nmap <leader>hj <Plug>(GitGutterNextHunk)
 nmap <leader>hk <Plug>(GitGutterPrevHunk)
 nmap <leader>hp <Plug>(GitGutterPreviewHunk)
@@ -269,28 +269,41 @@ let g:coc_snippet_next = '<c-j>'
 let g:coc_snippet_prev = '<c-k>'
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+"inoremap <silent><expr> <TAB>
+"      \ pumvisible() ? "\<C-n>" :
+"      \ <SID>check_back_space() ? "\<TAB>" :
+"      \ coc#refresh()
+"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
+"function! s:check_back_space() abort
+"  let col = col('.') - 1
+"  return !col || getline('.')[col - 1]  =~# '\s'
+"endfunction
 
 inoremap <expr> <C-j> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 inoremap <silent><expr> <C-j> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+"inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 autocmd FileType vim let b:coc_pairs_disabled = ['"']
 
 inoremap <silent><expr> <c-n> coc#refresh()
 
-" Use K to show documentation in preview window
+"" Use `[c` and `]c` to navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+"" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+"" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+"" Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
@@ -300,6 +313,27 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+
+"" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+"" Using CocList
+""" Show all diagnostics
+nnoremap <silent><leader>cd  :<C-u>CocList diagnostics<cr>
+""" Manage extensions
+nnoremap <silent><leader>ce  :<C-u>CocList extensions<cr>
+""" Show commands
+nnoremap <silent><leader>cc  :<C-u>CocList commands<cr>
+""" Find symbol of current document
+nnoremap <silent><leader>co  :<C-u>CocList outline<cr>
+""" Search workspace symbols
+nnoremap <silent><leader>cs  :<C-u>CocList -I symbols<cr>
+""" Do default action for next item.
+nnoremap <silent><leader>cj  :<C-u>CocNext<CR>
+""" Do default action for previous item.
+nnoremap <silent><leader>ck  :<C-u>CocPrev<CR>
+""" Resume latest coc list
+nnoremap <silent><leader>cr  :<C-u>CocListResume<CR>
 
 " autoremove trailing whitespaces
 fun! StripTrailingWhitespace()
@@ -321,14 +355,14 @@ nmap <silent><leader>f :NERDTreeFind<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let g:NERDTreeIgnore = ['^node_modules$']
 
-" sync open file with NERDTree
-" " Check if NERDTree is open or active
+"" sync open file with NERDTree
+""" Check if NERDTree is open or active
 function! IsNERDTreeOpen()
   return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
 endfunction
 
-" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
-" file, and we're not in vimdiff
+""" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
+""" file, and we're not in vimdiff
 function! SyncTree()
   if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
     NERDTreeFind
