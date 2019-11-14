@@ -176,6 +176,10 @@ nnoremap <silent><Down>  :resize -2<CR>
 nnoremap <silent><Left>  :vertical resize +2<CR>
 nnoremap <silent><Right> :vertical resize -2<CR>
 
+" shortcut for entering semicolon at the end of the line
+inoremap <A-,> <Esc>A;<Esc>
+nnoremap <A-,> A;<Esc>
+
 " do not require ctrl+w to switch between windows
 "nnoremap <C-J> <C-W><C-J>
 "nnoremap <C-K> <C-W><C-K>
@@ -206,6 +210,7 @@ let g:wordmotion_spaces = '_-.'
 " configure ctrlp
 let g:ctrlp_map = '<leader>p'
 nmap <silent><leader>bb :CtrlPBuffer<CR>
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " esc to exit terminal mode
 tnoremap <Esc> <C-\><C-n>
@@ -274,11 +279,22 @@ inoremap <expr> <C-j> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 inoremap <silent><expr> <C-j> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 autocmd FileType vim let b:coc_pairs_disabled = ['"']
 
-inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <silent><expr> <c-n> coc#refresh()
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 " autoremove trailing whitespaces
 fun! StripTrailingWhitespace()
@@ -298,6 +314,25 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 nmap <silent><leader>n :NERDTreeToggle<CR>
 nmap <silent><leader>f :NERDTreeFind<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let g:NERDTreeIgnore = ['^node_modules$']
+
+" sync open file with NERDTree
+" " Check if NERDTree is open or active
+function! IsNERDTreeOpen()
+  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+endfunction
+
+" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
+" file, and we're not in vimdiff
+function! SyncTree()
+  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
+    NERDTreeFind
+    wincmd p
+  endif
+endfunction
+
+" Highlight currently open buffer in NERDTree
+autocmd BufEnter * call SyncTree()
 
 " disable indentLine in NERDTree
 let g:indentLine_bufNameExclude = ['_.*', 'NERD_tree.*']
