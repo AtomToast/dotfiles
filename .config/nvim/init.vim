@@ -140,7 +140,7 @@ nmap <leader>bl :ls<CR>
 nmap <silent><leader>bn :bnext<CR>
 nmap <silent><leader>bp :bprevious<CR>
 nmap <silent><leader>bd :bdelete<CR>
-nmap <silent><leader>ba :enew <BAR> :CtrlP<CR>
+nmap <silent><leader>ba :enew <BAR> :Files<CR>
 nmap <silent><leader>bq :bp <BAR> bd #<CR>
 
 " git/fugitive shortcuts
