@@ -188,8 +188,10 @@ nnoremap <A-,> A;<Esc>
 "nnoremap <C-H> <C-W><C-H>
 
 " create an empty line above/below
-nmap <A-o> o<Esc>k
-nmap <A-O> O<Esc>j
+nnoremap <A-o> o<Esc>k
+nnoremap <A-O> O<Esc>j
+inoremap <A-o> <C-o>o<C-o>k
+inoremap <A-O> <C-o>O<C-o>j
 
 " create a shortcut for deleting to black hole register
 nmap dx "_dd
