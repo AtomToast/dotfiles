@@ -19,6 +19,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'sickill/vim-monokai'
 Plug 'nerdypepper/agila.vim'
 Plug 'norcalli/nvim-colorizer.lua'
+Plug 'luochen1990/rainbow'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Yggdroot/indentLine'
 Plug 'chaoren/vim-wordmotion'
@@ -114,6 +115,10 @@ let g:NERDTreeColorMapCustom = {
     \ "Clean"     : "#87939A",
     \ "Ignored"   : "#808080"
     \ }
+
+" rainbow parantheses config
+let g:rainbow_active = 1
+
 "----------------------------------------
 
 " split config
