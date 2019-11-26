@@ -26,6 +26,7 @@ Plug 'chaoren/vim-wordmotion'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'plasticboy/vim-markdown'
 Plug 'baskerville/vim-sxhkdrc'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'elzr/vim-json'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
@@ -39,6 +40,7 @@ Plug 'honza/vim-snippets'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'nacitar/a.vim'
+Plug 'psliwka/vim-smoothie'
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
@@ -67,6 +69,7 @@ let g:airline#extensions#tabline#fnamecollapse = 1
 " markdown config
 let g:vim_markdown_json_frontmatter = 1
 let g:vim_markdown_strikethrough = 1
+let g:vim_markdown_folding_disabled = 1
 
 
 " jsx config
@@ -386,3 +389,6 @@ let g:indentLine_bufNameExclude = ['_.*', 'NERD_tree.*']
 
 " correct latex buffer filetype
 let g:tex_flavor = "latex"
+
+" markdown-preview config
+let g:mkdp_browser = 'surf'
