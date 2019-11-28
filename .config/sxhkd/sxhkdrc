@@ -1,0 +1,41 @@
+# Audio Control keys
+XF86AudioMute
+    pamixer -t; notify-send -t 500 "Volume $(pamixer --get-volume-human)"
+
+XF86AudioRaiseVolume
+    pamixer -i 5; notify-send -t 500 "Volume $(pamixer --get-volume-human)"
+
+XF86AudioLowerVolume
+    pamixer -d 5; notify-send -t 500 "Volume $(pamixer --get-volume-human)"
+
+XF86AudioMicMute
+    pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# Brightness Control keys
+XF86MonBrightness{Up,Down}
+    brightnessctl -q set {+5%,5%-}; notify-send -t 500 "Brightness $(($(echo $(brightnessctl g).0 / $(brightnessctl m).0 | bc -l | xargs printf "%.*f\n" "2")))%"
+
+# Application shortcuts
+super + F2
+    firefox
+
+super + F9
+    discord
+
+super + F8
+    telegram-desktop
+
+XF86ScreenSaver
+    slock
+
+Print
+    screenshot &
+
+control + Print
+    screenshot2imgur
+
+super + dead_acute
+    dmenuunicode
+
+XF86Display
+    displayselect
