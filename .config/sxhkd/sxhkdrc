@@ -39,3 +39,6 @@ super + dead_acute
 
 XF86Display
     displayselect
+
+XF86Launch1
+    exitmenu
