@@ -260,6 +260,9 @@ autocmd FileType html setlocal shiftwidth=2 softtabstop=2 tabstop=2
 " Set maximum text width
 autocmd FileType text,markdown,tex setlocal textwidth=80
 
+" Update binds when sxhkdrc is updated.
+autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
+
 " set matches for insert mode completion
 set complete=.,w,b,u,t,i,kspell
 
