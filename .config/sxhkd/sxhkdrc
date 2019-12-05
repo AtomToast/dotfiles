@@ -29,7 +29,7 @@ XF86ScreenSaver
     slock
 
 Print
-    screenshot &
+    screenshot
 
 control + Print
     screenshot2imgur
