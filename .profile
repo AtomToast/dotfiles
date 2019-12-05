@@ -27,3 +27,4 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 export EDITOR="/usr/bin/nvim"
+export TERMINAL="/usr/bin/st"
