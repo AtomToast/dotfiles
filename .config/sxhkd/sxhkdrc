@@ -25,6 +25,9 @@ super + F9
 super + F8
     telegram-desktop
 
+super + F7
+    st -e neomutt
+
 XF86ScreenSaver
     slock
 
@@ -42,3 +45,4 @@ XF86Display
 
 XF86Launch1
     exitmenu
+
