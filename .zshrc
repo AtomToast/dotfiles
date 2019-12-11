@@ -92,7 +92,7 @@ source $ZSH/oh-my-zsh.sh
 # fi
 
 # export EDITOR='nvim'
-source .profile
+source ~/.profile
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
