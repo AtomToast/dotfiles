@@ -4,4 +4,5 @@
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-export EDITOR="/usr/bin/nvim"
+# export EDITOR="/usr/bin/nvim"
+source .profile
