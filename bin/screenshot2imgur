@@ -4,3 +4,4 @@ set -e
 
 sel=$(slop -f "-i %i -g %g")
 shotgun $sel - | imgur
+shotgun $sel - | xclip -selection clipboard -t image/png
