@@ -26,7 +26,7 @@ super + F8
     telegram-desktop
 
 super + F7
-    st -e neomutt
+    $TERMINAL -e neomutt
 
 XF86ScreenSaver
     slock
