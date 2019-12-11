@@ -48,3 +48,6 @@ XF86Launch1
 
 super + control + c
     showclip
+
+super + control + {_, shift} + m
+    {dmenumount, dmenuumount}
