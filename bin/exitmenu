@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+chosen=$(echo -e "shutdown\nlogout\nreboot" | dmenu -i -p "Choose which action to take: ")
+
+case $chosen in
+    "shutdown" )
+        shutdown now;;
+    "logout" )
+        pkill -KILL -u ${USER};;
+    "reboot" )
+        reboot;;
+    "suspend" )
+        systemctl suspend;;
+esac

@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+
+function internetStatus() {
+    ethernetStatus=$(cat /sys/class/net/enp0s25/operstate)
+    wifiStatus=$(cat /sys/class/net/wlp3s0/operstate)
+
+    if [ $ethernetStatus == "up" ]; then
+        internetStatusIcon="" # ""
+    elif [ $wifiStatus == "up" ]; then
+        internetStatusIcon="直"
+    else
+        internetStatusIcon="睊"
+    fi
+
+    echo $internetStatusIcon
+}
+
+function batteryStatus() {
+    batteryCapacity=$(cat /sys/class/power_supply/BAT0/capacity)
+    batteryStatus=$(cat /sys/class/power_supply/BAT0/status)
+
+    if [[ $batteryStatus == "Full" ]]; then
+        batteryStatusIcon=""
+    elif [[ $batteryStatus == "Charging" ]]; then
+        batteryStatusIcon=""
+    elif [[ $batteryStatus == "Discharging" ]]; then
+        if [[ $batteryCapacity -le 10 ]]; then
+            batteryStatusIcon=""
+        elif [[ $batteryCapacity -le 20 ]]; then
+            batteryStatusIcon=""
+        elif [[ $batteryCapacity -le 30 ]]; then
+            batteryStatusIcon=""
+        elif [[ $batteryCapacity -le 40 ]]; then
+            batteryStatusIcon=""
+        elif [[ $batteryCapacity -le 50 ]]; then
+            batteryStatusIcon=""
+        elif [[ $batteryCapacity -le 60 ]]; then
+            batteryStatusIcon=""
+        elif [[ $batteryCapacity -le 70 ]]; then
+            batteryStatusIcon=""
+        elif [[ $batteryCapacity -le 80 ]]; then
+            batteryStatusIcon=""
+        elif [[ $batteryCapacity -le 90 ]]; then
+            batteryStatusIcon=""
+        elif [[ $batteryCapacity -le 99 ]]; then
+            batteryStatusIcon=""
+        elif [[ $batteryCapacity -eq 100 ]]; then
+            batteryStatusIcon=""
+        fi
+    elif [[ $batteryStatus == "Unknown" ]]; then
+        batteryStatusIcon=""
+    else
+        batteryStatusIcon=""
+    fi
+
+    timeRemaining=$(acpi | cut -d " " -f5-)
+
+    echo $batteryStatusIcon $batteryCapacity% $timeRemaining
+}
+
+function mail_count() {
+    count=$(du -a ~/.local/share/mail/*/INBOX/new/* 2>/dev/null | sed -n '$=')
+    if [[ count -eq 0 ]]; then
+        echo ""
+    else
+        echo "  $count |"
+    fi
+}
+
+while true; do
+    internetStatusIcon=$(internetStatus)
+    batteryStatusIcon=$(batteryStatus)
+    mailCount=$(mail_count)
+    xsetroot -name "$mailCount $batteryStatusIcon | $internetStatusIcon |  $(date +"%F |  %R ")"
+    sleep 2s
+done
