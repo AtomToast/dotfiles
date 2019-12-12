@@ -28,3 +28,4 @@ fi
 
 export EDITOR="/usr/bin/nvim"
 export TERMINAL="/usr/local/bin/st"
+export BROWSER="/usr/bin/firefox"
