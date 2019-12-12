@@ -1,6 +1,20 @@
 #!/usr/bin/env bash
 
 function internetStatus() {
+    # quality=$(nmcli --color no device wifi | grep ^\* | awk '{print $8}')
+    # quality=$(echo $(cat /proc/net/wireless | awk '/wlp3s0/ {print $3}' | sed -e "s/\.//") / 70 | bc -l)
+    # if (( $(echo "$quality > 0.9" | bc -l) )); then
+    #     qualitybar="####"
+    # elif (( $(echo "$quality > 0.65" | bc -l) )); then
+    #     qualitybar="###:"
+    # elif (( $(echo "$quality > 0.4" | bc -l) )); then
+    #     qualitybar="##::"
+    # elif (( $(echo "$quality > 0.15" | bc -l) )); then
+    #     qualitybar="#:::"
+    # else
+    #     qualitybar="::::"
+    # fi
+
     ethernetStatus=$(cat /sys/class/net/enp0s25/operstate)
     wifiStatus=$(cat /sys/class/net/wlp3s0/operstate)
 
@@ -12,7 +26,7 @@ function internetStatus() {
         internetStatusIcon="睊"
     fi
 
-    echo $internetStatusIcon
+    echo $qualitybar $internetStatusIcon
 }
 
 function batteryStatus() {
@@ -67,10 +81,21 @@ function mail_count() {
     fi
 }
 
+function spotify_status() {
+    stat=$(playerctl --player=spotifyd status | sed -e "s/Playing//;s/Paused//")
+    if [[ $stat != "Stopped" ]]; then
+        metadata=$(playerctl --player=spotifyd metadata --format "{{ artist }} - {{ title }}")
+        echo " $stat $metadata |"
+    else
+        echo ""
+    fi
+}
+
 while true; do
     internetStatusIcon=$(internetStatus)
     batteryStatusIcon=$(batteryStatus)
     mailCount=$(mail_count)
-    xsetroot -name "$mailCount $batteryStatusIcon | $internetStatusIcon |  $(date +"%F |  %R ")"
+    spotifyStatus=$(spotify_status)
+    xsetroot -name "$spotifyStatus$mailCount $batteryStatusIcon | $internetStatusIcon |  $(date +"%F |  %R ")"
     sleep 2s
 done
