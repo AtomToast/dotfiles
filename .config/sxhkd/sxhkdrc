@@ -15,6 +15,13 @@ XF86AudioMicMute
 XF86MonBrightness{Up,Down}
     brightnessctl -q set {+5%,5%-}; notify-send -t 500 "Brightness $(($(echo $(brightnessctl g).0 / $(brightnessctl m).0 | bc -l | xargs printf "%.*f\n" "2")))%"
 
+# Media Control keys
+XF86AudioPlay
+    playerctl play-pause
+
+XF86Audio{Prev,Next}
+    playerctl {previous,next}
+
 # Application shortcuts
 super + F2
     firefox
