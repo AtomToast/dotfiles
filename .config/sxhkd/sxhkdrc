@@ -53,6 +53,9 @@ XF86Display
 XF86Launch1
     exitmenu
 
+super + shift + e
+    editconf
+
 super + control + c
     showclip
 

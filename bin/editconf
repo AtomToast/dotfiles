@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+config_files=".zshrc\n
+.config/nvim/init.vim\n
+.config/sxhkd/sxhkdrc\n
+.config/dunst/dunstrc\n
+.config/spotifyd/spotifyd.conf"
+
+chosen=$(echo -e $config_files | dmenu -i -p "Edit:")
+
+if [[ $chosen == "" ]]; then
+    exit
+fi
+
+path=$(echo "$HOME/$chosen" | tr -d '[:space:]')
+
+$TERMINAL -e $EDITOR $path
