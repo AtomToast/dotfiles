@@ -6,11 +6,7 @@ config_files=".zshrc\n
 .config/dunst/dunstrc\n
 .config/spotifyd/spotifyd.conf"
 
-chosen=$(echo -e $config_files | dmenu -i -p "Edit:")
-
-if [[ $chosen == "" ]]; then
-    exit
-fi
+chosen=$(echo -e $config_files | dmenu -i -p "Edit:") || exit
 
 path=$(echo "$HOME/$chosen" | tr -d '[:space:]')
 
