@@ -2,7 +2,7 @@
 
 function internetStatus() {
     # quality=$(nmcli --color no device wifi | grep ^\* | awk '{print $8}')
-    # quality=$(echo $(cat /proc/net/wireless | awk '/wlp3s0/ {print $3}' | sed -e "s/\.//") / 70 | bc -l)
+    # quality=$(echo $(awk '/wlp3s0/ {print $3}' /proc/net/wireless | sed -e "s/\.//") / 70 | bc -l)
     # if (( $(echo "$quality > 0.9" | bc -l) )); then
     #     qualitybar="####"
     # elif (( $(echo "$quality > 0.65" | bc -l) )); then
