@@ -123,6 +123,7 @@ alias diff="diff --color=always"
 
 export PATH="$HOME/.config/vifm/scripts:$PATH"
 alias vifm="vifmrun"
+alias f="vifm"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
