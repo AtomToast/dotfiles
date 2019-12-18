@@ -23,8 +23,14 @@ XF86Audio{Prev,Next}
     playerctl {previous,next}
 
 # Application shortcuts
+super + F1
+    $TERMINAL -e spt
+
 super + F2
     firefox
+
+super + F3
+    $TERMINAL -e $FILEMANAGER
 
 super + F9
     discord
@@ -61,3 +67,6 @@ super + control + c
 
 super + control + {_, shift} + m
     {dmenumount, dmenuumount}
+
+super + control + p
+    passmenu
