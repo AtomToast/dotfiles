@@ -32,14 +32,20 @@ super + F2
 super + F3
     $TERMINAL -e $FILEMANAGER
 
-super + F9
-    discord
+super + F6
+    signal-desktop
+
+super + F7
+    $TERMINAL -e neomutt
+
+super + shift + F7
+    mailsync
 
 super + F8
     telegram-desktop
 
-super + F7
-    $TERMINAL -e neomutt
+super + F9
+    discord
 
 XF86ScreenSaver
     slock
