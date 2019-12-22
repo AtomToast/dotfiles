@@ -94,5 +94,5 @@ while true; do
     mailCount=$(mail_count)
     spotifyStatus=$(spotify_status)
     xsetroot -name "$spotifyStatus$mailCount $batteryStatusIcon | $internetStatusIcon |  $(date +"%F |  %R ")"
-    sleep 2s
+    sleep 1s
 done
