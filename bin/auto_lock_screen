@@ -47,5 +47,7 @@ should_lock() {
 
 # main()
 if should_lock; then
+    killall -SIGUSR1 dunst
     slock
+    killall -SIGUSR2 dunst
 fi
