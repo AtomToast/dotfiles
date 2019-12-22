@@ -70,3 +70,6 @@ super + control + {_, shift} + m
 
 super + control + p
     passmenu
+
+super + {_, shift} + n
+    {snoozedunst -u, snoozedunst -p}
