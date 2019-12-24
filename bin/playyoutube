@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+cd $HOME/Videos/youtube
+
+chosen=$(ls -1 | dmenu -i -l 20 -p "Choose a video")
+
+[ "$chosen" != "" ] || exit
+
+mpv "$chosen"

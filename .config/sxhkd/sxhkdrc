@@ -79,3 +79,6 @@ super + control + p
 
 super + {_, shift} + n
     {snoozedunst -u, snoozedunst -p}
+
+super + shift + y
+    playyoutube
