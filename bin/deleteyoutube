@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+cd $HOME/Videos/youtube
+
+chosen=$(ls -1 | dmenu -i -l 20 -p "Choose a video to delete")
+
+[ "$chosen" != "" ] || exit
+
+confirm=$(echo -e "N\nY" | dmenu -i -p "Delete '$chosen'?")
+
+if [[ $confirm == Y ]]; then
+    rm "$chosen"
+fi
+
