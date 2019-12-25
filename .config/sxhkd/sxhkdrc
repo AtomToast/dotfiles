@@ -85,3 +85,6 @@ super + y
 
 super + shift + y
     deleteyoutube
+
+super + control + y
+    $TERMINAL -e bash -c "xclip -o | youtube-dl -a -" && notify-send "Youtube download successful"
