@@ -120,6 +120,7 @@ alias :q="exit"
 alias pfzf="fzf --preview=\"bat {} --color=always\""
 alias netris="ssh netris.rocketnine.space"
 alias diff="diff --color=always"
+alias l="sudo updatedb && locate"
 
 export PATH="$HOME/.config/vifm/scripts:$PATH"
 alias vifm="vifmrun"
