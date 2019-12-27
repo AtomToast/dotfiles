@@ -88,3 +88,6 @@ super + shift + y
 
 super + control + y
     downloadyoutube
+
+super + shift + h
+    $TERMINAL -e htop
