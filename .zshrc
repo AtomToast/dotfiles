@@ -121,10 +121,19 @@ alias pfzf="fzf --preview=\"bat {} --color=always\""
 alias netris="ssh netris.rocketnine.space"
 alias diff="diff --color=always"
 alias l="sudo updatedb && locate"
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
 
 export PATH="$HOME/.config/vifm/scripts:$PATH"
 alias vifm="vifmrun"
 alias f="vifm"
+
+alias -s pdf=zathura
+alias -s zip="unzip -l"
+alias -s rar="unrar l"
+alias -s tar="tar tf"
+alias -s tar.gz="echo "
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
