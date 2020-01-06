@@ -2,13 +2,14 @@
 
 cd $HOME/Videos/youtube
 
-chosen=$(ls -1 | dmenu -i -l 20 -p "Choose a video to delete")
+chosen=$(ls -1 | dmenu -i -l 20 -p "輸 Choose a video to delete")
 
 [ "$chosen" != "" ] || exit
 
-confirm=$(echo -e "N\nY" | dmenu -i -p "Delete '$chosen'?")
+confirm=$(echo -e "N\nY" | dmenu -i -p "輸 Delete '$chosen'?")
 
 if [[ $confirm == Y ]]; then
     rm "$chosen"
+    notify-send -t 4000 "輸 Successfully deleted video" "Deleted '$chosen'"
 fi
 

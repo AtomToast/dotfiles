@@ -2,7 +2,9 @@
 
 cd $HOME/Videos/youtube
 
-chosen=$(ls -1 | dmenu -i -l 20 -p "Choose a video to play")
+amount=$(ls -1 | wc -l)
+
+chosen=$(ls -1 | dmenu -i -l 20 -p "輸 Choose a video to play ($amount found)")
 
 [ "$chosen" != "" ] || exit
 
