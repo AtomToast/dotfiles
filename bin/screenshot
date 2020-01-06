@@ -4,3 +4,5 @@ set -e
 
 sel=$(slop -f "-i %i -g %g")
 shotgun $sel - | xclip -selection clipboard -t image/png
+
+notify-send -t 3000 "Saved screenshot to clipboard"

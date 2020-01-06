@@ -5,3 +5,5 @@ set -e
 sel=$(slop -f "-i %i -g %g")
 shotgun $sel - | imgur
 shotgun $sel - | xclip -selection clipboard -t image/png
+
+notify-send -t 3000 "Saved screenshot to imgur and clipboard" "imgur url: '$(xclip -selection primary -o)'"
