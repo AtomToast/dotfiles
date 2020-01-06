@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+dunstify -r 2594 -u low -t 500 "Brightness $(brightnessctl info | sed -n "2p" | awk '{ gsub(/[()]/,""); print $4 }')"
