@@ -74,11 +74,17 @@ super + control + c
 super + control + {_, shift} + m
     {dmenumount, dmenuumount}
 
-super + control + p
+super + shift + p
     passmenu
+
+super + control + p
+    $TERMINAL -e pulsemixer
 
 super + {_, shift} + n
     {snoozedunst -u, snoozedunst -p}
+
+super + control + n
+    $TERMINAL -e newsboat
 
 super + y
     playyoutube
