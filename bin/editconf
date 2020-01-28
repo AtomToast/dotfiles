@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 config_files=".zshrc\n
+.profile\n
+.xinitrc\n
+.config/vifm/vifmrc\n
 .config/nvim/init.vim\n
 .config/sxhkd/sxhkdrc\n
 .config/dunst/dunstrc\n
