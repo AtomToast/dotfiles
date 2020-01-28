@@ -32,9 +32,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'airblade/vim-gitgutter'
 Plug 'liuchengxu/vista.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'tsony-tsonev/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'djoshea/vim-autoread'
 Plug 'honza/vim-snippets'
 Plug '/usr/local/opt/fzf'
@@ -93,32 +90,10 @@ highlight Normal guibg=#282828
 " set up colorizer
 lua require'colorizer'.setup()
 
-" NERDTree remove padding before icons
-let g:WebDevIconsNerdTreeBeforeGlyphPadding = ''
-let g:WebDevIconsUnicodeDecorateFolderNodes = v:true
-
-" NERDTress File highlighting
-let g:NERDTreeFileExtensionHighlightFullName = 1
-let g:NERDTreeExactMatchHighlightFullName = 1
-let g:NERDTreePatternMatchHighlightFullName = 1
-
 " set gitgutter symbol colors
 highlight GitGutterAdd    guifg=#a6e22e guibg=#3c3d37 ctermfg=2 ctermbg=237
 highlight GitGutterChange guifg=#fd971f guibg=#3c3d37 ctermfg=3 ctermbg=237
 highlight GitGutterDelete guifg=#f92672 guibg=#3c3d37 ctermfg=1 ctermbg=237
-
-" NERDTree highlighting based on git status
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-let g:NERDTreeGitStatusNodeColorization = 1
-let g:NERDTreeGitStatusWithFlags = 1
-let g:NERDTreeColorMapCustom = {
-    \ "Modified"  : "#528AB3",
-    \ "Staged"    : "#538B54",
-    \ "Untracked" : "#BE5849",
-    \ "Dirty"     : "#299999",
-    \ "Clean"     : "#87939A",
-    \ "Ignored"   : "#808080"
-    \ }
 
 " rainbow parantheses config
 let g:rainbow_active = 1
@@ -362,36 +337,6 @@ fun! StripTrailingWhitespace()
 endfun
 
 autocmd BufWritePre * call StripTrailingWhitespace()
-
-" configure nerdtree
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-nmap <silent><leader>n :NERDTreeToggle<CR>
-nmap <silent><leader>f :NERDTreeFind<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-let g:NERDTreeIgnore = ['^node_modules$']
-
-" "" sync open file with NERDTree
-" """ Check if NERDTree is open or active
-" function! IsNERDTreeOpen()
-"   return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-" endfunction
-
-" """ Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
-" """ file, and we're not in vimdiff
-" function! SyncTree()
-"   if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
-"     NERDTreeFind
-"     wincmd p
-"   endif
-" endfunction
-
-" " Highlight currently open buffer in NERDTree
-" autocmd BufEnter * call SyncTree()
-
-" disable indentLine in NERDTree
-let g:indentLine_bufNameExclude = ['_.*', 'NERD_tree.*']
 
 " correct latex buffer filetype
 let g:tex_flavor = "latex"
