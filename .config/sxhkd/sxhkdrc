@@ -97,3 +97,6 @@ super + control + y
 
 super + shift + h
     $TERMINAL -e htop
+
+super + shift + k
+    $TERMINAL -e khal interactive
