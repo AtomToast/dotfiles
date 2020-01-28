@@ -50,7 +50,7 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 
-let g:airline_theme='bubblegum'
+let g:airline_theme='base16_monokai'
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
@@ -103,9 +103,9 @@ let g:NERDTreeExactMatchHighlightFullName = 1
 let g:NERDTreePatternMatchHighlightFullName = 1
 
 " set gitgutter symbol colors
-highlight GitGutterAdd    guifg=#009900 guibg=#3c3d37 ctermfg=2 ctermbg=237
-highlight GitGutterChange guifg=#bbbb00 guibg=#3c3d37 ctermfg=3 ctermbg=237
-highlight GitGutterDelete guifg=#ff2222 guibg=#3c3d37 ctermfg=1 ctermbg=237
+highlight GitGutterAdd    guifg=#a6e22e guibg=#3c3d37 ctermfg=2 ctermbg=237
+highlight GitGutterChange guifg=#fd971f guibg=#3c3d37 ctermfg=3 ctermbg=237
+highlight GitGutterDelete guifg=#f92672 guibg=#3c3d37 ctermfg=1 ctermbg=237
 
 " NERDTree highlighting based on git status
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
