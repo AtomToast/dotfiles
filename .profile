@@ -29,11 +29,7 @@ fi
 export EDITOR="/usr/bin/nvim"
 export TERMINAL="/usr/local/bin/st"
 export BROWSER="/usr/bin/firefox"
-export FILEMANAGER="/usr/bin/vifm"
-
-if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  exec startx
-fi
+export FILEMANAGER="$HOME/.config/vifm/scripts/vifmrun"
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
