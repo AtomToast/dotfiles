@@ -164,6 +164,9 @@ nmap <leader>gl :Glog<CR>
 " switch to/from  header file
 nmap <silent><leader>a :A<CR>
 
+" search and replace shortcut
+nmap <leader>R :%s//g<left><left>
+
 " toggle vista
 nmap <silent><leader>v :Vista!!<CR>
 
