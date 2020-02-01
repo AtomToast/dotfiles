@@ -133,6 +133,8 @@ ex ()
 alias ls="exa -F"
 alias ll="ls -lahF"
 alias cat="bat"
+alias grep="rg"
+alias "du"
 alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
