@@ -26,10 +26,10 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-export EDITOR="/usr/bin/nvim"
-export TERMINAL="/usr/local/bin/st"
-export BROWSER="/usr/bin/firefox"
-export FILEMANAGER="$HOME/.config/vifm/scripts/vifmrun"
+export EDITOR="nvim"
+export TERMINAL="st"
+export BROWSER="firefox"
+export FILEMANAGER="vifmrun"
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
