@@ -131,10 +131,13 @@ ex ()
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls="exa -F"
-alias ll="ls -lahF"
+alias lt="ls --tree --level=2"
+alias lg="ls --grid"
+alias ll="ls -lahF --git"
+alias llt="ll --tree --level=2"
+alias llg="ll --grid"
 alias cat="bat"
 alias grep="rg"
-alias "du"
 alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
@@ -150,6 +153,8 @@ alias diff="diff --color=always"
 alias l="sudo updatedb && locate"
 alias cp='cp -i'
 alias mv='mv -i'
+alias flex='st -e htop&; st -e unimatrix &; ll'
+alias flex++='st -e htop &; st -e unimatrix &;st -e nvim ~/git/st/st.h &;st &;ll'
 
 export PATH="$HOME/.config/vifm/scripts:$PATH"
 alias vifm="vifmrun"
@@ -166,7 +171,6 @@ alias -s tar.gz="echo "
 
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
-bindkey -v
 KEYTIMEOUT=1
 
 export PATH="$HOME/bin:$PATH"
