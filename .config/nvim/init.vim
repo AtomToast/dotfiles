@@ -77,7 +77,7 @@ let g:vim_jsx_pretty_colorful_config = 1
 let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '·'
 "let g:indentLine_setConceal = 0
-let g:indentLine_concealcursor="nc"
+let g:indentLine_concealcursor="c"
 let g:indentLine_faster = 1
 
 " set termguicolors
@@ -210,14 +210,17 @@ nmap <silent><leader>rg :Rg<CR>
 tnoremap <Esc> <C-\><C-n>
 
 " I'm a save addict
-:au FocusLost * :wa
-:set autowriteall
+au FocusLost * :wa
+set autowriteall
 
 " enable relative numbers
 set number relativenumber
 
 " enable system clipboard
 set clipboard+=unnamedplus
+
+" enable instant substitute preview
+set inccommand=nosplit
 
 " set caps lock to escape in vim
 "au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
@@ -239,7 +242,7 @@ autocmd FileType html setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType text,markdown,tex setlocal textwidth=80
 
 " Update binds when sxhkdrc is updated.
-autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
+autocmd BufWritePost *sxhkdrc silent! !pkill -USR1 sxhkd && notify-send -t 1700 'reloaded sxhkd config'
 
 " set matches for insert mode completion
 set complete=.,w,b,u,t,i,kspell
