@@ -24,13 +24,16 @@ XF86Audio{Prev,Next}
 
 # Application shortcuts
 super + F1
-    $TERMINAL -e spt
+    $TERMINAL -e joplin
 
 super + F2
     firefox
 
 super + F3
-    $TERMINAL -e $FILEMANAGER
+    $TERMINAL -e $HOME/.config/vifm/scripts/vifmrun
+
+super + F4
+    $TERMINAL -e khal interactive
 
 super + F6
     signal-desktop
@@ -46,6 +49,9 @@ super + F8
 
 super + F9
     discord
+
+super + F12
+    $TERMINAL -e htop
 
 XF86ScreenSaver
     slock
@@ -95,8 +101,5 @@ super + shift + y
 super + control + y
     downloadyoutube
 
-super + shift + h
-    $TERMINAL -e htop
-
-super + shift + k
-    $TERMINAL -e khal interactive
+super + control + Escape
+    xkill
