@@ -494,7 +494,7 @@ nnoremap cc cw<c-u>
 nnoremap A cw
 
 " Open console in current directory
-nnoremap ,t :!xterm &<cr>
+nnoremap ,t :!st &<cr>
 
 " Open editor to edit vifmrc and apply settings after returning to vifm
 nnoremap ,c :write | edit $MYVIFMRC | restart<cr>
@@ -503,6 +503,17 @@ nnoremap ,C :!$TERMINAL -e $EDITOR $MYVIFMRC &<cr>
 
 " Toggle wrap setting on ,w key
 nnoremap ,w :set wrap!<cr>
+
+" Toggle millerview
+nnoremap ,m :set millerview!<cr>
+
+" Turn off viewcolumns
+nnoremap ,v :set viewcolumns=-{name}..,6{}.<cr>
+" Turn on viewcolumns
+nnoremap ,V :set viewcolumns=-{name}..,10{perms}..,7{size}..,7{uname}..,13{mtime}..<cr>
+
+" open bookmarks menu
+nnoremap b :bmarks<cr>
 
 " Example of standard two-panel file managers mappings
 nnoremap <f3> :!less %f<cr>
