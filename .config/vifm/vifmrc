@@ -110,7 +110,7 @@ endif
 
 " Set custom status line look
 
-set statusline="  Hint: %z%= %A %10u:%-7g %15s %20d  "
+set statusline="  %t %T %8A %12u:%-7g %10s %20d %=%D %10a Free  "
 
 " ------------------------------------------------------------------------------
 
