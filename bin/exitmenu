@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-chosen=$(echo -e "shutdown\nlogout\nreboot" | dmenu -i -p "Choose which action to take: ")
+chosen=$(echo -e "shutdown\nlogout\nsuspend\nreboot" | dmenu -i -p "Choose which action to take: ")
 
 case $chosen in
     "shutdown" )
