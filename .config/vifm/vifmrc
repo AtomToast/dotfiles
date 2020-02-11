@@ -118,6 +118,12 @@ set statusline="  %t %T %8A %12u:%-7g %10s %20d %=%D %10a Free  "
 
 mark b ~/bin/
 mark h ~/
+mark g ~/git/
+mark p ~/Pictures/
+mark d ~/Documents/
+mark v ~/Videos/
+mark n ~/Nextcloud/
+mark D ~/Downloads/
 
 " ------------------------------------------------------------------------------
 
@@ -134,12 +140,12 @@ mark h ~/
 " %m run the command in a menu window
 
 command! df df -h %m 2> /dev/null
-command! diff vim -d %f %F
+command! diff nvim -d %f %F
 command! zip zip -r %f.zip %f
 command! run !! ./%f
 command! make !!make %a
 command! mkcd :mkdir %a | cd %a
-command! vgrep vim "+grep %a"
+command! vgrep nvim "+grep %a"
 command! reload :write | restart
 
 " ------------------------------------------------------------------------------
@@ -236,7 +242,7 @@ filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
         \ {View in imv}
         \ imv -b 1D2330 -d %f &,
         \ {View in sxiv}
-        \ sxiv %f,
+        \ sxiv -a %f,
         \ {View in Gwenview}
         \ gwenview,
         \ {View in feh}
@@ -379,6 +385,9 @@ filextype */
         \ {View in dolphin}
         \ dolphin %f &,
 
+" Text and code files
+fileviewer *.[ch],*.[ch]pp,*.[ch]xx,*.md,*.py*,*.rs,*.js*,*.css,*.html,*.php,*.sh,Makefile* bat --color always --wrap never --pager never %c -p
+
 " Syntax highlighting in preview
 "
 " Explicitly set highlight type for some extensions
@@ -444,6 +453,8 @@ set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
 " Customize view columns a bit (enable ellipsis for truncated file names)
 "
 " set viewcolumns=-{name}..,6{}.
+
+set viewcolumns=-{name}..,10{perms}..,7{size}..,7{uname}..,13{mtime}..
 
 " Filter-out build and temporary files
 "
