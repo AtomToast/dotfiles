@@ -1,0 +1,190 @@
+[
+  {
+    "keys": [
+      ":"
+    ],
+    "type": "function",
+    "command": "enter_command_line_mode"
+  },
+  {
+    "keys": [
+      "TAB",
+      "l"
+    ],
+    "type": "function",
+    "command": "focus_next"
+  },
+  {
+    "keys": [
+      "SHIFT_TAB",
+      "h"
+    ],
+    "type": "function",
+    "command": "focus_previous"
+  },
+  {
+    "keys": [
+      "UP",
+      "k"
+    ],
+    "type": "function",
+    "command": "move_up"
+  },
+  {
+    "keys": [
+      "DOWN",
+      "j"
+    ],
+    "type": "function",
+    "command": "move_down"
+  },
+  {
+    "keys": [
+      "PAGE_UP",
+      "K"
+    ],
+    "type": "function",
+    "command": "page_up"
+  },
+  {
+    "keys": [
+      "PAGE_DOWN",
+      "J"
+    ],
+    "type": "function",
+    "command": "page_down"
+  },
+  {
+    "keys": [
+      "ENTER",
+      "CTRL_J",
+      "i"
+    ],
+    "type": "function",
+    "command": "activate"
+  },
+  {
+    "keys": [
+      "DELETE",
+      "BACKSPACE",
+      "d",
+      "x"
+    ],
+    "type": "function",
+    "command": "delete"
+  },
+  {
+    "keys": [
+      "tc"
+    ],
+    "command": "todo clear $n"
+  },
+  {
+    "keys": [
+      " "
+    ],
+    "command": "todo toggle $n"
+  },
+  {
+    "keys": [
+      "c"
+    ],
+    "type": "function",
+    "command": "toggle_console"
+  },
+  {
+    "keys": [
+      "md",
+      "w"
+    ],
+    "type": "function",
+    "command": "toggle_metadata"
+  },
+  {
+    "keys": [
+      "ta"
+    ],
+    "type": "prompt",
+    "command": "tag add \"\" $n",
+    "cursorPosition": -5
+  },
+  {
+    "keys": [
+      "tr"
+    ],
+    "type": "prompt",
+    "command": "tag remove \"\" $n",
+    "cursorPosition": -5
+  },
+  {
+    "keys": [
+      "tl"
+    ],
+    "type": "exec",
+    "command": "tag list"
+  },
+  {
+    "keys": [
+      "tn"
+    ],
+    "type": "exec",
+    "command": "tag notetags $n"
+  },
+  {
+    "keys": [
+      "ZZ",
+      "ZQ",
+      "q"
+    ],
+    "type": "exec",
+    "command": "exit"
+  },
+  {
+    "keys": [
+      "/"
+    ],
+    "type": "prompt",
+    "command": "search \"\"",
+    "cursorPosition": -2
+  },
+  {
+    "keys": [
+      "mn"
+    ],
+    "type": "prompt",
+    "command": "mknote \"\"",
+    "cursorPosition": -2
+  },
+  {
+    "keys": [
+      "mt"
+    ],
+    "type": "prompt",
+    "command": "mktodo \"\"",
+    "cursorPosition": -2
+  },
+  {
+    "keys": [
+      "mb"
+    ],
+    "type": "prompt",
+    "command": "mkbook \"\"",
+    "cursorPosition": -2
+  },
+  {
+    "keys": [
+      "y"
+    ],
+    "type": "prompt",
+    "command": "cp $n \"\"",
+    "cursorPosition": -2
+  },
+  {
+    "keys": [
+      "mv"
+    ],
+    "type": "prompt",
+    "command": "mv $n \"\"",
+    "cursorPosition": -2
+  }
+]
