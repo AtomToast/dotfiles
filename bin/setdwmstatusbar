@@ -88,11 +88,24 @@ function spotify_status() {
     fi
 }
 
+function cpu_temp() {
+    cputemp=$(sensors | grep Package | awk '{print $4}' | tr -d +)
+    echo " $cputemp"
+}
+
+function memory_usage() {
+    totalmem=$(free -h | grep Mem | awk '{print $2}')
+    usedmem=$(free -h | grep Mem | awk '{print $3}')
+    echo " $usedmem/$totalmem"
+}
+
 while true; do
     internetStatusIcon=$(internetStatus)
     batteryStatusIcon=$(batteryStatus)
     mailCount=$(mail_count)
     spotifyStatus=$(spotify_status)
-    xsetroot -name "$spotifyStatus$mailCount $batteryStatusIcon | $internetStatusIcon |  $(date +"%F |  %R ")"
+    cpuTemp=$(cpu_temp)
+    memoryUsage=$(memory_usage)
+    xsetroot -name "$spotifyStatus$mailCount $memoryUsage | $cpuTemp | $batteryStatusIcon | $internetStatusIcon |  $(date +"%F |  %R ")"
     sleep 1s
 done
