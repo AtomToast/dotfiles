@@ -26,6 +26,9 @@ XF86Audio{Prev,Next}
 super + F1
     $TERMINAL -e joplin
 
+super + shift + F1
+    joplin-desktop
+
 super + F2
     firefox
 
@@ -49,6 +52,9 @@ super + F8
 
 super + F9
     discord
+
+super + F11
+    networkmanager_dmenu
 
 super + F12
     $TERMINAL -e htop
