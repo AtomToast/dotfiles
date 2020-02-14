@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+export ZSH=$HOME/.config/.oh-my-zsh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -145,7 +145,7 @@ alias sv="sudoedit"
 alias i="sxiv"
 alias p="zathura"
 alias vcfg="nvim ~/.config/nvim/init.vim"
-alias zcfg="nvim ~/.zshrc"
+alias zcfg="nvim ~/.config/zsh/.zshrc"
 alias :q="exit"
 alias pfzf="fzf --preview=\"bat {} --color=always\""
 alias netris="ssh netris.rocketnine.space"

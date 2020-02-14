@@ -1,6 +1,8 @@
 {
   "coc.preferences.formatOnSaveFiletypes": ["html", "javascript", "javascriptreact", "python","css", "Markdown", "json"],
   "snippets.extends": {"javascriptreact": ["javascript"]},
+  "python.linting.pylintEnabled": true,
+  "python.linting.enabled": true,
   "codeLens.enable": true,
   "languageserver": {
     "ccls": {
