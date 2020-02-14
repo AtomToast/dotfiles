@@ -18,7 +18,6 @@ Plug 'tpope/vim-dadbod'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'sickill/vim-monokai'
-Plug 'nerdypepper/agila.vim'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'luochen1990/rainbow'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -85,7 +84,7 @@ let g:indentLine_faster = 1
 set termguicolors
 
 " set colorscheme
-colorscheme  monokai " agila
+colorscheme  monokai
 highlight Normal guibg=#282828
 
 " set up colorizer
