@@ -218,6 +218,7 @@ filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
 fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
           \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
           \*.as[fx]
+         \ mediainfo %c,
          \ ffprobe -pretty %c 2>&1
 
 " Web
@@ -229,9 +230,11 @@ filextype *.html,*.htm
         \ {Open with uzbl}
         \ uzbl-browser %f %i &,
 filetype *.html,*.htm links, lynx
+" fileviewer *.html w3m %c
 
 " Object
 filetype *.o nm %f | less
+fileviewer *.o nm %f
 
 " Man page
 filetype *.[1-8] man ./%c
@@ -255,6 +258,7 @@ fileviewer *.pdf
     \ vifmimg pdfpreview %px %py %pw %ph %c
     \ %pc
     \ vifmimg clear
+    \ mediainfo %c
 
 fileviewer *.epub
     \ vifmimg epubpreview %px %py %pw %ph %c
@@ -369,8 +373,9 @@ fileviewer *.7z 7z l %c
 
 " Office files
 filextype *.odt,*.doc,*.docx,*.xls,*.xlsx,*.odp,*.pptx libreoffice %f &
+fileviewer *.odt odt2txt --width=-1 %c
 fileviewer *.doc catdoc %c
-fileviewer *.docx docx2txt.pl %f -
+fileviewer *.docx docx2txt %f -
 
 " TuDu files
 filetype *.tudu tudu -f %c
@@ -385,8 +390,9 @@ filextype */
         \ {View in dolphin}
         \ dolphin %f &,
 
-" Text and code files
-fileviewer *.[ch],*.[ch]pp,*.[ch]xx,*.md,*.py*,*.rs,*.js*,*.css,*.html,*.php,*.sh,Makefile* bat --color always --wrap never --pager never %c -p
+" Text, code and everything else i guess (that is not a directory)
+" fileviewer *.[ch],*.[ch]pp,*.[ch]xx,*.md,*.py*,*.rs,*.js*,*.css,*.html,*.php,*.sh,Makefile*,*[^../],.*[^../] bat --color always --wrap never --pager never %c -p
+fileviewer *[^../],.*[^../] bat --color always --wrap never --pager never %c -p
 
 " Syntax highlighting in preview
 "
