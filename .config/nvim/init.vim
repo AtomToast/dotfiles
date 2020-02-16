@@ -183,6 +183,9 @@ inoremap <A-O> <C-o>O<C-o>j
 " create a shortcut for deleting to black hole register
 nmap dx "_dd
 
+" create a shortcut for taking the first correction
+nnoremap z? 1z=
+
 " use alt + word motion keys for special behaviour
 let g:wordmotion_mappings = {
 \ 'w' : '<A-w>',
