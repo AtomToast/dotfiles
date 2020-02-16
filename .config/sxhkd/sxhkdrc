@@ -32,6 +32,9 @@ super + shift + F1
 super + F2
     firefox
 
+super + shift + F2
+    firefox --private-window
+
 super + F3
     $TERMINAL -e $HOME/.config/vifm/scripts/vifmrun
 
