@@ -70,7 +70,7 @@ colorscheme Monokai
 " TIME_STAMP_FORMAT=%m/%d-%H:%M
 " See man date or man strftime for details.
 
-set timefmt=%m/%d\ %H:%M
+set timefmt=\ %m/%d\ \ %H:%M
 
 " Show list of matches on tab completion in command-line mode
 
@@ -110,7 +110,7 @@ endif
 
 " Set custom status line look
 
-set statusline="  %t %T %8A %12u:%-7g %10s %20d %=%D %10a Free  "
+set statusline="  %t %T %8A %12u:%-7g %10s %24d %=%D %10a Free   "
 
 " ------------------------------------------------------------------------------
 
