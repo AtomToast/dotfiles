@@ -41,8 +41,11 @@ super + F3
 super + F4
     $TERMINAL -e khal interactive
 
+super + F5
+    slack
+
 super + F6
-    signal-desktop
+    signal-desktop --use-tray-icon
 
 super + F7
     $TERMINAL -e neomutt
@@ -51,7 +54,7 @@ super + shift + F7
     mailsync
 
 super + F8
-    telegram-desktop
+    telegram-desktop-bin
 
 super + F9
     discord
