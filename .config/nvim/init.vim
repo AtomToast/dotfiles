@@ -146,6 +146,10 @@ nmap <leader>R :%s//g<left><left>
 " toggle vista
 nmap <silent><leader>v :Vista!!<CR>
 
+" start and stop MarkdownPreview
+nmap <leader>mp :MarkdownPreview<CR>
+nmap <leader>ms :MarkdownPreviewStop<CR>
+
 " shortcuts for moving lines
 nnoremap <silent> <C-A-j> :m .+1<CR>==
 nnoremap <silent> <C-A-k> :m .-2<CR>==
