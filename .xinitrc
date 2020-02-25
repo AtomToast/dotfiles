@@ -1,7 +1,7 @@
 sxhkd -m 1 &
 /usr/lib/xdg-desktop-portal-kde &
 dunst &
-xrdb -load ~/.Xresources
+xrdb -load ~/.Xresources &
 /usr/lib/kdeconnectd &
 echo "Stopped" > ~/.cache/spotifyd/currentsong &
 setdwmstatusbar &
