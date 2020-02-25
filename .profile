@@ -26,16 +26,20 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+# add cargo to PATH
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# set default programs
 export EDITOR="nvim"
 export TERMINAL="st"
 export BROWSER="firefox"
 export FILEMANAGER="vifmrun"
 
+# set desktop theme configuration options
 export GTK_USE_PORTAL=1
 export QT_QPA_PLATFORMTHEME="qt5ct"
 
+# set various default and config file paths
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
