@@ -332,13 +332,15 @@ filetype *.zip,*.jar,*.war,*.ear,*.oxt,*.apkg
        \ {View contents}
        \ zip -sf %c | less,
        \ {Extract here}
-       \ tar -xf %c,
+       \ unzip %c,
 fileviewer *.zip,*.jar,*.war,*.ear,*.oxt zip -sf %c
 
 " ArchiveMount
 filetype *.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz,*.tar.xz,*.txz
        \ {Mount with archivemount}
        \ FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATION_DIR,
+       \ {Extract here}
+       \ tar -xf %c,
 fileviewer *.tgz,*.tar.gz tar -tzf %c
 fileviewer *.tar.bz2,*.tbz2 tar -tjf %c
 fileviewer *.tar.txz,*.txz xz --list %c
