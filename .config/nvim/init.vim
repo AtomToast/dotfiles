@@ -118,7 +118,7 @@ nmap <leader>hu <Plug>(GitGutterUndoHunk)
 nmap <leader>s :nohlsearch<CR>
 
 " toggle spelling
-nmap <leader>S :set spell!<CR>
+nmap <leader>S :setlocal spell!<CR>
 
 " buffer shortcuts
 nmap <leader>bl :ls<CR>
@@ -247,6 +247,9 @@ autocmd FileType text,markdown,tex setlocal textwidth=80
 
 " Update binds when sxhkdrc is updated.
 autocmd BufWritePost *sxhkdrc silent! !pkill -USR1 sxhkd && notify-send -t 1700 'reloaded sxhkd config'
+
+" set spell check languages
+set spelllang=en_us,en_gb,de_20
 
 " set matches for insert mode completion
 set complete=.,w,b,u,t,i,kspell
