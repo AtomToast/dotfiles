@@ -173,12 +173,6 @@ nnoremap <silent><Right> :vertical resize -2<CR>
 inoremap <A-,> <Esc>A;<Esc>
 nnoremap <A-,> A;<Esc>
 
-" do not require ctrl+w to switch between windows
-"nnoremap <C-J> <C-W><C-J>
-"nnoremap <C-K> <C-W><C-K>
-"nnoremap <C-L> <C-W><C-L>
-"nnoremap <C-H> <C-W><C-H>
-
 " create an empty line above/below
 nnoremap <A-o> o<Esc>k
 nnoremap <A-O> O<Esc>j
@@ -214,8 +208,28 @@ nmap <silent><leader>t :Tags<CR>
 nmap <silent><leader>bt :BTags<CR>
 nmap <silent><leader>rg :Rg<CR>
 
+" switch windows in any mode with alt + hjkl
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
+inoremap <A-h> <C-\><C-N><C-w>h
+inoremap <A-j> <C-\><C-N><C-w>j
+inoremap <A-k> <C-\><C-N><C-w>k
+inoremap <A-l> <C-\><C-N><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+
 " esc to exit terminal mode
 tnoremap <Esc> <C-\><C-n>
+
+" remove a lot of clutter from terminal buffers
+autocmd TermOpen * setlocal conceallevel=0 colorcolumn=0 norelativenumber nonumber
+
+" Prefer Neovim terminal insert mode to normal mode.
+autocmd BufEnter term://* startinsert
 
 " I'm a save addict
 au FocusLost * :wa
