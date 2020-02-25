@@ -155,7 +155,7 @@ alias l="sudo updatedb && locate"
 alias cp='cp -i'
 alias mv='mv -i'
 alias flex='st -e htop&; st -e unimatrix &; ll'
-alias flex++='st -e htop &; st -e unimatrix &;st -e nvim ~/git/st/st.h &;st &;ll'
+alias flex++='st -e htop &; st -e unimatrix &;st -e nvim ~/git/st/st.h 2>/dev/null &;st &;ll'
 
 export PATH="$HOME/.config/vifm/scripts:$PATH"
 alias vifm="vifmrun"
