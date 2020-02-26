@@ -179,9 +179,6 @@ nnoremap <A-O> O<Esc>j
 inoremap <A-o> <C-o>o<C-o>k
 inoremap <A-O> <C-o>O<C-o>j
 
-" create a shortcut for deleting to black hole register
-nmap dx "_dd
-
 " create a shortcut for taking the first correction
 nnoremap <leader>z 1z=
 
@@ -202,10 +199,6 @@ let g:wordmotion_spaces = '_-.'
 " configure fzf
 nmap <silent><leader>p :Files<CR>
 nmap <silent><leader>bb :Buffers<CR>
-nmap <silent><leader>l :Lines<CR>
-nmap <silent><leader>bl :BLines<CR>
-nmap <silent><leader>t :Tags<CR>
-nmap <silent><leader>bt :BTags<CR>
 nmap <silent><leader>rg :Rg<CR>
 
 " switch windows in any mode with alt + hjkl
