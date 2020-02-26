@@ -372,3 +372,12 @@ let g:tex_flavor = "latex"
 
 " markdown-preview config
 let g:mkdp_browser = 'surf'
+
+" netrw hide banner
+let g:netrw_banner=0
+
+" netrw opens in tree view by default
+let g:netrw_liststyle=3
+
+" hide dotfiles by default in netrw
+let g:netrw_list_hide=',\(^\|\s\s\)\zs\.\S\+'
