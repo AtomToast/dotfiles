@@ -87,6 +87,7 @@ set termguicolors
 " set colorscheme
 colorscheme  monokai
 highlight Normal guibg=#282828
+highlight Pmenu guibg=#383830
 
 " set up colorizer
 lua require'colorizer'.setup()
