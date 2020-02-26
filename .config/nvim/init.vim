@@ -266,6 +266,8 @@ autocmd FileType text,markdown,tex setlocal textwidth=80
 " Update binds when sxhkdrc is updated.
 autocmd BufWritePost *sxhkdrc silent! !pkill -USR1 sxhkd && notify-send -t 1700 'reloaded sxhkd config'
 
+autocmd FileType vista,vista_kind nnoremap <buffer> <silent> / :<c-u>call vista#finder#fzf#Run()<CR>
+
 " set spell check languages
 set spelllang=en_us,en_gb,de_20
 
