@@ -29,6 +29,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'baskerville/vim-sxhkdrc'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'elzr/vim-json'
+Plug 'elixir-editors/vim-elixir'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'airblade/vim-gitgutter'
