@@ -261,12 +261,16 @@ autocmd FileType json setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType css setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType html setlocal shiftwidth=2 softtabstop=2 tabstop=2
 
-" Set maximum text width
-autocmd FileType text,markdown,tex setlocal textwidth=80
+" Set maximum text width and spelling
+autocmd FileType text,markdown,tex setlocal textwidth=80 spell
+
+" enable comment highlighting in json
+autocmd FileType json syntax match Comment +\/\/.\+$+
 
 " Update binds when sxhkdrc is updated.
 autocmd BufWritePost *sxhkdrc silent! !pkill -USR1 sxhkd && notify-send -t 1700 'reloaded sxhkd config'
 
+" enable search in vista
 autocmd FileType vista,vista_kind nnoremap <buffer> <silent> / :<c-u>call vista#finder#fzf#Run()<CR>
 
 " set spell check languages
@@ -281,7 +285,7 @@ set hidden
 set nobackup
 set nowritebackup
 set signcolumn=yes
-set shortmess+=c
+" set shortmess+=c
 set cmdheight=2
 set updatetime=300
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
