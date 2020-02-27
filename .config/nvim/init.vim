@@ -15,6 +15,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dadbod'
+Plug 'junegunn/vim-easy-align'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'sickill/vim-monokai'
@@ -202,6 +203,12 @@ nmap <silent><leader>p :Files<CR>
 nmap <silent><leader>bb :Buffers<CR>
 nmap <silent><leader>rg :Rg<CR>
 
+" vim-easy-align configuration
+"" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+"" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
 " switch windows in any mode with alt + hjkl
 tnoremap <A-h> <C-\><C-N><C-w>h
 tnoremap <A-j> <C-\><C-N><C-w>j
@@ -313,7 +320,7 @@ nmap <silent> gr <Plug>(coc-references)
 "" Format selected content
 vmap <leader>f  <Plug>(coc-format-selected)
 xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format)
 
 "" Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
