@@ -66,6 +66,9 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#fnamemod = ':p:.'
 let g:airline#extensions#tabline#fnamecollapse = 1
 
+" hide classic mode display
+set noshowmode
+
 " markdown config
 let g:vim_markdown_json_frontmatter = 1
 let g:vim_markdown_strikethrough = 1
@@ -264,6 +267,9 @@ autocmd FileType html setlocal shiftwidth=2 softtabstop=2 tabstop=2
 
 " Set maximum text width and spelling
 autocmd FileType text,markdown,tex setlocal textwidth=80 spell
+
+" enable syntax highlighting in vifmrc
+autocmd FileType vifm set syntax=vim
 
 " enable comment highlighting in json
 autocmd FileType json syntax match Comment +\/\/.\+$+
