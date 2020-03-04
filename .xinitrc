@@ -3,7 +3,6 @@ sxhkd -m 1 &
 dunst &
 xrdb -load ~/.Xresources &
 /usr/lib/kdeconnectd &
-echo "Stopped" > ~/.cache/spotifyd/currentsong &
 setdwmstatusbar &
 feh --no-fehbg --bg-fill /home/kjell/Pictures/wallpapers/$(ls ~/Pictures/wallpapers | shuf -n1) &
 blueman-applet &
