@@ -14,7 +14,7 @@ name=screenshot-$(date +"%F-%H-%M-%S").png
 while getopts ":aio:n:" opt; do
     case "$opt" in
     h|\?)
-        echo "
+        echo "\
 Usage: screenshot [options]
 By default lets you select an area for a screenshot and saves it to the selection clipboard
 
