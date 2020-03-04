@@ -82,9 +82,12 @@ function mail_count() {
 }
 
 function spotify_status() {
-    currentsong=$(cat ~/.cache/spotifyd/currentsong)
-    if [[ $currentsong != "Stopped" ]]; then
-        echo " $currentsong |"
+    stat=$(playerctl --player=ncspot status | sed -e "s/Playing//;s/Paused//")
+    if [[ $stat != "Stopped" ]]; then
+        metadata=$(playerctl --player=ncspot metadata --format "{{ artist }} - {{ title }}")
+        echo " $stat $metadata |"
+    else
+        echo ""
     fi
 }
 
