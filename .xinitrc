@@ -6,9 +6,11 @@ xrdb -load ~/.Xresources &
 echo "Stopped" > ~/.cache/spotifyd/currentsong &
 setdwmstatusbar &
 feh --no-fehbg --bg-fill /home/kjell/Pictures/wallpapers/$(ls ~/Pictures/wallpapers | shuf -n1) &
+blueman-applet &
 redshift -l 52.55:13.46 &
 xautolock -corners --00 -time 10 -locker auto_lock_screen &
 nextcloud &
+signal-desktop --use-tray-icon --start-in-tray &
 xrandr --output LVDS-1 --mode 1920x1080 --pos 0x0 --rotate normal --output VGA-1 --off --output HDMI-1 --off --output DP-1 --off --output HDMI-2 --off --output HDMI-3 --off --output DP-2 --off --output DP-3 --primary --mode 1920x1080 --pos 0x0 --rotate normal
 
 startdwm
