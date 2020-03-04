@@ -1,0 +1,23 @@
+#!/bin/sh
+
+rotate() {
+	degree="$1"
+	tr '\n' '\0' | xargs -0 realpath | sort | uniq | while read file; do
+		case "$(file -b -i "$file")" in
+		image/jpeg*) jpegtran -rotate "$degree" -copy all -outfile "$file" "$file" ;;
+		*)           mogrify  -rotate "$degree" "$file" ;;
+		esac
+	done
+}
+
+case "$1" in
+"C-x")      xclip -in -filter | tr '\n' ' ' | xclip -in -selection clipboard ;;
+"C-c")      while read file; do xclip -selection clipboard -target image/png "$file"; done ;;
+"C-g")      tr '\n' '\0' | xargs -0 gimp & ;;
+"C-period") rotate 270 ;;
+"C-comma")  rotate  90 ;;
+"C-minus")  rotate 180 ;;
+"C-w")      while read file; do feh --no-fehbg --bg-fill "$file"; done ;;
+"C-f")      tr '\n' '\0' | xargs -0 st -e vifmrun --select & ;;
+esac
+
