@@ -281,7 +281,7 @@ set spelllang=en_us,en_gb,de_20
 set complete=.,w,b,u,t,i,kspell
 
 " coc config
-call coc#add_extension('coc-pairs', 'coc-marketplace', 'coc-texlab',  'coc-yank', 'coc-prettier', 'coc-snippets', 'coc-emoji', 'coc-html', 'coc-yaml', 'coc-css', 'coc-python', 'coc-tsserver', 'coc-json', 'coc-sql')
+call coc#add_extension('coc-pairs', 'coc-marketplace', 'coc-texlab',  'coc-yank', 'coc-prettier', 'coc-snippets', 'coc-emoji', 'coc-html', 'coc-yaml', 'coc-css', 'coc-python', 'coc-tsserver', 'coc-json', 'coc-sql', 'coc-elixir')
 set hidden
 set nobackup
 set nowritebackup

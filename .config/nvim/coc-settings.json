@@ -16,11 +16,6 @@
          "highlight": { "lsRanges" : true }
        }
     },
-    "elixirLS": {
-      "command":"/home/kjell/git/elixir-ls/rel/language_server.sh",
-      "filetypes":["elixir", "eelixir"],
-      "trace.server": "verbose"
-    },
     "bash": {
       "command": "bash-language-server",
       "args": ["start"],
