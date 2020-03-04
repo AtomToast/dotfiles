@@ -1,8 +1,57 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 set -e
 
-sel=$(slop -f "-i %i -g %g")
-shotgun $sel - | xclip -selection clipboard -t image/png
+# A POSIX variable
+OPTIND=1         # Reset in case getopts has been used previously in the shell.
 
-notify-send -t 3000 "Saved screenshot to clipboard"
+# Initialize our own variables:
+sel=""
+imgur=0
+output=""
+name=screenshot-$(date +"%F-%H-%M-%S").png
+
+while getopts ":aio:n:" opt; do
+    case "$opt" in
+    h|\?)
+        echo "
+Usage: screenshot [options]
+By default lets you select an area for a screenshot and saves it to the selection clipboard
+
+Options:
+    -h      Print out help and exit
+    -s      Takes a screenshot of the entire screen
+    -i      Copies the screenshot to imgur and places the link into your primary clipboard
+    -o      Lets you specify a path to save the image to. By default saves to selection clipboard
+    -n      Lets you specify a name for the saved file.
+            Default format is screenshot-YYYY-MM-DD-hh-mm-ss.png"
+        exit 0
+        ;;
+    s)  sel=$(slop -f "-i %i -g %g")
+        ;;
+    i)  imgur=1
+        ;;
+    o)  output=$OPTARG
+        ;;
+    n)  name=$OPTARG
+        [[ "$name" != *".png" ]] && name=${name}.png
+        ;;
+    esac
+done
+
+shift $((OPTIND-1))
+
+[ "${1:-}" = "--" ] && shift
+
+if [[ "$output" = "" ]]; then
+    shotgun $sel - | xclip -selection clipboard -t image/png
+    notify-send -t 3000 "Saved screenshot to clipboard"
+else
+    shotgun $sel $output/$name
+    notify-send -t 3000 "Saved screenshot to $output/$name"
+fi
+
+if [[ $imgur == 1 ]]; then
+    shotgun $sel - | imgur
+    notify-send -t 3000 "Saved screenshot to imgur" "imgur url: '$(xclip -selection primary -o)'"
+fi

@@ -83,8 +83,26 @@ super + shift + asterisk
 Print
     screenshot
 
+super + Print
+    screenshot -a
+
 control + Print
-    screenshot2imgur
+    screenshot -i
+
+shift + Print
+    screenshot -o $HOME/Pictures
+
+super + control + Print
+    screenshot -ai
+
+super + shift + Print
+    screenshot -ao $HOME/Pictures
+
+super + control + shift + Print
+    screenshot -aio $HOME/Pictures
+
+control + shift + Print
+    screenshot -io $HOME/Pictures
 
 super + dead_acute
     dmenuunicode
