@@ -59,14 +59,26 @@ super + F8
 super + F9
     discord
 
+super + F10
+    $TERMINAL -e ncspot
+
+super + shift + F10
+    $TERMINAL -e lyrics ncspot
+
 super + F11
     networkmanager_dmenu
 
 super + F12
     $TERMINAL -e htop
 
+super + shift + F12
+    $TERMINAL -e glances
+
 XF86ScreenSaver
     slock
+
+super + shift + asterisk
+    sxiv -art $HOME/Pictures
 
 Print
     screenshot
@@ -79,6 +91,12 @@ super + dead_acute
 
 XF86Display
     displayselect
+
+control + XF86Display
+    $HOME/.screenlayout/fixed.sh
+
+control + shift + XF86Display
+    $HOME/.screenlayout/external.sh
 
 XF86Launch1
     exitmenu
