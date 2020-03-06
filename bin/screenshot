@@ -45,13 +45,13 @@ shift $((OPTIND-1))
 
 if [[ "$output" = "" ]]; then
     shotgun $sel - | xclip -selection clipboard -t image/png
-    notify-send -t 3000 "Saved screenshot to clipboard"
+    notify-send -t 3000 " Saved screenshot to clipboard"
 else
     shotgun $sel $output/$name
-    notify-send -t 3000 "Saved screenshot to $output/$name"
+    notify-send -t 3000 " Saved screenshot to $output/$name"
 fi
 
 if [[ $imgur == 1 ]]; then
     shotgun $sel - | imgur
-    notify-send -t 3000 "Saved screenshot to imgur" "imgur url: '$(xclip -selection primary -o)'"
+    notify-send -t 3000 " aved screenshot to imgur" "imgur url: '$(xclip -selection primary -o)'"
 fi
