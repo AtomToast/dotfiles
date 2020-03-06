@@ -84,7 +84,7 @@ Print
     screenshot
 
 super + Print
-    screenshot -a
+    screenshot -s
 
 control + Print
     screenshot -i
@@ -93,13 +93,13 @@ shift + Print
     screenshot -o $HOME/Pictures
 
 super + control + Print
-    screenshot -ai
+    screenshot -si
 
 super + shift + Print
-    screenshot -ao $HOME/Pictures
+    screenshot -so $HOME/Pictures
 
 super + control + shift + Print
-    screenshot -aio $HOME/Pictures
+    screenshot -sio $HOME/Pictures
 
 control + shift + Print
     screenshot -io $HOME/Pictures

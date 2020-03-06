@@ -10,8 +10,9 @@ sel=""
 imgur=0
 output=""
 name=screenshot-$(date +"%F-%H-%M-%S").png
+fullscreen=0
 
-while getopts ":aio:n:" opt; do
+while getopts ":sio:n:" opt; do
     case "$opt" in
     h|\?)
         echo "\
@@ -27,7 +28,7 @@ Options:
             Default format is screenshot-YYYY-MM-DD-hh-mm-ss.png"
         exit 0
         ;;
-    s)  sel=$(slop -f "-i %i -g %g")
+    s)  fullscreen=1
         ;;
     i)  imgur=1
         ;;
@@ -42,6 +43,10 @@ done
 shift $((OPTIND-1))
 
 [ "${1:-}" = "--" ] && shift
+
+if [[ $fullscreen -eq 0 ]]; then
+    sel=$(slop -f "-i %i -g %g")
+fi
 
 if [[ "$output" = "" ]]; then
     shotgun $sel - | xclip -selection clipboard -t image/png
