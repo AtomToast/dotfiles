@@ -80,6 +80,9 @@ XF86ScreenSaver
 super + shift + asterisk
     sxiv -art $HOME/Pictures
 
+super + numbersign
+    = -- -i
+
 Print
     screenshot
 
