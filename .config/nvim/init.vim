@@ -15,6 +15,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dadbod'
+Plug 'tpope/vim-speeddating'
 Plug 'junegunn/vim-easy-align'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -213,6 +214,9 @@ xmap ga <Plug>(EasyAlign)
 "" Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
+" remap Y to work like other captial letters
+nnoremap Y y$
+
 " switch windows in any mode with alt + hjkl
 tnoremap <A-h> <C-\><C-N><C-w>h
 tnoremap <A-j> <C-\><C-N><C-w>j
@@ -275,10 +279,12 @@ autocmd FileType vifm set syntax=vim
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
 " Update binds when sxhkdrc is updated.
-autocmd BufWritePost *sxhkdrc silent! !pkill -USR1 sxhkd && notify-send -t 1700 'reloaded sxhkd config'
+autocmd BufWritePost *sxhkdrc silent! !pkill -USR1 sxhkd
+            \ && notify-send -t 1700 'reloaded sxhkd config'
 
 " enable search in vista
-autocmd FileType vista,vista_kind nnoremap <buffer> <silent> / :<c-u>call vista#finder#fzf#Run()<CR>
+autocmd FileType vista,vista_kind nnoremap <buffer> <silent> /
+            \ :<c-u>call vista#finder#fzf#Run()<CR>
 
 " set spell check languages
 set spelllang=en_us,en_gb,de_20
@@ -287,13 +293,16 @@ set spelllang=en_us,en_gb,de_20
 set complete=.,w,b,u,t,i,kspell
 
 " coc config
-call coc#add_extension('coc-pairs', 'coc-marketplace', 'coc-texlab',  'coc-yank', 'coc-prettier', 'coc-snippets', 'coc-emoji', 'coc-html', 'coc-yaml', 'coc-css', 'coc-python', 'coc-tsserver', 'coc-json', 'coc-sql', 'coc-elixir')
+call coc#add_extension('coc-pairs', 'coc-marketplace', 'coc-texlab',  'coc-yank',
+                     \ 'coc-prettier', 'coc-snippets', 'coc-emoji', 'coc-html',
+                     \ 'coc-yaml', 'coc-css', 'coc-python', 'coc-tsserver',
+                     \ 'coc-json', 'coc-sql', 'coc-elixir')
 set hidden
 set nobackup
 set nowritebackup
 set signcolumn=yes
 " set shortmess+=c
-set cmdheight=2
+" set cmdheight=2
 set updatetime=300
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
@@ -309,10 +318,12 @@ function! s:check_back_space() abort
 endfunction
 
 inoremap <expr> <C-j> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <silent><expr> <C-j> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <C-j> pumvisible() ? coc#_select_confirm() :
+            \ "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 "inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() :
+            \ "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 autocmd FileType vim let b:coc_pairs_disabled = ['"']
 
