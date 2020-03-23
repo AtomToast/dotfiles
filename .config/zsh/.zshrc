@@ -1,105 +1,38 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+source ~/.zplug/init.zsh
 
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.config/.oh-my-zsh
+zplug "romkatv/powerlevel10k", as:theme, depth:1
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+zplug "AtomToast/zsh-vim-mode"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+zplug "zsh-users/zsh-autosuggestions"
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+zplug "zdharma/fast-syntax-highlighting"
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-HYPHEN_INSENSITIVE="true"
+zplug "plugins/git",   from:oh-my-zsh
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
 
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+# Install plugins if there are plugins that have not been installed
+if ! zplug check; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
 
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git fast-syntax-highlighting zsh-autosuggestions zsh-vim-mode)
-
-source $ZSH/oh-my-zsh.sh
-
-# plugins config
-# MODE_CURSOR_VICMD="green block"
-# MODE_CURSOR_VIINS="#20d08a bar"
-# MODE_CURSOR_SEARCH="#ff00ff steady underline"
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
+# seems to not like my fix for mode sensitive cursors at the bottom
+# # enable instant prompt
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 # fi
 
-# export EDITOR='nvim'
-source ~/.profile
+# Then, source plugins and add commands to $PATH
+zplug load
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# Case insensitive
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
 
-#
-# # ex - archive extractor
-# # usage: ex <file>
+# ex - archive extractor
+# usage: ex <file>
 ex ()
 {
   if [ -f $1 ] ; then
@@ -122,14 +55,7 @@ ex ()
   fi
 }
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# aliases (duh)
 alias ls="exa -F"
 alias lt="ls --tree --level=2"
 alias lg="ls --grid"
@@ -154,8 +80,9 @@ alias diff="diff --color=always"
 alias l="sudo updatedb && locate"
 alias cp='cp -i'
 alias mv='mv -i'
-alias flex='st -e htop&; st -e unimatrix &; ll'
-alias flex++='st -e htop &; st -e unimatrix &;st -e nvim ~/git/st/st.h 2>/dev/null &;st &;ll'
+alias flex='st -e htop&; st -e unimatrix -afs 96 &; ll'
+alias flex++='st -e htop &; st -e unimatrix -afs 96 &;
+              st -e nvim ~/git/st/st.h 2>/dev/null &;st &;ll'
 
 export PATH="$HOME/.config/vifm/scripts:$PATH"
 alias vifm="vifmrun"
@@ -172,13 +99,20 @@ alias -s tar.gz="echo "
 
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
+# enable autocd so I can navigate directories without cd (especially useful with ..)
+setopt AUTO_CD
+
+# set short keytimeout for quick mode switching
 KEYTIMEOUT=1
 
+# add ~/bin to path
 export PATH="$HOME/bin:$PATH"
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export BAT_PAGER="less -RF"
 
-neofetch
+# set manpager to bat
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+# load tetris for the lulz
+autoload -Uz tetriscurses
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
@@ -200,3 +134,8 @@ _fix_cursor() {
 }
 
 precmd_functions+=(_fix_cursor)
+
+# Fix java applications
+wmname LG3D
+
+neofetch
