@@ -28,7 +28,7 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load
 
-# Case insensitive
+# Case insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
 
 # ex - archive extractor
@@ -110,6 +110,12 @@ export PATH="$HOME/bin:$PATH"
 
 # set manpager to bat
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+# setting up zsh history file
+export HISTFILE="$ZDOTDIR/.zsh_history"
+export SAVEHIST=10000
+export HISTSIZE=50000
+setopt hist_expire_dups_first
 
 # load tetris for the lulz
 autoload -Uz tetriscurses
