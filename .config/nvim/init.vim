@@ -181,9 +181,9 @@ vnoremap <silent> <C-A-j> :m '>+1<CR>gv=gv
 vnoremap <silent> <C-A-k> :m '<-2<CR>gv=gv
 
 " ctrl+s saving
-noremap  <silent> <C-S> :update<CR>
-vnoremap <silent> <C-S> <C-C>:update<CR>
-inoremap <silent> <C-S> <C-O>:update<CR>
+noremap  <silent> <C-S> :update<CR>:nohlsearch<CR>
+vnoremap <silent> <C-S> <C-C>:update<CR>:nohlsearch<CR>
+inoremap <silent> <C-S> <C-O>:update<CR><C-O>:nohlsearch<CR>
 
 " make arrows resize splits
 nnoremap <silent><Up>    :resize +2<CR>
