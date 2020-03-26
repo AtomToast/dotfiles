@@ -553,6 +553,7 @@ nnoremap ö :cd<space>
 " Use ag (the silver searcher) instead of grep
 "
 " set grepprg='ag --line-numbers %i %a %s'
+set grepprg='rg -n %i %a %s'
 
 " Add additional place to look for executables
 "
