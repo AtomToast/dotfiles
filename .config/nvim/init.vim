@@ -10,15 +10,17 @@
 
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-speeddating'
+if !exists('g:started_by_firenvim')
+    Plug 'tpope/vim-sensible'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+endif
 Plug 'junegunn/vim-easy-align'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'sickill/vim-monokai'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'luochen1990/rainbow'
@@ -29,6 +31,7 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'plasticboy/vim-markdown'
 Plug 'baskerville/vim-sxhkdrc'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'elzr/vim-json'
 Plug 'elixir-editors/vim-elixir'
 Plug 'pangloss/vim-javascript'
@@ -404,3 +407,28 @@ let g:netrw_liststyle=3
 
 " hide dotfiles by default in netrw
 let g:netrw_list_hide=',\(^\|\s\s\)\zs\.\S\+'
+
+" firenvim configuration
+if exists('g:started_by_firenvim')
+    " turn off statusbar
+    set laststatus=0
+    " disable tabline
+    let g:airline#extensions#tabline#enabled = 0
+    " disable signcolumn
+    set signcolumn=no
+    " disable numbers
+    set norelativenumber nonumber
+    " add shortcut for focusing the page
+    nnoremap <silent><Esc><Esc> :call firenvim#focus_page()<CR>
+    " add shortcut for hiding the frame
+    nnoremap <silent><C-z> :call firenvim#hide_frame()<CR>
+    " use external commandline for firenvim
+    let g:firenvim_config = {
+        \ 'localSettings': {
+            \ '.*': {
+                \ 'cmdline': 'firenvim',
+            \ },
+        \ }
+    \ }
+endif
+
