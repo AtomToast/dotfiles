@@ -4,7 +4,7 @@ dunst &
 xrdb -load ~/.Xresources &
 /usr/lib/kdeconnectd &
 setdwmstatusbar &
-feh --no-fehbg --bg-fill /home/kjell/Pictures/wallpapers/$(ls ~/Pictures/wallpapers | shuf -n1) &
+setroot -z /home/kjell/Pictures/wallpapers/$(ls ~/Pictures/wallpapers | shuf -n1) &
 blueman-applet &
 redshift -l 52.55:13.46 &
 xautolock -corners --00 -time 10 -locker auto_lock_screen &
