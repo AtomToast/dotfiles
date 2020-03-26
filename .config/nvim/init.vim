@@ -101,6 +101,10 @@ set termguicolors
 colorscheme  monokai
 highlight Normal guibg=#282828
 highlight Pmenu guibg=#383830
+highlight elixirAtom guifg=#ae81ff
+highlight elixirModuleDeclaration guifg=#f4bf75
+highlight elixirAlias guifg=#fd971f
+highlight elixirStringDelimiter guifg=#e6db74
 
 " set up colorizer
 lua require'colorizer'.setup()
