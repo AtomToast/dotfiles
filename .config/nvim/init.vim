@@ -204,6 +204,9 @@ inoremap <A-O> <C-o>O<C-o>j
 " create a shortcut for taking the first correction
 nnoremap <leader>z 1z=
 
+" fix last spelling mistake
+nnoremap <leader>Z [s1z=
+
 " use alt + word motion keys for special behaviour
 let g:wordmotion_mappings = {
 \ 'w' : '<A-w>',
