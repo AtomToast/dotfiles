@@ -54,7 +54,7 @@ super + shift + F7
     mailsync
 
 super + F8
-    telegram-desktop-bin
+    telegram-desktop
 
 super + F9
     discord
