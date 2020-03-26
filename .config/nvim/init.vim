@@ -161,6 +161,10 @@ nmap <silent><leader>a :A<CR>
 " search and replace shortcut
 nmap <leader>R :%s//g<left><left>
 
+" open netrw
+nnoremap <leader>E :Explore<CR>
+nnoremap <leader>L :30Lexplore<CR>
+
 " toggle vista
 nmap <silent><leader>v :Vista!!<CR>
 
