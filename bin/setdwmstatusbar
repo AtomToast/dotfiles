@@ -82,8 +82,8 @@ function mail_count() {
 }
 
 function spotify_status() {
-    stat=$(playerctl --player=ncspot status | sed -e "s/Playing//;s/Paused//")
-    if [[ $stat != "Stopped" ]]; then
+    stat=$(playerctl --player=ncspot status 2>/dev/null | sed -e "s/Playing//;s/Paused//")
+    if [[ $stat = "" ]] || [[ $stat = "" ]]; then
         metadata=$(playerctl --player=ncspot metadata --format "{{ artist }} - {{ title }}")
         echo " $stat $metadata |"
     else
