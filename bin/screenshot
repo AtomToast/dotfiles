@@ -12,6 +12,7 @@ output=""
 name=screenshot-$(date +"%F-%H-%M-%S").png
 fullscreen=0
 
+# parse options
 while getopts ":sio:n:" opt; do
     case "$opt" in
     h|\?)
@@ -40,8 +41,10 @@ Options:
     esac
 done
 
+# reset OPTIND
 shift $((OPTIND-1))
 
+# forgot what this does, I think it passes the options on to somewhere when after a --
 [ "${1:-}" = "--" ] && shift
 
 if [[ $fullscreen -eq 0 ]]; then
