@@ -1,27 +1,65 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["html", "javascript", "javascriptreact", "python","css", "Markdown", "json"],
-  "snippets.extends": {"javascriptreact": ["javascript"]},
+  "coc.preferences.formatOnSaveFiletypes": [
+    "html",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "typescript.tsx",
+    "graphql",
+    "python",
+    "css",
+    "markdown",
+    "json"
+  ],
+  "snippets.extends": {
+    "javascriptreact": [
+      "javascript"
+    ],
+    "typescript": [
+      "javascript"
+    ],
+    "typescriptreact": [
+      "javascript"
+    ]
+  },
   "python.linting.pylintEnabled": true,
   "python.linting.enabled": true,
   "codeLens.enable": true,
   "languageserver": {
     "ccls": {
       "command": "ccls",
-      "filetypes": ["c", "cpp", "objc", "objcpp"],
-      "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+      "filetypes": [
+        "c",
+        "cpp",
+        "objc",
+        "objcpp"
+      ],
+      "rootPatterns": [
+        ".ccls",
+        "compile_commands.json",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ],
       "initializationOptions": {
-         "cache": {
-           "directory": "/tmp/ccls"
-         },
-         "highlight": { "lsRanges" : true }
-       }
+        "cache": {
+          "directory": "/tmp/ccls"
+        },
+        "highlight": {
+          "lsRanges": true
+        }
+      }
     },
     "bash": {
       "command": "bash-language-server",
-      "args": ["start"],
-      "filetypes": ["sh"],
+      "args": [
+        "start"
+      ],
+      "filetypes": [
+        "sh"
+      ],
       //"ignoredRootPaths": ["~"]
     }
-  },
+  }
 }
-
