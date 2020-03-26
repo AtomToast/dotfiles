@@ -320,6 +320,9 @@ set spelllang=en_us,en_gb,de_20
 " set matches for insert mode completion
 set complete=.,w,b,u,t,i,kspell
 
+" enable persistent undohistory
+set undofile
+
 " coc config
 call coc#add_extension('coc-pairs', 'coc-marketplace', 'coc-texlab',  'coc-yank',
                      \ 'coc-prettier', 'coc-snippets', 'coc-emoji', 'coc-html',
@@ -329,7 +332,7 @@ set hidden
 set nobackup
 set nowritebackup
 set signcolumn=yes
-" set shortmess+=c
+set shortmess+=c
 " set cmdheight=2
 set updatetime=300
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
