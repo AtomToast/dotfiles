@@ -430,6 +430,13 @@ let g:mkdp_browser = 'surf'
 " netrw hide banner
 let g:netrw_banner=0
 
+" netrw show previews on the right
+let g:netrw_preview=1
+let g:netrw_alto=0
+
+" netrw window size
+let g:netrw_winsize=30
+
 " netrw opens in tree view by default
 let g:netrw_liststyle=3
 
