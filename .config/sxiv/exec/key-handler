@@ -17,7 +17,7 @@ case "$1" in
 "C-period") rotate 270 ;;
 "C-comma")  rotate  90 ;;
 "C-minus")  rotate 180 ;;
-"C-w")      while read file; do feh --no-fehbg --bg-fill "$file"; done ;;
+"C-w")      while read file; do setroot -z "$file"; done ;;
 "C-f")      tr '\n' '\0' | xargs -0 st -e vifmrun --select & ;;
 esac
 

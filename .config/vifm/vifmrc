@@ -533,7 +533,7 @@ nnoremap ,f :file<cr>
 nnoremap b :bmarks<cr>
 
 " set current file as wallpaper
-nnoremap W :!feh --no-fehbg --bg-fill %f<cr>
+nnoremap W :!setroot -z %f<cr>
 
 " Example of standard two-panel file managers mappings
 nnoremap <f3> :!less %f<cr>
