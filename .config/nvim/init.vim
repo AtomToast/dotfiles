@@ -36,6 +36,8 @@ Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'elzr/vim-json'
 Plug 'elixir-editors/vim-elixir'
 Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'airblade/vim-gitgutter'
 Plug 'liuchengxu/vista.vim'
@@ -432,4 +434,3 @@ if exists('g:started_by_firenvim')
         \ }
     \ }
 endif
-
