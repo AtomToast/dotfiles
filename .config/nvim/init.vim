@@ -294,10 +294,8 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 
-autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2 tabstop=2
-autocmd FileType json setlocal shiftwidth=2 softtabstop=2 tabstop=2
-autocmd FileType css setlocal shiftwidth=2 softtabstop=2 tabstop=2
-autocmd FileType html setlocal shiftwidth=2 softtabstop=2 tabstop=2
+autocmd FileType javascript,json,css,html,markdown
+            \ setlocal shiftwidth=2 softtabstop=2 tabstop=2
 
 " Set maximum text width and spelling
 autocmd FileType text,markdown,tex setlocal textwidth=80 spell
