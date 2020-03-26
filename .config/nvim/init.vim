@@ -27,6 +27,7 @@ Plug 'luochen1990/rainbow'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Yggdroot/indentLine'
 Plug 'chaoren/vim-wordmotion'
+Plug 'airblade/vim-rooter'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'plasticboy/vim-markdown'
 Plug 'baskerville/vim-sxhkdrc'
