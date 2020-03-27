@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # relaunch DWM if the binary changes, otherwise bail
 csum=$(sha1sum $(which dwm))
 new_csum=""
