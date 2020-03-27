@@ -1,19 +1,19 @@
 # Audio Control keys
 XF86AudioMute
-    pamixer -t; dunstify -r 2593 -u low -t 500 "Volume $(pamixer --get-volume-human)"
+    pulsemixer --toggle-mute; volumenotify
 
-XF86AudioRaiseVolume
-    pamixer -i 5; dunstify -r 2593 -u low -t 500 "Volume $(pamixer --get-volume-human)"
-
-XF86AudioLowerVolume
-    pamixer -d 5; dunstify -r 2593 -u low -t 500 "Volume $(pamixer --get-volume-human)"
+XF86Audio{Raise,Lower}Volume
+    pulsemixer --change-volume {+5,-5}; volumenotify
 
 XF86AudioMicMute
     pactl set-source-mute @DEFAULT_SOURCE@ toggle
+    # pulsemixer --toggle-mute --id $(pulsemixer --list-sources \
+    #     | grep Default | cut -d ' ' -f3 | tr -d ',')
 
 # Brightness Control keys
 XF86MonBrightness{Up,Down}
-    brightnessctl -q set {+5%,5%-}; brightnessnotify
+    light {-A,-U} 5; dunstify -r 2594 -u low -t 500 "Brightness $(light -G | cut -d '.' -f1)%"
+    # brightnessctl -q set {+5%,5%-}; brightnessnotify
 
 # Media Control keys
 XF86AudioPlay

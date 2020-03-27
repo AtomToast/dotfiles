@@ -1,0 +1,8 @@
+#!/bin/sh
+
+mute=$(pulsemixer --get-mute)
+volume=$(pulsemixer --get-volume | cut -d ' ' -f1)
+state="$volume%"
+
+[ $mute -eq 1 ] && state="mute"
+dunstify -r 2593 -u low -t 500 "Volume $state"
