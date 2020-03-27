@@ -165,6 +165,11 @@ nmap <leader>R :%s//g<left><left>
 nnoremap <leader>E :Explore<CR>
 nnoremap <leader>L :30Lexplore<CR>
 
+" create saner navigation bindings
+autocmd filetype netrw nmap <buffer> h -
+autocmd filetype netrw nmap <buffer> l <cr>
+autocmd filetype netrw nmap <buffer> cd gn
+
 " toggle vista
 nmap <silent><leader>v :Vista!!<CR>
 
@@ -194,6 +199,10 @@ nnoremap <silent><Right> :vertical resize -2<CR>
 " shortcut for entering semicolon at the end of the line
 inoremap <A-,> <Esc>A;<Esc>
 nnoremap <A-,> A;<Esc>
+
+" swap semicolon and comma because of my german layout
+nnoremap ; ,
+nnoremap , ;
 
 " create an empty line above/below
 nnoremap <A-o> o<Esc>k
