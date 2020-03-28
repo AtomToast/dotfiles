@@ -12,6 +12,19 @@ a {
 	color: #66d9ef !important;
 }
 
+th {
+  background-color: #383830 !important;
+}
+
+code {
+  background-color: #a59f85 !important;
+}
+
+li.selected {
+  background-color: #383830 !important;
+  border-color: #a59f85 !important;
+}
+
 span.hljs-keyword, .hljs-selector-tag, .hljs-subst {
   color: rgb(214, 211, 205) !important;
 }
