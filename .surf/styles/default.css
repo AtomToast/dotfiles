@@ -1,0 +1,29 @@
+pre,textarea,body,input,td,tr,p,div,section, header  {
+	background-color: #282828 !important;
+	background-image: none !important;
+	color: #f5f4f1 !important;
+  border-color: #a59f85 !important;
+}
+h1,h2,h3,h4 {
+	background-color: #282828 !important;
+	color: #a1efe4 !important;
+}
+a {
+	color: #66d9ef !important;
+}
+
+span.hljs-keyword, .hljs-selector-tag, .hljs-subst {
+  color: rgb(214, 211, 205) !important;
+}
+.hljs-string, .hljs-doctag{
+  color: rgb(242, 81, 121) !important;
+}
+.hljs-number, .hljs-literal, .hljs-variable, .hljs-template-variable, .hljs-tag .hljs-attr {
+  color: rgb(127, 255, 255) !important;
+}
+.hljs-title, .hljs-section, .hljs-selector-id {
+  color: rgb(255, 112, 112) !important;
+}
+.hljs-meta {
+  color: rgb(186, 181, 171) !important;
+}
