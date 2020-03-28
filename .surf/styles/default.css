@@ -16,7 +16,7 @@ th {
   background-color: #383830 !important;
 }
 
-code {
+code:not([class]) {
   background-color: #a59f85 !important;
 }
 
