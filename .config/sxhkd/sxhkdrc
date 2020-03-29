@@ -39,7 +39,7 @@ super + ctrl + F2
     surf
 
 super + o
-    surf $(dmenu -p "Go:" )
+    surf "$(dmenu -p "Go:" )"
 
 super + F3
     $TERMINAL -e $HOME/.config/vifm/scripts/vifmrun
