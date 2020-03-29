@@ -33,6 +33,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export EDITOR="nvim"
 export TERMINAL="st"
 export BROWSER="firefox"
+export READER="zathura"
 export FILEMANAGER="vifmrun"
 
 # set desktop theme configuration options
@@ -51,6 +52,7 @@ export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 export LESSHISTFILE="-"
 
 export TDESKTOP_DISABLE_TRAY_COUNTER=1
+export SUDO_ASKPASS="$HOME/bin/dmenupass"
 
 if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
   exec startx > /dev/null 2>&1
