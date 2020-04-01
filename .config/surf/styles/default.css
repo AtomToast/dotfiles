@@ -17,7 +17,8 @@ th {
 }
 
 code:not([class]) {
-  background-color: #a59f85 !important;
+  background-color: #3B3A3A !important;
+  color: #f5f4f1 !important;
 }
 
 li.selected {
