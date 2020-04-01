@@ -94,8 +94,8 @@ alias -s rar="unrar l"
 alias -s tar="tar tf"
 alias -s tar.gz="echo "
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+# load powerlevel10k config
+[[ -f ~/.config/zsh/.p10k.zsh ]] && source ~/.config/zsh/.p10k.zsh
 
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
