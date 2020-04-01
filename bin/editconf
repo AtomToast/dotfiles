@@ -1,15 +1,9 @@
 #!/usr/bin/env bash
 
-config_files=".config/zsh/.zshrc\n
-.profile\n
-.xinitrc\n
-.config/vifm/vifmrc\n
-.config/nvim/init.vim\n
-.config/sxhkd/sxhkdrc\n
-.config/dunst/dunstrc\n
-.config/spotifyd/spotifyd.conf"
+[ $YADM_DIR ] || YADM_DIR="$XDG_CONFIG_HOME/yadm"
+export GIT_DIR="$YADM_DIR/repo.git"
 
-chosen=$(echo -e $config_files | dmenu -i -p "Edit:") || exit
+chosen=$(yadm ls-files $HOME | dmenu -i -p "Edit:") || exit
 
 path=$(echo "$HOME/$chosen" | tr -d '[:space:]')
 
