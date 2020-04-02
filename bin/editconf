@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/sh
 
 [ $YADM_DIR ] || YADM_DIR="$XDG_CONFIG_HOME/yadm"
 export GIT_DIR="$YADM_DIR/repo.git"
