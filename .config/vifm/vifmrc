@@ -232,7 +232,7 @@ filextype *.html,*.htm
         \ {Open with uzbl}
         \ uzbl-browser %f %i &,
 filetype *.html,*.htm links, lynx
-" fileviewer *.html w3m %c
+fileviewer *.html lynx -dump %c
 
 " Windows Executables
 filextype *.exe
