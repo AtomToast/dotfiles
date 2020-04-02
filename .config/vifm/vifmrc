@@ -476,7 +476,7 @@ set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
 
 " ------------------------------------------------------------------------------
 
-" Sample mappings
+" custom mappings
 
 " Start shell in current directory
 nnoremap s :shell<cr>
@@ -545,6 +545,12 @@ nnoremap <f8> :delete<cr>
 
 " open cd prompt
 nnoremap ö :cd<space>
+
+" vifmimg scrolling
+map > :!vifmimg inc<CR>
+map < :!vifmimg dec<CR>
+
+nnoremap s :!st &<CR>
 
 " ------------------------------------------------------------------------------
 
