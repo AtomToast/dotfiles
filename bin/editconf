@@ -5,6 +5,6 @@ export GIT_DIR="$YADM_DIR/repo.git"
 
 chosen=$(yadm ls-files $HOME | dmenu -i -p "Edit:") || exit
 
-path=$(echo "$HOME/$chosen" | tr -d '[:space:]')
+path=$(echo "$chosen" | tr -d '[:space:]')
 
 $TERMINAL -e $EDITOR $path
