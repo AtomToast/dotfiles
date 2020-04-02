@@ -550,7 +550,7 @@ nnoremap ö :cd<space>
 map > :!vifmimg inc<CR>
 map < :!vifmimg dec<CR>
 
-nnoremap s :!st &<CR>
+nnoremap s :!st 2>/dev/null &<CR>
 
 " ------------------------------------------------------------------------------
 
