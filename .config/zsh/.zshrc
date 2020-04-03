@@ -121,26 +121,12 @@ setopt hist_expire_dups_first
 # load tetris for the lulz
 autoload -Uz tetriscurses
 
-# Change cursor shape for different vi modes.
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[2 q'
 
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'bar' ]]; then
-    echo -ne '\e[6 q'
-  fi
-}
-zle -N zle-keymap-select
 
-_fix_cursor() {
-   echo -ne '\e[6 q'
-}
-
-precmd_functions+=(_fix_cursor)
+# set cursor depending on mode
+MODE_CURSOR_VICMD="block"
+MODE_CURSOR_VIINS="bar"
+MODE_CURSOR_SEARCH="underline"
 
 # Fix java applications
 wmname LG3D
