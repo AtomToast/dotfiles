@@ -351,7 +351,7 @@ call coc#add_extension('coc-pairs', 'coc-marketplace', 'coc-texlab',  'coc-yank'
 set hidden
 set nobackup
 set nowritebackup
-set signcolumn=yes
+set signcolumn=auto:4
 set shortmess+=c
 " set cmdheight=2
 set updatetime=300
