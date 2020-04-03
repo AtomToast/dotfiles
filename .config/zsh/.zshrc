@@ -57,6 +57,11 @@ ex ()
   fi
 }
 
+gln () {
+        git --no-pager log --graph --pretty=format:"%C(auto)%h -%d %s %Cgreen(%cr) %Cblue<%an>%Creset" -5 "$@"
+        printf "\n"
+}
+
 # aliases (duh)
 alias ls="exa -F"
 alias lt="ls --tree --level=2"
@@ -80,8 +85,10 @@ alias netris="ssh netris.rocketnine.space"
 alias netron="ssh sshtron.zachlatta.com"
 alias diff="diff --color=always"
 alias l="sudo updatedb && locate"
+alias md="mkdir -p"
 alias cp='cp -i'
 alias mv='mv -i'
+alias rm='rm -v'
 alias flex='st -e htop&; st -e unimatrix -afs 96 &; ll'
 alias flex++='st -e htop &; st -e unimatrix -afs 96 &;
               st -e nvim ~/git/st/st.h 2>/dev/null &;st &;ll'
@@ -89,6 +96,7 @@ alias flex++='st -e htop &; st -e unimatrix -afs 96 &;
 export PATH="$HOME/.config/vifm/scripts:$PATH"
 alias vifm="vifmrun"
 alias f="vifm"
+alias ff="vifm ."
 
 alias -s pdf=zathura
 alias -s zip="unzip -l"
