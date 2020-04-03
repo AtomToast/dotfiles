@@ -96,6 +96,8 @@ alias -s rar="unrar l"
 alias -s tar="tar tf"
 alias -s tar.gz="echo "
 
+alias zf='z -I'      # use fzf to select in multiple matches
+
 # load powerlevel10k config
 [[ -f ~/.config/zsh/.p10k.zsh ]] && source ~/.config/zsh/.p10k.zsh
 
@@ -118,10 +120,11 @@ export SAVEHIST=10000
 export HISTSIZE=50000
 setopt hist_expire_dups_first
 
+# enable z.lua enhanced matching
+export _ZL_MATCH_MODE=1
+
 # load tetris for the lulz
 autoload -Uz tetriscurses
-
-
 
 # set cursor depending on mode
 MODE_CURSOR_VICMD="block"
