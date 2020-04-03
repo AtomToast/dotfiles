@@ -8,6 +8,8 @@ zplug "zsh-users/zsh-autosuggestions"
 
 zplug "zdharma/fast-syntax-highlighting"
 
+zplug "skywind3000/z.lua"
+
 zplug "plugins/git",   from:oh-my-zsh
 
 
@@ -97,7 +99,6 @@ alias -s tar.gz="echo "
 # load powerlevel10k config
 [[ -f ~/.config/zsh/.p10k.zsh ]] && source ~/.config/zsh/.p10k.zsh
 
-[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
 # enable autocd so I can navigate directories without cd (especially useful with ..)
 setopt AUTO_CD
