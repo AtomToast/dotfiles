@@ -30,7 +30,7 @@ Plug 'chaoren/vim-wordmotion'
 Plug 'airblade/vim-rooter'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'plasticboy/vim-markdown'
-Plug 'baskerville/vim-sxhkdrc'
+Plug 'kovetskiy/sxhkd-vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'elzr/vim-json'
