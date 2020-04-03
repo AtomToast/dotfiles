@@ -1,4 +1,8 @@
 {
+  "diagnostic.warningSign": "",
+  "diagnostic.errorSign": "",
+  "diagnostic.infoSign": "",
+  "diagnostic.hintSign": "",
   "coc.preferences.formatOnSaveFiletypes": [
     "html",
     "javascript",

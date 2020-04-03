@@ -106,10 +106,20 @@ highlight elixirModuleDeclaration guifg=#f4bf75
 highlight elixirAlias guifg=#fd971f
 highlight elixirStringDelimiter guifg=#e6db74
 
+highlight CocWarningSign guifg=#fd971f guibg=#3c3d37 ctermfg=130 ctermbg=237
+highlight CocErrorSign guifg=#f92672 guibg=#3c3d37 ctermfg=9 ctermbg=237
+highlight CocInfoSign guifg=#f4bf75 guibg=#3c3d37 ctermfg=11 ctermbg=237
+highlight CocHintSign guifg=#66d9ef guibg=#3c3d37 ctermfg=12 ctermbg=237
+
 " set up colorizer
 lua require'colorizer'.setup()
 
 " set gitgutter symbol colors
+let g:gitgutter_sign_added = ''
+let g:gitgutter_sign_modified = ''
+let g:gitgutter_sign_removed = ''
+let g:gitgutter_sign_removed_first_line = ''
+let g:gitgutter_sign_modified_removed = ''
 highlight GitGutterAdd    guifg=#a6e22e guibg=#3c3d37 ctermfg=2 ctermbg=237
 highlight GitGutterChange guifg=#fd971f guibg=#3c3d37 ctermfg=3 ctermbg=237
 highlight GitGutterDelete guifg=#f92672 guibg=#3c3d37 ctermfg=1 ctermbg=237
