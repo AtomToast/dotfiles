@@ -46,7 +46,7 @@ Plug 'honza/vim-snippets'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'nacitar/a.vim'
-Plug 'psliwka/vim-smoothie'
+" Plug 'psliwka/vim-smoothie'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
