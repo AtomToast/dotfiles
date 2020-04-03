@@ -101,6 +101,8 @@ alias zf='z -I'      # use fzf to select in multiple matches
 # load powerlevel10k config
 [[ -f ~/.config/zsh/.p10k.zsh ]] && source ~/.config/zsh/.p10k.zsh
 
+# fix right side of prompt floating
+ZLE_RPROMPT_INDENT=0
 
 # enable autocd so I can navigate directories without cd (especially useful with ..)
 setopt AUTO_CD
