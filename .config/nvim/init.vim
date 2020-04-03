@@ -344,9 +344,10 @@ set undofile
 
 " coc config
 call coc#add_extension('coc-pairs', 'coc-marketplace', 'coc-texlab',  'coc-yank',
-                     \ 'coc-prettier', 'coc-snippets', 'coc-emoji', 'coc-html',
+                     \ 'coc-prettier', 'coc-snippets', 'coc-html', 'coc-xml',
                      \ 'coc-yaml', 'coc-css', 'coc-python', 'coc-tsserver',
-                     \ 'coc-json', 'coc-sql', 'coc-elixir')
+                     \ 'coc-json', 'coc-sql', 'coc-elixir', 'coc-vimlsp',
+                     \ 'coc-cssmodules')
 set hidden
 set nobackup
 set nowritebackup
