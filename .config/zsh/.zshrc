@@ -21,7 +21,7 @@ if ! zplug check; then
     fi
 fi
 
-# seems to not like my fix for mode sensitive cursors at the bottom
+# seems to not like mode sensitive cursors
 # # enable instant prompt
 # if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
 #   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -30,7 +30,7 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load
 
-# Case insensitive completion
+# Case and hypen insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
 
 # ex - archive extractor
