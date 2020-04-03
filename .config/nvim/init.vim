@@ -25,6 +25,7 @@ Plug 'sickill/vim-monokai'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'luochen1990/rainbow'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'alvan/vim-closetag', { 'for': ['html', 'javascript', 'javascript.jsx', 'typescript.tsx'] }
 Plug 'Yggdroot/indentLine'
 Plug 'chaoren/vim-wordmotion'
 Plug 'airblade/vim-rooter'
@@ -33,6 +34,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+Plug 'vifm/vifm.vim'
 Plug 'elzr/vim-json'
 Plug 'elixir-editors/vim-elixir'
 Plug 'pangloss/vim-javascript'
@@ -45,6 +47,7 @@ Plug 'djoshea/vim-autoread'
 Plug 'honza/vim-snippets'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'unblevable/quick-scope'
 Plug 'nacitar/a.vim'
 " Plug 'psliwka/vim-smoothie'
 Plug 'michaeljsmith/vim-indent-object'
@@ -486,3 +489,9 @@ if exists('g:started_by_firenvim')
         \ }
     \ }
 endif
+
+" quick-scope configuration
+" let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+let g:qs_buftype_blacklist = ['terminal']
+highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
