@@ -371,11 +371,6 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-inoremap <expr> <C-j> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <silent><expr> <C-j> pumvisible() ? coc#_select_confirm() :
-            \ "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-"inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() :
             \ "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
