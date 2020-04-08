@@ -293,6 +293,16 @@ fileviewer *.ico
     \ %pc
     \ vifmimg clear
 
+fileviewer *.mp3
+    \ vifmimg audio %px %py %pw %ph %c
+    \ %pc
+    \ vifmimg clear
+
+fileviewer *.otf,*.ttf,*.woff
+    \ vifmimg font %px %py %pw %ph %c
+    \ %pc
+    \ vifmimg clear
+
 " OpenRaster
 filextype *.ora
         \ {Edit in MyPaint}
