@@ -322,9 +322,6 @@ autocmd FileType javascript,json,css,html,markdown
 " Set maximum text width and spelling
 autocmd FileType text,markdown,tex setlocal textwidth=80 spell
 
-" enable syntax highlighting in vifmrc
-autocmd FileType vifm set syntax=vim
-
 " enable comment highlighting in json
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
