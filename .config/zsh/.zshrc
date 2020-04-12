@@ -2,7 +2,7 @@ source ~/.config/zplug/init.zsh
 
 zplug "romkatv/powerlevel10k", as:theme, depth:1
 
-zplug "AtomToast/zsh-vim-mode"
+zplug "softmoth/zsh-vim-mode"
 
 zplug "zsh-users/zsh-autosuggestions"
 
