@@ -1,6 +1,28 @@
 source ~/.config/zplug/init.zsh
 
-zplug "romkatv/powerlevel10k", as:theme, depth:1
+if [ "$TERM" = "linux" ]; then
+    # multiline prompt
+    #PS1_viins="%B%F{red}%M%f%b:%F{cyan}%~%f"$'\n'"%B%F{green}>%f%b "
+    #PS1_vicmd="%B%F{red}%M%f%b:%F{cyan}%~%f"$'\n'"%B%F{green}<%f%b "
+    PS1_viins="%B%F{red}%M%f%b:%F{cyan}%~%f %B%F{green}>%f%b "
+    PS1_vicmd="%B%F{red}%M%f%b:%F{cyan}%~%f %B%F{green}<%f%b "
+    export RPS1='[%(?.%F{green}.%F{red})%?%f]'
+    export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=5"
+    # set cursor to non-blinking block
+    echo -e "\e[?112c"
+
+    # mode sensitive prompt
+    function zle-line-init zle-keymap-select {
+        PS1="${${KEYMAP/vicmd/$PS1_vicmd}/(main|viins)/$PS1_viins}"
+        PS2="${${KEYMAP/vicmd/< }/(main|viins)/> }"
+        zle reset-prompt
+    }
+
+    zle -N zle-line-init
+    zle -N zle-keymap-select
+else
+    zplug "romkatv/powerlevel10k", as:theme, depth:1
+fi
 
 zplug "softmoth/zsh-vim-mode"
 
