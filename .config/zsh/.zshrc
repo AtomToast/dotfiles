@@ -193,7 +193,10 @@ MODE_CURSOR_VICMD="block"
 MODE_CURSOR_VIINS="bar"
 MODE_CURSOR_SEARCH="underline"
 
-# Fix java applications
-wmname LG3D
+# some bling for le terminal
+export PF_INFO="ascii title os host wm editor shell uptime"
+[ ! "$TERM" = "linux" ] && wmname dwm
+pfetch
 
-neofetch
+# Fix java applications
+[ ! "$TERM" = "linux" ] && wmname LG3D
