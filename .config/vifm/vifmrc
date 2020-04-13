@@ -531,6 +531,9 @@ nnoremap ,w :set wrap!<cr>
 " Toggle millerview
 nnoremap ,m :set millerview!<cr>
 
+" Toggle millerpreview
+nnoremap ,M :set milleroptions^=rpreview:all<cr>
+
 " Turn off viewcolumns
 nnoremap ,v :set viewcolumns=-{name}..,6{}.<cr>
 " Turn on viewcolumns
