@@ -41,7 +41,7 @@ else
     zplug "romkatv/powerlevel10k", as:theme, depth:1
 fi
 
-zplug "softmoth/zsh-vim-mode"
+zplug "AtomToast/zsh-vim-mode"
 
 zplug "zsh-users/zsh-autosuggestions"
 
