@@ -114,7 +114,7 @@ gln () {
 }
 
 # aliases (duh)
-alias ls="exa -F --group-directories-first"
+alias ls="exa -F --group-directories-first --icons"
 alias lt="ls --tree --level=2"
 alias lg="ls --grid"
 alias ll="ls -lahF --git"
