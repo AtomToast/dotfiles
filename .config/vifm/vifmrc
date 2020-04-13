@@ -147,6 +147,9 @@ command! make !!make %a
 command! mkcd :mkdir %a | cd %a
 command! vgrep nvim "+grep %a"
 command! reload :write | restart
+command! z :execute 'cd' "'".fnameescape(system('eval "$(/usr/share/z.lua/z.lua --init zsh)" && _zlua -l %a | tail -n1 | grep -o "[^ ]*$"'))."'"
+command! FZFlocate :set noquickview | :execute 'goto' fnameescape(term('locate $HOME | fzf --height 10 2>/dev/tty'))
+command! FZFfind :set noquickview | :execute 'goto' fnameescape(term('find | fzf --height 10 2>/dev/tty'))
 
 " ------------------------------------------------------------------------------
 
@@ -488,6 +491,10 @@ set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
 
 " custom mappings
 
+" Fzf mappings
+nnoremap <c-g> :FZFlocate<cr>
+nnoremap <c-f> :FZFfind<cr>
+
 " Start shell in current directory
 nnoremap s :shell<cr>
 
@@ -558,6 +565,9 @@ nnoremap <f8> :delete<cr>
 
 " open cd prompt
 nnoremap ö :cd<space>
+
+" open z prompt
+nnoremap ä :z<space>
 
 " vifmimg scrolling
 map > :!vifmimg inc<CR>
