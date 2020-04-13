@@ -181,6 +181,7 @@ export HISTFILE="$ZDOTDIR/.zsh_history"
 export SAVEHIST=10000
 export HISTSIZE=50000
 setopt hist_expire_dups_first
+setopt inc_append_history
 
 # enable z.lua enhanced matching
 export _ZL_MATCH_MODE=1
