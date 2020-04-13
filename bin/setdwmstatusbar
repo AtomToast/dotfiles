@@ -1,20 +1,6 @@
 #!/usr/bin/env bash
 
 function internetStatus() {
-    # quality=$(nmcli --color no device wifi | grep ^\* | awk '{print $8}')
-    # quality=$(echo $(awk '/wlp3s0/ {print $3}' /proc/net/wireless | sed -e "s/\.//") / 70 | bc -l)
-    # if (( $(echo "$quality > 0.9" | bc -l) )); then
-    #     qualitybar="####"
-    # elif (( $(echo "$quality > 0.65" | bc -l) )); then
-    #     qualitybar="###:"
-    # elif (( $(echo "$quality > 0.4" | bc -l) )); then
-    #     qualitybar="##::"
-    # elif (( $(echo "$quality > 0.15" | bc -l) )); then
-    #     qualitybar="#:::"
-    # else
-    #     qualitybar="::::"
-    # fi
-
     ethernetStatus=$(cat /sys/class/net/enp0s25/operstate)
     wifiStatus=$(cat /sys/class/net/wlp3s0/operstate)
 
@@ -26,7 +12,7 @@ function internetStatus() {
         internetStatusIcon="睊"
     fi
 
-    echo $qualitybar $internetStatusIcon
+    echo "$internetStatusIcon"
 }
 
 function batteryStatus() {
@@ -71,7 +57,7 @@ function batteryStatus() {
 
     timeRemaining=$(acpi | cut -d " " -f5-)
 
-    echo $batteryStatusIcon $batteryCapacity% $timeRemaining
+    echo "$batteryStatusIcon $batteryCapacity%$timeRemaining"
 }
 
 function mail_count() {
