@@ -13,7 +13,7 @@ name=screenshot-$(date +"%F-%H-%M-%S").png
 fullscreen=0
 
 # parse options
-while getopts ":sio:n:" opt; do
+while getopts ":hsio:n:" opt; do
     case "$opt" in
     h|\?)
         echo "\
@@ -36,7 +36,7 @@ Options:
     o)  output=$OPTARG
         ;;
     n)  name=$OPTARG
-        [[ "$name" != *".png" ]] && name=${name}.png
+        [ "${name##*.}" != "png" ] && name=${name}.png
         ;;
     esac
 done
@@ -47,19 +47,19 @@ shift $((OPTIND-1))
 # forgot what this does, I think it passes the options on to somewhere when after a --
 [ "${1:-}" = "--" ] && shift
 
-if [[ $fullscreen -eq 0 ]]; then
+if [ $fullscreen -eq 0 ]; then
     sel=$(slop -f "-i %i -g %g")
 fi
 
-if [[ "$output" = "" ]]; then
+if [ "$output" = "" ]; then
     shotgun $sel - | xclip -selection clipboard -t image/png
-    notify-send -t 3000 " Saved screenshot to clipboard"
+    notify-send -t 3000 "  Saved screenshot to clipboard"
 else
-    shotgun $sel $output/$name
-    notify-send -t 3000 " Saved screenshot to $output/$name"
+    shotgun $sel "$output"/"$name"
+    notify-send -t 3000 "  Saved screenshot to $output/$name"
 fi
 
-if [[ $imgur == 1 ]]; then
+if [ $imgur -eq 1 ]; then
     shotgun $sel - | imgur
-    notify-send -t 3000 " aved screenshot to imgur" "imgur url: '$(xclip -selection primary -o)'"
+    notify-send -t 3000 "  Saved screenshot to imgur" "imgur url: '$(xclip -selection primary -o)'"
 fi
