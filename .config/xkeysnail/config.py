@@ -69,6 +69,8 @@ define_keymap(re.compile("firefox"), {
     K("C-h"): K("backspace"),
     # ctrl+m works as enter
     K("C-m"): K("enter"),
+    # ctrl+j works as newline
+    K("C-j"): K("Shift-enter"),
 }, "Firefox")
 
 # Keybindings for Discord
