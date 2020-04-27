@@ -1,4 +1,6 @@
 sxhkd -m 1 &
+xhost +SI:localuser:root &
+xkeysnail -q /home/kjell/.config/xkeysnail/config.py &
 /usr/lib/xdg-desktop-portal-kde &
 dunst &
 xrdb -load ~/.Xresources &
