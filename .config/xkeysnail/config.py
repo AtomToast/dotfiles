@@ -55,6 +55,23 @@ define_keymap(None, {
     K("C-Shift-LM-RM-j"): K("C-Shift-LM-down"),
     K("C-Shift-LM-RM-k"): K("C-Shift-LM-up"),
     K("C-Shift-LM-RM-l"): K("C-Shift-LM-right"),
+
+    # disable arrow keys for now
+    K("left"):  K("UNKNOWN"),
+    K("down"):  K("UNKNOWN"),
+    K("up"):    K("UNKNOWN"),
+    K("right"): K("UNKNOWN"),
+
+    # disable page up and down keys
+    K("page_down"): K("UNKNOWN"),
+    K("page_up"):   K("UNKNOWN"),
+
+    # disable enter
+    K("enter"): K("UNKNOWN"),
+
+    # disable backspace
+    K("backspace"): K("UNKNOWN"),
+
 }, "hjkl arrow keys")
 
 # Keybindings for Firefox
