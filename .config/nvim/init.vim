@@ -376,7 +376,7 @@ endfunction
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() :
             \ "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-autocmd FileType vim let b:coc_pairs_disabled = ['"']
+autocmd FileType vim,vifm let b:coc_pairs_disabled = ['"']
 
 inoremap <silent><expr> <c-n> coc#refresh()
 
