@@ -485,6 +485,13 @@ if exists('g:started_by_firenvim')
             \ },
         \ }
     \ }
+    " Autowrite changes
+    autocmd InsertLeave * ++nested write
+    autocmd TextChanged * ++nested write
+    " make ctrl+backspace send ctrl+w for working with xkeysnail
+    inoremap <C-BS> <C-W>
+    " set github and reddit filetype to markdown
+    au BufEnter *github.com_*.txt,*reddit.com_*.txt set filetype=markdown
 endif
 
 " quick-scope configuration
