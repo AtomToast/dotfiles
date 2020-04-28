@@ -21,7 +21,7 @@ if !exists('g:started_by_firenvim')
     Plug 'vim-airline/vim-airline-themes'
 endif
 Plug 'junegunn/vim-easy-align'
-Plug 'sickill/vim-monokai'
+Plug 'crusoexia/vim-monokai'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'luochen1990/rainbow'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -97,22 +97,16 @@ let g:indentLine_leadingSpaceChar = '·'
 let g:indentLine_concealcursor="c"
 let g:indentLine_faster = 1
 
-" set termguicolors
+" enable truecolor support
 set termguicolors
 
 " set colorscheme
 colorscheme  monokai
 highlight Normal guibg=#282828
-highlight Pmenu guibg=#383830
 highlight elixirAtom guifg=#ae81ff
 highlight elixirModuleDeclaration guifg=#f4bf75
 highlight elixirAlias guifg=#fd971f
 highlight elixirStringDelimiter guifg=#e6db74
-
-highlight CocWarningSign guifg=#fd971f guibg=#3c3d37 ctermfg=130 ctermbg=237
-highlight CocErrorSign guifg=#f92672 guibg=#3c3d37 ctermfg=9 ctermbg=237
-highlight CocInfoSign guifg=#f4bf75 guibg=#3c3d37 ctermfg=11 ctermbg=237
-highlight CocHintSign guifg=#66d9ef guibg=#3c3d37 ctermfg=12 ctermbg=237
 
 " set up colorizer
 lua require'colorizer'.setup()
