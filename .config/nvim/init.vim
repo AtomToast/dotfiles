@@ -166,7 +166,7 @@ nmap <leader>gl :Glog<CR>
 nmap <silent><leader>a :A<CR>
 
 " search and replace shortcut
-nmap <leader>R :%s//g<left><left>
+nmap <leader>R :%s//gI<left><left><left>
 
 " open netrw
 nnoremap <leader>E :Explore<CR>
