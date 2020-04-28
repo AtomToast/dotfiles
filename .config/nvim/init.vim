@@ -320,7 +320,9 @@ autocmd FileType typescript*,javascript,json,css,html,markdown
             \ setlocal shiftwidth=2 softtabstop=2 tabstop=2
 
 " Set maximum text width and spelling
-autocmd FileType text,markdown,tex setlocal textwidth=80 spell
+if !exists('g:started_by_firenvim')
+    autocmd FileType text,markdown,tex setlocal textwidth=80 spell
+endif
 
 " enable comment highlighting in json
 autocmd FileType json syntax match Comment +\/\/.\+$+
@@ -467,6 +469,8 @@ let g:netrw_list_hide=',\(^\|\s\s\)\zs\.\S\+'
 if exists('g:started_by_firenvim')
     " turn off statusbar
     set laststatus=0
+    " turn on spell checking
+    set spell
     " disable tabline
     let g:airline#extensions#tabline#enabled = 0
     " disable signcolumn
