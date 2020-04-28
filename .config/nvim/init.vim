@@ -172,6 +172,9 @@ nmap <leader>R :%s//gI<left><left><left>
 nnoremap <leader>E :Explore<CR>
 nnoremap <leader>L :30Lexplore<CR>
 
+" open vifm
+nnoremap <leader>V :Vifm<CR>
+
 " create saner navigation bindings
 autocmd filetype netrw nmap <buffer> h -
 autocmd filetype netrw nmap <buffer> l <cr>
