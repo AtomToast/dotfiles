@@ -187,14 +187,6 @@ nmap <silent><leader>v :Vista!!<CR>
 nmap <leader>mp :MarkdownPreview<CR>
 nmap <leader>ms :MarkdownPreviewStop<CR>
 
-" shortcuts for moving lines
-nnoremap <silent> <C-A-j> :m .+1<CR>==
-nnoremap <silent> <C-A-k> :m .-2<CR>==
-inoremap <silent> <C-A-j> <Esc>:m .+1<CR>==gi
-inoremap <silent> <C-A-k> <Esc>:m .-2<CR>==gi
-vnoremap <silent> <C-A-j> :m '>+1<CR>gv=gv
-vnoremap <silent> <C-A-k> :m '<-2<CR>gv=gv
-
 " ctrl+s saving
 noremap  <silent> <C-S> :update<CR>:nohlsearch<CR>
 vnoremap <silent> <C-S> <C-C>:update<CR>:nohlsearch<CR>
@@ -267,24 +259,27 @@ nmap ga <Plug>(EasyAlign)
 nnoremap Y y$
 
 " switch windows in any mode with alt + hjkl
-tnoremap <A-h> <C-\><C-N><C-w>h
-tnoremap <A-j> <C-\><C-N><C-w>j
-tnoremap <A-k> <C-\><C-N><C-w>k
-tnoremap <A-l> <C-\><C-N><C-w>l
-inoremap <A-h> <C-\><C-N><C-w>h
-inoremap <A-j> <C-\><C-N><C-w>j
-inoremap <A-k> <C-\><C-N><C-w>k
-inoremap <A-l> <C-\><C-N><C-w>l
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
+tnoremap <C-A-h> <C-\><C-N><C-w>h
+tnoremap <C-A-j> <C-\><C-N><C-w>j
+tnoremap <C-A-k> <C-\><C-N><C-w>k
+tnoremap <C-A-l> <C-\><C-N><C-w>l
+inoremap <C-A-h> <C-\><C-N><C-w>h
+inoremap <C-A-j> <C-\><C-N><C-w>j
+inoremap <C-A-k> <C-\><C-N><C-w>k
+inoremap <C-A-l> <C-\><C-N><C-w>l
+nnoremap <C-A-h> <C-w>h
+nnoremap <C-A-j> <C-w>j
+nnoremap <C-A-k> <C-w>k
+nnoremap <C-A-l> <C-w>l
+
+nnoremap <silent><C-A-t> :10sp<CR>:terminal<CR>
 
 " esc to exit terminal mode
-tnoremap <Esc> <C-\><C-n>
+tnoremap ° <C-\><C-n>
 
 " remove a lot of clutter from terminal buffers
 autocmd TermOpen * setlocal conceallevel=0 colorcolumn=0 norelativenumber nonumber
+autocmd TermOpen * startinsert
 
 " Prefer Neovim terminal insert mode to normal mode.
 autocmd BufEnter term://* startinsert
