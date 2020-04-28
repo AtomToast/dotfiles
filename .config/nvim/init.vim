@@ -305,6 +305,10 @@ set clipboard+=unnamedplus
 " enable instant substitute preview
 set inccommand=nosplit
 
+"
+set ignorecase
+set smartcase
+
 " set caps lock to escape in vim
 "au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 "au VimLeave * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
