@@ -1,5 +1,6 @@
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 sxhkd -m 1 &
+xbanish &
 xhost +SI:localuser:root &
 xkeysnail -q /home/kjell/.config/xkeysnail/config.py &
 /usr/lib/xdg-desktop-portal-kde &
