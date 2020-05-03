@@ -36,7 +36,7 @@ super + shift + F2
     firefox --private-window
 
 super + ctrl + F2
-    surf
+    qutebrowser
 
 super + o
     surf "$(dmenu -p "Go:" )"
