@@ -21,20 +21,20 @@ if [ "$TERM" = "linux" ]; then
     zle -N zle-line-init
     zle -N zle-keymap-select
     echo -en "\e]P0282828" #black
-    echo -en "\e]P875715e" #darkgrey
     echo -en "\e]P1f92672" #darkred
-    echo -en "\e]P9f92672" #red
     echo -en "\e]P2a6e22e" #darkgreen
-    echo -en "\e]PAa6e22e" #green
     echo -en "\e]P3f4bf75" #brown
-    echo -en "\e]PBf4bf75" #yellow
     echo -en "\e]P466d9ef" #darkblue
-    echo -en "\e]PC66d9ef" #blue
     echo -en "\e]P5ae81ff" #darkmagenta
-    echo -en "\e]PDae81ff" #magenta
     echo -en "\e]P6a1efe4" #darkcyan
-    echo -en "\e]PEa1efe4" #cyan
     echo -en "\e]P7f8f8f2" #lightgrey
+    echo -en "\e]P875715e" #darkgrey
+    echo -en "\e]P9f92672" #red
+    echo -en "\e]PAa6e22e" #green
+    echo -en "\e]PBf4bf75" #yellow
+    echo -en "\e]PC66d9ef" #blue
+    echo -en "\e]PDae81ff" #magenta
+    echo -en "\e]PEa1efe4" #cyan
     echo -en "\e]PFf9f8f5" #white
     clear #for background artifacting
 else
