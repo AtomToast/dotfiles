@@ -1,0 +1,167 @@
+#!/usr/bin/env python3
+# linux.artturin.com
+# packages needed(arch names): python-colorama opendoas(optional)
+import os
+import sys
+import subprocess
+import filecmp
+import getpass
+import shutil
+import signal
+import fnmatch
+import argparse
+from pathlib import Path
+from colorama import Fore, Back, Style
+
+# Checks if running as root
+USER = getpass.getuser()
+if USER == "root":
+    print(Back.RED + Style.BRIGHT + Fore.LIGHTWHITE_EX +
+          "Running as root not allowed")
+    sys.exit(1)
+
+if len(sys.argv) != 2:
+    print("usage: doedit file")
+    sys.exit(1)
+
+if shutil.which("doas"):
+    PRIV = "doas"
+else:
+    print("doas not installed, using sudo")
+    PRIV = "sudo"
+
+
+# Handles Ctrl+C
+def signal_handler(sig, frame):
+    print(Fore.RED + Style.BRIGHT + "Ctrl+C pressed")
+    if Path(TEMP).is_file():
+        print(f"{TEMP} Exists, removing...")
+        Path(TEMP).unlink()
+        sys.exit(1)
+    else:
+        print(f"{TEMP} Does not exist")
+        sys.exit(1)
+
+
+signal.signal(signal.SIGINT, signal_handler)
+
+RAWFILE = sys.argv[1]
+FILE = Path(RAWFILE).resolve()
+NAME = Path(FILE).name
+PATHP = FILE.parent
+TERMINAL = os.environ["TERMINAL"]
+EDITOR = os.environ["EDITOR"]
+HOME = os.environ["HOME"]
+TEMP = f"/tmp/edit_{NAME}"
+
+
+def check_if_dir_or_file():
+    # Checks if the argument is a directory and exits if it is
+    if Path(FILE).is_dir():
+        print(Back.RED + Style.BRIGHT + Fore.LIGHTWHITE_EX + "Its a directory")
+        sys.exit(1)
+    # Checks if the file already exists and if it does copies it
+    elif Path(FILE).is_file():
+        shutil.copyfile(FILE, TEMP)
+
+
+# NEW FEATURE HERE
+def live_edit():
+    print("new feature")
+
+
+def file_edit():
+    # Runs $EDITOR
+    subprocess.run([EDITOR, TEMP])
+
+    # If the temp file is not saved it quits
+    if not Path(TEMP).is_file():
+        print(Fore.GREEN + "Nothing done")
+        sys.exit(0)
+    # If the file already exists then compare the temp and file
+    if Path(FILE).is_file():
+        if filecmp.cmp(FILE, TEMP, shallow=False):
+            Path(TEMP).unlink()
+            print(Fore.GREEN + "Not edited")
+            sys.exit(0)
+        # If the file was changed and the terminal is kitty it runs the diff kitten else it runs normal diff
+        else:
+            syntax_check()
+            print("File not the same")
+            if shutil.which("diff-so-fancy"):
+                diff_process = subprocess.Popen(
+                    ["diff", "-u", FILE, TEMP], stdout=subprocess.PIPE)
+                subprocess.run("diff-so-fancy", stdin=diff_process.stdout)
+            else:
+                subprocess.run(["diff", "--color", FILE, TEMP])
+    else:
+        print(Fore.RED + Style.BRIGHT +
+              "File does not already exist\nnot comparing")
+
+
+def edit_again_question():
+    answer = None
+    while answer not in ("y", "n"):
+        answer = input("Syntax wrong, edit again? y/n: ")
+        if answer == "y":
+            file_edit()
+        elif answer == "n":
+            Path(TEMP).unlink()
+            sys.exit(0)
+        else:
+            print("Enter y or n.")
+
+
+def syntax_check():
+    if NAME == "fstab":
+        try:
+            subprocess.check_call(["mount", "-fa", "-T", TEMP])
+        except subprocess.CalledProcessError:
+            edit_again_question()
+#    elif fnmatch.fnmatch(FILE, "/home/*/sway*"):
+#        try:
+#            subprocess.check_call(["sway", "-Cc", TEMP])
+#        except subprocess.CalledProcessError:
+#            edit_again_question()
+    elif NAME == "doas.conf":
+        try:
+            subprocess.check_call(["doas", "-C", TEMP])
+        except subprocess.CalledProcessError:
+            edit_again_question()
+#    elif fnmatch.fnmatch(FILE, "*i3*"):
+#        try:
+#            subprocess.check_call(["i3", "-Cc", TEMP])
+#        except subprocess.CalledProcessError:
+#            edit_again_question()
+
+
+def copy_file_back():
+    # If the path is owned by root run the chown and copy as root
+    if PATHP.owner() == "root":
+        print(Fore.YELLOW + Style.BRIGHT + "Path owned by root")
+        if Path(FILE).is_file():
+            subprocess.run([PRIV, "chmod", "-v", f"--reference={FILE}", TEMP])
+            subprocess.run([PRIV, "chown", "-v", f"--reference={FILE}", TEMP])
+            subprocess.run([PRIV, "cp", "-a", TEMP, FILE])
+        else:
+            subprocess.run([PRIV, "chown", "-v", f"--reference={PATHP}", TEMP])
+            subprocess.run([PRIV, "cp", "-a", TEMP, FILE])
+        subprocess.run([PRIV, "rm", "-v", TEMP])
+    else:
+        print(Fore.GREEN + Style.BRIGHT + "Path is owned by user")
+        if Path(FILE).is_file():
+            shutil.copymode(FILE, TEMP)
+            shutil.copyfile(TEMP, FILE)
+        else:
+            shutil.copyfile(TEMP, FILE)
+
+
+check_if_dir_or_file()
+# live_edit()
+file_edit()
+copy_file_back()
+
+if Path(TEMP).is_file():
+    Path(TEMP).unlink()
+print(Fore.GREEN + Style.BRIGHT + "Done")
+sys.exit(0)
