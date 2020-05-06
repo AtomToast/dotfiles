@@ -156,6 +156,8 @@ alias -s rar="unrar l"
 alias -s tar="tar tf"
 alias -s tar.gz="echo "
 
+alias -g G="| grep"
+
 alias zf='z -I'      # use fzf to select in multiple matches
 
 # load powerlevel10k config
