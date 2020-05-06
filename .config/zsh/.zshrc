@@ -144,6 +144,7 @@ alias rm='rm -v'
 alias flex='st -e htop&; st -e unimatrix -afs 96 &; ll'
 alias flex++='st -e htop &; st -e unimatrix -afs 96 &;
               st -e nvim ~/git/st/st.h 2>/dev/null &;st &;ll'
+alias tsurf='tabbed -c surf -e & disown'
 
 export PATH="$HOME/.config/vifm/scripts:$PATH"
 alias vifm="vifmrun"
