@@ -1,6 +1,6 @@
 @-moz-document url("about:home"),url("about:blank"),url("about:newtab"),url("about:privatebrowsing") {
   body {
-    color: #4a4a4f !important;
+    color: #FFF !important;
     background-color: #4a4a4f !important;
   }
 }

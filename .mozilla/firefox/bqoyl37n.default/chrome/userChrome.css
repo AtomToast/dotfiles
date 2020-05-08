@@ -1,8 +1,72 @@
 @-moz-document url("chrome://browser/content/browser.xhtml") {
+  /* dark tabs by default */
   #browser vbox#appcontent tabbrowser #content,
   #tabbrowser-tabpanels,
   browser[type="content-primary"],
   browser[type="content"] > html {
-    background: #000 !important;
+    background: #4a4a4f !important;
+  }
+
+  /* Hide main tabs toolbar */
+  #TabsToolbar {
+    visibility: collapse !important;
+  }
+
+  /* display status always on the right */
+  #statuspanel {
+    position: fixed;
+    right: -17px;
+    bottom: 0;
+    text-align: right;
+  }
+
+  /* hide sidebar header, when usinge TabCenter Reborn */
+  #sidebar-box[sidebarcommand="tabcenter-reborn_ariasuni-sidebar-action"]
+    #sidebar-header {
+    visibility: collapse;
+  }
+
+  /* Sidebar min and max width removal */
+  #sidebar {
+    max-width: none !important;
+    min-width: 0px !important;
+  }
+
+  /* Hide splitter, when usinge TabCenter Reborn */
+  #sidebar-box[sidebarcommand="tabcenter-reborn_ariasuni-sidebar-action"] + #sidebar-splitter {
+    display: none !important;
+  }
+
+  /* Shrink sidebar until hovered, when usinge TabCenter Reborn */
+  :root {
+    --thin-tab-width: 34px;
+    --wide-tab-width: 200px;
+  }
+  #sidebar-box:not([sidebarcommand="tabcenter-reborn_ariasuni-sidebar-action"]) {
+    min-width: var(--wide-tab-width) !important;
+    max-width: none !important;
+  }
+  #sidebar-box[sidebarcommand="tabcenter-reborn_ariasuni-sidebar-action"] {
+    overflow: hidden !important;
+    position: relative !important;
+    transition: all 200ms !important;
+    min-width: var(--thin-tab-width) !important;
+    max-width: var(--thin-tab-width) !important;
+    z-index: 2;
+  }
+  #sidebar-box[sidebarcommand="tabcenter-reborn_ariasuni-sidebar-action"]:hover,
+  #sidebar-box[sidebarcommand="tabcenter-reborn_ariasuni-sidebar-action"]
+    #sidebar {
+    transition: all 200ms !important;
+    min-width: var(--wide-tab-width) !important;
+    max-width: var(--wide-tab-width) !important;
+    z-index: 1;
+  }
+
+  /* Negative right-margin to keep page from being pushed to the side. */
+  #sidebar-box[sidebarcommand="tabcenter-reborn_ariasuni-sidebar-action"]:hover {
+    margin-right: calc(
+      (var(--wide-tab-width) - var(--thin-tab-width)) * -1
+    ) !important;
   }
 }
