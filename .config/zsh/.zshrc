@@ -173,12 +173,6 @@ setopt AUTO_CD
 # set short keytimeout for quick mode switching
 KEYTIMEOUT=1
 
-# add ~/bin to path
-export PATH="$HOME/bin:$PATH"
-
-# set manpager to bat
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-
 # setting up zsh history file
 export HISTFILE="$ZDOTDIR/.zsh_history"
 export SAVEHIST=10000

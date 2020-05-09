@@ -29,12 +29,16 @@ fi
 # add cargo to PATH
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# add ~/bin to path
+export PATH="$HOME/bin:$PATH"
+
 # set default programs
 export EDITOR="nvim"
 export TERMINAL="st"
 export BROWSER="firefox"
 export READER="zathura"
 export FILEMANAGER="vifmrun"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # set desktop theme configuration options
 export GTK_USE_PORTAL=1
@@ -45,7 +49,6 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
-export ZPLUG_HOME="$XDG_CONFIG_HOME/zplug"
 export _ZL_DATA="$XDG_CACHE_HOME/.z"
 export INPUTRC="$XDG_CONFIG_HOME/inputrc"
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch-config"
