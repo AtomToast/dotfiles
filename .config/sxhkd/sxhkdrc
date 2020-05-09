@@ -134,6 +134,9 @@ XF86Launch1
 super + shift + e
     editconf
 
+super + shift + h
+	openman
+
 super + control + c
     showclip
 
