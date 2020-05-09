@@ -1,13 +1,13 @@
 #!/bin/env sh
 
 options="random               - pick a random manpage\n\
-$(man -k . | grep '(1)')"
+$(apropos -s 1 .)"
 
 choice=$(echo "$options" | dmenu -i -l 20 -p "Search manpages: ") || exit
 trimmed_choice=$(echo $choice | cut -d ' ' -f1)
 
 [ "$trimmed_choice" = "random" ] &&
-    page=$(find /usr/share/man/man1 -type f | shuf | head -1) ||
+    page=$(fd . /usr/share/man/man1 -tf | shuf -n1) ||
     page=$trimmed_choice
 
-st man $page
+st man --pager="sh -c 'col -bx | bat --paging=always -l man -p'" $page
