@@ -340,6 +340,9 @@ autocmd BufWritePost *xkeysnail/config.py silent! !killall xkeysnail
 autocmd FileType vista,vista_kind nnoremap <buffer> <silent> /
             \ :<c-u>call vista#finder#fzf#Run()<CR>
 
+"
+autocmd BufNewFile *.md execute "normal i## \<C-r>=expand(\"%:t:r\")\<CR>"
+
 " set spell check languages
 set spelllang=en_us,en_gb,de_20
 
