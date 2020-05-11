@@ -348,7 +348,7 @@ autocmd BufWritePost *xkeysnail/config.py silent! !killall xkeysnail
 autocmd FileType vista,vista_kind nnoremap <buffer> <silent> /
             \ :<c-u>call vista#finder#fzf#Run()<CR>
 
-"
+" automatically add filename as header to markdown files
 autocmd BufNewFile *.md execute "normal i## \<C-r>=expand(\"%:t:r\")\<CR>"
 
 " set spell check languages
@@ -509,8 +509,9 @@ if exists('g:started_by_firenvim')
     " Autowrite changes
     autocmd InsertLeave * ++nested write
     autocmd TextChanged * ++nested write
-    " make ctrl+backspace send ctrl+w for working with xkeysnail
+    " make shortcuts work as expected with xkeysnail
     inoremap <C-BS> <C-W>
+    inoremap <TAB> <C-N>
     " set github and reddit filetype to markdown
     au BufEnter *github.com_*.txt,*reddit.com_*.txt set filetype=markdown
 endif
