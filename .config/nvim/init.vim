@@ -199,6 +199,18 @@ nmap <leader>ms :MarkdownPreviewStop<CR>
 " convert into markdown link
 nnoremap <leader>ml :norm 0y$yss]A(<esc>p
 
+" convert into vimwiki markdown link
+function! Convert2Link() abort
+    norm 0y$
+    .s/ /_/g
+    exec "norm
+                \ guu
+                \\"=expand('%:t:r')\<CR>Pa/\<esc>
+                \I[\<C-r>0](\<C-o>A)"
+endfunction
+
+nnoremap <leader>mL :call Convert2Link()<CR>
+
 " ctrl+s saving
 noremap  <silent> <C-S> :update<CR>:nohlsearch<CR>
 vnoremap <silent> <C-S> <C-C>:update<CR>:nohlsearch<CR>
