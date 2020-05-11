@@ -130,6 +130,9 @@ highlight GitGutterDelete guifg=#f92672 guibg=#3c3d37 ctermfg=1 ctermbg=237
 " rainbow parantheses config
 let g:rainbow_active = 1
 
+" display indicator before linewraps
+set showbreak=>\ \ \
+
 "----------------------------------------
 
 " split config
