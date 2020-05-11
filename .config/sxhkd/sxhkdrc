@@ -24,7 +24,7 @@ XF86Audio{Prev,Next}
 
 # Application shortcuts
 super + F1
-    $TERMINAL -e joplin
+    $TERMINAL -e $EDITOR $HOME/Nextcloud/Documents/vimwiki/index.md
 
 super + shift + F1
     joplin-desktop

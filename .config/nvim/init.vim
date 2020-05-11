@@ -36,6 +36,7 @@ Plug 'kovetskiy/sxhkd-vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'vifm/vifm.vim'
+Plug 'vimwiki/vimwiki'
 Plug 'elzr/vim-json'
 Plug 'elixir-editors/vim-elixir'
 Plug 'pangloss/vim-javascript'
@@ -434,7 +435,7 @@ nnoremap <silent><leader>cr  :<C-u>CocListResume<CR>
 " autoremove trailing whitespaces
 fun! StripTrailingWhitespace()
     " Don't strip on these filetypes
-    if &ft =~ 'markdown'
+    if (index(['vimwiki','markdown'], &filetype) >= 0)
         return
     endif
     %s/\s\+$//e
@@ -508,3 +509,12 @@ endif
 let g:qs_buftype_blacklist = ['terminal']
 highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
 highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+
+" vimwiki configuration
+let g:vimwiki_list = [{'path': '~/Nextcloud/Documents/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+nmap <C-H> <Plug>VimwikiGoBackLink
+nmap <C-S-m> <Plug>VimwikiVSplitLink
+nmap <C-N> <Plug>VimwikiNextLink
+nmap <C-P> <Plug>VimwikiPrevLink
+autocmd FileType vimwiki set syntax=markdown
