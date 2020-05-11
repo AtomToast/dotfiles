@@ -76,6 +76,11 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#fnamemod = ':p:.'
 let g:airline#extensions#tabline#fnamecollapse = 1
+let g:airline#extensions#whitespace#skip_indent_check_ft = {
+            \ 'make': ['indent', 'mixed-indent-file'],
+            \ 'markdown': ['trailing'],
+            \ 'vimwiki': ['trailing']
+            \ }
 
 " hide classic mode display
 set noshowmode
