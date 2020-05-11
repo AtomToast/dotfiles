@@ -187,6 +187,9 @@ nmap <silent><leader>v :Vista!!<CR>
 nmap <leader>mp :MarkdownPreview<CR>
 nmap <leader>ms :MarkdownPreviewStop<CR>
 
+" convert into markdown link
+nnoremap <leader>ml :norm 0y$yss]A(<esc>p
+
 " ctrl+s saving
 noremap  <silent> <C-S> :update<CR>:nohlsearch<CR>
 vnoremap <silent> <C-S> <C-C>:update<CR>:nohlsearch<CR>
