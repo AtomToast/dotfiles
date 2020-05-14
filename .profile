@@ -29,6 +29,9 @@ fi
 # add cargo to PATH
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# add vifm scripts to path
+export PATH="$HOME/.config/vifm/scripts:$PATH"
+
 # add ~/bin to path
 export PATH="$HOME/bin:$PATH"
 

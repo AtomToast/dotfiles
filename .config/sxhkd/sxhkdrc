@@ -24,10 +24,10 @@ XF86Audio{Prev,Next}
 
 # Application shortcuts
 super + F1
-    $TERMINAL -e $EDITOR $HOME/Nextcloud/Documents/vimwiki/index.md
+    $TERMINAL $EDITOR $HOME/Nextcloud/Documents/vimwiki/index.md
 
 super + shift + F1
-    joplin-desktop
+    $TERMINAL $FILEMANAGER $HOME/Nextcloud/Documents/vimwiki
 
 super + F2
     firefox
