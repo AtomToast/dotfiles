@@ -524,6 +524,10 @@ nnoremap I cw<c-a>
 nnoremap cc cw<c-u>
 nnoremap A cw
 
+" Remap cw and cW to make more sense
+nnoremap cw cW
+nnoremap cW cw
+
 " Open console in current directory
 nnoremap ,t :!st &<cr>
 
