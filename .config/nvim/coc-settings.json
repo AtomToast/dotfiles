@@ -66,5 +66,8 @@
       //"ignoredRootPaths": ["~"]
     }
   },
-  "xml.java.home": "/usr/lib/jvm/default"
+  "xml.java.home": "/usr/lib/jvm/default",
+  "diagnostic-languageserver.filetypes": {
+    "sh":"shellcheck"
+  }
 }
