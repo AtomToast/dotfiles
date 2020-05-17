@@ -1,12 +1,12 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
-chosen=$(echo -e "shutdown\nlogout\nsuspend\nreboot" | dmenu -i -p "Choose which action to take: ")
+chosen=$(printf "shutdown\nlogout\nsuspend\nreboot" | dmenu -i -p "Choose which action to take: ")
 
 case $chosen in
     "shutdown" )
         shutdown now;;
     "logout" )
-        pkill -KILL -u ${USER};;
+        pkill -KILL -u "${USER}";;
     "reboot" )
         reboot;;
     "suspend" )

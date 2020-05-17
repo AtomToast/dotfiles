@@ -5,10 +5,9 @@ url=$(xclip -selection primary -o | cut -d "&" -f1)
 
 notify-send -t 4000 "輸 Starting download" "fetching title for $url"
 
-title=$(youtube-dl --get-title $url)
+title=$(youtube-dl --get-title "$url")
 
-$TERMINAL -t "$title - youtube-dl" -e bash -c "youtube-dl $url"
-if [[ $? -eq 0 ]]; then
+if $TERMINAL -t "$title - youtube-dl" -e bash -c "youtube-dl $url"; then
     notify-send -t 4000 "輸 Youtube download successful" "Finished downloading '$title'"
 else
     notify-send 4000 "輸 Failed youtube download" "Did not finish downloading '$title'"

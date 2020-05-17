@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-cd $HOME/Videos/youtube
+cd "$HOME/Videos/youtube" || exit
 
-chosen=$(ls -1 | dmenu -i -l 20 -p "輸 Choose a video to delete")
+chosen=$(fd . | dmenu -i -l 20 -p "輸 Choose a video to delete")
 
 [ "$chosen" != "" ] || exit
 

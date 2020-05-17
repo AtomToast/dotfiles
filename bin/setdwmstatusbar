@@ -4,9 +4,9 @@ function internetStatus() {
     ethernetStatus=$(cat /sys/class/net/enp0s25/operstate)
     wifiStatus=$(cat /sys/class/net/wlp3s0/operstate)
 
-    if [ $ethernetStatus == "up" ]; then
+    if [ "$ethernetStatus" == "up" ]; then
         internetStatusIcon="" # ""
-    elif [ $wifiStatus == "up" ]; then
+    elif [ "$wifiStatus" == "up" ]; then
         internetStatusIcon="直"
     else
         internetStatusIcon="睊"
@@ -55,9 +55,9 @@ function batteryStatus() {
         batteryStatusIcon=""
     fi
 
-    timeRemaining=$(acpi | cut -d " " -f5-)
+    timeRemaining=$(acpi | cut -d " " -f5- | sed -e 's/\(:[0-9]\+ \)/ /g')
 
-    echo "$batteryStatusIcon $batteryCapacity%$timeRemaining"
+    echo "$batteryStatusIcon $batteryCapacity% $timeRemaining"
 }
 
 function mail_count() {
