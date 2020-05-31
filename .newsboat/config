@@ -1,0 +1,35 @@
+auto-reload yes
+prepopulate-query-feeds yes
+
+external-url-viewer "urlview"
+browser "firefox --private-window %u"
+
+bind-key j down
+bind-key k up
+bind-key j next articlelist
+bind-key k prev articlelist
+bind-key J next-feed articlelist
+bind-key K prev-feed articlelist
+bind-key G end
+bind-key g home
+bind-key d pagedown
+bind-key u pageup
+bind-key l open
+bind-key h quit
+bind-key a toggle-article-read
+bind-key n next-unread
+bind-key N prev-unread
+bind-key D pb-download
+bind-key U show-urls
+bind-key x pb-delete
+bind-key O open-in-browser-and-mark-read
+
+
+
+color info black cyan bold
+color background          white   default
+color listnormal          white   black
+color listfocus           white  blue   bold
+color listnormal_unread   magenta black
+color listfocus_unread    magenta blue   bold
+color article             white   black

@@ -143,6 +143,9 @@ super + control + c
 super + control + {_, shift} + m
     {dmenumount, dmenuumount}
 
+super + alt + m
+	mpv $(xclip -selection clipboard -o)
+
 super + shift + p
     passmenu
 
