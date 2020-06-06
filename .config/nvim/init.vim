@@ -535,8 +535,17 @@ highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=unde
 highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
 
 " vimwiki configuration
-let g:vimwiki_list = [{'path': '~/Nextcloud/Documents/vimwiki/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_global_ext = 0
+let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+let g:vimwiki_root = '~/Nextcloud/Documents/vimwiki'
+let g:vimwiki_list = [
+            \{'path': '~/Nextcloud/Documents/vimwiki/', 'syntax': 'markdown', 'ext': '.md'},
+            \{'path': '~/Nextcloud/Documents/vimwiki/uni', 'syntax': 'markdown', 'ext': '.md'},
+            \{'path': '~/Nextcloud/Documents/vimwiki/uni/2020_spring_semester', 'syntax': 'markdown', 'ext': '.md'},
+            \{'path': '~/Nextcloud/Documents/vimwiki/programming', 'syntax': 'markdown', 'ext': '.md'},
+            \{'path': '~/Nextcloud/Documents/vimwiki/programming/elixir', 'syntax': 'markdown', 'ext': '.md'},
+            \{'path': '~/Nextcloud/Documents/vimwiki/Todos', 'syntax': 'markdown', 'ext': '.md'},
+            \]
 au FileType vimwiki nmap <buffer> <C-H> <Plug>VimwikiGoBackLink
 au FileType vimwiki nmap <buffer> <C-J> <Plug>VimwikiVSplitLink
 au FileType vimwiki nmap <buffer> <C-N> <Plug>VimwikiNextLink
