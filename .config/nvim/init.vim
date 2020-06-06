@@ -537,8 +537,8 @@ highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=und
 " vimwiki configuration
 let g:vimwiki_list = [{'path': '~/Nextcloud/Documents/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
-nmap <C-H> <Plug>VimwikiGoBackLink
-nmap <C-S-m> <Plug>VimwikiVSplitLink
-nmap <C-N> <Plug>VimwikiNextLink
-nmap <C-P> <Plug>VimwikiPrevLink
-autocmd FileType vimwiki set syntax=markdown
+au FileType vimwiki nmap <buffer> <C-H> <Plug>VimwikiGoBackLink
+au FileType vimwiki nmap <buffer> <C-J> <Plug>VimwikiVSplitLink
+au FileType vimwiki nmap <buffer> <C-N> <Plug>VimwikiNextLink
+au FileType vimwiki nmap <buffer> <C-P> <Plug>VimwikiPrevLink
+au FileType vimwiki set syntax=markdown
