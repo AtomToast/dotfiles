@@ -57,6 +57,7 @@ if [ "$output" = "" ]; then
     if [ "$status" = "gimp" ]; then
         xclip -selection clipboard -t image/png -o > /tmp/screenshot.png
         gimp /tmp/screenshot.png
+        xclip -selection clipboard -t image/png < /tmp/screenshot.png
     fi
 else
     shotgun $sel "$output"/"$name"
