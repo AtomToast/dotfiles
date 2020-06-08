@@ -53,10 +53,15 @@ fi
 
 if [ "$output" = "" ]; then
     shotgun $sel - | xclip -selection clipboard -t image/png
-    notify-send -t 3000 "  Saved screenshot to clipboard"
+    status=$(dunstify -A "gimp,Edit in GIMP" -t 3000 "  Saved screenshot to clipboard")
+    if [ "$status" = "gimp" ]; then
+        xclip -selection clipboard -t image/png -o > /tmp/screenshot.png
+        gimp /tmp/screenshot.png
+    fi
 else
     shotgun $sel "$output"/"$name"
-    notify-send -t 3000 "  Saved screenshot to $output/$name"
+    status=$(dunstify -A "gimp,Edit in GIMP" -t 3000 "  Saved screenshot to $output/$name")
+    [ "$status" = "gimp" ] && gimp "$output/$name"
 fi
 
 if [ $imgur -eq 1 ]; then
