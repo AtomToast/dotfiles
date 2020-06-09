@@ -1,4 +1,24 @@
-source ~/.config/zplug/init.zsh
+### Added by Zinit's installer
+if [[ ! -f $HOME/.config/zsh/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.config/zsh/.zinit" && command chmod g-rwX "$HOME/.config/zsh/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.config/zsh/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
+
+source "$HOME/.config/zsh/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zinit-zsh/z-a-as-monitor \
+    zinit-zsh/z-a-patch-dl \
+    zinit-zsh/z-a-bin-gem-node
+
+### End of Zinit's installer chunk
 
 if [ "$TERM" = "linux" ]; then
     # multiline prompt
@@ -38,35 +58,31 @@ if [ "$TERM" = "linux" ]; then
     echo -en "\e]PFffffff" #white
     clear #for background artifacting
 else
-    zplug "romkatv/powerlevel10k", as:theme, depth:1
+    zinit light romkatv/powerlevel10k
 fi
 
-zplug "AtomToast/zsh-vim-mode"
+zinit ice lucid wait'!0'
+zinit light "AtomToast/zsh-vim-mode"
 
-zplug "zsh-users/zsh-autosuggestions"
+zinit ice wait lucid atload'_zsh_autosuggest_start'
+zinit light zsh-users/zsh-autosuggestions
 
-zplug "zdharma/fast-syntax-highlighting"
+zinit light "zdharma/fast-syntax-highlighting"
 
-zplug "skywind3000/z.lua"
+zinit light "skywind3000/z.lua"
 
-zplug "plugins/git",   from:oh-my-zsh
+zinit snippet 'https://github.com/robbyrussell/oh-my-zsh/raw/master/plugins/git/git.plugin.zsh'
 
-
-# Install plugins if there are plugins that have not been installed
-if ! zplug check; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
+zinit ice blockf
+zinit load zsh-users/zsh-completions
 
 # enable instant prompt
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Then, source plugins and add commands to $PATH
-zplug load
+# Turn stderror red (uses stderred)
+export LD_PRELOAD=/usr/lib/libstderred.so
 
 # Case and hypen insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
