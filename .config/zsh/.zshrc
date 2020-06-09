@@ -20,14 +20,16 @@ zinit light-mode for \
 
 ### End of Zinit's installer chunk
 
-if [ "$TERM" = "linux" ]; then
+
+if [ "$TERM" = "linux" ] || [ "$TERM" = "dvtm-256color" ] || [ "$TERM" = "dvtm" ] || [ "$TERM" = "fbpad-256" ]; then
+    export NCURSES_NO_UTF8_ACS=1
     # multiline prompt
     #PS1_viins="%B%F{red}%M%f%b:%F{cyan}%~%f"$'\n'"%B%F{green}>%f%b "
     #PS1_vicmd="%B%F{red}%M%f%b:%F{cyan}%~%f"$'\n'"%B%F{green}<%f%b "
     PS1_viins="%B%F{red}%M%f%b:%F{cyan}%~%f %B%F{green}>%f%b "
     PS1_vicmd="%B%F{red}%M%f%b:%F{cyan}%~%f %B%F{green}<%f%b "
     export RPS1='[%(?.%F{green}.%F{red})%?%f]'
-    export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=5"
+    # export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=5"
     # set cursor to non-blinking block
     echo -e "\e[?112c"
 
@@ -183,7 +185,8 @@ alias rm='rm -vI'
 alias tb='nc termbin.com 9999'
 alias flex='st -e htop&; st -e unimatrix -afs 96 &; ll'
 alias flex++='st -e htop &; st -e unimatrix -afs 96 &;
-              st -e nvim ~/git/st/st.h 2>/dev/null &;st &;ll'
+              st -e nvim ~/git/suckless/st/st.h 2>/dev/null &;
+              st & 2>/dev/null;sleep 1 && xdotool key super+i;ll'
 alias tsurf='tabbed -c surf -e & disown'
 
 alias vifm="vifmrun"
@@ -229,10 +232,11 @@ export _ZL_MATCH_MODE=1
 # load tetris for the lulz
 autoload -Uz tetriscurses
 
-# set cursor depending on mode
-MODE_CURSOR_VICMD="block"
-MODE_CURSOR_VIINS="bar"
-MODE_CURSOR_SEARCH="underline"
+[ ! "$TERM" = "fbpad-256" ] && \
+    # set cursor depending on mode \
+    MODE_CURSOR_VICMD="block" \
+    MODE_CURSOR_VIINS="bar" \
+    MODE_CURSOR_SEARCH="underline"
 
 # some bling for le terminal
 export PF_INFO="ascii title os host wm editor shell uptime"
