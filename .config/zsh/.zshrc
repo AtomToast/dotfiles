@@ -93,12 +93,35 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 _comp_options+=(globdots)
+setopt completeinword
+setopt alwaystoend
+setopt nolistambiguous
 
 # Use vim keys for the completion menu
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
+
+# Don't kill background jobs when exiting
+setopt nohup
+
+# Don't overwrite existing files with >
+setopt noclobber
+
+# Don't remove slashes, I think it might break autocompletions sometimes
+setopt noautoremoveslash
+
+# disable ' do you wish to see all x possibilities'
+LISTMAX=9999999
+
+# Disable ctrl+s freezing the terminal
+setopt noflowcontrol
+
+# shortcut to insert doas
+insert_doas() { zle beginning-of-line; zle -U "doas " }
+zle -N insert-doas insert_doas
+bindkey '^s'    insert-doas
 
 # ex - archive extractor
 # usage: ex <file>
@@ -156,7 +179,8 @@ alias l="sudo updatedb && locate"
 alias md="mkdir -p"
 alias cp='cp -i'
 alias mv='mv -i'
-alias rm='rm -v'
+alias rm='rm -vI'
+alias tb='nc termbin.com 9999'
 alias flex='st -e htop&; st -e unimatrix -afs 96 &; ll'
 alias flex++='st -e htop &; st -e unimatrix -afs 96 &;
               st -e nvim ~/git/st/st.h 2>/dev/null &;st &;ll'
@@ -193,7 +217,11 @@ export HISTFILE="$ZDOTDIR/.zsh_history"
 export SAVEHIST=10000
 export HISTSIZE=50000
 setopt hist_expire_dups_first
+setopt appendhistory
 setopt inc_append_history
+setopt share_history
+setopt hist_ignore_space
+setopt hist_reduce_blanks
 
 # enable z.lua enhanced matching
 export _ZL_MATCH_MODE=1
