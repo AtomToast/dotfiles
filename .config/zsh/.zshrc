@@ -63,7 +63,6 @@ else
     zinit light romkatv/powerlevel10k
 fi
 
-zinit ice lucid wait'!0'
 zinit light "AtomToast/zsh-vim-mode"
 
 zinit ice wait lucid atload'_zsh_autosuggest_start'
