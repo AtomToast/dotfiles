@@ -37,7 +37,7 @@ set history=100
 
 " Automatically resolve symbolic links on l or Enter.
 
-set nofollowlinks
+set followlinks
 
 " With this option turned on you can run partially entered commands with
 " unambiguous beginning using :! (e.g. :!Te instead of :!Terminal or :!Te<tab>).
@@ -149,7 +149,7 @@ command! vgrep nvim "+grep %a"
 command! reload :write | restart
 command! z :execute 'cd' "'".fnameescape(system('eval "$(/usr/share/z.lua/z.lua --init zsh)" && _zlua -l %a | tail -n1 | grep -o "[^ ]*$"'))."'"
 command! FZFlocate :set noquickview | :execute 'goto' fnameescape(term('locate $HOME | fzf --height 10 2>/dev/tty'))
-command! FZFfind :set noquickview | :execute 'goto' fnameescape(term('find | fzf --height 10 2>/dev/tty'))
+command! FZFfind :set noquickview | :execute 'goto' fnameescape(term('fd . $HOME | fzf --height 10 2>/dev/tty'))
 
 " ------------------------------------------------------------------------------
 
@@ -180,29 +180,23 @@ command! FZFfind :set noquickview | :execute 'goto' fnameescape(term('find | fzf
 " program.
 
 " Pdf
-filextype *.pdf zathura %c %i &, apvlv %c, xpdf %c
+filextype *.pdf zathura %c %i &
 " fileviewer *.pdf pdftotext -nopgbrk %c -
 
 " PostScript
 filextype *.ps,*.eps,*.ps.gz
         \ {View in zathura}
-        \ zathura %f,
-        \ {View in gv}
-        \ gv %c %i &,
+        \ zathura %f &,
 
 " Djvu
 filextype *.djvu
         \ {View in zathura}
-        \ zathura %f,
-        \ {View in apvlv}
-        \ apvlv %f,
+        \ zathura %f &,
 
 " Audio
 filetype *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus
        \ {Play using ffplay}
        \ ffplay -nodisp -autoexit %c,
-       \ {Play using MPlayer}
-       \ mplayer %f,
 fileviewer *.mp3 mp3info
 fileviewer *.flac soxi
 
@@ -211,15 +205,13 @@ filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
          \*.fl[icv],*.m2v,*.mov,*.webm,*.mts,*.m4v,*.r[am],*.qt,*.divx,
          \*.as[fx]
         \ {View using mpv}
-        \ mpv %f,
+        \ mpv %f &,
         \ {View using VLC}
-        \ vlc %f,
+        \ vlc %f &,
         \ {View using ffplay}
         \ ffplay -fs -autoexit %f,
         \ {View using Dragon}
         \ dragon %f:p,
-        \ {View using mplayer}
-        \ mplayer %f,
 " fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
 "           \*.fl[icv],*.m2v,*.mov,*.webm,*.mts,*.m4v,*.r[am],*.qt,*.divx,
 "           \*.as[fx]
@@ -228,12 +220,12 @@ filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
 
 " Web
 filextype *.html,*.htm
-        \ {Open with dwb}
-        \ dwb %f %i &,
         \ {Open with firefox}
         \ firefox %f &,
-        \ {Open with uzbl}
-        \ uzbl-browser %f %i &,
+        \ {Open with qutebrowser}
+        \ qutebrowser %f %i &,
+        \ {Open with surf}
+        \ surf %f %i &,
 filetype *.html,*.htm links, lynx
 fileviewer *.html lynx -dump %c
 
@@ -253,17 +245,13 @@ fileviewer *.[1-8] man ./%c | col -b
 " Images
 filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
         \ {View in sxiv}
-        \ sxiv -a %f,
+        \ sxiv -a %f &,
         \ {View in Gwenview}
         \ gwenview,
         \ {View in feh}
         \ feh %f &,
         \ {View in imv}
         \ imv -b 1D2330 -d %f &,
-        \ {View in gpicview}
-        \ gpicview %c,
-        \ {View in shotwell}
-        \ shotwell,
 fileviewer *.pdf
     \ vifmimg pdfpreview %px %py %pw %ph %c
     \ %pc
@@ -309,7 +297,7 @@ fileviewer *.otf,*.ttf,*.woff
 " OpenRaster
 filextype *.ora
         \ {Edit in MyPaint}
-        \ mypaint %f,
+        \ mypaint %f &,
 
 " Mindmap
 filextype *.vym
@@ -577,7 +565,7 @@ nnoremap ä :z<space>
 map > :!vifmimg inc<CR>
 map < :!vifmimg dec<CR>
 
-nnoremap s :!st 2>/dev/null &<CR>
+" nnoremap s :!st 2>/dev/null &<CR>
 
 " ------------------------------------------------------------------------------
 
