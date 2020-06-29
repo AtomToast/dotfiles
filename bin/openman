@@ -1,7 +1,7 @@
 #!/bin/env sh
 
 options="random               - pick a random manpage\n\
-$(apropos -s 1 .)"
+$(apropos -s 1,8 .)"
 
 choice=$(echo "$options" | dmenu -i -l 20 -p "Search manpages: ") || exit
 trimmed_choice=$(echo "$choice" | cut -d ' ' -f1)
