@@ -83,7 +83,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Turn stderror red (uses stderred)
-export LD_PRELOAD=/usr/lib/libstderred.so
+# export LD_PRELOAD=/usr/lib/libstderred.so
 
 # Case and hypen insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
