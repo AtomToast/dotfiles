@@ -3,7 +3,7 @@
 # check if process is already running, if it is, give run time
 pid="$(ps aux | awk '/\ssh .*worktimer/ {print $2}' | grep -v $$)"
 
-[ $(echo $pid | wc -w) -gt 1 ] && echo "running for $(ps -o etime= -p $pid | tr -d ' ')" && exit
+[ $(echo $pid | wc -w) -gt 1 ] && echo "running for $(ps -o etime= -p $pid | tr -d ' ') out of 25 minutes" && exit
 
 # otherwise start worktimer
 sleep 25m && \

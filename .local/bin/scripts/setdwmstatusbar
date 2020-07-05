@@ -97,6 +97,6 @@ while true; do
     spotifyStatus=$(spotify_status)
     cpuTemp=$(cpu_temp)
     memoryUsage=$(memory_usage)
-    xsetroot -name "$spotifyStatus$mailCount $memoryUsage | $cpuTemp | $batteryStatusIcon | $internetStatusIcon |  $(date +"%F |  %R ")"
-    sleep 1s
+    xsetroot -name "$spotifyStatus$mailCount $memoryUsage | $cpuTemp | $batteryStatusIcon | $internetStatusIcon |  $(date +"%F (%a) |  %R ")"
+    sleep 1
 done

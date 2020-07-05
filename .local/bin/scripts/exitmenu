@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-chosen=$(printf "shutdown\nlogout\nsuspend\nreboot" | dmenu -i -p "Choose which action to take: ")
+chosen=$(printf "shutdown\nlogout\nsuspend\nreboot\nkill X" | dmenu -i -p "Choose which action to take: ")
 
 case $chosen in
     "shutdown" )
@@ -11,4 +11,6 @@ case $chosen in
         reboot;;
     "suspend" )
         systemctl suspend;;
+    "kill X" )
+        killall xinit;;
 esac

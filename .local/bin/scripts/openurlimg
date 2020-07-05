@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+url="$1"
+if [ "${url##*.}" != "png" ] && [ "${url##*.}" != "jpg" ]; then
+    # gets first image url from page
+    url=$(curl -s "$url" | pup "img" | head -n 1 | sed "s/ /\n/g" | grep -m 1 src | cut -d'"' -f2)
+fi
+
+curl -s "$url" > /tmp/sxivimg && sxiv -b -s d /tmp/sxivimg

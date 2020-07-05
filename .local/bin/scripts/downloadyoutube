@@ -1,13 +1,14 @@
 #!/bin/env bash
 
-
-url=$(xclip -selection primary -o | cut -d "&" -f1)
+[ -z "$1" ] &&
+    url=$(xclip -selection clipboard -o | cut -d "&" -f1) ||
+    url=$("$1" | cut -d "&" -f1)
 
 notify-send -t 4000 "輸 Starting download" "fetching title for $url"
 
 title=$(youtube-dl --get-title "$url")
 
-if $TERMINAL -t "$title - youtube-dl" -e bash -c "youtube-dl $url"; then
+if $TERMINAL -t "$title - youtube-dl" -e bash -c "youtube-dl --add-metadata -i $url"; then
     notify-send -t 4000 "輸 Youtube download successful" "Finished downloading '$title'"
 else
     notify-send 4000 "輸 Failed youtube download" "Did not finish downloading '$title'"
