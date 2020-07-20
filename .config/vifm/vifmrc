@@ -150,6 +150,7 @@ command! reload :write | restart
 command! z :execute 'cd' "'".fnameescape(system('eval "$(/usr/share/z.lua/z.lua --init zsh)" && _zlua -l %a | tail -n1 | grep -o "[^ ]*$"'))."'"
 command! FZFlocate :set noquickview | :execute 'goto' fnameescape(term('locate $HOME | fzf --height 10 2>/dev/tty'))
 command! FZFfind :set noquickview | :execute 'goto' fnameescape(term('fd . $HOME | fzf --height 10 2>/dev/tty'))
+command! dragon !dragon-drag-and-drop -x -a %f &
 
 " ------------------------------------------------------------------------------
 
@@ -560,6 +561,9 @@ nnoremap ö :cd<space>
 
 " open z prompt
 nnoremap ä :z<space>
+
+" open dragon
+nnoremap ü :dragon<CR>
 
 " vifmimg scrolling
 map > :!vifmimg inc<CR>
