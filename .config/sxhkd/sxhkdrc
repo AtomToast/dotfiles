@@ -72,10 +72,10 @@ super + shift + F10
     $TERMINAL -e lyrics ncspot
 
 super + F11
-    networkmanager_dmenu
+    $TERMINAL -e nmtui
 
 super + shift + F11
-    $TERMINAL -e nmtui
+    networkmanager_dmenu
 
 super + F12
     $TERMINAL -e htop
