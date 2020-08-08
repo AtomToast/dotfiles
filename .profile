@@ -16,9 +16,9 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
+# set PATH so it includes user's private scripts if it exists
+if [ -d "$HOME/.local/bin/scripts" ] ; then
+    PATH="$HOME/.local/bin/scripts:$PATH"
 fi
 
 # set PATH so it includes user's private bin if it exists
