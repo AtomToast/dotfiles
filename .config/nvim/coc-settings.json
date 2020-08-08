@@ -2,7 +2,7 @@
   "diagnostic.warningSign": "",
   "diagnostic.errorSign": "",
   "diagnostic.infoSign": "",
-  "diagnostic.hintSign": "",
+  "diagnostic.hintSign": "",
   "coc.preferences.formatOnSaveFiletypes": [
     "html",
     "javascript",
@@ -17,15 +17,9 @@
     "json"
   ],
   "snippets.extends": {
-    "javascriptreact": [
-      "javascript"
-    ],
-    "typescript": [
-      "javascript"
-    ],
-    "typescriptreact": [
-      "javascript"
-    ]
+    "javascriptreact": ["javascript"],
+    "typescript": ["javascript"],
+    "typescriptreact": ["javascript"]
   },
   "python.linting.pylintEnabled": true,
   "python.linting.enabled": true,
@@ -33,12 +27,7 @@
   "languageserver": {
     "ccls": {
       "command": "ccls",
-      "filetypes": [
-        "c",
-        "cpp",
-        "objc",
-        "objcpp"
-      ],
+      "filetypes": ["c", "cpp", "objc", "objcpp"],
       "rootPatterns": [
         ".ccls",
         "compile_commands.json",
@@ -57,17 +46,14 @@
     },
     "bash": {
       "command": "bash-language-server",
-      "args": [
-        "start"
-      ],
-      "filetypes": [
-        "sh"
-      ],
+      "args": ["start"],
+      "filetypes": ["sh"]
       //"ignoredRootPaths": ["~"]
     }
   },
   "xml.java.home": "/usr/lib/jvm/default",
   "diagnostic-languageserver.filetypes": {
-    "sh":"shellcheck"
-  }
+    "sh": "shellcheck"
+  },
+  "sql.database": "postgresql"
 }
