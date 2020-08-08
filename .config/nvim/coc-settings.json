@@ -21,6 +21,7 @@
     "typescript": ["javascript"],
     "typescriptreact": ["javascript"]
   },
+  "python.jediEnabled": false,
   "python.linting.pylintEnabled": true,
   "python.linting.enabled": true,
   "codeLens.enable": true,
