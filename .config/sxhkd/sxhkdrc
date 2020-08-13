@@ -170,5 +170,8 @@ super + control + y
 super + control + Escape
     xkill
 
+super + control + shift + Escape
+	killactive
+
 super + minus
 	colorpicker --one-shot --preview --short | xclip -selection clipboard
