@@ -136,7 +136,7 @@ ex ()
       *.tar.bz2)   tar xjf $1   ;;
       *.tar.gz)    tar xzf $1   ;;
       *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1     ;;
+      *.rar)       unrar x $1   ;;
       *.gz)        gunzip $1    ;;
       *.tar)       tar xf $1    ;;
       *.tbz2)      tar xjf $1   ;;
@@ -144,6 +144,9 @@ ex ()
       *.zip)       unzip $1     ;;
       *.Z)         uncompress $1;;
       *.7z)        7z x $1      ;;
+      *.deb)       ar x $1      ;;
+      *.tar.xz)    tar xf $1    ;;
+      *.tar.zst)   unzstd $1    ;;
       *)           echo "'$1' cannot be extracted via ex()" ;;
     esac
   else
@@ -160,19 +163,24 @@ gln () {
 alias ls="exa -F --group-directories-first --icons"
 alias lt="ls --tree --level=2"
 alias lg="ls --grid"
-alias ll="ls -lahF --git"
+alias ll="ls -lhF --git"
+alias la="ls -lahF --git"
+alias l.="ls -lahF --git -d -- .*"
 alias llt="ll --tree --level=2"
 alias llg="ll --grid"
 alias cat="bat"
 alias grep="rg"
+alias doas="doas --"
 alias sudo="doas"
 alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
 alias sv="doedit"
+alias o="xdg-open"
 alias i="devour sxiv"
 alias p="devour zathura"
 alias m="devour mpv"
+alias s="sc-im"
 alias d="doas"
 alias vcfg="nvim ~/.config/nvim/init.vim"
 alias zcfg="nvim ~/.config/zsh/.zshrc"
@@ -192,10 +200,15 @@ alias flex++='st -e htop &; st -e unimatrix -afs 96 &;
               st -e nvim ~/git/suckless/st/st.h 2>/dev/null &;
               st & 2>/dev/null;sleep 1 && xdotool key super+i;ll'
 alias tsurf='tabbed -c surf -e & disown'
+alias webcam="ffplay -left 10 -f v4l2 -fflags nobuffer -flags low_delay -video_size 640x480 -framerate 60 -i /dev/video0 2&>/dev/null"
+alias fbwebcam="ffmpeg -i /dev/video0 -pix_fmt bgra -f fbdev /dev/fb0"
+alias record="ffmpeg -f x11grab -video_size 1920x1080 -framerate 25 -i $DISPLAY -c:v libx264 -preset ultrafast screen.mp4"
+alias fbrecord="ffmpeg -f fbdev -i /dev/fb0 fb.mp4"
 
 alias vifm="vifmrun"
 alias f="vifm"
 alias ff="vifm ."
+alias yayf="yay -Slq | fzf --multi --preview 'yay -Si {1}' | xargs -ro yay -S"
 
 alias -s pdf=zathura
 alias -s zip="unzip -l"
