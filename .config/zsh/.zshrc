@@ -116,6 +116,9 @@ setopt noautoremoveslash
 # disable ' do you wish to see all x possibilities'
 LISTMAX=9999999
 
+# don't throw errors when file globs don't match anything
+setopt NULL_GLOB
+
 # Disable ctrl+s freezing the terminal
 setopt noflowcontrol
 
