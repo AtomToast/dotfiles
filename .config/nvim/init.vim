@@ -336,7 +336,7 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 
-autocmd FileType typescript*,javascript,json,css,html,markdown
+autocmd FileType typescript*,javascript,json,css,html,markdown,sql
             \ setlocal shiftwidth=2 softtabstop=2 tabstop=2
 
 " Set maximum text width and spelling
