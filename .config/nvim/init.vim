@@ -379,8 +379,8 @@ set undofile
 call coc#add_extension('coc-pairs', 'coc-marketplace', 'coc-texlab',  'coc-yank',
                      \ 'coc-prettier', 'coc-snippets', 'coc-html', 'coc-xml',
                      \ 'coc-yaml', 'coc-css', 'coc-python', 'coc-tsserver',
-                     \ 'coc-json', 'coc-sql', 'coc-elixir', 'coc-vimlsp',
-                     \ 'coc-cssmodules')
+                     \ 'coc-json', 'coc-sql', 'coc-java', 'coc-vimlsp',
+                     \ 'coc-cssmodules', 'coc-diagnostic', 'coc-db', 'coc-rust-analyzer')
 set hidden
 set nobackup
 set nowritebackup
