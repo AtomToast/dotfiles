@@ -526,7 +526,7 @@ if exists('g:started_by_firenvim')
 endif
 
 " quick-scope configuration
-" let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 let g:qs_buftype_blacklist = ['terminal']
 highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
 highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
