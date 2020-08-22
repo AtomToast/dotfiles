@@ -21,7 +21,7 @@ zinit light-mode for \
 ### End of Zinit's installer chunk
 
 
-if [ "$TERM" = "linux" ] || [ "$TERM" = "dvtm-256color" ] || [ "$TERM" = "dvtm" ] || [ "$TERM" = "fbpad-256" ]; then
+if [ "$TERM" = "linux" ] || [ "$TERM" = "dvtm" ] ; then
     export NCURSES_NO_UTF8_ACS=1
     # multiline prompt
     #PS1_viins="%B%F{red}%M%f%b:%F{cyan}%~%f"$'\n'"%B%F{green}>%f%b "
@@ -261,4 +261,4 @@ export PF_INFO="ascii title os host wm editor shell uptime"
 pfetch
 
 # Fix java applications
-[ ! "$TERM" = "linux" ] && wmname LG3D
+[ ! "$TERM" = "linux" ] && [ ! "$TERM" = "fbpad-256" ] && [ ! "$TERM" = "dvtm-256color" ] && wmname LG3D
