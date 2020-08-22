@@ -84,10 +84,15 @@ function cpu_temp() {
     echo " $cputemp"
 }
 
+function cpu_usage() {
+    cpuusage=$(top -bn1 | rg -o "Cpu\(s\):\s+\d+.\d" | rg -o "\d+\.\d")
+    echo " $cpuusage%"
+}
+
 function memory_usage() {
     totalmem=$(free -h | grep Mem | awk '{print $2}')
     usedmem=$(free -h | grep Mem | awk '{print $3}')
-    echo " $usedmem/$totalmem"
+    echo " $usedmem/$totalmem"
 }
 
 while true; do
@@ -96,7 +101,8 @@ while true; do
     mailCount=$(mail_count)
     spotifyStatus=$(spotify_status)
     cpuTemp=$(cpu_temp)
+    cpuUsage=$(cpu_usage)
     memoryUsage=$(memory_usage)
-    xsetroot -name "$spotifyStatus$mailCount $memoryUsage | $cpuTemp | $batteryStatusIcon | $internetStatusIcon |  $(date +"%F (%a) |  %R ")"
+    xsetroot -name "$spotifyStatus$mailCount $memoryUsage | $cpuUsage | $cpuTemp | $batteryStatusIcon | $internetStatusIcon |  $(date +"%F (%a) |  %R ")"
     sleep 1
 done
