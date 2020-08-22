@@ -282,7 +282,7 @@ nmap ga <Plug>(EasyAlign)
 " remap Y to work like other captial letters
 nnoremap Y y$
 
-" switch windows in any mode with alt + hjkl
+" switch windows in any mode with ctrl + alt + hjkl
 tnoremap <C-A-h> <C-\><C-N><C-w>h
 tnoremap <C-A-j> <C-\><C-N><C-w>j
 tnoremap <C-A-k> <C-\><C-N><C-w>k
