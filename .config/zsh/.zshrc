@@ -254,6 +254,16 @@ MODE_CURSOR_VICMD="block" \
 MODE_CURSOR_VIINS="bar" \
 MODE_CURSOR_SEARCH="underline"
 
+# set up fzf keybinds and completion
+source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
+
+bindkey '^F' fzf-cd-widget
+
+# set up previews
+export FZF_CTRL_T_OPTS="--preview '(bat -p --color=always {} || tree -CF {}) 2> /dev/null | head -200'"
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
+export FZF_ALT_C_OPTS="--preview 'tree -CF {} | head -200'"
 
 # Fix java applications
 [ ! "$TERM" = "linux" ] && [ ! "$TERM" = "fbpad-256" ] && [ ! "$TERM" = "dvtm-256color" ] && wmname LG3D
