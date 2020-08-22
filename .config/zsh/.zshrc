@@ -255,10 +255,6 @@ autoload -Uz tetriscurses
     MODE_CURSOR_VIINS="bar" \
     MODE_CURSOR_SEARCH="underline"
 
-# some bling for le terminal
-export PF_INFO="ascii title os host wm editor shell uptime"
-[ ! "$TERM" = "linux" ] && wmname dwm
-pfetch
 
 # Fix java applications
 [ ! "$TERM" = "linux" ] && [ ! "$TERM" = "fbpad-256" ] && [ ! "$TERM" = "dvtm-256color" ] && wmname LG3D
