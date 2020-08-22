@@ -361,7 +361,10 @@ autocmd FileType vista,vista_kind nnoremap <buffer> <silent> /
             \ :<c-u>call vista#finder#fzf#Run()<CR>
 
 " automatically add filename as header to markdown files
-autocmd BufNewFile *.md execute "normal i## \<C-r>=expand(\"%:t:r\")\<CR>"
+function ConvertName2Title() abort
+    return substitute(substitute(expand("%:t:r"), "_", " ","g"), "\\<.","\\U\\0","g")
+endfunction
+autocmd BufNewFile *.md execute "normal i## \<C-r>=ConvertName2Title()\<CR>"
 
 " set spell check languages
 set spelllang=en_us,en_gb,de_20
