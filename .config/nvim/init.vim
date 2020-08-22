@@ -352,8 +352,8 @@ autocmd BufWritePost *sxhkdrc silent! !pkill -USR1 sxhkd
             \ && notify-send -t 1700 'reloaded sxhkd config'
 
 " Update binds when xkeysnail is updated.
-autocmd BufWritePost *xkeysnail/config.py silent! !killall xkeysnail
-            \ && xkeysnail -q .config/xkeysnail/config.py 1>/dev/null &; disown
+autocmd BufWritePost *xkeysnail/config.py silent! !killall xkeysnail;
+            \ xkeysnail -q .config/xkeysnail/config.py 1>/dev/null &; disown
             \ && notify-send -t 1700 'reloaded xkeysnail config'
 
 " enable search in vista
