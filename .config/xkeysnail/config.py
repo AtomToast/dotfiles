@@ -91,7 +91,7 @@ define_keymap(re.compile("firefox"), {
 }, "Firefox")
 
 # Keybindings for Discord
-define_keymap(re.compile("discord|TelegramDesktop"), {
+define_keymap(re.compile("discord|TelegramDesktop|Slack|Signal|Riot|Jitsi Meet"), {
     # use ctrl+u/d to page up/down
     K("C-u"): K("page_up"),
     K("C-d"): K("page_down"),
@@ -106,4 +106,4 @@ define_keymap(re.compile("discord|TelegramDesktop"), {
     # AltGr+g/G jump to start/end of messages
     K("RM-g"): K("Shift-page_up"),
     K("Shift-RM-g"): K("Shift-page_down"),
-}, "Discord and Telegram")
+}, "Discord, Slack, Signal, Riot, Jitsi Meet and Telegram")
