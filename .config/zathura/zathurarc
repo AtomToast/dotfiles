@@ -1,10 +1,10 @@
-map i recolor
+map I recolor
 map p print
 map d scroll half-down
 map u scroll half-up
 map D toggle_page_mode
-map <A-k> zoom in
-map <A-j> zoom out
+map i zoom in
+map o zoom out
 map r reload
 map R rotate
 
