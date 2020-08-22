@@ -249,11 +249,10 @@ export _ZL_MATCH_MODE=1
 # load tetris for the lulz
 autoload -Uz tetriscurses
 
-[ ! "$TERM" = "fbpad-256" ] && \
-    # set cursor depending on mode \
-    MODE_CURSOR_VICMD="block" \
-    MODE_CURSOR_VIINS="bar" \
-    MODE_CURSOR_SEARCH="underline"
+# set cursor depending on mode \
+MODE_CURSOR_VICMD="block" \
+MODE_CURSOR_VIINS="bar" \
+MODE_CURSOR_SEARCH="underline"
 
 
 # Fix java applications
