@@ -14,7 +14,8 @@
     "python",
     "css",
     "markdown",
-    "json"
+    "json",
+    "rust"
   ],
   "snippets.extends": {
     "javascriptreact": ["javascript"],
