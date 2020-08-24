@@ -141,6 +141,12 @@ set splitbelow splitright
 " set leader to <space>
 let mapleader = " "
 
+" Restore last position when reopening file
+au BufReadPost *
+          \ if line("'\"") > 1 && line("'\"") <= line("$") |
+            \ exe "normal! g'\"" |
+          \ endif
+
 " set gitgutter shortcuts
 nmap <leader>hj <Plug>(GitGutterNextHunk)
 nmap <leader>hk <Plug>(GitGutterPrevHunk)
