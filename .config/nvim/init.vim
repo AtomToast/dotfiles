@@ -519,6 +519,9 @@ if exists('g:started_by_firenvim')
             \ '.*': {
                 \ 'cmdline': 'firenvim',
             \ },
+            \ 'https?://.*twitch.tv/.*': {
+                \ 'takeover':'never'
+            \ },
         \ }
     \ }
     " Autowrite changes
