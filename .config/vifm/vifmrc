@@ -480,6 +480,15 @@ set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
 
 " custom mappings
 
+" unmap space from switching panes
+nnoremap <space> <nop>
+
+" Same window switching shortcuts as in vim
+nnoremap <C-A-h> <C-w>h
+nnoremap <C-A-j> <C-w>j
+nnoremap <C-A-k> <C-w>k
+nnoremap <C-A-l> <C-w>l
+
 " Fzf mappings
 nnoremap <c-g> :FZFlocate<cr>
 nnoremap <c-f> :FZFfind<cr>
@@ -518,29 +527,32 @@ nnoremap cw cW
 nnoremap cW cw
 
 " Open console in current directory
-nnoremap ,t :!st &<cr>
+nnoremap <space>t :!$TERMINAL 2>/dev/null &<cr>
 
 " Open editor to edit vifmrc and apply settings after returning to vifm
-nnoremap ,c :write | edit $MYVIFMRC | restart<cr>
+nnoremap <space>c :write | edit $MYVIFMRC | restart<cr>
 " Open editor in new terminal to edit vifmrc
-nnoremap ,C :!$TERMINAL -e $EDITOR $MYVIFMRC 2>/dev/null &<cr>
+nnoremap <space>C :!$TERMINAL -e $EDITOR $MYVIFMRC 2>/dev/null &<cr>
 
-" Toggle wrap setting on ,w key
-nnoremap ,w :set wrap!<cr>
+" Toggle wrap setting on <space>w key
+nnoremap <space>w :set wrap!<cr>
 
 " Toggle millerview
-nnoremap ,m :set millerview!<cr>
+nnoremap <space>m :set millerview!<cr>
 
 " Toggle millerpreview
-nnoremap ,M :set milleroptions^=rpreview:all<cr>
+nnoremap <space>M :set milleroptions^=rpreview:all<cr>
 
 " Turn off viewcolumns
-nnoremap ,v :set viewcolumns=-{name}..,6{}.<cr>
+nnoremap <space>v :set viewcolumns=-{name}..,6{}.<cr>
 " Turn on viewcolumns
-nnoremap ,V :set viewcolumns=-{name}..,10{perms}..,7{size}..,7{uname}..,13{mtime}..<cr>
+nnoremap <space>V :set viewcolumns=-{name}..,10{perms}..,7{size}..,7{uname}..,13{mtime}..<cr>
 
 " Open in different program
-nnoremap ,f :file<cr>
+nnoremap <space>f :file<cr>
+nnoremap <space>F :file<cr>j<cr>
+
+nnoremap <space>g :grep<space>
 
 " open bookmarks menu
 nnoremap b :bmarks<cr>
