@@ -138,7 +138,7 @@ super + shift + h
 	openman
 
 super + control + c
-    showclip
+    clipmenu
 
 super + control + {_, shift} + m
     {dmenumount, dmenuumount}
