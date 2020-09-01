@@ -167,6 +167,7 @@ nmap <silent><leader>bp :bprevious<CR>
 nmap <silent><leader>bd :bdelete<CR>
 nmap <silent><leader>ba :enew <BAR> :Files<CR>
 nmap <silent><leader>bq :bp <BAR> bd #<CR>
+nmap <silent><leader>bo :%bd\|e#\|bd#<cr>
 
 " git/fugitive shortcuts
 nmap <leader>ga :Gwrite<CR>
