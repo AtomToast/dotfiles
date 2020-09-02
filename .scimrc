@@ -1,0 +1,11 @@
+nmap "ZQ" ":q!<cr>"
+nmap "ZZ" ":wq<cr>"
+nnoremap "|" "\"
+nnoremap "?" "|"
+nnoremap " p" ":cpaste<cr>"
+nnoremap <C-S>
+set overlap
+set xlsx_readformulas
+color "type=HEADINGS fg=BLACK bg=RED"
+color "type=CELL_SELECTION fg=BLACK bg=CYAN"
+color "type=EXPRESSION standout=1 bold=1 fg=BLACK bg=WHITE"
