@@ -1,0 +1,16 @@
+#!/bin/env sh
+
+# sets threshold if not defined
+[ -n "$1" ] && threshold="$1" || threshold=20
+
+# get cursor position space seperated
+cursorpos=$(xdotool getmouselocation | awk -F'[^0-9]*' '{print $2 " " $3}')
+
+x=${cursorpos% *} # delete from end of the string up till the first space
+y=${cursorpos#* } # delete from start of the string up till the first space
+
+if [ "$x" -le $threshold ] && [ "$y" -le $threshold ]; then
+    return 0
+else
+    return 1
+fi
