@@ -348,7 +348,7 @@ autocmd FileType typescript*,javascript,json,css,html,markdown,sql
 
 " Set maximum text width and spelling
 if !exists('g:started_by_firenvim')
-    autocmd FileType text,markdown,tex setlocal textwidth=80 spell
+    autocmd FileType text,markdown,tex,mail setlocal textwidth=80 spell
 endif
 
 " enable comment highlighting in json
