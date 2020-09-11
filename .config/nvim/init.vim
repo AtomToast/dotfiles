@@ -426,6 +426,12 @@ vmap <leader>f  <Plug>(coc-format-selected)
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format)
 
+" function text objects
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+
 "" Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 
