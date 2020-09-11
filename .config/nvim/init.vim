@@ -538,7 +538,10 @@ if exists('g:started_by_firenvim')
             \ '.*': {
                 \ 'cmdline': 'firenvim',
             \ },
-            \ 'https?://.*twitch.tv/.*': {
+            \ 'https?://.*twitch\.tv/.*': {
+                \ 'takeover':'never'
+            \ },
+            \ 'https?://.*notion\.so/.*': {
                 \ 'takeover':'never'
             \ },
         \ }
