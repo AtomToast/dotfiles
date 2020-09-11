@@ -154,6 +154,9 @@ set cursorline
 " split config
 set splitbelow splitright
 
+" set the grep program to ripgrep
+set grepprg=rg\ --vimgrep
+
 " set leader to <space>
 let mapleader = " "
 
