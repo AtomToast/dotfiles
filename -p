@@ -9,6 +9,7 @@
 
 
 call plug#begin('~/.local/share/nvim/plugged')
+" Plug 'dstein64/vim-startuptime'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
@@ -24,6 +25,7 @@ if !exists('g:started_by_firenvim')
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
 endif
+Plug 'Konfekt/vim-CtrlXA'
 Plug 'godlygeek/tabular'
 Plug 'crusoexia/vim-monokai'
 Plug 'norcalli/nvim-colorizer.lua'
@@ -46,6 +48,7 @@ Plug 'elixir-editors/vim-elixir'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
+Plug 'neovimhaskell/haskell-vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'airblade/vim-gitgutter'
 Plug 'liuchengxu/vista.vim'
@@ -56,6 +59,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'unblevable/quick-scope'
 Plug 'nacitar/a.vim'
 Plug 'michaeljsmith/vim-indent-object'
+Plug 'takac/vim-hardtime'
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
@@ -72,7 +76,7 @@ let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.linenr = '  '
 let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.dirty='⚡'
 let g:airline#extensions#tabline#enabled = 1
@@ -94,7 +98,7 @@ let g:vim_markdown_json_frontmatter = 1
 let g:vim_markdown_strikethrough = 1
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_new_list_item_indent = 0
-
+let g:vim_markdown_math = 1
 
 " jsx config
 let g:vim_jsx_pretty_colorful_config = 1
@@ -107,19 +111,25 @@ let g:indentLine_leadingSpaceChar = '·'
 let g:indentLine_concealcursor="c"
 let g:indentLine_faster = 1
 
-" enable truecolor support
-set termguicolors
-
 " set colorscheme
 colorscheme  monokai
-highlight Normal guibg=#282828
+" highlight Normal guibg=#282828
 highlight elixirAtom guifg=#ae81ff
 highlight elixirModuleDeclaration guifg=#f4bf75
 highlight elixirAlias guifg=#fd971f
 highlight elixirStringDelimiter guifg=#e6db74
 
-" set up colorizer
-lua require'colorizer'.setup()
+" enable italic fonts in vim in fbpad
+set t_ZH=�[3m
+set t_Co=256
+
+if $TERM !~ "dvtm"
+    " enable truecolor support
+    set termguicolors
+
+    " set up colorizer
+    lua require'colorizer'.setup()
+endif
 
 " set gitgutter symbol colors
 let g:gitgutter_sign_added = ''
@@ -137,10 +147,16 @@ let g:rainbow_active = 1
 " display indicator before linewraps
 set showbreak=>\ \ \
 
+" enable highlighting of the current line
+set cursorline
+
 "----------------------------------------
 
 " split config
 set splitbelow splitright
+
+" set the grep program to ripgrep
+set grepprg=rg\ --vimgrep
 
 " set leader to <space>
 let mapleader = " "
@@ -165,13 +181,21 @@ nmap <leader>s :nohlsearch<CR>
 nmap <leader>S :setlocal spell!<CR>
 
 " buffer shortcuts
-nmap <leader>bl :ls<CR>
 nmap <silent><leader>bn :bnext<CR>
 nmap <silent><leader>bp :bprevious<CR>
 nmap <silent><leader>bd :bdelete<CR>
 nmap <silent><leader>ba :enew <BAR> :Files<CR>
 nmap <silent><leader>bq :bp <BAR> bd #<CR>
 nmap <silent><leader>bo :%bd\|e#\|bd#<cr>
+
+" quickfix list shortcuts
+nnoremap <leader>cn :cnext<CR>
+nnoremap <leader>cp :cprevious<CR>
+nnoremap <leader>cl :copen<CR>
+" local quickfix list shortcuts
+nnoremap <leader>ln :lnext<CR>
+nnoremap <leader>lp :lprevious<CR>
+nnoremap <leader>ll :lopen<CR>
 
 " git/fugitive shortcuts
 nmap <leader>ga :Gwrite<CR>
@@ -207,8 +231,8 @@ nmap <silent><leader>v :Vista!!<CR>
 nmap <leader>mp :MarkdownPreview<CR>
 nmap <leader>ms :MarkdownPreviewStop<CR>
 
-" convert into markdown link
-nnoremap <leader>ml :norm 0y$yss]A(<esc>p
+" call make with a shortcut
+nmap <leader>mm :Make<CR>
 
 " convert into vimwiki markdown link
 function! Convert2Link() abort
@@ -220,7 +244,7 @@ function! Convert2Link() abort
                 \I[\<C-r>0](\<C-o>A)"
 endfunction
 
-nnoremap <leader>mL :call Convert2Link()<CR>
+nnoremap <leader>ml :call Convert2Link()<CR>
 
 " ctrl+s saving
 noremap  <silent> <C-S> :update<CR>:nohlsearch<CR>
@@ -240,6 +264,8 @@ nnoremap <A-,> A;<Esc>
 " swap semicolon and comma because of my german layout
 nnoremap ; ,
 nnoremap , ;
+nnoremap g, g;
+nnoremap g; g,
 
 " create an empty line above/below
 nnoremap <A-o> o<Esc>k
@@ -267,10 +293,15 @@ let g:wordmotion_mappings = {
 " set additional characters as space characters
 let g:wordmotion_spaces = '_-.'
 
+" vim-speeddating integration with CtrlXA
+nmap <Plug>SpeedDatingFallbackUp   <Plug>(CtrlXA-CtrlA)
+nmap <Plug>SpeedDatingFallbackDown <Plug>(CtrlXA-CtrlX)
+
 " configure fzf
 nmap <silent><leader>p :GFiles<CR>
 nmap <silent><leader>P :Files<CR>
 nmap <silent><leader>bb :Buffers<CR>
+nmap <silent><leader>bl :BLines<CR>
 nmap <silent><leader>rg :Rg<CR>
 
 command! -bang -nargs=? -complete=dir Files
@@ -513,6 +544,13 @@ let g:netrw_liststyle=3
 " hide dotfiles by default in netrw
 let g:netrw_list_hide=',\(^\|\s\s\)\zs\.\S\+'
 
+" hardtime configuration
+let g:hardtime_default_on = 0
+let g:list_of_normal_keys = ["h", "j", "k", "l", "w", "e", "b"]
+let g:list_of_visual_keys = ["h", "j", "k", "l", "w", "e", "b"]
+let g:hardtime_ignore_buffer_patterns = [ "netrw", ".txt" , "vista", "index", "fugitive", "scp"]
+let g:hardtime_ignore_quickfix = 1
+
 " firenvim configuration
 if exists('g:started_by_firenvim')
     " turn off statusbar
@@ -535,7 +573,10 @@ if exists('g:started_by_firenvim')
             \ '.*': {
                 \ 'cmdline': 'firenvim',
             \ },
-            \ 'https?://.*twitch.tv/.*': {
+            \ 'https?://.*twitch\.tv/.*': {
+                \ 'takeover':'never'
+            \ },
+            \ 'https?://.*notion\.so/.*': {
                 \ 'takeover':'never'
             \ },
         \ }
@@ -559,17 +600,37 @@ highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=und
 " vimwiki configuration
 let g:vimwiki_global_ext = 0
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+" let g:vimwiki_filetypes = ['markdown']
 let g:vimwiki_root = '~/Nextcloud/Documents/vimwiki'
+" let g:vimwiki_auto_header = 1
+let g:vimwiki_auto_chdir = 1
 let g:vimwiki_list = [
-            \{'path': '~/Nextcloud/Documents/vimwiki/', 'syntax': 'markdown', 'ext': '.md'},
-            \{'path': '~/Nextcloud/Documents/vimwiki/uni', 'syntax': 'markdown', 'ext': '.md'},
-            \{'path': '~/Nextcloud/Documents/vimwiki/uni/2020_spring_semester', 'syntax': 'markdown', 'ext': '.md'},
-            \{'path': '~/Nextcloud/Documents/vimwiki/programming', 'syntax': 'markdown', 'ext': '.md'},
-            \{'path': '~/Nextcloud/Documents/vimwiki/programming/elixir', 'syntax': 'markdown', 'ext': '.md'},
-            \{'path': '~/Nextcloud/Documents/vimwiki/Todos', 'syntax': 'markdown', 'ext': '.md'},
+            \{'path': '~/Nextcloud/Documents/vimwiki/', 'syntax': 'markdown', 'ext': '.md', 'auto_diary_index': 1, 'auto_tags': 1, 'auto_generate_tags': 1, 'links_space_char': '_',},
             \]
+            " \{'path': '~/Nextcloud/Documents/vimwiki/uni', 'syntax': 'markdown', 'ext': '.md', 'auto_diary_index': 1, 'auto_tags': 1, 'auto_generate_tags': 1,},
+            " \{'path': '~/Nextcloud/Documents/vimwiki/uni/2020_spring_semester', 'syntax': 'markdown', 'ext': '.md', 'auto_diary_index': 1, 'auto_tags': 1, 'auto_generate_tags': 1,},
+            " \{'path': '~/Nextcloud/Documents/vimwiki/programming', 'syntax': 'markdown', 'ext': '.md', 'auto_diary_index': 1, 'auto_tags': 1, 'auto_generate_tags': 1,},
+            " \{'path': '~/Nextcloud/Documents/vimwiki/programming/elixir', 'syntax': 'markdown', 'ext': '.md', 'auto_diary_index': 1, 'auto_tags': 1, 'auto_generate_tags': 1,},
+            " \{'path': '~/Nextcloud/Documents/vimwiki/Todos', 'syntax': 'markdown', 'ext': '.md', 'auto_diary_index': 1, 'auto_tags': 1, 'auto_generate_tags': 1,},
 au FileType vimwiki nmap <buffer> <C-H> <Plug>VimwikiGoBackLink
 au FileType vimwiki nmap <buffer> <C-J> <Plug>VimwikiVSplitLink
 au FileType vimwiki nmap <buffer> <C-N> <Plug>VimwikiNextLink
 au FileType vimwiki nmap <buffer> <C-P> <Plug>VimwikiPrevLink
-au FileType vimwiki set syntax=markdown
+au FileType vimwiki nmap <buffer> <A-s> :VimwikiSearchTags<space>
+" au FileType vimwiki set syntax=vimwiki
+au FileType vimwiki syntax on
+au FileType vimwiki set nowrap
+
+function! HideClutter() abort
+    " turn off statusbar
+    setlocal laststatus=0
+    " disable tabline
+    let g:airline#extensions#tabline#enabled = 0
+    " disable signcolumn
+    setlocal signcolumn=no
+    " disable numbers
+    setlocal norelativenumber nonumber
+    " disable indentLine
+    IndentLinesDisable
+endfunction
+autocmd BufEnter *dvtm-editor* call HideClutter()
