@@ -612,3 +612,17 @@ au FileType vimwiki nmap <buffer> <A-s> :VimwikiSearchTags<space>
 " au FileType vimwiki set syntax=vimwiki
 au FileType vimwiki syntax on
 au FileType vimwiki set nowrap
+
+function! HideClutter() abort
+    " turn off statusbar
+    setlocal laststatus=0
+    " disable tabline
+    let g:airline#extensions#tabline#enabled = 0
+    " disable signcolumn
+    setlocal signcolumn=no
+    " disable numbers
+    setlocal norelativenumber nonumber
+    " disable indentLine
+    IndentLinesDisable
+endfunction
+autocmd BufEnter *dvtm-editor* call HideClutter()
