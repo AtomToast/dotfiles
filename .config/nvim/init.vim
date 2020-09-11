@@ -146,6 +146,9 @@ let g:rainbow_active = 1
 " display indicator before linewraps
 set showbreak=>\ \ \
 
+" enable highlighting of the current line
+set cursorline
+
 "----------------------------------------
 
 " split config
