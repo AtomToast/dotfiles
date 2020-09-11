@@ -397,6 +397,8 @@ set shortmess+=c
 set updatetime=300
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
