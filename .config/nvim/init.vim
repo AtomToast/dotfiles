@@ -188,6 +188,15 @@ nmap <silent><leader>ba :enew <BAR> :Files<CR>
 nmap <silent><leader>bq :bp <BAR> bd #<CR>
 nmap <silent><leader>bo :%bd\|e#\|bd#<cr>
 
+" quickfix list shortcuts
+nnoremap <leader>cn :cnext<CR>
+nnoremap <leader>cp :cprevious<CR>
+nnoremap <leader>cl :copen<CR>
+" local quickfix list shortcuts
+nnoremap <leader>ln :lnext<CR>
+nnoremap <leader>lp :lprevious<CR>
+nnoremap <leader>ll :lopen<CR>
+
 " git/fugitive shortcuts
 nmap <leader>ga :Gwrite<CR>
 nmap <leader>gs :Gstatus<CR>
