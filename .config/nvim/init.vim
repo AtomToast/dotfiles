@@ -115,7 +115,7 @@ set termguicolors
 
 " set colorscheme
 colorscheme  monokai
-highlight Normal guibg=#282828
+" highlight Normal guibg=#282828
 highlight elixirAtom guifg=#ae81ff
 highlight elixirModuleDeclaration guifg=#f4bf75
 highlight elixirAlias guifg=#fd971f
