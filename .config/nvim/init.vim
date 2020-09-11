@@ -371,7 +371,7 @@ autocmd FileType vista,vista_kind nnoremap <buffer> <silent> /
 function ConvertName2Title() abort
     return substitute(substitute(expand("%:t:r"), "_", " ","g"), "\\<.","\\U\\0","g")
 endfunction
-autocmd BufNewFile *.md execute "normal i## \<C-r>=ConvertName2Title()\<CR>"
+autocmd BufNewFile *.md execute "normal i# \<C-r>=ConvertName2Title()\<CR>"
 
 " set spell check languages
 set spelllang=en_us,en_gb,de_20
