@@ -290,6 +290,10 @@ let g:wordmotion_mappings = {
 " set additional characters as space characters
 let g:wordmotion_spaces = '_-.'
 
+" vim-speeddating integration with CtrlXA
+nmap <Plug>SpeedDatingFallbackUp   <Plug>(CtrlXA-CtrlA)
+nmap <Plug>SpeedDatingFallbackDown <Plug>(CtrlXA-CtrlX)
+
 " configure fzf
 nmap <silent><leader>p :GFiles<CR>
 nmap <silent><leader>P :Files<CR>
