@@ -25,6 +25,7 @@ if !exists('g:started_by_firenvim')
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
 endif
+Plug 'Konfekt/vim-CtrlXA'
 Plug 'godlygeek/tabular'
 Plug 'crusoexia/vim-monokai'
 Plug 'norcalli/nvim-colorizer.lua'
