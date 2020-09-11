@@ -230,8 +230,8 @@ nmap <silent><leader>v :Vista!!<CR>
 nmap <leader>mp :MarkdownPreview<CR>
 nmap <leader>ms :MarkdownPreviewStop<CR>
 
-" convert into markdown link
-nnoremap <leader>ml :norm 0y$yss]A(<esc>p
+" call make with a shortcut
+nmap <leader>mm :Make<CR>
 
 " convert into vimwiki markdown link
 function! Convert2Link() abort
