@@ -592,17 +592,23 @@ highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=und
 " vimwiki configuration
 let g:vimwiki_global_ext = 0
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+" let g:vimwiki_filetypes = ['markdown']
 let g:vimwiki_root = '~/Nextcloud/Documents/vimwiki'
+" let g:vimwiki_auto_header = 1
+let g:vimwiki_auto_chdir = 1
 let g:vimwiki_list = [
-            \{'path': '~/Nextcloud/Documents/vimwiki/', 'syntax': 'markdown', 'ext': '.md'},
-            \{'path': '~/Nextcloud/Documents/vimwiki/uni', 'syntax': 'markdown', 'ext': '.md'},
-            \{'path': '~/Nextcloud/Documents/vimwiki/uni/2020_spring_semester', 'syntax': 'markdown', 'ext': '.md'},
-            \{'path': '~/Nextcloud/Documents/vimwiki/programming', 'syntax': 'markdown', 'ext': '.md'},
-            \{'path': '~/Nextcloud/Documents/vimwiki/programming/elixir', 'syntax': 'markdown', 'ext': '.md'},
-            \{'path': '~/Nextcloud/Documents/vimwiki/Todos', 'syntax': 'markdown', 'ext': '.md'},
+            \{'path': '~/Nextcloud/Documents/vimwiki/', 'syntax': 'markdown', 'ext': '.md', 'auto_diary_index': 1, 'auto_tags': 1, 'auto_generate_tags': 1, 'links_space_char': '_',},
             \]
+            " \{'path': '~/Nextcloud/Documents/vimwiki/uni', 'syntax': 'markdown', 'ext': '.md', 'auto_diary_index': 1, 'auto_tags': 1, 'auto_generate_tags': 1,},
+            " \{'path': '~/Nextcloud/Documents/vimwiki/uni/2020_spring_semester', 'syntax': 'markdown', 'ext': '.md', 'auto_diary_index': 1, 'auto_tags': 1, 'auto_generate_tags': 1,},
+            " \{'path': '~/Nextcloud/Documents/vimwiki/programming', 'syntax': 'markdown', 'ext': '.md', 'auto_diary_index': 1, 'auto_tags': 1, 'auto_generate_tags': 1,},
+            " \{'path': '~/Nextcloud/Documents/vimwiki/programming/elixir', 'syntax': 'markdown', 'ext': '.md', 'auto_diary_index': 1, 'auto_tags': 1, 'auto_generate_tags': 1,},
+            " \{'path': '~/Nextcloud/Documents/vimwiki/Todos', 'syntax': 'markdown', 'ext': '.md', 'auto_diary_index': 1, 'auto_tags': 1, 'auto_generate_tags': 1,},
 au FileType vimwiki nmap <buffer> <C-H> <Plug>VimwikiGoBackLink
 au FileType vimwiki nmap <buffer> <C-J> <Plug>VimwikiVSplitLink
 au FileType vimwiki nmap <buffer> <C-N> <Plug>VimwikiNextLink
 au FileType vimwiki nmap <buffer> <C-P> <Plug>VimwikiPrevLink
-au FileType vimwiki set syntax=markdown
+au FileType vimwiki nmap <buffer> <A-s> :VimwikiSearchTags<space>
+" au FileType vimwiki set syntax=vimwiki
+au FileType vimwiki syntax on
+au FileType vimwiki set nowrap
