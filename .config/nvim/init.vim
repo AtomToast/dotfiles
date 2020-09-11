@@ -263,6 +263,8 @@ nnoremap <A-,> A;<Esc>
 " swap semicolon and comma because of my german layout
 nnoremap ; ,
 nnoremap , ;
+nnoremap g, g;
+nnoremap g; g,
 
 " create an empty line above/below
 nnoremap <A-o> o<Esc>k
