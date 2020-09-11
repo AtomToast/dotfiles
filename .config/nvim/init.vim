@@ -9,6 +9,7 @@
 
 
 call plug#begin('~/.local/share/nvim/plugged')
+" Plug 'dstein64/vim-startuptime'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
