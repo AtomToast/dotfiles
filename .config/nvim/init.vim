@@ -243,7 +243,7 @@ function! Convert2Link() abort
                 \I[\<C-r>0](\<C-o>A)"
 endfunction
 
-nnoremap <leader>mL :call Convert2Link()<CR>
+nnoremap <leader>ml :call Convert2Link()<CR>
 
 " ctrl+s saving
 noremap  <silent> <C-S> :update<CR>:nohlsearch<CR>
