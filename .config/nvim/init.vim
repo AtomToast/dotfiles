@@ -110,9 +110,6 @@ let g:indentLine_leadingSpaceChar = '·'
 let g:indentLine_concealcursor="c"
 let g:indentLine_faster = 1
 
-" enable truecolor support
-set termguicolors
-
 " set colorscheme
 colorscheme  monokai
 " highlight Normal guibg=#282828
@@ -121,8 +118,17 @@ highlight elixirModuleDeclaration guifg=#f4bf75
 highlight elixirAlias guifg=#fd971f
 highlight elixirStringDelimiter guifg=#e6db74
 
-" set up colorizer
-lua require'colorizer'.setup()
+" enable italic fonts in vim in fbpad
+set t_ZH=�[3m
+set t_Co=256
+
+if $TERM !~ "dvtm"
+    " enable truecolor support
+    set termguicolors
+
+    " set up colorizer
+    lua require'colorizer'.setup()
+endif
 
 " set gitgutter symbol colors
 let g:gitgutter_sign_added = ''
