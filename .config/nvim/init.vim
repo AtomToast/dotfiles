@@ -26,6 +26,7 @@ Plug 'crusoexia/vim-monokai'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'luochen1990/rainbow'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'antoinemadec/coc-fzf'
 Plug 'alvan/vim-closetag', { 'for': ['html', 'javascript', 'javascript.jsx', 'typescript.tsx'] }
 Plug 'Yggdroot/indentLine'
 Plug 'chaoren/vim-wordmotion'
@@ -449,23 +450,26 @@ endfunction
 "" Fix autofix problem of current line
 nmap <leader>qf  <Plug>(coc-fix-current)
 
-"" Using CocList
+"" Using CocFzfList
 """ Show all diagnostics
-nnoremap <silent><leader>cd  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><leader>cd  :<C-u>CocFzfList diagnostics<cr>
 """ Manage extensions
-nnoremap <silent><leader>ce  :<C-u>CocList extensions<cr>
+nnoremap <silent><leader>ce  :<C-u>CocFzfList extensions<cr>
 """ Show commands
-nnoremap <silent><leader>cc  :<C-u>CocList commands<cr>
+nnoremap <silent><leader>cc  :<C-u>CocFzfList commands<cr>
 """ Find symbol of current document
-nnoremap <silent><leader>co  :<C-u>CocList outline<cr>
+nnoremap <silent><leader>co  :<C-u>CocFzfList outline<cr>
 """ Search workspace symbols
-nnoremap <silent><leader>cs  :<C-u>CocList -I symbols<cr>
+nnoremap <silent><leader>cs  :<C-u>CocFzfList -I symbols<cr>
 """ Do default action for next item.
 nnoremap <silent><leader>cj  :<C-u>CocNext<CR>
 """ Do default action for previous item.
 nnoremap <silent><leader>ck  :<C-u>CocPrev<CR>
 """ Resume latest coc list
-nnoremap <silent><leader>cr  :<C-u>CocListResume<CR>
+nnoremap <silent><leader>cr  :<C-u>CocFzfListResume<CR>
+
+""" move preview window list to the right
+let g:coc_fzf_preview='right:50%'
 
 " autoremove trailing whitespaces
 fun! StripTrailingWhitespace()
