@@ -46,6 +46,21 @@
         }
       }
     },
+    "haskell": {
+      "command": "haskell-language-server-wrapper",
+      "args": ["--lsp"],
+      "rootPatterns": [
+        "*.cabal",
+        "stack.yaml",
+        "cabal.project",
+        "package.yaml",
+        "hie.yaml"
+      ],
+      "filetypes": ["haskell", "lhaskell"]
+    },
+    "dhall": {
+      "command": "dhall-lsp-server",
+      "filetypes": ["dhall"]
     }
   },
   "xml.java.home": "/usr/lib/jvm/default",
