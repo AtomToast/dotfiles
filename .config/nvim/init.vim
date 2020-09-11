@@ -180,7 +180,6 @@ nmap <leader>s :nohlsearch<CR>
 nmap <leader>S :setlocal spell!<CR>
 
 " buffer shortcuts
-nmap <leader>bl :ls<CR>
 nmap <silent><leader>bn :bnext<CR>
 nmap <silent><leader>bp :bprevious<CR>
 nmap <silent><leader>bd :bdelete<CR>
@@ -295,6 +294,7 @@ let g:wordmotion_spaces = '_-.'
 nmap <silent><leader>p :GFiles<CR>
 nmap <silent><leader>P :Files<CR>
 nmap <silent><leader>bb :Buffers<CR>
+nmap <silent><leader>bl :BLines<CR>
 nmap <silent><leader>rg :Rg<CR>
 
 command! -bang -nargs=? -complete=dir Files
