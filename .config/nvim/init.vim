@@ -58,6 +58,7 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'unblevable/quick-scope'
 Plug 'nacitar/a.vim'
+Plug 'liuchengxu/vim-which-key'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
@@ -160,6 +161,14 @@ set grepprg=rg\ --vimgrep
 " set leader to <space>
 let mapleader = " "
 
+" set up which key
+call which_key#register('<Space>', "g:which_key_map")
+nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
+nnoremap <silent> g :<c-u>WhichKey 'g'<CR>
+vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
+set timeoutlen=500
+let g:which_key_map =  {}
+
 " Restore last position when reopening file
 au BufReadPost *
           \ if line("'\"") > 1 && line("'\"") <= line("$") |
@@ -167,6 +176,7 @@ au BufReadPost *
           \ endif
 
 " set gitgutter shortcuts
+let g:which_key_map.h = { 'name' : '+gitgutter_hunks' }
 nmap <leader>hj <Plug>(GitGutterNextHunk)
 nmap <leader>hk <Plug>(GitGutterPrevHunk)
 nmap <leader>hp <Plug>(GitGutterPreviewHunk)
@@ -180,11 +190,18 @@ nmap <leader>s :nohlsearch<CR>
 nmap <leader>S :setlocal spell!<CR>
 
 " buffer shortcuts
+let g:which_key_map.b = { 'name' : '+buffer' }
+let g:which_key_map.b.n = 'switch to next buffer'
 nmap <silent><leader>bn :bnext<CR>
+let g:which_key_map.b.p = 'switch to previous buffer'
 nmap <silent><leader>bp :bprevious<CR>
+let g:which_key_map.b.d = 'deletes current buffer'
 nmap <silent><leader>bd :bdelete<CR>
+let g:which_key_map.b.a = 'adds new buffer'
 nmap <silent><leader>ba :enew <BAR> :Files<CR>
+let g:which_key_map.b.q = 'closes current buffer'
 nmap <silent><leader>bq :bp <BAR> bd #<CR>
+let g:which_key_map.b.o = 'close all but the current buffer'
 nmap <silent><leader>bo :%bd\|e#\|bd#<cr>
 
 " quickfix list shortcuts
@@ -192,11 +209,13 @@ nnoremap <leader>cn :cnext<CR>
 nnoremap <leader>cp :cprevious<CR>
 nnoremap <leader>cl :copen<CR>
 " local quickfix list shortcuts
+let g:which_key_map.l = { 'name' : '+local_qf_list' }
 nnoremap <leader>ln :lnext<CR>
 nnoremap <leader>lp :lprevious<CR>
 nnoremap <leader>ll :lopen<CR>
 
 " git/fugitive shortcuts
+let g:which_key_map.g = { 'name' : '+git_fugitive' }
 nmap <leader>ga :Gwrite<CR>
 nmap <leader>gs :Gstatus<CR>
 nmap <leader>gd :Gdiff<CR>
@@ -206,9 +225,11 @@ nmap <leader>gb :Gblame<CR>
 nmap <leader>gl :Glog<CR>
 
 " switch to/from  header file
+let g:which_key_map.a = 'switch to alternate file'
 nmap <silent><leader>a :A<CR>
 
 " search and replace shortcut
+let g:which_key_map.R = 'global search and replace'
 nmap <leader>R :%s//gI<left><left><left>
 
 " open netrw
@@ -227,6 +248,7 @@ autocmd filetype netrw nmap <buffer> cd gn
 nmap <silent><leader>v :Vista!!<CR>
 
 " start and stop MarkdownPreview
+let g:which_key_map.m = { 'name' : '+markdown | +make' }
 nmap <leader>mp :MarkdownPreview<CR>
 nmap <leader>ms :MarkdownPreviewStop<CR>
 
@@ -273,9 +295,11 @@ inoremap <A-o> <C-o>o<C-o>k
 inoremap <A-O> <C-o>O<C-o>j
 
 " create a shortcut for taking the first correction
+let g:which_key_map.z = 'apply first spelling suggestion'
 nnoremap <leader>z 1z=
 
 " fix last spelling mistake
+let g:which_key_map.Z = 'fix spelling of last word'
 nnoremap <leader>Z [s1z=
 
 " use alt + word motion keys for special behaviour
@@ -461,6 +485,7 @@ xmap af <Plug>(coc-funcobj-a)
 omap af <Plug>(coc-funcobj-a)
 
 "" Remap for rename current word
+let g:which_key_map.r = { 'name' : '+ripgrep | +rename' }
 nmap <leader>rn <Plug>(coc-rename)
 
 "" Use K to show documentation in preview window
@@ -475,9 +500,11 @@ function! s:show_documentation()
 endfunction
 
 "" Fix autofix problem of current line
+let g:which_key_map.q = { 'name' : '+apply_quickfix' }
 nmap <leader>qf  <Plug>(coc-fix-current)
 
 "" Using CocFzfList
+let g:which_key_map.c = { 'name' : '+CocList | +qf_list' }
 """ Show all diagnostics
 nnoremap <silent><leader>cd  :<C-u>CocFzfList diagnostics<cr>
 """ Manage extensions
@@ -584,6 +611,8 @@ highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=unde
 highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
 
 " vimwiki configuration
+let g:which_key_map.w = { 'name': '+vimwiki' }
+let g:which_key_map.w[' '] = { 'name': '+diary' }
 let g:vimwiki_global_ext = 0
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 " let g:vimwiki_filetypes = ['markdown']
