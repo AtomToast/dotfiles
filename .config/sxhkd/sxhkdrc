@@ -174,4 +174,4 @@ super + control + shift + Escape
 	killactive
 
 super + minus
-	colorpicker --one-shot --preview --short | xclip -selection clipboard
+	colorpicker --one-shot --preview --short | tee /tmp/hexcode | xclip -selection clipboard && notify-send "Copied color code" $(cat /tmp/hexcode)
