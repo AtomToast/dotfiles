@@ -26,6 +26,9 @@ XF86Audio{Prev,Next}
 super + F1
     $TERMINAL $EDITOR $HOME/Nextcloud/Documents/vimwiki/index.md
 
+super + ctrl + F1
+	$TERMINAL $EDITOR +"VimwikiMakeDiaryNote"
+
 super + shift + F1
     $TERMINAL $FILEMANAGER $HOME/Nextcloud/Documents/vimwiki
 
