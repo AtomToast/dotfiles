@@ -53,6 +53,9 @@ super + F4
 super + F5
     slack
 
+super + shift + F5
+	element-desktop
+
 super + F6
     signal-desktop --use-tray-icon
 
