@@ -288,6 +288,9 @@ nnoremap , ;
 nnoremap g, g;
 nnoremap g; g,
 
+" make sure ctrl+h works the same as <bs> Very important for coc-pairs
+imap <C-h> <BS>
+
 " create an empty line above/below
 nnoremap <A-o> o<Esc>k
 nnoremap <A-O> O<Esc>j
