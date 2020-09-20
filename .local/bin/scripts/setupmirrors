@@ -2,7 +2,7 @@
 
 repo_name=$(basename "$(git rev-parse --show-toplevel)")
 
-gitea new "$repo_name" || echo "codeberg repo already exists" && exit 1
+gitea new "$repo_name" || (echo "codeberg repo already exists" && exit 1)
 
 git remote set-url --add --push origin "git@github.com:AtomToast/${repo_name}.git"
 git remote set-url --add --push origin "git@codeberg.org:AtomToast/${repo_name}.git"
