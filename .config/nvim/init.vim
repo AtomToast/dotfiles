@@ -167,7 +167,6 @@ let mapleader = " "
 " set up which key
 call which_key#register('<Space>', "g:which_key_map")
 nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
-nnoremap <silent> g :<c-u>WhichKey 'g'<CR>
 vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
 set timeoutlen=500
 let g:which_key_map =  {}
