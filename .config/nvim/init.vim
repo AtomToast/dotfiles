@@ -67,7 +67,7 @@ call plug#end()
 
 " airline config
 if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
+  let g:airline_symbols = {}
 endif
 
 let g:airline_theme='base16_monokai'
@@ -108,9 +108,11 @@ let g:vim_jsx_pretty_colorful_config = 1
 " indentLine config
 let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '·'
+let g:indentLine_char = '|'
 "let g:indentLine_setConceal = 0
 let g:indentLine_concealcursor="c"
 let g:indentLine_faster = 1
+set list lcs=tab:\|·,trail:·
 
 " set colorscheme
 colorscheme  monokai
@@ -393,7 +395,7 @@ set smartcase
 "au VimLeave * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
 
 " configure tabs
- set autoindent
+set autoindent
 " Indenting defaults (does not override vim-sleuth's indenting detection)
 " Defaults to 4 spaces for most filetypes
 if get(g:, '_has_set_default_indent_settings', 0) == 0
