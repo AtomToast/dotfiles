@@ -20,6 +20,7 @@ Plug 'radenling/vim-dispatch-neovim'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-sleuth'
 if !exists('g:started_by_firenvim')
     Plug 'tpope/vim-sensible'
     Plug 'vim-airline/vim-airline'
@@ -124,11 +125,11 @@ set t_ZH=�[3m
 set t_Co=256
 
 if $TERM !~ "dvtm"
-    " enable truecolor support
-    set termguicolors
+  " enable truecolor support
+  set termguicolors
 
-    " set up colorizer
-    lua require'colorizer'.setup()
+  " set up colorizer
+  lua require'colorizer'.setup()
 endif
 
 " set gitgutter symbol colors
@@ -171,9 +172,9 @@ let g:which_key_map =  {}
 
 " Restore last position when reopening file
 au BufReadPost *
-          \ if line("'\"") > 1 && line("'\"") <= line("$") |
-            \ exe "normal! g'\"" |
-          \ endif
+      \ if line("'\"") > 1 && line("'\"") <= line("$") |
+        \ exe "normal! g'\"" |
+      \ endif
 
 " set gitgutter shortcuts
 let g:which_key_map.h = { 'name' : '+gitgutter_hunks' }
@@ -257,12 +258,12 @@ nmap <leader>mm :Make<CR>
 
 " convert into vimwiki markdown link
 function! Convert2Link() abort
-    norm 0y$
-    .s/ /_/g
-    exec "norm
-                \ guu
-                \\"=expand('%:t:r')\<CR>Pa/\<esc>
-                \I[\<C-r>0](\<C-o>A)"
+  norm 0y$
+  .s/ /_/g
+  exec "norm
+      \ guu
+      \\"=expand('%:t:r')\<CR>Pa/\<esc>
+      \I[\<C-r>0](\<C-o>A)"
 endfunction
 
 nnoremap <leader>ml :call Convert2Link()<CR>
@@ -392,14 +393,18 @@ set smartcase
 "au VimLeave * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
 
 " configure tabs
-set expandtab
-set autoindent
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
-
-autocmd FileType typescript*,javascript,json,css,html,markdown,sql
-            \ setlocal shiftwidth=2 softtabstop=2 tabstop=2
+ set autoindent
+" Indenting defaults (does not override vim-sleuth's indenting detection)
+" Defaults to 4 spaces for most filetypes
+if get(g:, '_has_set_default_indent_settings', 0) == 0
+  " Set the indenting level to 2 spaces for the following file types.
+  autocmd FileType typescript,javascript,jsx,tsx,css,html,ruby,elixir,kotlin,sql,haskell,vim,markdown
+        \ setlocal expandtab tabstop=2 shiftwidth=2
+  set expandtab
+  set tabstop=4
+  set shiftwidth=4
+  let g:_has_set_default_indent_settings = 1
+endif
 
 " Set maximum text width and spelling
 if !exists('g:started_by_firenvim')
@@ -411,16 +416,16 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 
 " Update binds when sxhkdrc is updated.
 autocmd BufWritePost *sxhkdrc silent! !pkill -USR1 sxhkd
-            \ && notify-send -t 1700 'reloaded sxhkd config'
+      \ && notify-send -t 1700 'reloaded sxhkd config'
 
 " Update binds when xkeysnail is updated.
 autocmd BufWritePost *xkeysnail/config.py silent! !killall xkeysnail;
-            \ xkeysnail -q .config/xkeysnail/config.py 1>/dev/null &; disown
-            \ && notify-send -t 1700 'reloaded xkeysnail config'
+      \ xkeysnail -q .config/xkeysnail/config.py 1>/dev/null &; disown
+      \ && notify-send -t 1700 'reloaded xkeysnail config'
 
 " enable search in vista
 autocmd FileType vista,vista_kind nnoremap <buffer> <silent> /
-            \ :<c-u>call vista#finder#fzf#Run()<CR>
+      \ :<c-u>call vista#finder#fzf#Run()<CR>
 
 " automatically add filename as header to markdown files
 function ConvertName2Title() abort
@@ -460,7 +465,7 @@ function! s:check_back_space() abort
 endfunction
 
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() :
-            \ "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+      \ "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 autocmd FileType vim,vifm let b:coc_pairs_disabled = ['"']
 
@@ -530,11 +535,11 @@ let g:coc_fzf_preview='right:50%'
 
 " autoremove trailing whitespaces
 fun! StripTrailingWhitespace()
-    " Don't strip on these filetypes
-    if (index(['vimwiki','markdown'], &filetype) >= 0)
-        return
-    endif
-    %s/\s\+$//e
+  " Don't strip on these filetypes
+  if (index(['vimwiki','markdown'], &filetype) >= 0)
+    return
+  endif
+  %s/\s\+$//e
 endfun
 
 autocmd BufWritePre * call StripTrailingWhitespace()
@@ -569,42 +574,42 @@ let g:netrw_list_hide=',\(^\|\s\s\)\zs\.\S\+'
 
 " firenvim configuration
 if exists('g:started_by_firenvim')
-    " turn off statusbar
-    set laststatus=0
-    " turn on spell checking
-    set spell
-    " disable tabline
-    let g:airline#extensions#tabline#enabled = 0
-    " disable signcolumn
-    set signcolumn=no
-    " disable numbers
-    set norelativenumber nonumber
-    " add shortcut for focusing the page
-    nnoremap <silent><Esc><Esc> :call firenvim#focus_page()<CR>
-    " add shortcut for hiding the frame
-    nnoremap <silent><C-z> :call firenvim#hide_frame()<CR>
-    " use external commandline for firenvim
-    let g:firenvim_config = {
-        \ 'localSettings': {
-            \ '.*': {
-                \ 'cmdline': 'firenvim',
-            \ },
-            \ 'https?://.*twitch\.tv/.*': {
-                \ 'takeover':'never'
-            \ },
-            \ 'https?://.*notion\.so/.*': {
-                \ 'takeover':'never'
-            \ },
-        \ }
+  " turn off statusbar
+  set laststatus=0
+  " turn on spell checking
+  set spell
+  " disable tabline
+  let g:airline#extensions#tabline#enabled = 0
+  " disable signcolumn
+  set signcolumn=no
+  " disable numbers
+  set norelativenumber nonumber
+  " add shortcut for focusing the page
+  nnoremap <silent><Esc><Esc> :call firenvim#focus_page()<CR>
+  " add shortcut for hiding the frame
+  nnoremap <silent><C-z> :call firenvim#hide_frame()<CR>
+  " use external commandline for firenvim
+  let g:firenvim_config = {
+    \ 'localSettings': {
+      \ '.*': {
+        \ 'cmdline': 'firenvim',
+      \ },
+      \ 'https?://.*twitch\.tv/.*': {
+        \ 'takeover':'never'
+      \ },
+      \ 'https?://.*notion\.so/.*': {
+        \ 'takeover':'never'
+      \ },
     \ }
-    " Autowrite changes
-    autocmd InsertLeave * ++nested write
-    autocmd TextChanged * ++nested write
-    " make shortcuts work as expected with xkeysnail
-    inoremap <C-BS> <C-W>
-    inoremap <TAB> <C-N>
-    " set github and reddit filetype to markdown
-    au BufEnter *github.com_*.txt,*reddit.com_*.txt set filetype=markdown
+  \ }
+  " Autowrite changes
+  autocmd InsertLeave * ++nested write
+  autocmd TextChanged * ++nested write
+  " make shortcuts work as expected with xkeysnail
+  inoremap <C-BS> <C-W>
+  inoremap <TAB> <C-N>
+  " set github and reddit filetype to markdown
+  au BufEnter *github.com_*.txt,*reddit.com_*.txt set filetype=markdown
 endif
 
 " quick-scope configuration
@@ -623,13 +628,13 @@ let g:vimwiki_root = '~/Nextcloud/Documents/vimwiki'
 " let g:vimwiki_auto_header = 1
 let g:vimwiki_auto_chdir = 1
 let g:vimwiki_list = [
-            \{'path': '~/Nextcloud/Documents/vimwiki/', 'syntax': 'markdown', 'ext': '.md', 'auto_diary_index': 1, 'auto_tags': 1, 'auto_generate_tags': 1, 'links_space_char': '_',},
-            \]
-            " \{'path': '~/Nextcloud/Documents/vimwiki/uni', 'syntax': 'markdown', 'ext': '.md', 'auto_diary_index': 1, 'auto_tags': 1, 'auto_generate_tags': 1,},
-            " \{'path': '~/Nextcloud/Documents/vimwiki/uni/2020_spring_semester', 'syntax': 'markdown', 'ext': '.md', 'auto_diary_index': 1, 'auto_tags': 1, 'auto_generate_tags': 1,},
-            " \{'path': '~/Nextcloud/Documents/vimwiki/programming', 'syntax': 'markdown', 'ext': '.md', 'auto_diary_index': 1, 'auto_tags': 1, 'auto_generate_tags': 1,},
-            " \{'path': '~/Nextcloud/Documents/vimwiki/programming/elixir', 'syntax': 'markdown', 'ext': '.md', 'auto_diary_index': 1, 'auto_tags': 1, 'auto_generate_tags': 1,},
-            " \{'path': '~/Nextcloud/Documents/vimwiki/Todos', 'syntax': 'markdown', 'ext': '.md', 'auto_diary_index': 1, 'auto_tags': 1, 'auto_generate_tags': 1,},
+      \{'path': '~/Nextcloud/Documents/vimwiki/', 'syntax': 'markdown', 'ext': '.md', 'auto_diary_index': 1, 'auto_tags': 1, 'auto_generate_tags': 1, 'links_space_char': '_',},
+      \]
+      " \{'path': '~/Nextcloud/Documents/vimwiki/uni', 'syntax': 'markdown', 'ext': '.md', 'auto_diary_index': 1, 'auto_tags': 1, 'auto_generate_tags': 1,},
+      " \{'path': '~/Nextcloud/Documents/vimwiki/uni/2020_spring_semester', 'syntax': 'markdown', 'ext': '.md', 'auto_diary_index': 1, 'auto_tags': 1, 'auto_generate_tags': 1,},
+      " \{'path': '~/Nextcloud/Documents/vimwiki/programming', 'syntax': 'markdown', 'ext': '.md', 'auto_diary_index': 1, 'auto_tags': 1, 'auto_generate_tags': 1,},
+      " \{'path': '~/Nextcloud/Documents/vimwiki/programming/elixir', 'syntax': 'markdown', 'ext': '.md', 'auto_diary_index': 1, 'auto_tags': 1, 'auto_generate_tags': 1,},
+      " \{'path': '~/Nextcloud/Documents/vimwiki/Todos', 'syntax': 'markdown', 'ext': '.md', 'auto_diary_index': 1, 'auto_tags': 1, 'auto_generate_tags': 1,},
 au FileType vimwiki nmap <buffer> <C-H> <Plug>VimwikiGoBackLink
 au FileType vimwiki nmap <buffer> <C-J> <Plug>VimwikiVSplitLink
 au FileType vimwiki nmap <buffer> <C-N> <Plug>VimwikiNextLink
@@ -640,15 +645,15 @@ au FileType vimwiki syntax on
 au FileType vimwiki set nowrap
 
 function! HideClutter() abort
-    " turn off statusbar
-    setlocal laststatus=0
-    " disable tabline
-    let g:airline#extensions#tabline#enabled = 0
-    " disable signcolumn
-    setlocal signcolumn=no
-    " disable numbers
-    setlocal norelativenumber nonumber
-    " disable indentLine
-    IndentLinesDisable
+  " turn off statusbar
+  setlocal laststatus=0
+  " disable tabline
+  let g:airline#extensions#tabline#enabled = 0
+  " disable signcolumn
+  setlocal signcolumn=no
+  " disable numbers
+  setlocal norelativenumber nonumber
+  " disable indentLine
+  IndentLinesDisable
 endfunction
 autocmd BufEnter *dvtm-editor* call HideClutter()
