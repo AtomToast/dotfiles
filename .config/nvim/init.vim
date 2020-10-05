@@ -27,6 +27,7 @@ if !exists('g:started_by_firenvim')
     Plug 'vim-airline/vim-airline-themes'
 endif
 Plug 'Konfekt/vim-CtrlXA'
+Plug 'jiangmiao/auto-pairs'
 Plug 'godlygeek/tabular'
 Plug 'crusoexia/vim-monokai'
 Plug 'norcalli/nvim-colorizer.lua'
@@ -444,7 +445,7 @@ set complete=.,w,b,u,t,i,kspell
 set undofile
 
 " coc config
-call coc#add_extension('coc-pairs', 'coc-marketplace', 'coc-texlab',  'coc-yank',
+call coc#add_extension('coc-marketplace', 'coc-texlab',  'coc-yank',
                      \ 'coc-prettier', 'coc-snippets', 'coc-html', 'coc-xml',
                      \ 'coc-yaml', 'coc-css', 'coc-python', 'coc-tsserver',
                      \ 'coc-json', 'coc-sql', 'coc-vimlsp',
@@ -467,8 +468,6 @@ endfunction
 
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() :
       \ "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-autocmd FileType vim,vifm let b:coc_pairs_disabled = ['"']
 
 inoremap <silent><expr> <c-n> coc#refresh()
 
@@ -544,6 +543,10 @@ fun! StripTrailingWhitespace()
 endfun
 
 autocmd BufWritePre * call StripTrailingWhitespace()
+
+" auto-pairs configuration
+let g:AutoPairsFlyMode = 1
+let g:AutoPairsShortcutBackInsert = '<M-i>'
 
 " closetag configuration
 "" file extensions where this plugin is enabled
