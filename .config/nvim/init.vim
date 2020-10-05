@@ -291,8 +291,9 @@ nnoremap , ;
 nnoremap g, g;
 nnoremap g; g,
 
-" make sure ctrl+h works the same as <bs> Very important for coc-pairs
-imap <C-h> <BS>
+" make j and k behave like gj and gk
+nnoremap j gj
+nnoremap k gk
 
 " create an empty line above/below
 nnoremap <A-o> o<Esc>k
