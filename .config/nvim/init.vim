@@ -220,12 +220,15 @@ nnoremap <leader>ll :lopen<CR>
 " git/fugitive shortcuts
 let g:which_key_map.g = { 'name' : '+git_fugitive' }
 nmap <leader>ga :Gwrite<CR>
-nmap <leader>gs :Gstatus<CR>
-nmap <leader>gd :Gdiff<CR>
-nmap <leader>gc :Gcommit<CR>
-nmap <leader>gp :Gpush<CR>
-nmap <leader>gb :Gblame<CR>
-nmap <leader>gl :Glog<CR>
+nmap <leader>gs :Git<CR>
+nmap <leader>gd :Gdiffsplit<CR>
+nmap <leader>gc :Git commit<CR>
+nmap <leader>gp :Git_push<CR>
+nmap <leader>gb :Git blame<CR>
+nmap <leader>gl :Gllog<CR>
+nmap <leader>gm :Git mergetool<CR>
+nmap <leader>mh :diffget //2
+nmap <leader>ml :diffget //3
 
 " switch to/from  header file
 let g:which_key_map.a = 'switch to alternate file'
