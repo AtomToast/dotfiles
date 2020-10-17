@@ -5,6 +5,7 @@ xhost +SI:localuser:root &
 xkeysnail -q /home/kjell/.config/xkeysnail/config.py &
 /usr/lib/xdg-desktop-portal-kde &
 dunst &
+bato &
 xrdb -load ~/.Xresources &
 /usr/lib/kdeconnectd &
 setdwmstatusbar &
