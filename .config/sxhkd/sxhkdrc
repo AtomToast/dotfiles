@@ -29,7 +29,7 @@ super + F1
     $TERMINAL $EDITOR $HOME/Nextcloud/Documents/vimwiki/index.md
 
 super + ctrl + F1
-	$TERMINAL $EDITOR +"VimwikiMakeDiaryNote"
+    $TERMINAL $EDITOR +"VimwikiMakeDiaryNote"
 
 super + shift + F1
     $TERMINAL $FILEMANAGER $HOME/Nextcloud/Documents/vimwiki
@@ -143,7 +143,7 @@ super + shift + e
     editconf
 
 super + shift + h
-	openman
+    openman
 
 super + control + c
     clipmenu
@@ -152,7 +152,7 @@ super + control + {_, shift} + m
     {dmenumount, dmenuumount}
 
 super + alt + m
-	mpv $(xclip -selection clipboard -o)
+    mpv $(xclip -selection clipboard -o)
 
 super + shift + p
     bitwarden-dmenu --dmenu-args='-i' --clear-clipboard 30 --session-timeout 86400 --sync-vault-after 3600 --on-error 'xargs notify-send --urgency=low'
@@ -180,7 +180,7 @@ super + control + Escape
     xkill
 
 super + control + shift + Escape
-	killactive
+    killactive
 
 super + minus
-	colorpicker --one-shot --preview --short | tee /tmp/hexcode | xclip -selection clipboard && notify-send "Copied color code" $(cat /tmp/hexcode)
+    colorpicker --one-shot --preview --short | tee /tmp/hexcode | xclip -selection clipboard && notify-send "Copied color code" $(cat /tmp/hexcode)
