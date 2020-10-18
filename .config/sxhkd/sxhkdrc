@@ -3,7 +3,8 @@ XF86AudioMute
     pulsemixer --toggle-mute; volumenotify
 
 XF86Audio{Raise,Lower}Volume
-    pulsemixer --change-volume {+5,-5}; volumenotify
+    pactl set-sink-volume @DEFAULT_SINK@ {+5%,-5%} && volumenotify
+    # pulsemixer --change-volume {+5,-5}; volumenotify
 
 XF86AudioMicMute
     pactl set-source-mute @DEFAULT_SOURCE@ toggle
