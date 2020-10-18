@@ -1,0 +1,11 @@
+tick_rate: 1
+critical_level: 10
+low_level: 20
+critical:
+  summary: Critical battery level! (<10%)
+  body: Plug the power cable asap!
+  icon: battery-caution
+  urgency: Critical
+low:
+  summary: Battery low (<20%)
+  icon: battery-040
