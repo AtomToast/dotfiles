@@ -153,7 +153,8 @@ super + alt + m
 	mpv $(xclip -selection clipboard -o)
 
 super + shift + p
-    passmenu
+    bitwarden-dmenu --dmenu-args='-i' --clear-clipboard 30 --session-timeout 86400 --sync-vault-after 3600 --on-error 'xargs notify-send --urgency=low'
+    #passmenu
 
 super + control + p
     $TERMINAL -e pulsemixer
