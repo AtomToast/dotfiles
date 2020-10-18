@@ -7,7 +7,8 @@ XF86Audio{Raise,Lower}Volume
     # pulsemixer --change-volume {+5,-5}; volumenotify
 
 XF86AudioMicMute
-    pactl set-source-mute @DEFAULT_SOURCE@ toggle
+    togglemuteall
+    # pactl set-source-mute @DEFAULT_SOURCE@ toggle
     # pulsemixer --toggle-mute --id $(pulsemixer --list-sources \
     #     | grep Default | cut -d ' ' -f3 | tr -d ',')
 
