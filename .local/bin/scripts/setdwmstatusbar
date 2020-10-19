@@ -26,10 +26,8 @@ function batteryStatus() {
     elif [[ $batteryStatus == "Discharging" ]]; then
         if [[ $batteryCapacity -le 10 ]]; then
             batteryStatusIcon=""
-            dunstify -r 12983 -u critical "BATTERY LOW (< 10%)"
         elif [[ $batteryCapacity -le 20 ]]; then
             batteryStatusIcon=""
-            dunstify -r 12983 -u normal "BATTERY LOW (< 20%)"
         elif [[ $batteryCapacity -le 30 ]]; then
             batteryStatusIcon=""
         elif [[ $batteryCapacity -le 40 ]]; then
