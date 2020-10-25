@@ -10,8 +10,10 @@
 runtime config/plugins.vim
 runtime config/visuals.vim
   runtime config/plugins/vim-which-key.vim
+runtime config/keys.vim
   runtime config/plugins/vim-airline.vim
   runtime config/plugins/vim-markdown.vim
+  runtime config/plugins/markdown-preview.nvim.vim
   runtime config/plugins/indentLine.vim
   runtime config/plugins/vim-jsx-pretty.vim
   runtime config/plugins/vim-gitgutter.vim
@@ -19,6 +21,7 @@ runtime config/visuals.vim
   runtime config/plugins/a.vim.vim
   runtime config/plugins/nvim-colorizer.lua.vim
   runtime config/plugins/vifm.vim.vim
+  runtime config/plugins/fzf.vim.vim
   runtime config/plugins/fzf-hoogle.vim
   runtime config/plugins/vista.vim.vim
   runtime config/plugins/vim-wordmotion.vim
@@ -32,5 +35,4 @@ runtime config/visuals.vim
   runtime config/plugins/quick-scope.vim
   runtime config/plugins/vimwiki.vim
 runtime config/behaviour.vim
-runtime config/keys.vim
 
