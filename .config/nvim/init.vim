@@ -370,13 +370,45 @@ nnoremap <C-A-j> <C-w>j
 nnoremap <C-A-k> <C-w>k
 nnoremap <C-A-l> <C-w>l
 
-nnoremap <silent><C-A-t> :10sp<CR>:terminal<CR>
+nnoremap <silent><leader>t :call OpenTerminalSplit()<CR>
 
-" esc to exit terminal mode
-tnoremap ° <C-\><C-n>
+" <C-s> to exit terminal mode
+tnoremap <C-s> <C-\><C-n>
+
+fun! OpenTerminalSplit()
+  let l:buf = GetTerminalBuf()
+  if l:buf == -1
+    10sp
+    terminal
+    let g:terminal_job_id = b:terminal_job_id
+  else
+    let l:win = GetBufWin(l:buf)
+    call nvim_set_current_win(l:win)
+  endif
+endfun
+
+fun! GetTerminalBuf()
+  for l:buf in nvim_list_bufs()
+    if nvim_buf_is_loaded(buf)
+      let l:name = nvim_buf_get_name(buf)
+      if l:name =~ ".*term.*"
+        return buf
+      endif
+    endif
+  endfor
+  return -1
+endfun
+
+fun! GetBufWin(buf)
+  for l:win in nvim_list_wins()
+    if a:buf == nvim_win_get_buf(l:win)
+      return l:win
+    endif
+  endfor
+endfun
 
 " remove a lot of clutter from terminal buffers
-autocmd TermOpen * setlocal conceallevel=0 colorcolumn=0 norelativenumber nonumber
+autocmd TermOpen * setlocal conceallevel=0 colorcolumn=0 " norelativenumber nonumber
 autocmd TermOpen * startinsert
 
 " Prefer Neovim terminal insert mode to normal mode.
