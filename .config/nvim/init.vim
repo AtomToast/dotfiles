@@ -9,7 +9,6 @@
 
 
 call plug#begin('~/.local/share/nvim/plugged')
-" Plug 'dstein64/vim-startuptime'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
@@ -31,7 +30,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'godlygeek/tabular'
 Plug 'crusoexia/vim-monokai'
 Plug 'norcalli/nvim-colorizer.lua'
-Plug 'luochen1990/rainbow'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf'
 Plug 'alvan/vim-closetag', { 'for': ['html', 'javascript', 'javascript.jsx', 'typescript.tsx'] }
@@ -50,7 +48,12 @@ Plug 'elixir-editors/vim-elixir'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
+Plug 'sevko/vim-nand2tetris-syntax'
+Plug 'rust-lang/rust.vim'
+Plug 'cespare/vim-toml'
 Plug 'neovimhaskell/haskell-vim'
+Plug 'vmchale/dhall-vim'
+Plug 'monkoose/fzf-hoogle.vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'airblade/vim-gitgutter'
 Plug 'liuchengxu/vista.vim'
@@ -145,9 +148,6 @@ highlight GitGutterAdd    guifg=#a6e22e guibg=#3c3d37 ctermfg=2 ctermbg=237
 highlight GitGutterChange guifg=#fd971f guibg=#3c3d37 ctermfg=3 ctermbg=237
 highlight GitGutterDelete guifg=#f92672 guibg=#3c3d37 ctermfg=1 ctermbg=237
 
-" rainbow parantheses config
-let g:rainbow_active = 1
-
 " display indicator before linewraps
 set showbreak=>\ \ \
 
@@ -161,6 +161,9 @@ set splitbelow splitright
 
 " set the grep program to ripgrep
 set grepprg=rg\ --vimgrep
+
+" set path to work recursively through directories
+set path=.,,**
 
 " set leader to <space>
 let mapleader = " "
@@ -249,6 +252,9 @@ nnoremap <leader>L :30Lexplore<CR>
 
 " open vifm
 nnoremap <leader>V :Vifm<CR>
+
+" open Hoogle
+nnoremap <leader>H :Hoogle<CR>
 
 " create saner navigation bindings
 autocmd filetype netrw nmap <buffer> h -
@@ -451,7 +457,7 @@ endif
 
 " Set maximum text width and spelling
 if !exists('g:started_by_firenvim')
-    autocmd FileType text,markdown,tex,mail setlocal textwidth=80 spell
+    autocmd FileType text,markdown,tex,mail setlocal textwidth=79 spell
 endif
 
 " enable comment highlighting in json
@@ -511,6 +517,9 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() :
       \ "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 inoremap <silent><expr> <c-n> coc#refresh()
+
+"" fix coc-yank highlighting when switching buffers
+autocmd WinLeave * call coc#util#clear_pos_matches('^HighlightedyankRegion')
 
 "" Use `[c` and `]c` to navigate diagnostics
 nmap <silent> [c <Plug>(coc-diagnostic-prev)
@@ -574,6 +583,11 @@ nnoremap <silent><leader>cr  :<C-u>CocFzfListResume<CR>
 """ move preview window list to the right
 let g:coc_fzf_preview='right:50%'
 
+let g:coc_filetype_map = {
+      \'vhdl': 'hack_hdl',
+      \'hdl': 'hack_hdl',
+      \ }
+
 " autoremove trailing whitespaces
 fun! StripTrailingWhitespace()
   " Don't strip on these filetypes
@@ -586,8 +600,9 @@ endfun
 autocmd BufWritePre * call StripTrailingWhitespace()
 
 " auto-pairs configuration
-let g:AutoPairsFlyMode = 1
+let g:AutoPairsFlyMode = 0
 let g:AutoPairsShortcutBackInsert = '<M-i>'
+autocmd FileType vim let g:AutoPairsMultilineClose = 0
 
 " closetag configuration
 "" file extensions where this plugin is enabled
@@ -689,6 +704,7 @@ au FileType vimwiki nmap <buffer> <A-s> :VimwikiSearchTags<space>
 au FileType vimwiki syntax on
 au FileType vimwiki set nowrap
 
+" hide stuff inside of dvtms editor mode
 function! HideClutter() abort
   " turn off statusbar
   setlocal laststatus=0
