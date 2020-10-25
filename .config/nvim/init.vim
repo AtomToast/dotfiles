@@ -260,8 +260,8 @@ nmap <silent><leader>v :Vista!!<CR>
 
 " start and stop MarkdownPreview
 let g:which_key_map.m = { 'name' : '+markdown | +make' }
-nmap <leader>mp :MarkdownPreview<CR>
-nmap <leader>ms :MarkdownPreviewStop<CR>
+autocmd FileType markdown,vimwiki nmap <buffer><leader>mp :MarkdownPreview<CR>
+autocmd FileType markdown,vimwiki nmap <buffer><leader>ms :MarkdownPreviewStop<CR>
 
 " call make with a shortcut
 nmap <leader>mm :Make<CR>
@@ -276,7 +276,7 @@ function! Convert2Link() abort
       \I[\<C-r>0](\<C-o>A)"
 endfunction
 
-nnoremap <leader>ml :call Convert2Link()<CR>
+autocmd FileType markdown,vimwiki nnoremap <leader>ml :call Convert2Link()<CR>
 
 " ctrl+s saving
 noremap  <silent> <C-S> :update<CR>:nohlsearch<CR>
