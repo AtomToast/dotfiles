@@ -186,6 +186,11 @@ nmap <leader>hp <Plug>(GitGutterPreviewHunk)
 nmap <leader>hs <Plug>(GitGutterStageHunk)
 nmap <leader>hu <Plug>(GitGutterUndoHunk)
 
+" make typos less annoying
+cnoreabbrev Q q
+cnoreabbrev W w
+nnoremap Q <NOP>
+
 " remove search highlighting shortcut
 nmap <leader>s :nohlsearch<CR>
 
