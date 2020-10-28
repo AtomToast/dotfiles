@@ -11,7 +11,7 @@ define_multipurpose_modmap(
 )
 
 # use AltGr + hjkl as arrow keys
-define_keymap(None, {
+define_keymap(lambda wm_class: wm_class not in ("brawlhalla.exe", "Dwarf_Fortress"), {
     # AltGr + hjkl acts as arrow keys
     K("RM-h"): K("left"),
     K("RM-j"): K("down"),
@@ -39,9 +39,7 @@ define_keymap(None, {
     K("C-Shift-RM-k"): K("C-Shift-up"),
     K("C-Shift-RM-l"): K("C-Shift-right"),
     # alt + shift works as expecteed
-    K("LM-Shift-RM-h"): K("LM-Shift-left"),
-    K("LM-Shift-RM-j"): K("LM-Shift-down"),
-    K("LM-Shift-RM-k"): K("LM-Shift-up"),
+    K("LM-Shift-RM-h"): K("LM-Shift-left"), K("LM-Shift-RM-j"): K("LM-Shift-down"), K("LM-Shift-RM-k"): K("LM-Shift-up"),
     K("LM-Shift-RM-l"): K("LM-Shift-right"),
     K("Shift-RM-h"): K("Shift-left"),
     # ctrl + alt works as expected
@@ -68,9 +66,11 @@ define_keymap(None, {
 
     # disable enter
     K("enter"): K("UNKNOWN"),
+    K("RM-enter"): K("enter"),
 
     # disable backspace
     K("backspace"): K("UNKNOWN"),
+    K("RM-backspace"): K("backspace"),
 
 }, "hjkl arrow keys")
 
@@ -78,16 +78,10 @@ define_keymap(None, {
 define_keymap(re.compile("firefox"), {
     # use ctrl+n to tab
     K("C-n"): K("TAB"),
-    # ctrl+w deletes a word
-    K("C-w"): K("C-backspace"),
     # ctrl+shift+w acts as the normal ctrl+w to close a tab
     K("C-Shift-w"): K("C-w"),
-    # ctrl+h works as backspace
-    K("C-h"): K("backspace"),
-    # ctrl+m works as enter
-    K("C-m"): K("enter"),
-    # ctrl+j works as newline
-    K("C-j"): K("Shift-enter"),
+    # disable ctrl+q
+    K("C-q"): K("UNKNOWN"),
 }, "Firefox")
 
 # Keybindings for Discord
@@ -95,6 +89,11 @@ define_keymap(re.compile("discord|TelegramDesktop|Slack|Signal|Riot|Jitsi Meet")
     # use ctrl+u/d to page up/down
     K("C-u"): K("page_up"),
     K("C-d"): K("page_down"),
+    K("RM-g"): K("Shift-page_up"),
+    K("Shift-RM-g"): K("Shift-page_down"),
+}, "Discord, Slack, Signal, Riot, Jitsi Meet and Telegram")
+
+define_keymap(lambda wm_class: wm_class not in ("st-256color", "Alacritty", "Termite"), {
     # ctrl+w deletes a word
     K("C-w"): K("C-backspace"),
     # ctrl+m works as enter
@@ -104,6 +103,4 @@ define_keymap(re.compile("discord|TelegramDesktop|Slack|Signal|Riot|Jitsi Meet")
     # ctrl+h works as backspace
     K("C-h"): K("backspace"),
     # AltGr+g/G jump to start/end of messages
-    K("RM-g"): K("Shift-page_up"),
-    K("Shift-RM-g"): K("Shift-page_down"),
-}, "Discord, Slack, Signal, Riot, Jitsi Meet and Telegram")
+}, "Enable readline outside of applications that already have them")
