@@ -254,6 +254,9 @@ setopt hist_reduce_blanks
 # enable z.lua enhanced matching
 export _ZL_MATCH_MODE=1
 
+# configure programs for zsh-auto-notify
+export AUTO_NOTIFY_WHITELIST=("pacman" "yay" "make" "yarn" "pip")
+
 # load tetris for the lulz
 autoload -Uz tetriscurses
 
