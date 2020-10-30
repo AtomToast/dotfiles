@@ -196,7 +196,9 @@ _trueline_host_segment() {
     PS1+="$segment"
     _last_color=$bg_color
 }
-source ~/.trueline/trueline.sh
+# source ~/.trueline/trueline.sh
+
+eval "$(starship init bash)"
 
 #function _update_ps1() {
     #PS1=$(powerline-shell $?)
@@ -215,8 +217,6 @@ alias v="nvim"
 alias sv="sudoedit"
 alias vcfg="nvim ~/.config/nvim/init.vim"
 
-#set -o vi
+set -o vi
 
 export PATH="$HOME/bin:$PATH"
-
-neofetch

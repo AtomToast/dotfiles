@@ -29,11 +29,17 @@ fi
 # add cargo to PATH
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# add go to PATH
+export PATH="$HOME/go/bin:$PATH"
+
 # add vifm scripts to path
 export PATH="$HOME/.config/vifm/scripts:$PATH"
 
 # add ~/bin to path
 export PATH="$HOME/bin:$PATH"
+
+# add the emacs bin directory to the path
+export PATH="$HOME/.emacs.d/bin:$PATH"
 
 # set default programs
 export EDITOR="nvim"
@@ -60,6 +66,12 @@ export LESSHISTFILE="-"
 
 export TDESKTOP_DISABLE_TRAY_COUNTER=1
 export SUDO_ASKPASS="$HOME/bin/dmenupass"
+
+# export NIX_BUILD_SHELL="zsh"
+export GHCUP_USE_XDG_DIRS=1
+
+# Make ctrl+h do the thing in some stupid applications
+stty erase ^H
 
 if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
   exec startx > /dev/null 2>&1
