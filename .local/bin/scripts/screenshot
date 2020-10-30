@@ -27,7 +27,7 @@ Options:
     -o      Lets you specify a path to save the image to. By default saves to selection clipboard
     -n      Lets you specify a name for the saved file.
             Default format is screenshot-YYYY-MM-DD-hh-mm-ss.png"
-        exit 0
+        exit 1
         ;;
     s)  fullscreen=1
         ;;
