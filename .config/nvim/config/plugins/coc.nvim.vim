@@ -23,9 +23,6 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() :
 
 inoremap <silent><expr> <c-n> coc#refresh()
 
-" fix coc-yank highlighting when switching buffers
-autocmd WinLeave * call coc#util#clear_pos_matches('^HighlightedyankRegion')
-
 " Use `[c` and `]c` to navigate diagnostics
 nmap <silent> [c <Plug>(coc-diagnostic-prev)
 nmap <silent> ]c <Plug>(coc-diagnostic-next)

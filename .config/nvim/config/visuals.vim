@@ -51,3 +51,9 @@ endif
 
 " enable comment highlighting in json
 autocmd FileType json syntax match Comment +\/\/.\+$+
+
+" highlight yanks
+augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=500}
+augroup END
