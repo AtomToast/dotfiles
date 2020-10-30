@@ -1,7 +1,6 @@
 auto-reload yes
 prepopulate-query-feeds yes
 
-external-url-viewer "urlview"
 browser "firefox --private-window %u"
 
 bind-key j down
@@ -23,8 +22,13 @@ bind-key D pb-download
 bind-key U show-urls
 bind-key x pb-delete
 bind-key O open-in-browser-and-mark-read
+unbind-key SPACE
+bind-key SPACE macro-prefix
 
-
+macro y set browser "mpv %u"; open-in-browser ; set browser "firefox --private-window %u"
+macro Y set browser "downloadyoutube %u"; open-in-browser ; set browser "firefox --private-window %u"
+macro i set browser "openurlimg %u"; open-in-browser ; set browser "firefox --private-window %u"
+macro o set browser "linkhandler %u"; open-in-browser ; set browser "firefox --private-window %u"
 
 color info black cyan bold
 color background          white   default
