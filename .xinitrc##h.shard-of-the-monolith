@@ -1,0 +1,20 @@
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+sxhkd -m 1 &
+xbanish &
+xhost +SI:localuser:root &
+xkeysnail -q /home/kjell/.config/xkeysnail/config.py &
+/usr/lib/xdg-desktop-portal-kde &
+dunst &
+xrdb -load ~/.Xresources &
+/usr/lib/kdeconnectd &
+clipmenud &
+setdwmstatusbar &
+setroot -z /home/kjell/Pictures/wallpapers/$(ls ~/Pictures/wallpapers | shuf -n1) &
+blueman-applet &
+redshift -l 52.55:13.46 &
+# TODO: Figure out how to do enable loginctl unlock-session this without doas
+xss-lock -n dim-screen cornerlocker &
+nextcloud &
+signal-desktop --use-tray-icon --start-in-tray &
+
+startdwm
