@@ -1,5 +1,11 @@
 use_nerdfont = true
 
+[keybindings]
+"e" = "queue"
+" " = "playpause"
+"x" = "share selected"
+"Shift+x" = "share current"
+
 [theme]
 background = "black"
 primary = "light white"
