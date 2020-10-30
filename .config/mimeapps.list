@@ -5,6 +5,9 @@ image/gif=sxiv.desktop
 video/x-matroska=mpv.desktop
 text/plain=nvim.desktop
 text/x-shellscript=nvim.desktop
+text/x-tex=nvim.desktop
+text/x-c=nvim.desktop
+text/*=nvim.desktop
 inode/x-empty=nvim.desktop
 text/html=firefox.desktop
 x-scheme-handler/mailto=neomutt.desktop
@@ -24,6 +27,7 @@ application/xhtml+xml=firefox.desktop
 application/pdf=org.pwmt.zathura.desktop
 inode/directory=vifm.desktop
 x-scheme-handler/etcher=balena-etcher-electron.desktop
+x-scheme-handler/discord-712465656758665259=discord-712465656758665259.desktop
 
 [Added Associations]
 application/octet-stream=nvim.desktop;torrent.desktop;
