@@ -72,6 +72,10 @@ zinit light "zdharma/fast-syntax-highlighting"
 
 zinit light "skywind3000/z.lua"
 
+zinit light "MichaelAquilina/zsh-auto-notify"
+
+zinit load "spwhitt/nix-zsh-completions"
+
 zinit snippet 'https://github.com/robbyrussell/oh-my-zsh/raw/master/plugins/git/git.plugin.zsh'
 
 zinit ice blockf
