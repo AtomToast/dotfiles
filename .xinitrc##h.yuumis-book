@@ -8,6 +8,7 @@ dunst &
 bato &
 xrdb -load ~/.Xresources &
 /usr/lib/kdeconnectd &
+clipmenud &
 setdwmstatusbar &
 setroot -z /home/kjell/Pictures/wallpapers/$(ls ~/Pictures/wallpapers | shuf -n1) &
 blueman-applet &
