@@ -316,6 +316,8 @@ config.bind(' b', 'config-cycle statusbar.show always in-mode')
 config.bind(' t', 'config-cycle tabs.show multiple never')
 config.bind(
     ' o', 'config-cycle tabs.show multiple never;; config-cycle statusbar.show always in-mode')
+config.bind('<Ctrl+o', 'back')
+config.bind('<Ctrl+i', 'forward')
 
 # Colors
 c.colors.statusbar.normal.bg = '#272822'
