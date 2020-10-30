@@ -276,5 +276,9 @@ export FZF_CTRL_T_OPTS="--preview '(bat -p --color=always {} || tree -CF {}) 2> 
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 export FZF_ALT_C_OPTS="--preview 'tree -CF {} | head -200'"
 
+if [ -e /home/kjell/.nix-profile/etc/profile.d/nix.sh ]; then . /home/kjell/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
+eval "$(direnv hook zsh)"
+
 # Fix java applications
 [ ! "$TERM" = "linux" ] && [ ! "$TERM" = "fbpad-256" ] && [ ! "$TERM" = "dvtm-256color" ] && wmname LG3D
