@@ -42,7 +42,7 @@ set followlinks
 " With this option turned on you can run partially entered commands with
 " unambiguous beginning using :! (e.g. :!Te instead of :!Terminal or :!Te<tab>).
 
-" set fastrun
+set fastrun
 
 " Natural sort of (version) numbers within text.
 
@@ -98,6 +98,9 @@ set nohlsearch
 " Use increment searching (search while typing)
 set incsearch
 
+" enable numbers
+set number relativenumber
+
 " Try to leave some space from cursor to upper/lower border in lists
 
 set scrolloff=4
@@ -148,9 +151,10 @@ command! mkcd :mkdir %a | cd %a
 command! vgrep nvim "+grep %a"
 command! reload :write | restart
 command! z :execute 'cd' "'".fnameescape(system('eval "$(/usr/share/z.lua/z.lua --init zsh)" && _zlua -l %a | tail -n1 | grep -o "[^ ]*$"'))."'"
-command! FZFlocate :set noquickview | :execute 'goto' fnameescape(term('locate $HOME | fzf --height 10 2>/dev/tty'))
-command! FZFfind :set noquickview | :execute 'goto' fnameescape(term('fd . $HOME | fzf --height 10 2>/dev/tty'))
-command! dragon !dragon-drag-and-drop -x -a %f &
+command! FZFlocate :set noquickview | :execute 'goto' fnameescape(term('locate $HOME | fzf --preview "(bat -p --color=always {} || tree -CF {}) 2> /dev/null | head -200" 2>/dev/tty'))
+command! FZFfind :set noquickview | :execute 'goto' fnameescape(term('fd . $HOME | fzf --preview "(bat -p --color=always {} || tree -CF {}) 2> /dev/null | head -200" 2>/dev/tty'))
+command! Dragon !dragon-drag-and-drop -x -a %f &
+command! DragonTarget !dragon-drag-and-drop -x -t -p | xargs -I _ cp _ %d &
 
 " ------------------------------------------------------------------------------
 
@@ -181,21 +185,41 @@ command! dragon !dragon-drag-and-drop -x -a %f &
 " program.
 
 " Pdf
-filextype *.pdf zathura %c %i &
-" fileviewer *.pdf pdftotext -nopgbrk %c -
+filextype *.pdf
+    \ {View in Zathura and hide vifm}
+    \ devour zathura %c %i &,
+    \ {View in Zathura}
+    \ zathura %c %i &,
+filetype *.pdf fbpdf2 %c
+if $DISPLAY == ""
+    fileviewer *.pdf pdftotext -nopgbrk %c -
+endif
 
 " PostScript
 filextype *.ps,*.eps,*.ps.gz
-        \ {View in zathura}
-        \ zathura %f &,
+    \ {View in Zathura and hide vifm}
+    \ devour zathura %c %i &,
+    \ {View in Zathura}
+    \ zathura %c %i &,
 
 " Djvu
 filextype *.djvu
-        \ {View in zathura}
-        \ zathura %f &,
+    \ {View in Zathura and hide vifm}
+    \ devour zathura %c %i &,
+    \ {View in Zathura}
+    \ zathura %c %i &,
+
+" Comic Book Archives
+filextype *.cbr
+    \ {View in Zathura and hide vifm}
+    \ devour zathura %c %i &,
+    \ {View in Zathura}
+    \ zathura %c %i &,
 
 " Audio
 filetype *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus
+       \ {Play using ffplay and hide vifm}
+       \ devour ffplay -nodisp -autoexit %c,
        \ {Play using ffplay}
        \ ffplay -nodisp -autoexit %c,
 fileviewer *.mp3 mp3info
@@ -205,19 +229,32 @@ fileviewer *.flac soxi
 filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
          \*.fl[icv],*.m2v,*.mov,*.webm,*.mts,*.m4v,*.r[am],*.qt,*.divx,
          \*.as[fx]
+        \ {View using mpv and hide vifm}
+        \ devour mpv %f 2>/dev/null &,
         \ {View using mpv}
-        \ mpv %f &,
+        \ mpv %f 2>/dev/null &,
+        \ {View using VLC and hide vifm}
+        \ devour vlc %f &,
         \ {View using VLC}
         \ vlc %f &,
+        \ {View using ffplay and hide vifm}
+        \ devour ffplay -fs -autoexit %f,
         \ {View using ffplay}
         \ ffplay -fs -autoexit %f,
-        \ {View using Dragon}
-        \ dragon %f:p,
-" fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
-"           \*.fl[icv],*.m2v,*.mov,*.webm,*.mts,*.m4v,*.r[am],*.qt,*.divx,
-"           \*.as[fx]
-"          \ mediainfo %c,
-"          \ ffprobe -pretty %c 2>&1
+filetype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
+         \*.fl[icv],*.m2v,*.mov,*.webm,*.mts,*.m4v,*.r[am],*.qt,*.divx,
+         \*.as[fx]
+        \ {View using mpv}
+        \ mpv --gpu-context=drm %f
+
+
+if $DISPLAY == ""
+    fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
+              \*.fl[icv],*.m2v,*.mov,*.webm,*.mts,*.m4v,*.r[am],*.qt,*.divx,
+              \*.as[fx]
+            \ mediainfo %c,
+            \ ffprobe -pretty %c 2>&1
+endif
 
 " Web
 filextype *.html,*.htm
@@ -232,6 +269,8 @@ fileviewer *.html lynx -dump %c
 
 " Windows Executables
 filextype *.exe
+        \ {Open using wine and hide vifm}
+        \ devour wine %f &
         \ {Open using wine}
         \ wine %f &
 
@@ -245,6 +284,8 @@ fileviewer *.[1-8] man ./%c | col -b
 
 " Images
 filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
+        \ {View in sxiv and hide vifm}
+        \ devour sxiv -a %f &,
         \ {View in sxiv}
         \ sxiv -a %f &,
         \ {View in Gwenview}
@@ -253,6 +294,18 @@ filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
         \ feh %f &,
         \ {View in imv}
         \ imv -b 1D2330 -d %f &,
+filetype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
+        \ {View in fbvis}
+        \ fbvis %f
+
+if $DISPLAY == ""
+    fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.xpm,*.gif
+    \ fbvis %c >/dev/null
+    \ mediainfo %c
+    \ %pc
+    \ clear
+endif
+
 fileviewer *.pdf
     \ vifmimg pdfpreview %px %py %pw %ph %c
     \ %pc
@@ -268,7 +321,8 @@ fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
     \*.fl[icv],*.m2v,*.mov,*.webm,*.mts,*.m4v,*.r[am],*.qt,*.divx,
     \ vifmimg videopreview %px %py %pw %ph %c
     \ %pc
-    \ vifmimg clear
+    \ vifmimg clear,
+    \ mediainfo %c
 
 fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.xpm
     \ vifmimg draw %px %py %pw %ph %c
@@ -305,6 +359,11 @@ filextype *.vym
         \ {Open with VYM}
         \ vym %f &,
 
+" sc-im
+filextype *.sc
+        \ {Edit with SC-IM}
+        \ sc-im %f,
+
 " MD5
 filetype *.md5
        \ {Check MD5 hash sum}
@@ -331,7 +390,7 @@ filetype *.asc
        \ !!gpg --verify %c,
 
 " Torrent
-filetype *.torrent ktorrent %f &
+filetype *.torrent transadd %f &
 fileviewer *.torrent dumptorrent -v %c
 
 " FuseZipMount
@@ -359,6 +418,8 @@ fileviewer *.tar tar -tf %c
 filetype *.rar
        \ {Mount with rar2fs}
        \ FUSE_MOUNT|rar2fs %SOURCE_FILE %DESTINATION_DIR,
+       \ {Extract here}
+       \ unrar %c,
 fileviewer *.rar unrar v %c
 
 " IsoMount
@@ -383,7 +444,11 @@ filetype *.7z
 fileviewer *.7z 7z l %c
 
 " Office files
-filextype *.odt,*.doc,*.docx,*.xls,*.xlsx,*.odp,*.pptx libreoffice %f &
+filextype *.odt,*.odg,*.doc,*.docx,*.xls,*.xlsx,*.odp,*.pptx
+        \ {Edit with LibreOffice and hide vifm}
+        \ devour libreoffice %f &,
+        \ {Edit with LibreOffice}
+        \ libreoffice %f &,
 fileviewer *.odt odt2txt --width=-1 %c
 fileviewer *.doc catdoc %c
 fileviewer *.docx docx2txt %f -
@@ -395,15 +460,26 @@ filetype *.tudu tudu -f %c
 filextype *.pro qtcreator %f &
 
 " Directories
+fileviewer */ tree -CF %c
 filextype */
+        \ {View in thunar and hide vifm}
+        \ devour Thunar %f &,
         \ {View in thunar}
         \ Thunar %f &,
+        \ {View in dolphin and hide vifm}
+        \ devour dolphin %f &,
         \ {View in dolphin}
         \ dolphin %f &,
 
 " Text, code and everything else i guess (that is not a directory)
 " fileviewer *.[ch],*.[ch]pp,*.[ch]xx,*.md,*.py*,*.rs,*.js*,*.css,*.html,*.php,*.sh,Makefile*,*[^../],.*[^../] bat --color always --wrap never --pager never %c -p
-fileviewer *[^../],.*[^../] bat --color always --wrap never --pager never %c -p
+fileviewer *[^../],.*[^../]
+    \ bat --color always --wrap never --pager never %c -p 2>/dev/null ||
+    " probably broken symlink
+    \ exa --color always -l %c | cut -d' ' -f7-
+filextype *
+    \ {Open with XDG-Open}
+    \ xdg-open,
 
 " Syntax highlighting in preview
 "
@@ -461,7 +537,7 @@ set classify+=' ::*.doc,,*.docx::, ::*.xls,,*.xls[mx]::, ::*.pptx,,*.pp
 " set vifminfo=options,filetypes,commands,bookmarks,dhistory,state,cs
 " Like in vi
 set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
-    \phistory,fhistory,dirstack,registers,bookmarks,bmarks
+    \phistory,fhistory,dirstack,registers,bookmarks,bmarks,tabs
 
 " ------------------------------------------------------------------------------
 
@@ -512,10 +588,10 @@ nnoremap O :!$TERMINAL -e $EDITOR %f 2>/dev/null &<cr>
 nnoremap gb :file &<cr>l
 
 " Yank current directory path into the clipboard
-nnoremap yd :!echo %d | xclip %i<cr>
+nnoremap yd :!echo %d | xclip -i -selection clipboard %i<cr>
 
 " Yank current file path into the clipboard
-nnoremap yf :!echo %c:p | xclip %i<cr>
+nnoremap yf :!echo %c:p | xclip -i -selection clipboard %i<cr>
 
 " Mappings for faster renaming
 nnoremap I cw<c-a>
@@ -527,7 +603,7 @@ nnoremap cw cW
 nnoremap cW cw
 
 " Open console in current directory
-nnoremap <space>t :!$TERMINAL 2>/dev/null &<cr>
+nnoremap <space>T :!$TERMINAL 2>/dev/null &<cr>
 
 " Open editor to edit vifmrc and apply settings after returning to vifm
 nnoremap <space>c :write | edit $MYVIFMRC | restart<cr>
@@ -552,10 +628,24 @@ nnoremap <space>V :set viewcolumns=-{name}..,10{perms}..,7{size}..,7{uname}..,13
 nnoremap <space>f :file<cr>
 nnoremap <space>F :file<cr>j<cr>
 
+" make some shell commands more convenient
 nnoremap <space>g :grep<space>
+
+nnoremap <space>d :mkdir<space>
+
+nnoremap <space>t :touch<space>
+
+nnoremap <space>P :move<cr>
+nnoremap <space>p :copy<cr>
+
+nnoremap <space>s :nohl<cr>
 
 " open bookmarks menu
 nnoremap b :bmarks<cr>
+
+" sync panes
+nnoremap zs :sync<cr>
+nnoremap zS :sync!<cr>
 
 " set current file as wallpaper
 nnoremap W :!setroot -z %f<cr>
@@ -575,7 +665,9 @@ nnoremap ö :cd<space>
 nnoremap ä :z<space>
 
 " open dragon
-nnoremap ü :dragon<CR>
+nnoremap ü :Dragon<CR>
+vnoremap ü :Dragon<CR>
+nnoremap Ü :DragonTarget<CR>
 
 " vifmimg scrolling
 map > :!vifmimg inc<CR>
