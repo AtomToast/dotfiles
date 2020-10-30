@@ -7,6 +7,7 @@
 "
 ""
 
+runtime config/behaviour.vim
 runtime config/plugins.vim
 runtime config/visuals.vim
   runtime config/plugins/vim-which-key.vim
@@ -26,6 +27,8 @@ runtime config/keys.vim
   runtime config/plugins/vista.vim.vim
   runtime config/plugins/vim-wordmotion.vim
   runtime config/plugins/vim-speeddating.vim
+  " runtime config/plugins/nvim-lspconfig.vim
+  " runtime config/plugins/completion-nvim.vim
   runtime config/plugins/coc.nvim.vim
   runtime config/plugins/coc-fzf.vim
   runtime config/plugins/auto-pairs.vim
@@ -34,5 +37,4 @@ runtime config/keys.vim
   runtime config/plugins/firenvim.vim
   runtime config/plugins/quick-scope.vim
   runtime config/plugins/vimwiki.vim
-runtime config/behaviour.vim
 
