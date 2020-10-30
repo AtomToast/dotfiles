@@ -1,0 +1,50 @@
+*.font: Hack Nerd Font:pixelsize=10:antialias=true:autohint=true
+st.font: Hack Nerd Font:pixelsize=14:antialias=true:autohint=true
+
+#define base00 #272822
+#define base01 #e73c50
+#define base02 #a6e22e
+#define base03 #e6db74
+#define base04 #66d9ef
+#define base05 #ae81ff
+#define base06 #a1efe4
+#define base07 #e8e8e3
+#define base08 #64645e
+#define base09 #f92772
+#define base0A #9ec400
+#define base0B #e7c547
+#define base0C #7aa6da
+#define base0D #b77ee0
+#define base0E #54ced6
+#define base0F #ffffff
+
+*.background:   base00
+*.foreground:   base07
+*.cursorColor:  base0D
+
+*.color0:       base00
+*.color1:       base01
+*.color2:       base02
+*.color3:       base03
+*.color4:       base04
+*.color5:       base05
+*.color6:       base06
+*.color7:       base07
+
+*.color8:       base08
+*.color9:       base09
+*.color10:      base0A
+*.color11:      base0B
+*.color12:      base0C
+*.color13:      base0D
+*.color14:      base0E
+*.color15:      base0F
+
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+/* *.color16:      base09 */
+/* *.color17:      base0F */
+/* *.color18:      base01 */
+/* *.color19:      base02 */
+/* *.color20:      base04 */
+/* *.color21:      base06 */
