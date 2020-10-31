@@ -2,7 +2,7 @@
 
 # The famous "get a menu of emojis to copy" script.
 
-chosen=$(grep -v "#" ~/.local/share/larbs/emoji | dmenu -w $(xprop -root | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}') -i -l 20 -fn "Hack Nerd Font Mono::pixelsize=18:antialias=true:autohint=true")
+chosen=$(grep -v "#" ~/.local/share/emoji | dmenu -w $(xprop -root | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}') -i -l 20 -fn "Hack Nerd Font Mono::pixelsize=18:antialias=true:autohint=true")
 
 [ "$chosen" != "" ] || exit
 
