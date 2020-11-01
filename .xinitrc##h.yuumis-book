@@ -17,5 +17,6 @@ redshift -l 52.55:13.46 &
 xss-lock -n dim-screen cornerlocker &
 nextcloud &
 signal-desktop --use-tray-icon --start-in-tray &
+wmname LG3D &
 
 startdwm

@@ -9,12 +9,12 @@ xrdb -load ~/.Xresources &
 /usr/lib/kdeconnectd &
 clipmenud &
 setdwmstatusbar &
-setroot -z /home/kjell/Pictures/wallpapers/$(ls ~/Pictures/wallpapers | shuf -n1) &
+setroot --restore &
 blueman-applet &
 redshift -l 52.55:13.46 &
 # TODO: Figure out how to do enable loginctl unlock-session this without doas
 xss-lock -n dim-screen cornerlocker &
 nextcloud &
-signal-desktop --use-tray-icon --start-in-tray &
+wmname LG3D &
 
 startdwm
