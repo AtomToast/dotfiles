@@ -190,6 +190,10 @@ filextype *.pdf
     \ devour zathura %c %i &,
     \ {View in Zathura}
     \ zathura %c %i &,
+    \ {View in Okular and hide vifm}
+    \ devour okular %c %i &,
+    \ {View in Okular}
+    \ okular %c %i &,
 filetype *.pdf fbpdf2 %c
 if $DISPLAY == ""
     fileviewer *.pdf pdftotext -nopgbrk %c -
