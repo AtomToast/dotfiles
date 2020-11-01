@@ -5,6 +5,7 @@ let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown'
 " let g:vimwiki_filetypes = ['markdown']
 let g:vimwiki_root = '~/Nextcloud/Documents/vimwiki'
 " let g:vimwiki_auto_header = 1
+let g:vimwiki_listsyms = ' .oOx'
 let g:vimwiki_auto_chdir = 1
 let g:vimwiki_list = [
       \{'path': '~/Nextcloud/Documents/vimwiki/', 'syntax': 'markdown', 'ext': '.md', 'auto_diary_index': 1, 'auto_tags': 1, 'auto_generate_tags': 1, 'links_space_char': '_',},
