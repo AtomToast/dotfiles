@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 function internetStatus() {
-    ethernetStatus=$(cat /sys/class/net/enp0s25/operstate)
-    wifiStatus=$(cat /sys/class/net/wlp3s0/operstate)
+    ethernetStatus=$(cat "$1/operstate")
+    wifiStatus=$(cat "$2/operstate")
 
     if [ "$ethernetStatus" == "up" ]; then
         internetStatusIcon="" # ""
@@ -93,8 +93,10 @@ function memory_usage() {
     echo " $usedmem/$totalmem"
 }
 
+ethernetDevice=$(find /sys/class/net -name "enp*")
+wifiDevice=$(find /sys/class/net -name "wlp*")
 while true; do
-    internetStatusIcon=$(internetStatus)
+    internetStatusIcon=$(internetStatus "$ethernetDevice" "$wifiDevice")
     batteryStatusIcon=$(batteryStatus)
     mailCount=$(mail_count)
     spotifyStatus=$(spotify_status)
