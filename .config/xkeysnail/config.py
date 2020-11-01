@@ -93,7 +93,7 @@ define_keymap(re.compile("discord|TelegramDesktop|Slack|Signal|Riot|Jitsi Meet")
     K("Shift-RM-g"): K("Shift-page_down"),
 }, "Discord, Slack, Signal, Riot, Jitsi Meet and Telegram")
 
-define_keymap(lambda wm_class: wm_class not in ("st-256color", "Alacritty", "Termite"), {
+define_keymap(lambda wm_class: wm_class not in ("st-256color", "Alacritty", "Termite", "Wine"), {
     # ctrl+w deletes a word
     K("C-w"): K("C-backspace"),
     # ctrl+m works as enter
