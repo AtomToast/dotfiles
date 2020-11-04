@@ -68,9 +68,9 @@ function mail_count() {
 }
 
 function spotify_status() {
-    stat=$(playerctl --player=ncspot,spotifyd status 2>/dev/null | sed -e "s/Playing//;s/Paused//")
+    stat=$(playerctl --player=ncspot,spotifyd,spotify status 2>/dev/null | sed -e "s/Playing//;s/Paused//")
     if [[ $stat = "" ]] || [[ $stat = "" ]]; then
-        metadata=$(playerctl --player=ncspot,spotifyd metadata --format "{{ artist }} - {{ title }}")
+        metadata=$(playerctl --player=ncspot,spotifyd,spotify metadata --format "{{ artist }} - {{ title }}")
         echo " $stat $metadata |"
     else
         echo ""
