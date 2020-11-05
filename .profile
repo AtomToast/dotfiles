@@ -70,6 +70,8 @@ export SUDO_ASKPASS="$HOME/bin/dmenupass"
 # export NIX_BUILD_SHELL="zsh"
 export GHCUP_USE_XDG_DIRS=1
 
+export FZF_DEFAULT_COMMAND='fd --type f --follow'
+
 # Make ctrl+h do the thing in some stupid applications
 stty erase ^H
 
