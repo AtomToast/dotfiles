@@ -1,56 +1,112 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
-function internetStatus() {
+if [ "$TERM" = "linux" ]; then
+    internetWifiIcon="<I> Wifi"
+    internetEthernetIcon="<I> Eth"
+    internetDownIcon="<I> Down"
+    batteryUnknownIcon="<B> ?"
+    batteryErrorIcon="<B> !"
+    batteryFullIcon="<B> ||"
+    batteryChargingIcon="<B> /\\"
+    batteryCapacityIcon00="<B> \\/"
+    batteryCapacityIcon10="<B> \\/"
+    batteryCapacityIcon20="<B> \\/"
+    batteryCapacityIcon30="<B> \\/"
+    batteryCapacityIcon40="<B> \\/"
+    batteryCapacityIcon50="<B> \\/"
+    batteryCapacityIcon60="<B> \\/"
+    batteryCapacityIcon70="<B> \\/"
+    batteryCapacityIcon80="<B> \\/"
+    batteryCapacityIcon90="<B> \\/"
+    batteryCapacityIcon100="<B> \\/"
+    mailIcon="<m>"
+    spotifyPlayIcon=">"
+    spotifyPauseIcon="#"
+    cpuUsageIcon="<c>"
+    cpuTempIcon="<t>"
+    memoryIcon="<M>"
+    dateIcon="<D>"
+    timeIcon="<T>"
+else
+    internetWifiIcon="直"
+    internetEthernetIcon=""
+    internetDownIcon="睊"
+    batteryUnknownIcon=""
+    batteryErrorIcon=""
+    batteryFullIcon=""
+    batteryChargingIcon=""
+    batteryCapacityIcon00=""
+    batteryCapacityIcon10=""
+    batteryCapacityIcon20=""
+    batteryCapacityIcon30=""
+    batteryCapacityIcon40=""
+    batteryCapacityIcon50=""
+    batteryCapacityIcon60=""
+    batteryCapacityIcon70=""
+    batteryCapacityIcon80=""
+    batteryCapacityIcon90=""
+    batteryCapacityIcon100=""
+    mailIcon=""
+    spotifyPlayIcon=""
+    spotifyPauseIcon=""
+    cpuUsageIcon=""
+    cpuTempIcon=""
+    memoryIcon=""
+    dateIcon=""
+    timeIcon=""
+fi
+
+internetStatus() {
     ethernetStatus=$(cat "$1/operstate")
     wifiStatus=$(cat "$2/operstate")
 
-    if [ "$ethernetStatus" == "up" ]; then
-        internetStatusIcon="" # ""
-    elif [ "$wifiStatus" == "up" ]; then
-        internetStatusIcon="直"
+    if [ "$ethernetStatus" = "up" ]; then
+        internetStatusIcon="$internetEthernetIcon"
+    elif [ "$wifiStatus" = "up" ]; then
+        internetStatusIcon="$internetWifiIcon"
     else
-        internetStatusIcon="睊"
+        internetStatusIcon="$internetDownIcon"
     fi
 
     echo "$internetStatusIcon"
 }
 
-function batteryStatus() {
+batteryStatus() {
     batteryCapacity=$(cat /sys/class/power_supply/BAT0/capacity)
     batteryStatus=$(cat /sys/class/power_supply/BAT0/status)
 
-    if [[ $batteryStatus == "Full" ]]; then
-        batteryStatusIcon=""
-    elif [[ $batteryStatus == "Charging" ]]; then
-        batteryStatusIcon=""
-    elif [[ $batteryStatus == "Discharging" ]]; then
-        if [[ $batteryCapacity -le 10 ]]; then
-            batteryStatusIcon=""
-        elif [[ $batteryCapacity -le 20 ]]; then
-            batteryStatusIcon=""
-        elif [[ $batteryCapacity -le 30 ]]; then
-            batteryStatusIcon=""
-        elif [[ $batteryCapacity -le 40 ]]; then
-            batteryStatusIcon=""
-        elif [[ $batteryCapacity -le 50 ]]; then
-            batteryStatusIcon=""
-        elif [[ $batteryCapacity -le 60 ]]; then
-            batteryStatusIcon=""
-        elif [[ $batteryCapacity -le 70 ]]; then
-            batteryStatusIcon=""
-        elif [[ $batteryCapacity -le 80 ]]; then
-            batteryStatusIcon=""
-        elif [[ $batteryCapacity -le 90 ]]; then
-            batteryStatusIcon=""
-        elif [[ $batteryCapacity -le 99 ]]; then
-            batteryStatusIcon=""
-        elif [[ $batteryCapacity -eq 100 ]]; then
-            batteryStatusIcon=""
+    if [ "$batteryStatus" = "Full" ]; then
+        batteryStatusIcon="$batteryFullIcon"
+    elif [ "$batteryStatus" = "Charging" ]; then
+        batteryStatusIcon="$batteryChargingIcon"
+    elif [ "$batteryStatus" = "Discharging" ]; then
+        if [ "$batteryCapacity" -le 10 ]; then
+            batteryStatusIcon="$batteryCapacityIcon00"
+        elif [ "$batteryCapacity" -le 20 ]; then
+            batteryStatusIcon="$batteryCapacityIcon10"
+        elif [ "$batteryCapacity" -le 30 ]; then
+            batteryStatusIcon="$batteryCapacityIcon20"
+        elif [ "$batteryCapacity" -le 40 ]; then
+            batteryStatusIcon="$batteryCapacityIcon30"
+        elif [ "$batteryCapacity" -le 50 ]; then
+            batteryStatusIcon="$batteryCapacityIcon40"
+        elif [ "$batteryCapacity" -le 60 ]; then
+            batteryStatusIcon="$batteryCapacityIcon50"
+        elif [ "$batteryCapacity" -le 70 ]; then
+            batteryStatusIcon="$batteryCapacityIcon60"
+        elif [ "$batteryCapacity" -le 80 ]; then
+            batteryStatusIcon="$batteryCapacityIcon70"
+        elif [ "$batteryCapacity" -le 90 ]; then
+            batteryStatusIcon="$batteryCapacityIcon80"
+        elif [ "$batteryCapacity" -le 99 ]; then
+            batteryStatusIcon="$batteryCapacityIcon90"
+        elif [ "$batteryCapacity" -eq 100 ]; then
+            batteryStatusIcon="$batteryCapacityIcon100"
         fi
-    elif [[ $batteryStatus == "Unknown" ]]; then
-        batteryStatusIcon=""
+    elif [ "$batteryStatus" = "Unknown" ]; then
+        batteryStatusIcon="$batteryUnknownIcon"
     else
-        batteryStatusIcon=""
+        batteryStatusIcon="$batteryErrorIcon"
     fi
 
     timeRemaining=$(acpi | cut -d " " -f5- | sed -e 's/\(:[0-9]\+ \)/ /g')
@@ -58,19 +114,19 @@ function batteryStatus() {
     echo "$batteryStatusIcon $batteryCapacity% $timeRemaining"
 }
 
-function mail_count() {
+mail_count() {
     count=$(du -a ~/.local/share/mail/*/INBOX/new/* 2>/dev/null | sed -n '$=')
-    if [[ count -eq 0 ]]; then
+    if [ "$count" = "" ]; then
         echo ""
     else
-        echo "  $count |"
+        echo " $mailIcon $count |"
     fi
 }
 
-function player_status() {
+player_status() {
     player_list="ncspot,spotifyd,spotify,cmus,mpd"
-    stat=$(playerctl --player="$player_list" status 2>/dev/null | sed -e "s/Playing//;s/Paused//")
-    if [[ $stat = "" ]] || [[ $stat = "" ]]; then
+    stat=$(playerctl --player="$player_list" status 2>/dev/null | sed -e "s/Playing/$spotifyPlayIcon/;s/Paused/$spotifyPauseIcon/")
+    if [ "$stat" = "$spotifyPlayIcon" ] || [ "$stat" = "$spotifyPauseIcon" ]; then
         metadata=$(playerctl --player="$player_list" metadata --format "{{ artist }} - {{ title }}")
         echo " $stat $metadata |"
     else
@@ -78,20 +134,20 @@ function player_status() {
     fi
 }
 
-function cpu_temp() {
+cpu_temp() {
     cputemp=$(sensors | grep Package | awk '{print $4}' | tr -d +)
-    echo " $cputemp"
+    echo "$cpuTempIcon $cputemp"
 }
 
-function cpu_usage() {
+cpu_usage() {
     cpuusage=$(top -bn1 | rg -o "Cpu\(s\):\s+\d+.\d" | rg -o "\d+\.\d")
-    echo " $cpuusage%"
+    echo "$cpuUsageIcon $cpuusage%"
 }
 
-function memory_usage() {
+memory_usage() {
     totalmem=$(free -h | grep Mem | awk '{print $2}')
     usedmem=$(free -h | grep Mem | awk '{print $3}')
-    echo " $usedmem/$totalmem"
+    echo "$memoryIcon $usedmem/$totalmem"
 }
 
 ethernetDevice=$(find /sys/class/net -name "enp*")
@@ -104,6 +160,6 @@ while true; do
     cpuTemp=$(cpu_temp)
     cpuUsage=$(cpu_usage)
     memoryUsage=$(memory_usage)
-    xsetroot -name "$playerStatus$mailCount $memoryUsage | $cpuUsage | $cpuTemp | $batteryStatusIcon | $internetStatusIcon |  $(date +"%F (%a) |  %R ")"
+    xsetroot -name "$playerStatus$mailCount $memoryUsage | $cpuUsage | $cpuTemp | $batteryStatusIcon | $internetStatusIcon | $dateIcon $(date +"%F (%a) | $timeIcon %R ")"
     sleep 1
 done
