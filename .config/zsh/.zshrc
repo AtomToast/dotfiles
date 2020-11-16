@@ -199,6 +199,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -vI'
 alias tb='nc termbin.com 9999'
+alias gl="git pull --rebase --autostash || (echo 'Aborting pull' && git rebase --abort)"
 alias gbu='git bug'
 alias gbul='git bug ls'
 alias gbua='git bug add'
