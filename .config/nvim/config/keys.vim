@@ -40,9 +40,12 @@ nnoremap <leader>ll :lopen<CR>
 " search and replace shortcut
 let g:which_key_map.R = 'global search and replace'
 nmap <leader>R :%s//gI<left><left><left>
+vmap <leader>R :s//gI<left><left><left>
 
 " call make with a shortcut
 nmap <leader>mm :Make<CR>
+nmap <leader>mc :Make clean<CR>
+nmap <leader>mi :!sudo make install <CR>
 
 " ctrl+s saving
 noremap  <silent> <C-S> :update<CR>:nohlsearch<CR>
