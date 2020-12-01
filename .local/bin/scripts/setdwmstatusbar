@@ -124,7 +124,7 @@ mail_count() {
 }
 
 player_status() {
-    player_list="ncspot,spotifyd,spotify,cmus,mpd"
+    player_list="ncspot,spotify,cmus,mpd" # spotifyd
     stat=$(playerctl --player="$player_list" status 2>/dev/null | sed -e "s/Playing/$spotifyPlayIcon/;s/Paused/$spotifyPauseIcon/")
     if [ "$stat" = "$spotifyPlayIcon" ] || [ "$stat" = "$spotifyPauseIcon" ]; then
         metadata=$(playerctl --player="$player_list" metadata --format "{{ artist }} - {{ title }}")
