@@ -1,6 +1,6 @@
-call coc#add_extension('coc-marketplace', 'coc-texlab',  'coc-yank',
+call coc#add_extension('coc-marketplace', 'coc-texlab',
                      \ 'coc-prettier', 'coc-snippets', 'coc-html', 'coc-xml',
-                     \ 'coc-yaml', 'coc-css', 'coc-python', 'coc-tsserver',
+                     \ 'coc-yaml', 'coc-css', 'coc-pyright', 'coc-tsserver',
                      \ 'coc-json', 'coc-sql', 'coc-vimlsp',
                      \ 'coc-cssmodules', 'coc-diagnostic', 'coc-db', 'coc-rust-analyzer')
 set hidden
