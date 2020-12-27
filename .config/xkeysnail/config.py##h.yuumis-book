@@ -12,48 +12,48 @@ define_multipurpose_modmap(
 
 # use AltGr + neio as arrow keys
 define_keymap(lambda wm_class: wm_class not in ("brawlhalla.exe", "Dwarf_Fortress"), {
-    # AltGr + hjkl acts as arrow keys
-    K("RM-n"): K("left"),
-    K("RM-e"): K("down"),
-    K("RM-i"): K("up"),
-    K("RM-o"): K("right"),
+    # AltGr + neio acts as arrow keys
+    K("RM-j"): K("left"),
+    K("RM-k"): K("down"),
+    K("RM-l"): K("up"),
+    K("RM-semicolon"): K("right"),
     # alt works as expected
-    K("LM-RM-n"): K("LM-left"),
-    K("LM-RM-e"): K("LM-down"),
-    K("LM-RM-i"): K("LM-up"),
-    K("LM-RM-o"): K("LM-right"),
+    K("LM-RM-j"): K("LM-left"),
+    K("LM-RM-k"): K("LM-down"),
+    K("LM-RM-l"): K("LM-up"),
+    K("LM-RM-semicolon"): K("LM-right"),
     # ctrl works as expected
-    K("C-RM-n"): K("C-left"),
-    K("C-RM-e"): K("C-down"),
-    K("C-RM-i"): K("C-up"),
-    K("C-RM-o"): K("C-right"),
+    K("C-RM-j"): K("C-left"),
+    K("C-RM-k"): K("C-down"),
+    K("C-RM-l"): K("C-up"),
+    K("C-RM-semicolon"): K("C-right"),
     # shift works as expecteed
-    K("Shift-RM-n"): K("Shift-left"),
-    K("Shift-RM-e"): K("Shift-down"),
-    K("Shift-RM-i"): K("Shift-up"),
-    K("Shift-RM-o"): K("Shift-right"),
+    K("Shift-RM-j"): K("Shift-left"),
+    K("Shift-RM-k"): K("Shift-down"),
+    K("Shift-RM-l"): K("Shift-up"),
+    K("Shift-RM-semicolon"): K("Shift-right"),
 
     # ctrl + shift works as expecteed
-    K("C-Shift-RM-n"): K("C-Shift-left"),
-    K("C-Shift-RM-e"): K("C-Shift-down"),
-    K("C-Shift-RM-i"): K("C-Shift-up"),
-    K("C-Shift-RM-o"): K("C-Shift-right"),
+    K("C-Shift-RM-j"): K("C-Shift-left"),
+    K("C-Shift-RM-k"): K("C-Shift-down"),
+    K("C-Shift-RM-l"): K("C-Shift-up"),
+    K("C-Shift-RM-semicolon"): K("C-Shift-right"),
     # alt + shift works as expecteed
-    K("LM-Shift-RM-n"): K("LM-Shift-left"),
-    K("LM-Shift-RM-e"): K("LM-Shift-down"),
-    K("LM-Shift-RM-i"): K("LM-Shift-up"),
-    K("LM-Shift-RM-o"): K("LM-Shift-right"),
+    K("LM-Shift-RM-j"): K("LM-Shift-left"),
+    K("LM-Shift-RM-k"): K("LM-Shift-down"),
+    K("LM-Shift-RM-l"): K("LM-Shift-up"),
+    K("LM-Shift-RM-semicolon"): K("LM-Shift-right"),
     # ctrl + alt works as expected
-    K("C-LM-RM-n"): K("C-LM-left"),
-    K("C-LM-RM-e"): K("C-LM-down"),
-    K("C-LM-RM-i"): K("C-LM-up"),
-    K("C-LM-RM-o"): K("C-LM-right"),
+    K("C-LM-RM-j"): K("C-LM-left"),
+    K("C-LM-RM-k"): K("C-LM-down"),
+    K("C-LM-RM-l"): K("C-LM-up"),
+    K("C-LM-RM-semicolon"): K("C-LM-right"),
 
     # ctrl + shift + alt works as expected
-    K("C-Shift-LM-RM-n"): K("C-Shift-LM-left"),
-    K("C-Shift-LM-RM-e"): K("C-Shift-LM-down"),
-    K("C-Shift-LM-RM-i"): K("C-Shift-LM-up"),
-    K("C-Shift-LM-RM-o"): K("C-Shift-LM-right"),
+    K("C-Shift-LM-RM-j"): K("C-Shift-LM-left"),
+    K("C-Shift-LM-RM-k"): K("C-Shift-LM-down"),
+    K("C-Shift-LM-RM-l"): K("C-Shift-LM-up"),
+    K("C-Shift-LM-RM-semicolon"): K("C-Shift-LM-right"),
 
     # disable arrow keys for now
     K("left"):  K("UNKNOWN"),
