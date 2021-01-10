@@ -8,7 +8,7 @@ set nobackup
 set nowritebackup
 set signcolumn=auto:4
 set shortmess+=c
-set updatetime=300
+set updatetime=100
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 autocmd CursorHold * silent call CocActionAsync('highlight')

@@ -5,7 +5,7 @@ let g:indentLine_char = '|'
 let g:indentLine_concealcursor="inc"
 " disable concealcursor in normal and insert mode in vimwiki and markdown
 " files
-autocmd FileType markdown,vimwiki let g:indentLine_concealcursor="c"
+autocmd FileType markdown,vimwiki,json let g:indentLine_concealcursor="c"
 let g:indentLine_faster = 1
 let g:indentLine_bufTypeExclude = ["help", "terminal"]
 let g:indentLine_showFirstIndentLevel = 1
