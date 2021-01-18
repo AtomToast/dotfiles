@@ -67,7 +67,7 @@
   @unk   q      w      f      p      b             j      l      u      y      ;      [      ]      @unk
   @unk   @met_a @alt_r @ctl_s @sft_t g             m      @sft_n @ctl_e @alt_i @met_o '      \\
   @unk   z      @alt_x c      d      v      102d   k      h      ,      @alt_. /             @unk
-  @unk          tab    esc                  @spc_nav             @ret_sym @bspc_num del    @unk   @unk   @unk
+  @unk          tab    esc                  @spc_nav             @bspc_num @ret_sym del    @unk   @unk   @unk
                                                                                            @unk   @unk   @unk
 )
 
