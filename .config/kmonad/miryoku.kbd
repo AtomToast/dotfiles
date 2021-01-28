@@ -25,9 +25,11 @@
 )
 
 (defalias ;; Layers
+  med  (layer-toggle media) ;; Bind 'nav' to the Navigation Layer
   nav  (layer-toggle navigation) ;; Bind 'nav' to the Navigation Layer
   sym  (layer-toggle symbols) ;; Bind 'sym' to Symbols Layer
   num  (layer-toggle numbers) ;; Bind 'num' to Numbers Layer
+  fun  (layer-toggle function) ;; Bind 'fun' to Function Layer
   ass  (layer-switch qwerty) ;; Bind 'ass' to QWERTY Layer
   cmk  (layer-switch colemak-dh) ;; Bind 'cmk' to colemak-dh Layer
 )
@@ -47,9 +49,11 @@
   alt_. (tap-hold-next-release 200 . ralt)
 
   ;; Bottomrow layer switches
-  spc_nav (tap-hold-next-release 200 spc @nav)
+  esc_med  (tap-hold-next-release 200 esc @med)
+  spc_nav  (tap-hold-next-release 200 spc @nav)
   bspc_num (tap-hold-next-release 200 bspc @num)
-  ret_sym (tap-hold-next-release 200 ret @sym)
+  ret_sym  (tap-hold-next-release 200 ret @sym)
+  del_fun  (tap-hold-next-release 200 del @fun)
 )
 
 (defalias
@@ -62,12 +66,12 @@
 )
 
 (deflayer colemak-dh
-  esc    f1     f2     f3     f4     f5            f6     f7     f8     f9     f10    f11    f12    @unk   @unk   @ass  @unk
-  grv    1      2      3      4      5             6      7      8      9      0      -      =      @unk
+  @unk   f1     f2     f3     f4     f5            f6     f7     f8     f9     f10    f11    f12    @unk   @unk   @ass  sys
+  @unk   1      2      3      4      5             6      7      8      9      0      -      =      @unk
   @unk   q      w      f      p      b             j      l      u      y      ;      [      ]      @unk
   @unk   @met_a @alt_r @ctl_s @sft_t g             m      @sft_n @ctl_e @alt_i @met_o '      \\
   @unk   z      @alt_x c      d      v      102d   k      h      ,      @alt_. /             @unk
-  @unk          tab    esc                  @spc_nav             @bspc_num @ret_sym del    @unk   @unk   @unk
+  @unk          tab    @esc_med             @spc_nav             @bspc_num @ret_sym @del_fun @unk   @unk   @unk
                                                                                            @unk   @unk   @unk
 )
 
@@ -77,7 +81,7 @@
   _      _      _      _      _      _             @rdo   @pst   @cpy   @cut   @udo   _      _      _
   _      _      _      _      _      _             caps   lft    down   up     rght   _      _
   _      _      _      _      _      _      _      ins    home   pgdn   pgup   end           _
-  _             _      _                    _                    ret    bspc   _      _      _      _
+  _             _      _                    _                    bspc   ret    _      _      _      _
                                                                                       _      _      _
 )
 
@@ -100,6 +104,36 @@
   _             .      0                    -                    _      _      _      _      _      _
                                                                                       _      _      _
 )
+
+(deflayer function
+  _      _      _      _      _      _             _      _      _      _      _      _      _      _      _      _     _
+  _      _      _      _      _      _             _      _      _      _      _      _      _      _
+  _      f12    f7     f8     f9     sys           _      _      _      _      _      _      _      _
+  _      f11    f4     f5     f6     scrlck        _      _      _      _      _      _      _
+  _      f10    f1     f2     f3     pause  _      _      _      _      _      _             _
+  _             _      menu                 _                    _      _      _      _      _      _
+                                                                                      _      _      _
+)
+
+(deflayer media
+  _      _      _      _      _      _             _      _      _      _      _      _      _      _      _      _     _
+  _      _      _      _      _      _             _      _      _      _      _      _      _      _
+  _      _      _      _      _      _             _      _      _      _      _      _      _      _
+  _      _      _      _      _      _             _      previoussong vold volu nextsong _      _
+  _      _      _      _      _      _      _      _      _      _      _      _             _
+  _             _      _                    _                    playpause stop      _      _      _      _
+                                                                                      _      _      _
+)
+
+;; (deflayer media
+;;   _      _      _      _      _      _             _      _      _      _      _      _      _      _      _      _     _
+;;   _      _      _      _      _      _             _      _      _      _      _      _      _      _
+;;   _      _      _      _      _      _             _      _      _      _      _      _      _      _
+;;   _      _      _      _      _      _             _      next   vold   volu   prev   _      _
+;;   _      _      _      _      _      _      _      _      _      _      _      _             _
+;;   _             _      _                    _                    pp     stop   mute   _      _      _
+;;                                                                                       _      _      _
+;; )
 
 (deflayer qwerty
   esc    f1     f2     f3     f4     f5            f6     f7     f8     f9     f10    f11    f12    home   end    @cmk  del
