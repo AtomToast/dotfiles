@@ -66,10 +66,10 @@
 )
 
 (deflayer colemak-dh
-  @unk   f1     f2     f3     f4     f5            f6     f7     f8     f9     f10    f11    f12    @unk   @unk   @ass  sys
-  @unk   1      2      3      4      5             6      7      8      9      0      -      =      @unk
-  @unk   q      w      f      p      b             j      l      u      y      ;      [      ]      @unk
-  @unk   @met_a @alt_r @ctl_s @sft_t g             m      @sft_n @ctl_e @alt_i @met_o '      \\
+  @unk   @unk   @unk   @unk   @unk   @unk          @unk   @unk   @unk   @unk   @unk   @unk   @unk   @unk   @unk   @ass  sys
+  @unk   @unk   @unk   @unk   @unk   @unk          @unk   @unk   @unk   @unk   @unk   @unk   @unk   @unk
+  @unk   q      w      f      p      b             j      l      u      y      '      @unk   @unk   @unk
+  @unk   @met_a @alt_r @ctl_s @sft_t g             m      @sft_n @ctl_e @alt_i @met_o @unk   @unk
   @unk   z      @alt_x c      d      v      102d   k      h      ,      @alt_. /             @unk
   @unk          tab    @esc_med             @spc_nav             @bspc_num @ret_sym @del_fun @unk   @unk   @unk
                                                                                            @unk   @unk   @unk
@@ -121,19 +121,9 @@
   _      _      _      _      _      _             _      _      _      _      _      _      _      _
   _      _      _      _      _      _             _      previoussong vold volu nextsong _      _
   _      _      _      _      _      _      _      _      _      _      _      _             _
-  _             _      _                    _                    playpause stop      _      _      _      _
+  _             _      _                    _                    playpause stop mute   _      _      _
                                                                                       _      _      _
 )
-
-;; (deflayer media
-;;   _      _      _      _      _      _             _      _      _      _      _      _      _      _      _      _     _
-;;   _      _      _      _      _      _             _      _      _      _      _      _      _      _
-;;   _      _      _      _      _      _             _      _      _      _      _      _      _      _
-;;   _      _      _      _      _      _             _      next   vold   volu   prev   _      _
-;;   _      _      _      _      _      _      _      _      _      _      _      _             _
-;;   _             _      _                    _                    pp     stop   mute   _      _      _
-;;                                                                                       _      _      _
-;; )
 
 (deflayer qwerty
   esc    f1     f2     f3     f4     f5            f6     f7     f8     f9     f10    f11    f12    home   end    @cmk  del
