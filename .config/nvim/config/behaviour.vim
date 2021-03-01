@@ -4,6 +4,10 @@ set grepprg=rg\ --vimgrep
 " set path to work recursively through directories
 set path=.,,**
 
+" define python provider
+let g:loaded_python_provider = 0
+let g:python3_host_prog = '/usr/bin/python'
+
 " Restore last position when reopening file
 au BufReadPost *
       \ if line("'\"") > 1 && line("'\"") <= line("$") |
