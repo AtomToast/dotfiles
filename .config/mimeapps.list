@@ -2,6 +2,7 @@
 image/png=sxiv.desktop
 image/jpeg=sxiv.desktop
 image/gif=sxiv.desktop
+image/webp=sxiv.desktop
 video/x-matroska=mpv.desktop
 text/plain=nvim.desktop
 text/x-shellscript=nvim.desktop
@@ -28,7 +29,9 @@ application/pdf=org.pwmt.zathura.desktop
 inode/directory=vifm.desktop
 x-scheme-handler/etcher=balena-etcher-electron.desktop
 x-scheme-handler/discord-712465656758665259=discord-712465656758665259.desktop
+x-scheme-handler/tg=userapp-Telegram Desktop-5M3NW0.desktop
 
 [Added Associations]
 application/octet-stream=nvim.desktop;torrent.desktop;
 application/x-bittorrent=torrent.desktop;
+x-scheme-handler/tg=userapp-Telegram Desktop-5M3NW0.desktop;
