@@ -138,77 +138,7 @@ ex ()
   fi
 }
 
-declare -A TRUELINE_COLORS=(
-    [black]='40;40;40'
-    [red]='225;66;69'
-    [lightgreen]='85;186;121'
-    [orange]='246;116;0'
-    [darkgreen]='0;109;98'
-    [purple]='141;80;141'
-    [blue]='66;133;244'
-    [white]='239;240;241'
-    [lightgrey]='68;68;68'
-)
-
-declare -a TRUELINE_SEGMENTS=(
-    'user,black,white,normal',
-    'host,black,grey,normal',
-    'venv,black,purple,normal',
-    'working_dir,black,lightgreen,normal',
-    'git,black,orange,normal',
-    'read_only,red,lightgrey,bold',
-    'prompt,white,special_grey,bold',
-)
-
-declare -A TRUELINE_SYMBOLS=(
-    [working_dir_home]='~'
-)
-
-TRUELINE_SHOW_VIMODE=true
-TRUELINE_VIMODE_INS_COLORS_STYLE=('black' 'blue' 'bold')
-TRUELINE_VIMODE_CMD_COLORS_STYLE=('white' 'darkgreen' 'bold')
-TRUELINE_WORKING_DIR_ABBREVIATE_PARENT_DIRS=true
-TRUELINE_WORKING_DIR_ABBREVIATE_PARENT_DIRS_LENGTH=3
-
-_trueline_prompt_segment() {
-    local fg_color="$1"
-    local bg_color="$2"
-    local font_style="$3"
-    local is_root="$(_trueline_is_root)"
-    local symbol=" $ "
-    if [[ -n "$is_root" ]]; then
-        local symbol=" # "
-    fi
-    local segment="$(_trueline_separator)"
-    segment+="$(_trueline_content "$fg_color" "$bg_color" "$font_style" "$symbol")"
-    PS1+="$segment"
-    _last_color=$bg_color
-}
-
-
-_trueline_host_segment() {
-    local fg_color="$1"
-    local bg_color="$2"
-    local font_style="$3"
-    local host="$HOSTNAME"
-    local segment="$(_trueline_separator)"
-    segment+="$(_trueline_content "$fg_color" "$bg_color" "$font_style" " $host ")"
-    PS1+="$segment"
-    _last_color=$bg_color
-}
-# source ~/.trueline/trueline.sh
-
 eval "$(starship init bash)"
-
-#function _update_ps1() {
-    #PS1=$(powerline-shell $?)
-#}
-
-#if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-    #PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-#fi
-
-[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
 alias ll="ls -lah"
 alias vim="nvim"
