@@ -25,6 +25,9 @@ if exists('g:started_by_firenvim')
       \ 'https?://.*notion\.so/.*': {
         \ 'takeover':'never'
       \ },
+      \ 'https?://.*linkedin\.com/.*': {
+        \ 'takeover':'never'
+      \ },
     \ }
   \ }
   " Autowrite changes
