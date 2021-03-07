@@ -443,8 +443,8 @@ filetype *.ftp
 
 " Fuse7z and 7z archives
 filetype *.7z
-       \ {Mount with fuse-7z}
-       \ FUSE_MOUNT|fuse-7z %SOURCE_FILE %DESTINATION_DIR,
+       \ {Mount with fuse3-p7zip}
+       \ FUSE_MOUNT|fuse3-p7zip %SOURCE_FILE %DESTINATION_DIR,
 fileviewer *.7z 7z l %c
 
 " Office files
