@@ -94,10 +94,7 @@ super + shift + F12
 XF86ScreenSaver
     slock
 
-super + shift + asterisk
-    sxiv -art $HOME/Pictures
-
-super + numbersign
+super + shift + quotedbl
     = -- -i
 
 Print
