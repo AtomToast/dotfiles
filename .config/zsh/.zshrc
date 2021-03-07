@@ -226,9 +226,10 @@ alias tsurf='tabbed -c surf -e & disown'
 alias webcam="ffplay -left 10 -f v4l2 -fflags nobuffer -flags low_delay -video_size 640x480 -framerate 60 -i /dev/video0 2&>/dev/null"
 alias fbwebcam="ffmpeg -i /dev/video0 -pix_fmt bgra -f fbdev /dev/fb0"
 alias setupvirtualcam='sudo modprobe v4l2loopback devices=1 max_buffers=2 exclusive_caps=1 card_label="VirtualCam"'
-alias padwebcam='ffmpeg -i /dev/video0 -vf "[in]scale=iw*min(1280/iw\,720/ih):ih*min(1280/iw\,720/ih)[scaled]; [scaled]pad=1280:720:(1280-iw*min(1280/iw\,720/ih))/2:(720-ih*min(1280/iw\,720/ih))/2[padded]; [padded]setsar=1:1[out]" -f v4l2 -pix_fmt yuv420p /dev/video2'
+alias padwebcam='ffmpeg -i /dev/video0 -vf "[in]scale=iw*min(1280/iw\,720/ih):ih*min(1280/iw\,720/ih)[scaled]; [scaled]pad=1280:720:(1280-iw*min(1280/iw\,720/ih))/2:(720-ih*min(1280/iw\,720/ih))/2[padded]; [padded]setsar=1:1[out]" -f v4l2 -pix_fmt yuv420p /dev/video1'
 alias record="ffmpeg -f x11grab -video_size 1920x1080 -framerate 25 -i $DISPLAY -c:v libx264 -preset ultrafast screen.mp4"
 alias fbrecord="ffmpeg -f fbdev -i /dev/fb0 fb.mp4"
+alias x2xyuumi="ssh -YC yuumis-book x2x -completeregionleft 1280 -completeregionright 3200 -completeregionup 174 -completeregionlow 1080 -east -to :0.0 &"
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
