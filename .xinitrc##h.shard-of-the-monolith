@@ -11,7 +11,7 @@ clipmenud &
 setdwmstatusbar &
 setroot --restore &
 blueman-applet &
-DESTINATION_CADMUS="/home/kjell/git/cadmus/cadmus" /home/kjell/git/cadmus/cadmus.sh run &
+cadmus &
 redshift &
 # TODO: Figure out how to do enable loginctl unlock-session this without doas
 xss-lock -n dim-screen cornerlocker &
