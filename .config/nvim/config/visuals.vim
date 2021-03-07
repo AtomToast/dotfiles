@@ -47,6 +47,7 @@ endif
 " Set maximum text width and spelling
 if !exists('g:started_by_firenvim')
     autocmd FileType text,markdown,tex,mail setlocal textwidth=79 spell
+    autocmd FileType python setlocal textwidth=79
 endif
 
 " enable comment highlighting in json
