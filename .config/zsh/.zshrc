@@ -22,12 +22,13 @@ zinit light-mode for \
 
 
 if [ "$TERM" = "linux" ] || [ "$TERM" = "dvtm" ] ; then
+    source /usr/share/gitstatus/gitstatus.prompt.zsh
     export NCURSES_NO_UTF8_ACS=1
     # multiline prompt
     #PS1_viins="%B%F{red}%M%f%b:%F{cyan}%~%f"$'\n'"%B%F{green}>%f%b "
     #PS1_vicmd="%B%F{red}%M%f%b:%F{cyan}%~%f"$'\n'"%B%F{green}<%f%b "
-    PS1_viins="%B%F{red}%M%f%b:%F{cyan}%~%f %B%F{green}>%f%b "
-    PS1_vicmd="%B%F{red}%M%f%b:%F{cyan}%~%f %B%F{green}<%f%b "
+    PS1_viins="%B%F{red}%M%f%b:%F{cyan}%~%f ${GITSTATUS_PROMPT} %B%F{green}>%f%b "
+    PS1_vicmd="%B%F{red}%M%f%b:%F{cyan}%~%f ${GITSTATUS_PROMPT} %B%F{green}<%f%b "
     export RPS1='[%(?.%F{green}.%F{red})%?%f]'
     # export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=5"
     # set cursor to non-blinking block
