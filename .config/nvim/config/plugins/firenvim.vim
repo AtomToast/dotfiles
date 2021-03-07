@@ -28,6 +28,12 @@ if exists('g:started_by_firenvim')
       \ 'https?://.*linkedin\.com/.*': {
         \ 'takeover':'never'
       \ },
+      \ 'https?://.*element\.envs\.net/.*': {
+        \ 'takeover':'never'
+      \ },
+      \ 'https?://.*element\.io/.*': {
+        \ 'takeover':'never'
+      \ },
     \ }
   \ }
   " Autowrite changes
