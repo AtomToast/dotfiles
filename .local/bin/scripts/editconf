@@ -1,8 +1,7 @@
 #!/usr/bin/sh
 
-[ "$YADM_DIR" ] || YADM_DIR="$XDG_DATA_HOME/yadm"
-export GIT_DIR="$YADM_DIR/repo.git"
+chosen="$HOME/$(yadm ls-files "$HOME" | dmenu -i -p "Edit:")" || exit
 
-chosen=$(yadm ls-files "$HOME" | dmenu -i -p "Edit:") || exit
+cd "${chosen%/*}" || exit
 
-$TERMINAL -e "$EDITOR" "$chosen"
+$TERMINAL -e "yadm" "enter" "$EDITOR" "$chosen"
