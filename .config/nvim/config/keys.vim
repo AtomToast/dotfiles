@@ -59,14 +59,8 @@ nnoremap <silent><A-Left>  :vertical resize +2<CR>
 nnoremap <silent><A-Right> :vertical resize -2<CR>
 
 " shortcut for entering semicolon at the end of the line
-inoremap <A-,> <Esc>A;<Esc>
-nnoremap <A-,> A;<Esc>
-
-" swap semicolon and comma because of my german layout
-nnoremap ; ,
-nnoremap , ;
-nnoremap g, g;
-nnoremap g; g,
+inoremap <A-;> <Esc>mbA;<Esc>`ba
+nnoremap <A-;> mbA;<Esc>`b
 
 " make j and k behave like gj and gk
 nnoremap j gj
