@@ -287,6 +287,9 @@ c.statusbar.show = 'always'
 #   - multiple: Hide the tab bar if only one tab is open.
 #   - switching: Show the tab bar when switching tabs.
 c.tabs.show = 'multiple'
+c.tabs.position = 'left'
+c.tabs.width = 30
+c.tabs.background = True
 
 # Force `prefers-color-scheme: dark` colors for websites.
 # Type: Bool
@@ -318,6 +321,7 @@ config.bind(
     ' o', 'config-cycle tabs.show multiple never;; config-cycle statusbar.show always in-mode')
 config.bind('<Ctrl+o', 'back')
 config.bind('<Ctrl+i', 'forward')
+config.bind("b", "set-cmd-text -s :tab-focus")
 
 # Colors
 c.colors.statusbar.normal.bg = '#272822'
