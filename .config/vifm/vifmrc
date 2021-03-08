@@ -677,6 +677,9 @@ nnoremap Ü :DragonTarget<CR>
 map > :!vifmimg inc<CR>
 map < :!vifmimg dec<CR>
 
+" open current folder in sxiv
+nnoremap <c-v> :!devour sxiv -t %d<cr>
+
 " nnoremap s :!st 2>/dev/null &<CR>
 
 " ------------------------------------------------------------------------------
