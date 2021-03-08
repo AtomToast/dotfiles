@@ -43,6 +43,7 @@ if get(g:, '_has_set_default_indent_settings', 0) == 0
   set shiftwidth=4
   let g:_has_set_default_indent_settings = 1
 endif
+autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
 
 " Set maximum text width and spelling
 if !exists('g:started_by_firenvim')
