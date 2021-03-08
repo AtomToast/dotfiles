@@ -64,6 +64,8 @@ export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch-config"
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 export LESSHISTFILE="-"
 export GOPATH="$HOME/.local/share/go"
+[ "$(hostname)" = "shard-of-the-monolith" ] &&
+  export TEXMFDIST="/var/run/media/kjell/data/texmf-dist"
 
 
 # export MOZ_ENABLE_WAYLAND=1
