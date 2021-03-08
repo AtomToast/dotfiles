@@ -7,6 +7,8 @@ map i zoom in
 map o zoom out
 map r reload
 map R rotate
+map e scroll down
+map y scroll up
 
 set default-fg "#F8F8F5"
 set default-bg "#282828"
