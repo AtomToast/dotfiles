@@ -53,10 +53,10 @@ vnoremap <silent> <C-S> <C-C>:update<CR>:nohlsearch<CR>
 inoremap <silent> <C-S> <C-O>:update<CR><C-O>:nohlsearch<CR>
 
 " make arrows resize splits
-nnoremap <silent><Up>    :resize +2<CR>
-nnoremap <silent><Down>  :resize -2<CR>
-nnoremap <silent><Left>  :vertical resize +2<CR>
-nnoremap <silent><Right> :vertical resize -2<CR>
+nnoremap <silent><A-Up>    :resize +2<CR>
+nnoremap <silent><A-Down>  :resize -2<CR>
+nnoremap <silent><A-Left>  :vertical resize +2<CR>
+nnoremap <silent><A-Right> :vertical resize -2<CR>
 
 " shortcut for entering semicolon at the end of the line
 inoremap <A-,> <Esc>A;<Esc>
