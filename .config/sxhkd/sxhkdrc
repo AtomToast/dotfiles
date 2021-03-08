@@ -19,10 +19,13 @@ XF86MonBrightness{Up,Down}
 
 # Media Control keys
 XF86AudioPlay
-    playerctl play-pause
+    playerctl --player=ncspot,spotify,mpv,firefox play-pause
 
 XF86Audio{Prev,Next}
-    playerctl {previous,next}
+    playerctl --player=ncspot,spotify,mpv,firefox {previous,next}
+
+Cancel
+    playerctl --player=ncspot,spotify,mpv,firefox stop
 
 # Application shortcuts
 super + F1
