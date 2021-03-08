@@ -43,9 +43,6 @@ super + shift + F2
 super + ctrl + F2
     qutebrowser
 
-super + o
-    surf "$(dmenu -p "Go:" )"
-
 super + F3
     $TERMINAL -e $HOME/.config/vifm/scripts/vifmrun
 
