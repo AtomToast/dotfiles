@@ -1,7 +1,7 @@
 call coc#add_extension('coc-marketplace', 'coc-texlab',
                      \ 'coc-prettier', 'coc-snippets', 'coc-html', 'coc-xml',
                      \ 'coc-yaml', 'coc-css', 'coc-pyright', 'coc-tsserver',
-                     \ 'coc-json', 'coc-sql', 'coc-vimlsp',
+                     \ 'coc-json', 'coc-sql', 'coc-vimlsp', 'coc-go',
                      \ 'coc-cssmodules', 'coc-diagnostic', 'coc-db', 'coc-rust-analyzer')
 set hidden
 set nobackup
