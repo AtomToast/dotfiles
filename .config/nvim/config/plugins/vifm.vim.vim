@@ -1,2 +1,2 @@
 " open vifm
-nnoremap <leader>V :Vifm<CR>
+nnoremap <leader>v :Vifm<CR>
