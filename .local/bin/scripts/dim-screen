@@ -8,7 +8,6 @@
 # Brightness will be lowered to this value.
 min_brightness=0
 
-
 # If you have a driver without RandR backlight property (e.g. radeon), set this
 # to use the sysfs interface and create a .conf file in /etc/tmpfiles.d/
 # containing the following line to make the sysfs file writable for group
@@ -45,9 +44,8 @@ fade_brightness() {
     if [ -z $fade_step_time ]; then
         set_brightness $1
     else
-        : "$((level=$(get_brightness)))"
-        while [ "$((level != $1))" -ne 0 ]
-        do
+        : "$((level = $(get_brightness)))"
+        while [ "$((level != $1))" -ne 0 ]; do
             set_brightness $level
             : "$((level = level - 1))"
             sleep $fade_step_time

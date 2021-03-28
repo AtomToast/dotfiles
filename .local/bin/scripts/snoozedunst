@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 case $1 in
-    -p|--pause)
+    -p | --pause)
         notify-send -u low -t 2000 "pausing dunst notifications"
         sleep 2
         killall -SIGUSR1 dunst
         ;;
-    -u|--unpause)
+    -u | --unpause)
         killall -SIGUSR2 dunst
         notify-send -u low -t 2000 "unpaused dunst notifications"
         ;;

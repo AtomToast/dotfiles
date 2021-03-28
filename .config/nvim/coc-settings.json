@@ -16,7 +16,8 @@
     "markdown",
     "json",
     "rust",
-    "haskell"
+    "haskell",
+    "sh"
   ],
   "snippets.extends": {
     "javascriptreact": ["javascript"],
@@ -71,6 +72,15 @@
   "xml.java.home": "/usr/lib/jvm/default",
   "diagnostic-languageserver.filetypes": {
     "sh": "shellcheck"
+  },
+  "diagnostic-languageserver.formatFiletypes": {
+    "sh": "shfmt"
+  },
+  "diagnostic-languageserver.formatters": {
+    "shfmt": {
+      "command": "shfmt",
+      "args": ["-i", "4", "-bn", "-sr", "-p", "-ci"]
+    }
   },
   "sql.database": "postgresql"
 }

@@ -12,4 +12,3 @@ if [[ $confirm == Y ]]; then
     rm "$chosen"
     notify-send -t 4000 "輸 Successfully deleted video" "Deleted '$chosen'"
 fi
-

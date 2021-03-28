@@ -28,32 +28,32 @@
 #     dateIcon="<D>"
 #     timeIcon="<T>"
 # else
-    internetWifiIcon="直"
-    internetEthernetIcon=""
-    internetDownIcon="睊"
-    batteryUnknownIcon=""
-    batteryErrorIcon=""
-    batteryFullIcon=""
-    batteryChargingIcon=""
-    batteryCapacityIcon00=""
-    batteryCapacityIcon10=""
-    batteryCapacityIcon20=""
-    batteryCapacityIcon30=""
-    batteryCapacityIcon40=""
-    batteryCapacityIcon50=""
-    batteryCapacityIcon60=""
-    batteryCapacityIcon70=""
-    batteryCapacityIcon80=""
-    batteryCapacityIcon90=""
-    batteryCapacityIcon100=""
-    mailIcon=""
-    spotifyPlayIcon=""
-    spotifyPauseIcon=""
-    cpuUsageIcon=""
-    cpuTempIcon=""
-    memoryIcon=""
-    dateIcon=""
-    timeIcon=""
+internetWifiIcon="直"
+internetEthernetIcon=""
+internetDownIcon="睊"
+batteryUnknownIcon=""
+batteryErrorIcon=""
+batteryFullIcon=""
+batteryChargingIcon=""
+batteryCapacityIcon00=""
+batteryCapacityIcon10=""
+batteryCapacityIcon20=""
+batteryCapacityIcon30=""
+batteryCapacityIcon40=""
+batteryCapacityIcon50=""
+batteryCapacityIcon60=""
+batteryCapacityIcon70=""
+batteryCapacityIcon80=""
+batteryCapacityIcon90=""
+batteryCapacityIcon100=""
+mailIcon=""
+spotifyPlayIcon=""
+spotifyPauseIcon=""
+cpuUsageIcon=""
+cpuTempIcon=""
+memoryIcon=""
+dateIcon=""
+timeIcon=""
 # fi
 
 internetStatus() {
@@ -115,7 +115,7 @@ batteryStatus() {
 }
 
 mail_count() {
-    count=$(du -a ~/.local/share/mail/*/INBOX/new/* 2>/dev/null | sed -n '$=')
+    count=$(du -a ~/.local/share/mail/*/INBOX/new/* 2> /dev/null | sed -n '$=')
     if [ "$count" = "" ]; then
         echo ""
     else
@@ -125,7 +125,7 @@ mail_count() {
 
 player_status() {
     player_list="ncspot,spotify,cmus,mpd" # spotifyd
-    stat=$(playerctl --player="$player_list" status 2>/dev/null | sed -e "s/Playing/$spotifyPlayIcon/;s/Paused/$spotifyPauseIcon/")
+    stat=$(playerctl --player="$player_list" status 2> /dev/null | sed -e "s/Playing/$spotifyPlayIcon/;s/Paused/$spotifyPauseIcon/")
     if [ "$stat" = "$spotifyPlayIcon" ] || [ "$stat" = "$spotifyPauseIcon" ]; then
         metadata=$(playerctl --player="$player_list" metadata --format "{{ artist }} - {{ title }}")
         echo " $stat $metadata |"

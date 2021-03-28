@@ -4,10 +4,9 @@
 
 termcmd="$TERMINAL -e"
 
-cmd="$(dmenu_path | dmenu $@)"
+cmd="$(dmenu_path | dmenu "$@")"
 case $cmd in
-    *\! ) ${termcmd} "$(printf "%s" "${cmd}" | cut -d'!' -f1)";;
-    * ) ${cmd} ;;
+    *\!) ${termcmd} "$(printf "%s" "${cmd}" | cut -d'!' -f1)" ;;
+    *) ${cmd} ;;
 esac
 exit
-

@@ -4,7 +4,7 @@ mute=$(pulsemixer --get-mute)
 volume=$(pulsemixer --get-volume | cut -d ' ' -f1)
 state="$volume%"
 
-[ "$mute" -eq 1 ] && state="mute" && \
-    echo 1 > /sys/devices/platform/thinkpad_acpi/leds/platform::mute/brightness || \
-    echo 0 > /sys/devices/platform/thinkpad_acpi/leds/platform::mute/brightness
+[ "$mute" -eq 1 ] && state="mute" \
+    && echo 1 > /sys/devices/platform/thinkpad_acpi/leds/platform::mute/brightness \
+    || echo 0 > /sys/devices/platform/thinkpad_acpi/leds/platform::mute/brightness
 dunstify -r 2593 -u low -t 500 "Volume $state"

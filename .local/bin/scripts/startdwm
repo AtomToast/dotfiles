@@ -3,10 +3,8 @@
 # relaunch DWM if the binary changes, otherwise bail
 csum=$(sha1sum "$(which dwm)")
 new_csum=""
-while true
-do
-    if [ "$csum" != "$new_csum" ]
-    then
+while true; do
+    if [ "$csum" != "$new_csum" ]; then
         csum=$new_csum
         dwm
     else

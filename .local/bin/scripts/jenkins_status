@@ -1,0 +1,19 @@
+#!/bin/env sh
+
+USERNAME="done"
+PASSWORD="$(pass jenkins/done)"
+
+BRANCH="$(git branch | grep "\*" | cut -d' ' -f2 | sed "s/\//%252F/g")"
+BUILD_URL="https://jenkins.atomtoast.xyz/job/Done/job/done/job/$BRANCH/"
+LAST_BUILD=0
+BUILD_STATUS="UNKNOWN"
+
+CURRENT_BUILD=$(curl --user $USERNAME:"$PASSWORD" --silent "${BUILD_URL}lastBuild/buildNumber")
+
+if [ "$CURRENT_BUILD" -gt "$LAST_BUILD" ]; then
+    # either SUCCESS, null or FAILURE
+    BUILD_STATUS=$(curl --user $USERNAME:"$PASSWORD" --silent "${BUILD_URL}${CURRENT_BUILD}/api/json?tree=result" | jq -r '.result')
+    LAST_BUILD=$CURRENT_BUILD
+fi
+
+echo "Build Nr. ${CURRENT_BUILD}: $BUILD_STATUS"

@@ -3,13 +3,22 @@
 # Sync mail and give notification if there is new mail.
 
 # Run only if user logged in (prevent cron errors)
-pgrep -u "${USER:=$LOGNAME}" >/dev/null || { echo "$USER not logged in; sync will not run."; exit ;}
+pgrep -u "${USER:=$LOGNAME}" > /dev/null || {
+    echo "$USER not logged in; sync will not run."
+    exit
+}
 # Run only if not already running in other instance
-pgrep -x mbsync >/dev/null && { echo "mbsync is already running." ; exit ;}
+pgrep -x mbsync > /dev/null && {
+    echo "mbsync is already running."
+    exit
+}
 
 # Checks for internet connection and set notification script.
-ping -q -c 1 1.1.1.1 > /dev/null || ping -q -c 1 1.0.0.1 > /dev/null || ping -q -c 1 example.org || { echo "No internet connection detected."; exit ;}
-command -v notify-send >/dev/null || echo "Note that \`libnotify\` or \`libnotify-send\` should be installed for pop-up mail notifications with this script."
+ping -q -c 1 1.1.1.1 > /dev/null || ping -q -c 1 1.0.0.1 > /dev/null || ping -q -c 1 example.org || {
+    echo "No internet connection detected."
+    exit
+}
+command -v notify-send > /dev/null || echo "Note that \`libnotify\` or \`libnotify-send\` should be installed for pop-up mail notifications with this script."
 
 # Required to display notifications if run as a cronjob:
 export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus
@@ -20,11 +29,11 @@ export DISPLAY=:0.0
 
 # Settings are different for MacOS (Darwin) systems.
 if [ "$(uname)" = "Darwin" ]; then
-    notify() { osascript -e "display notification \"$2 in $1\" with title \"You've got Mail\" subtitle \"Account: $account\"" && sleep 2 ;}
-    messageinfo() { osascript -e "display notification with title \"  $from\" subtitle \"$subject\"" ;}
+    notify() { osascript -e "display notification \"$2 in $1\" with title \"You've got Mail\" subtitle \"Account: $account\"" && sleep 2; }
+    messageinfo() { osascript -e "display notification with title \"  $from\" subtitle \"$subject\""; }
 else
-    notify() { notify-send --app-name="mutt-wizard" "mutt-wizard ﯬ " "$2 new mail(s) in \`$1\` account." ;}
-    messageinfo() { notify-send --app-name="mutt-wizard" " $from:" "$subject" ;}
+    notify() { notify-send --app-name="mutt-wizard" "mutt-wizard ﯬ " "$2 new mail(s) in \`$1\` account."; }
+    messageinfo() { notify-send --app-name="mutt-wizard" " $from:" "$subject"; }
 fi
 
 # Check account for new mail. Notify if there is new content.
@@ -39,7 +48,7 @@ syncandnotify() {
             # Extract subject and sender from mail.
             from=$(awk '/^From: / && ++n ==1,/^\<.*\>:/' "$file" | perl -CS -MEncode -ne 'print decode("MIME-Header", $_)' | awk '{ $1=""; if (NF>=3)$NF=""; print $0 }' | sed 's/^[[:blank:]]*[\"'\''\<]*//;s/[\"'\''\>]*[[:blank:]]*$//')
             subject=$(awk '/^Subject: / && ++n == 1,/^\<.*\>: / && ++i == 2' "$file" | head -n 1 | perl -CS -MEncode -ne 'print decode("MIME-Header", $_)' | sed 's/^Subject: //' | sed 's/^{[[:blank:]]*[\"'\''\<]*//;s/[\"'\''\>]*[[:blank:]]*$//' | tr -d '\n')
-	    messageinfo &
+            messageinfo &
         done
     fi
 }
@@ -54,18 +63,17 @@ else
     accounts=$*
 fi
 
-( kill -46 "$(pidof "${STATUSBAR:-dwmblocks}")" >/dev/null 2>&1 ) 2>/dev/null
+(kill -46 "$(pidof "${STATUSBAR:-dwmblocks}")" > /dev/null 2>&1) 2> /dev/null
 
 # Parallelize multiple accounts
-for account in $accounts
-do
+for account in $accounts; do
     syncandnotify &
 done
 
 wait
-( kill -46 "$(pidof "${STATUSBAR:-dwmblocks}")" >/dev/null 2>&1 ) 2>/dev/null
+(kill -46 "$(pidof "${STATUSBAR:-dwmblocks}")" > /dev/null 2>&1) 2> /dev/null
 
-notmuch new 2>/dev/null
+notmuch new 2> /dev/null
 
 #Create a touch file that indicates the time of the last run of mailsync
 touch "$HOME/.config/mutt/.mailsynclastrun"

@@ -3,32 +3,31 @@
 # merge args for SSIDs with spaces
 args="$*"
 
-  # check for user-provided ssid
-  if [ "" != "$args" ]; then
+# check for user-provided ssid
+if [ "" != "$args" ]; then
     ssid="$args"
     exists="$(nmcli -f NAME connection | grep -E "${ssid}")"
 
     if [ "$exists" = "" ]; then
-      echo "ERROR: Could not find SSID \"$ssid\"" >&2
-      exit 1
+        echo "ERROR: Could not find SSID \"$ssid\"" >&2
+        exit 1
     fi
-  else
+else
     # get current ssid
     ssid="$(nmcli -t -f active,ssid dev wifi | grep -E '^yes' | cut -d: -f2)"
     if [ "$ssid" = "" ]; then
-      echo "ERROR: Could not retrieve current SSID. Are you connected?" >&2
-      exit 1
+        echo "ERROR: Could not retrieve current SSID. Are you connected?" >&2
+        exit 1
     fi
-  fi
+fi
 
-  pwd=$(sudo sed -e '/^psk=/!d' -e 's/psk=//' "/etc/NetworkManager/system-connections/${ssid}.nmconnection")
+pwd=$(sudo sed -e '/^psk=/!d' -e 's/psk=//' "/etc/NetworkManager/system-connections/${ssid}.nmconnection")
 
-  if [ "" = "$pwd" ]; then
+if [ "" = "$pwd" ]; then
     echo "ERROR: Could not get password. Did you enter your credentials?" >&2
     exit 1
-  fi
+fi
 
-  echo "Name: $ssid"
-  echo "WIFI:T:WPA;S:${ssid};P:${pwd};;" | qrencode -t UTF8
-  echo "Password: $pwd"
-
+echo "Name: $ssid"
+echo "WIFI:T:WPA;S:${ssid};P:${pwd};;" | qrencode -t UTF8
+echo "Password: $pwd"
