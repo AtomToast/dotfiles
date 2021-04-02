@@ -1,8 +1,8 @@
 " configure fzf
 nmap <silent><leader>p :GFiles<CR>
 nmap <silent><leader>P :Files<CR>
-nmap <silent><leader>bb :Buffers<CR>
-nmap <silent><leader>bl :BLines<CR>
+nmap <silent><leader>b :Buffers<CR>
+nmap <silent><leader>/ :BLines<CR>
 nmap <silent><leader>rg :Rg<CR>
 
 command! -bang -nargs=? -complete=dir Files

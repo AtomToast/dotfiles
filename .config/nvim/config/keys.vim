@@ -12,21 +12,6 @@ nmap <leader>s :nohlsearch<CR>
 " toggle spelling
 nmap <leader>S :setlocal spell!<CR>
 
-" buffer shortcuts
-let g:which_key_map.b = { 'name' : '+buffer' }
-let g:which_key_map.b.n = 'switch to next buffer'
-nmap <silent><leader>bn :bnext<CR>
-let g:which_key_map.b.p = 'switch to previous buffer'
-nmap <silent><leader>bp :bprevious<CR>
-let g:which_key_map.b.d = 'deletes current buffer'
-nmap <silent><leader>bd :bdelete<CR>
-let g:which_key_map.b.a = 'adds new buffer'
-nmap <silent><leader>ba :enew <BAR> :Files<CR>
-let g:which_key_map.b.q = 'closes current buffer'
-nmap <silent><leader>bq :bp <BAR> bd #<CR>
-let g:which_key_map.b.o = 'close all but the current buffer'
-nmap <silent><leader>bo :%bd\|e#\|bd#<cr>
-
 " quickfix list shortcuts
 nnoremap <leader>cn :cnext<CR>
 nnoremap <leader>cp :cprevious<CR>
