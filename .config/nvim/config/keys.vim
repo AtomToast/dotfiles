@@ -6,6 +6,10 @@ cnoreabbrev Q q
 cnoreabbrev W w
 nnoremap Q <NOP>
 
+" create a shorter way of ending emails
+autocmd FileType mail inoreabbrev mfg Mit freundlichen Grüßen,<CR>Kjell Hoffhenke
+autocmd FileType mail inoreabbrev br Best Regards,<CR>Kjell Hoffhenke
+
 " remove search highlighting shortcut
 nmap <leader>s :nohlsearch<CR>
 
