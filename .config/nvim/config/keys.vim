@@ -41,11 +41,11 @@ noremap  <silent> <C-S> :update<CR>:nohlsearch<CR>
 vnoremap <silent> <C-S> <C-C>:update<CR>:nohlsearch<CR>
 inoremap <silent> <C-S> <C-O>:update<CR><C-O>:nohlsearch<CR>
 
-" make arrows resize splits
-nnoremap <silent><A-Up>    :resize +2<CR>
-nnoremap <silent><A-Down>  :resize -2<CR>
-nnoremap <silent><A-Left>  :vertical resize +2<CR>
-nnoremap <silent><A-Right> :vertical resize -2<CR>
+" make ctrl+alt+arrows resize splits
+nnoremap <silent><C-A-Up>    :resize +2<CR>
+nnoremap <silent><C-A-Down>  :resize -2<CR>
+nnoremap <silent><C-A-Left>  :vertical resize +2<CR>
+nnoremap <silent><C-A-Right> :vertical resize -2<CR>
 
 " shortcut for entering semicolon at the end of the line
 inoremap <A-;> <Esc>mbA;<Esc>`ba
@@ -66,19 +66,31 @@ nnoremap <leader>Z [s1z=
 " remap Y to work like other captial letters
 nnoremap Y y$
 
-" switch windows in any mode with ctrl + alt + hjkl
-tnoremap <C-A-h> <C-\><C-N><C-w>h
-tnoremap <C-A-j> <C-\><C-N><C-w>j
-tnoremap <C-A-k> <C-\><C-N><C-w>k
-tnoremap <C-A-l> <C-\><C-N><C-w>l
-inoremap <C-A-h> <C-\><C-N><C-w>h
-inoremap <C-A-j> <C-\><C-N><C-w>j
-inoremap <C-A-k> <C-\><C-N><C-w>k
-inoremap <C-A-l> <C-\><C-N><C-w>l
-nnoremap <C-A-h> <C-w>h
-nnoremap <C-A-j> <C-w>j
-nnoremap <C-A-k> <C-w>k
-nnoremap <C-A-l> <C-w>l
+" switch windows in any mode with alt + hjkl and alt + arrow keys
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
+inoremap <A-h> <C-\><C-N><C-w>h
+inoremap <A-j> <C-\><C-N><C-w>j
+inoremap <A-k> <C-\><C-N><C-w>k
+inoremap <A-l> <C-\><C-N><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+tnoremap <A-Left> <C-\><C-N><C-w>h
+tnoremap <A-Down> <C-\><C-N><C-w>j
+tnoremap <A-Up> <C-\><C-N><C-w>k
+tnoremap <A-Right> <C-\><C-N><C-w>l
+inoremap <A-Left> <C-\><C-N><C-w>h
+inoremap <A-Down> <C-\><C-N><C-w>j
+inoremap <A-Up> <C-\><C-N><C-w>k
+inoremap <A-Right> <C-\><C-N><C-w>l
+nnoremap <A-Left> <C-w>h
+nnoremap <A-Down> <C-w>j
+nnoremap <A-Up> <C-w>k
+nnoremap <A-Right> <C-w>l
 
 " Zoom / Restore window.
 function! s:ZoomToggle() abort
