@@ -5,6 +5,15 @@ use_nerdfont = true
 " " = "playpause"
 "y" = "share selected"
 "Shift+Y" = "share current"
+"g" = "move top"
+"G" = "move bottom"
+"x" = "delete"
+"d" = "move down 5"
+"u" = "move up 5"
+"Ctrl+d" = "move down 5"
+"Ctrl+u" = "move up 5"
+"Ctrl+f" = "move down 20"
+"Ctrl+b" = "move up 20"
 
 [theme]
 background = "black"
