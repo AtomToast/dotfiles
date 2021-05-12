@@ -40,6 +40,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'vifm/vifm.vim'
 Plug 'vimwiki/vimwiki'
+Plug 'ziglang/zig.vim'
 Plug 'stevearc/vim-arduino'
 Plug 'elzr/vim-json'
 Plug 'elixir-editors/vim-elixir'
