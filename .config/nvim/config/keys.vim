@@ -37,15 +37,19 @@ nmap <leader>mc :Make clean<CR>
 nmap <leader>mi :!sudo make install <CR>
 
 " ctrl+s saving
-noremap  <silent> <C-S> :update<CR>:nohlsearch<CR>
-vnoremap <silent> <C-S> <C-C>:update<CR>:nohlsearch<CR>
-inoremap <silent> <C-S> <C-O>:update<CR><C-O>:nohlsearch<CR>
+noremap  <silent> <C-S> <cmd>update<CR><cmd>nohlsearch<CR>
+vnoremap <silent> <C-S> <cmd>update<CR><cmd>nohlsearch<CR>
+inoremap <silent> <C-S> <cmd>update<CR><cmd>nohlsearch<CR>
 
 " make ctrl+alt+arrows resize splits
-nnoremap <silent><C-A-Up>    :resize +2<CR>
-nnoremap <silent><C-A-Down>  :resize -2<CR>
-nnoremap <silent><C-A-Left>  :vertical resize +2<CR>
-nnoremap <silent><C-A-Right> :vertical resize -2<CR>
+nnoremap <silent><C-A-Up>    <cmd>resize +2<CR>
+nnoremap <silent><C-A-Down>  <cmd>resize -2<CR>
+nnoremap <silent><C-A-Left>  <cmd>vertical resize +2<CR>
+nnoremap <silent><C-A-Right> <cmd>vertical resize -2<CR>
+tnoremap <silent><C-A-Up>    <cmd>resize +2<CR>
+tnoremap <silent><C-A-Down>  <cmd>resize -2<CR>
+tnoremap <silent><C-A-Left>  <cmd>vertical resize +2<CR>
+tnoremap <silent><C-A-Right> <cmd>vertical resize -2<CR>
 
 " shortcut for entering semicolon at the end of the line
 inoremap <A-;> <Esc>mbA;<Esc>`ba
