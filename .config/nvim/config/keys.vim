@@ -36,6 +36,9 @@ nmap <leader>mm :Make<CR>
 nmap <leader>mc :Make clean<CR>
 nmap <leader>mi :!sudo make install <CR>
 
+" edit new file under cursor
+nnoremap <leader>gf :e <cfile><CR>
+
 " ctrl+s saving
 noremap  <silent> <C-S> <cmd>update<CR><cmd>nohlsearch<CR>
 vnoremap <silent> <C-S> <cmd>update<CR><cmd>nohlsearch<CR>
