@@ -181,3 +181,6 @@ super + control + shift + Escape
 
 super + minus
     colorpicker --one-shot --preview --short | tee /tmp/hexcode | xclip -selection clipboard && notify-send "Copied color code" $(cat /tmp/hexcode)
+
+super + shift + t
+    trans --brief "$(xclip -selection primary -o)" | tee /tmp/translation | xclip -selection clipboard && notify-send "Translation" "$(cat /tmp/translation)"
