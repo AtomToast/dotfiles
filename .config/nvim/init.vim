@@ -17,10 +17,11 @@ runtime config/keys.vim
   runtime config/plugins/markdown-preview.nvim.vim
   runtime config/plugins/indentLine.vim
   runtime config/plugins/vim-jsx-pretty.vim
+  runtime config/plugins/zig.vim.vim
   " runtime config/plugins/vim-gitgutter.vim
   runtime config/plugins/vim-signify.vim
   runtime config/plugins/vim-fugitive.vim
-  runtime config/plugins/a.vim.vim
+  " runtime config/plugins/a.vim.vim
   runtime config/plugins/nvim-colorizer.lua.vim
   runtime config/plugins/vifm.vim.vim
   runtime config/plugins/fzf.vim.vim
@@ -28,12 +29,17 @@ runtime config/keys.vim
   " runtime config/plugins/vista.vim.vim
   runtime config/plugins/vim-wordmotion.vim
   runtime config/plugins/vim-speeddating.vim
-  " runtime config/plugins/nvim-lspconfig.vim
-  " runtime config/plugins/completion-nvim.vim
-  runtime config/plugins/coc.nvim.vim
-  runtime config/plugins/coc-fzf.vim
-  runtime config/plugins/auto-pairs.vim
-  runtime config/plugins/vim-closetag.vim
+  runtime config/plugins/nvim-lspconfig.vim
+  runtime config/plugins/nvim-treesitter.vim
+  runtime config/plugins/nvim-ts-autotag.vim
+  runtime config/plugins/nvim-autopairs.vim
+  runtime config/plugins/nvim-compe.vim
+  runtime config/plugins/lspkind-nvim.vim
+  runtime config/plugins/vim-vsnip.vim
+  " runtime config/plugins/coc.nvim.vim
+  " runtime config/plugins/coc-fzf.vim
+  " runtime config/plugins/auto-pairs.vim
+  " runtime config/plugins/vim-closetag.vim
   runtime config/plugins/netrw.vim
   runtime config/plugins/firenvim.vim
   runtime config/plugins/quick-scope.vim

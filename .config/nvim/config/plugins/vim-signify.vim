@@ -7,6 +7,8 @@ highlight SignifySignAdd    guifg=#a6e22e guibg=#2D2E27 ctermfg=2 ctermbg=237
 highlight SignifySignChange guifg=#fd971f guibg=#2D2E27 ctermfg=3 ctermbg=237
 highlight SignifySignDelete guifg=#f92672 guibg=#2D2E27 ctermfg=1 ctermbg=237
 
+let g:signify_priority = 5
+
 " keybinds
 let g:which_key_map.h = { 'name' : '+gitgutter_hunks' }
 nmap <leader>hj <Plug>(signify-next-hunk)

@@ -24,7 +24,7 @@
     "typescript": ["javascript"],
     "typescriptreact": ["javascript"]
   },
-  "python.linting.pylintEnabled": true,
+  "python.linting.pylintEnabled": false,
   "python.linting.enabled": true,
   "codeLens.enable": true,
   "languageserver": {
@@ -67,6 +67,10 @@
     "dhall": {
       "command": "dhall-lsp-server",
       "filetypes": ["dhall"]
+    },
+    "zls": {
+      "command": "zls",
+      "filetypes": ["zig"]
     }
   },
   "xml.java.home": "/usr/lib/jvm/default",

@@ -22,3 +22,4 @@ let g:airline#extensions#whitespace#skip_indent_check_ft = {
             \ 'markdown': ['trailing'],
             \ 'vimwiki': ['trailing']
             \ }
+let g:airline#extensions#scrollbar#enabled = 0
