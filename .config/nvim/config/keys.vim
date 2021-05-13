@@ -66,6 +66,11 @@ nnoremap <leader>Z [s1z=
 " remap Y to work like other captial letters
 nnoremap Y y$
 
+" replace and delete without copying the selection
+vnoremap <leader>p "_dP
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
 " switch windows in any mode with alt + hjkl and alt + arrow keys
 tnoremap <A-h> <C-\><C-N><C-w>h
 tnoremap <A-j> <C-\><C-N><C-w>j
