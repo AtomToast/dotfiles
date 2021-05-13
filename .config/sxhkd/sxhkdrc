@@ -121,7 +121,7 @@ super + control + shift + Print
 control + shift + Print
     screenshot -io $HOME/Pictures
 
-super + dead_acute
+super + shift + u
     dmenuunicode
 
 XF86Display
