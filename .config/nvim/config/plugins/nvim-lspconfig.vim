@@ -35,6 +35,7 @@ lspconfig.efm.setup{
     "markdown",
   },
   settings = {
+    rootMarkers = {".git/"},
     languages = {
       vim = {
         {
@@ -65,7 +66,11 @@ lspconfig.efm.setup{
         {formatCommand = "prettier ${--tab-width:tabWidth} --parser css"},
       },
       json = {
-        {formatCommand = "prettier ${--tab-width:tabWidth} --parser json", lintCommand = "jq ."},
+        {
+          formatCommand = "prettier ${--tab-width:tabWidth} --parser json",
+          lintCommand = "jq .",
+          lintStdin = true,
+        },
       },
       python = {
         {formatCommand = "autopep8 -", formatStdin = true},
