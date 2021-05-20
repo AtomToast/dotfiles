@@ -80,6 +80,9 @@ zinit load "spwhitt/nix-zsh-completions"
 zinit snippet 'https://github.com/robbyrussell/oh-my-zsh/raw/master/plugins/git/git.plugin.zsh'
 
 zinit ice blockf
+zinit load 'ziglang/shell-completions'
+
+zinit ice blockf
 zinit load zsh-users/zsh-completions
 
 # enable instant prompt
