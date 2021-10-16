@@ -6,9 +6,9 @@
 
 notify-send -t 4000 "輸 Starting download" "fetching title for $url"
 
-title=$(youtube-dl --get-title "$url")
+title=$(yt-dlp --get-title "$url")
 
-if $TERMINAL -t "$title - youtube-dl" -e bash -c "youtube-dl --mark-watched --cookies /home/kjell/Downloads/cookies.txt --add-metadata -i $url"; then
+if $TERMINAL -t "$title - yt-dlp" -e bash -c "youtube-dl $url"; then
     notify-send -t 4000 "輸 Youtube download successful" "Finished downloading '$title'"
 else
     notify-send 4000 "輸 Failed youtube download" "Did not finish downloading '$title'"

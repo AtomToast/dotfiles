@@ -1,0 +1,18 @@
+# -u AtomToast
+# -p ?
+
+# enable cookies
+--cookies-from-browser firefox
+
+--mark-watched
+
+--add-metadata
+
+--ignore-errors
+--no-abort-on-error
+
+# Save in ~/Videos/youtube
+-o '~/Videos/youtube/%(title)s - %(uploader)s.%(ext)s'
+
+# Prefer 1080p or lower resolutions
+-f bestvideo[ext=mp4][height<1200]+bestaudio[ext=m4a]/bestvideo[ext=webm][height<1200]+bestaudio[ext=webm]/bestvideo[height<1200]+bestaudio/best[height<1200]/best
