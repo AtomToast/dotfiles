@@ -24,6 +24,9 @@ set showbreak=>\ \ \
 " enable highlighting of the current line
 set cursorline
 
+" disable status line
+set laststatus=1
+
 " split config
 set splitbelow splitright
 
