@@ -18,8 +18,8 @@ runtime config/keys.vim
   runtime config/plugins/indentLine.vim
   runtime config/plugins/vim-jsx-pretty.vim
   runtime config/plugins/zig.vim.vim
-  " runtime config/plugins/vim-gitgutter.vim
-  runtime config/plugins/vim-signify.vim
+  runtime config/plugins/vim-gitgutter.vim
+  " runtime config/plugins/vim-signify.vim
   runtime config/plugins/vim-fugitive.vim
   " runtime config/plugins/a.vim.vim
   runtime config/plugins/nvim-colorizer.lua.vim
