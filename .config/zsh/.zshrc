@@ -170,7 +170,7 @@ gln () {
 # Removes the given branch locally and remotely.
 # With no argument it switches to the default branch and deletes the current branch.
 gitrmbranch() {
-  branch=${1:-$(git curbranch)}
+  branch=${1:-$(git branch --show-current)}
   git push -d $(git rev-parse --abbrev-ref $branch@{push} | sed 's/\// /' || echo origin $branch)
   test $1 || git checkout main || git checkout master || git checkout $(cat .git/refs/remotes/origin/HEAD | cut -d'/' -f4)
   git branch -D $branch
