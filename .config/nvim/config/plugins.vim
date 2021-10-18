@@ -16,10 +16,10 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-sleuth'
-if !exists('g:started_by_firenvim')
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
-endif
+" if !exists('g:started_by_firenvim')
+    " Plug 'vim-airline/vim-airline'
+    " Plug 'vim-airline/vim-airline-themes'
+" endif
 Plug 'Konfekt/vim-CtrlXA'
 " Plug 'jiangmiao/auto-pairs'
 Plug 'windwp/nvim-autopairs'

@@ -1,0 +1,81 @@
+{
+  "std": {
+    "prefix": ["std"],
+    "body": ["const std = @import(\"std\");"],
+    "description": "import standard library"
+  },
+  "main": {
+    "prefix": ["main"],
+    "body": ["pub fn main() ${1|void,!void|} {", "\t$2", "}$0"],
+    "description": "standard main function skeleton"
+  },
+  "print": {
+    "prefix": ["print"],
+    "body": ["std.debug.print(\"${1:{\\}}\\n\", .{$2});$0"],
+    "description": "debug printing"
+  },
+  "if": {
+    "prefix": ["if"],
+    "body": ["if (${1:conditional}) {", "\t$2", "}$0"],
+    "description": "standard if"
+  },
+  "ifo": {
+    "prefix": ["ifo"],
+    "body": ["if (${1:optional}) |${2:value}| {", "\t$3", "}$0"],
+    "description": "if on an optional"
+  },
+  "else": {
+    "prefix": ["else"],
+    "body": [" else {", "\t$1", "}$0"],
+    "description": "standard else"
+  },
+  "elif": {
+    "prefix": ["elif"],
+    "body": [" else if (${1:conditional}) {", "\t$2", "}$0"],
+    "description": "else if"
+  },
+  "elifo": {
+    "prefix": ["elifo"],
+    "body": [" else if (${1:optional}) |${2:value}| {", "\t$3", "}$0"],
+    "description": "else if"
+  },
+  "ife": {
+    "prefix": ["ife"],
+    "body": [
+      "if (${1:error union}) |${3:value}| {",
+      "\t$4",
+      "} else |${5:err}| {",
+      "\t$6",
+      "}$0"
+    ],
+    "description": "if on an error union"
+  },
+  "for": {
+    "prefix": ["for"],
+    "body": ["for (${1:items}) |${2:value}| {", "\t$3", "}$0"],
+    "description": "standard for loop"
+  },
+  "while": {
+    "prefix": ["while"],
+    "body": [
+      "while (${1:conditional}) ${2:: (${3:continue expression}) }{",
+      "\t$4",
+      "}$0"
+    ],
+    "description": "standard while loop"
+  },
+  "switch": {
+    "prefix": ["switch"],
+    "body": [
+      "switch (${1:expression}) {",
+      "\t${2:else} => ${3:expression},$4",
+      "}$0"
+    ],
+    "description": "standard switch statement"
+  },
+  "fn": {
+    "prefix": ["fn"],
+    "body": ["fn ${1:name}(${2:parameters}) ${3:void} {", "\t$4", "}$0"],
+    "description": "standard function statement"
+  }
+}

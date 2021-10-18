@@ -12,7 +12,7 @@ runtime config/plugins.vim
 runtime config/visuals.vim
   runtime config/plugins/vim-which-key.vim
 runtime config/keys.vim
-  runtime config/plugins/vim-airline.vim
+  " runtime config/plugins/vim-airline.vim
   runtime config/plugins/vim-markdown.vim
   runtime config/plugins/markdown-preview.nvim.vim
   runtime config/plugins/indentLine.vim
