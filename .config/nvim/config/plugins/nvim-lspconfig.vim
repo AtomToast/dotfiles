@@ -155,14 +155,14 @@ EOF
 
 " configure diagnostic signs
 set signcolumn=auto:4
-sign define LspDiagnosticsSignError text= texthl=LspDiagnosticsSignError linehl= numhl=LspDiagnosticsSignError
-sign define LspDiagnosticsSignWarning text= texthl=LspDiagnosticsSignWarning linehl= numhl=LspDiagnosticsSignWarning
-sign define LspDiagnosticsSignInformation text= texthl=LspDiagnosticsSignInformation linehl= numhl=LspDiagnosticsSignInformation
-sign define LspDiagnosticsSignHint text= texthl=LspDiagnosticsSignHint linehl= numhl=LspDiagnosticsSignHint
-highlight LspDiagnosticsSignError guifg=#e73c50 guibg=#2D2E27 ctermfg=1 ctermbg=237
-highlight LspDiagnosticsSignWarning guifg=#e7c547 guibg=#2D2E27 ctermfg=1 ctermbg=237
-highlight LspDiagnosticsSignInformation guifg=#e6db74 guibg=#2D2E27 ctermfg=1 ctermbg=237
-highlight LspDiagnosticsSignHint guifg=#66d9ef guibg=#2D2E27 ctermfg=1 ctermbg=237
+sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticSignError
+sign define DiagnosticSignWarning text= texthl=DiagnosticSignWarning linehl= numhl=DiagnosticSignWarning
+sign define DiagnosticSignInformation text= texthl=DiagnosticSignInformation linehl= numhl=DiagnosticSignInformation
+sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=DiagnosticSignHint
+highlight DiagnosticSignError guifg=#e73c50 guibg=#2D2E27 ctermfg=1 ctermbg=237
+highlight DiagnosticSignWarning guifg=#e7c547 guibg=#2D2E27 ctermfg=1 ctermbg=237
+highlight DiagnosticSignInformation guifg=#e6db74 guibg=#2D2E27 ctermfg=1 ctermbg=237
+highlight DiagnosticSignHint guifg=#66d9ef guibg=#2D2E27 ctermfg=1 ctermbg=237
 
 
 
