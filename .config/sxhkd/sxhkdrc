@@ -17,6 +17,18 @@ XF86MonBrightness{Up,Down}
     light {-A,-U} 5; dunstify -r 2594 -u low -t 500 "Brightness $(light -G | cut -d '.' -f1)%"
     # brightnessctl -q set {+5%,5%-}; brightnessnotify
 
+super + x
+    dunstctl close
+
+super + shift + x
+    dunstctl close-all
+
+super + s
+    dunstctl history-pop
+
+super + shift + s
+    dunstctl context
+
 # Media Control keys
 XF86AudioPlay
     playerctl --player=ncspot,spotify,mpv,firefox play-pause
