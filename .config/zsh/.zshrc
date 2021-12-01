@@ -282,7 +282,7 @@ setopt hist_reduce_blanks
 export _ZL_MATCH_MODE=1
 
 # configure programs for zsh-auto-notify
-export AUTO_NOTIFY_WHITELIST=("pacman" "yay" "make" "yarn" "pip")
+export AUTO_NOTIFY_WHITELIST=("pacman" "yay" "make" "yarn" "pip" "paru")
 
 # load tetris for the lulz
 autoload -Uz tetriscurses
