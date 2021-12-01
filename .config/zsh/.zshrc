@@ -102,6 +102,7 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 _comp_options+=(globdots)
+compdef _gnu_generic
 setopt completeinword
 setopt alwaystoend
 setopt nolistambiguous
