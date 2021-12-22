@@ -33,7 +33,7 @@ npairs.add_rules({
   Rule("|", "|", "zig")
 })
 
-npairs.get_rule('"')
+npairs.get_rule('"')[1]
  :with_pair(function()
     if vim.bo.filetype == 'vim' then
        return false
