@@ -1,0 +1,11 @@
+set autocalc
+set numeric
+set numeric_decimal=0
+set overlap
+set xlsx_readformulas
+set half_page_scroll
+
+nmap "ZZ" ":wq<cr>"
+nmap "ZQ" ":q!<cr>"
+nmap "<C-D>" "<C-F>"
+nmap "<C-U>" "<C-B>"
