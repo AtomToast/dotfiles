@@ -15,6 +15,7 @@ redshift &
 xss-lock -n dim-screen cornerlocker &
 nextcloud &
 signal-desktop --use-tray-icon --start-in-tray &
+picom --config /dev/null &
 wmname LG3D &
 
 startdwm
