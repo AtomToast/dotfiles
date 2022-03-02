@@ -259,6 +259,9 @@ alias zf='z -I'      # use fzf to select in multiple matches
 # load powerlevel10k config
 [[ -f ~/.config/zsh/.p10k.zsh ]] && source ~/.config/zsh/.p10k.zsh
 
+# load emscripten stuff
+source "/home/kjell/git/wasm-test/emsdk/emsdk_env.sh" &> /dev/null
+
 # fix right side of prompt floating
 ZLE_RPROMPT_INDENT=0
 
