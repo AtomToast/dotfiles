@@ -87,9 +87,8 @@ lspconfig.efm.setup{
 }
 
 local sumneko_root_path = vim.fn.stdpath('cache')..'/lspconfig/sumneko_lua/lua-language-server'
-local sumneko_binary = sumneko_root_path.."/bin/Linux/lua-language-server"
 lspconfig.sumneko_lua.setup {
-  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+  cmd = {"lua-language-server", "-E", sumneko_root_path .. "/main.lua"};
   settings = {
     Lua = {
       runtime = {
@@ -131,6 +130,7 @@ lspconfig.html.setup {
 lspconfig.tsserver.setup{}
 
 lspconfig.jsonls.setup {
+  cmd = {"vscode-json-languageserver", "--stdio"},
   commands = {
     Format = {
       function()
@@ -194,7 +194,10 @@ set nowritebackup
 
 " show diagnostics popup on hover
 set updatetime=100
-autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
+" autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
 
 " automatically format on save
 autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)
+autocmd BufWritePost *.zig lua vim.lsp.buf.formatting_sync(nil, 1001)
+autocmd BufWritePost *.json lua vim.lsp.buf.formatting_sync(nil, 1001)
+autocmd BufWritePost *.c,*.h lua vim.lsp.buf.formatting_sync(nil, 1001)

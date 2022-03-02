@@ -25,7 +25,7 @@ runtime config/keys.vim
   runtime config/plugins/nvim-colorizer.lua.vim
   runtime config/plugins/vifm.vim.vim
   runtime config/plugins/fzf.vim.vim
-  runtime config/plugins/fzf-hoogle.vim
+  " runtime config/plugins/fzf-hoogle.vim
   " runtime config/plugins/vista.vim.vim
   runtime config/plugins/vim-wordmotion.vim
   runtime config/plugins/vim-speeddating.vim

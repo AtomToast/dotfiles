@@ -1,6 +1,6 @@
 lua <<EOF
 require('lspkind').init({
-  with_text = false,
+  mode = "symbol",
   -- symbol_map = {
   --   Text = '',
   --   Method = 'ƒ',

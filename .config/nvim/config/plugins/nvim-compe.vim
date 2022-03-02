@@ -4,7 +4,7 @@ require'compe'.setup {
   autocomplete = true;
   debug = false;
   min_length = 1;
-  preselect = 'enable';
+  preselect = 'always';
   throttle_time = 80;
   source_timeout = 200;
   incomplete_delay = 400;
@@ -21,7 +21,7 @@ require'compe'.setup {
     nvim_lua = {kind = " "};
     vsnip = {kind = "  "};
     emoji = {kind = "ﲃ ", filetypes={"markdown", "text"}};
-    spell = {kind = " "};
+    --spell = {kind = " "};
   };
 }
 vim.o.completeopt = "menuone,noselect"
@@ -29,3 +29,6 @@ EOF
 
 " remove status line spam
 set shortmess+=c
+
+inoremap <silent><expr> <C-e> compe#close('<C-e>')
+inoremap <silent><expr> <C-n> compe#complete()

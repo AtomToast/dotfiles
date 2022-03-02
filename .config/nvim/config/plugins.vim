@@ -61,7 +61,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'neovimhaskell/haskell-vim'
 Plug 'LnL7/vim-nix'
 Plug 'vmchale/dhall-vim'
-Plug 'monkoose/fzf-hoogle.vim'
+" Plug 'monkoose/fzf-hoogle.vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'airblade/vim-gitgutter'
 " Plug 'mhinz/vim-signify'
