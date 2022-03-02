@@ -9,7 +9,7 @@ clipmenud &
 setdwmstatusbar &
 setroot --restore &
 blueman-applet &
-cadmus &
+noisetorch -i &
 redshift &
 # TODO: Figure out how to do enable loginctl unlock-session this without doas
 xss-lock -n dim-screen cornerlocker &
