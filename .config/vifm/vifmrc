@@ -222,6 +222,10 @@ filextype *.cbr
 
 " Audio
 filetype *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus
+       \ {Play using mpv and hide vifm}
+       \ devour mpv %f 2>/dev/null &,
+       \ {Play using mpv}
+       \ mpv %f 2>/dev/null &,
        \ {Play using ffplay and hide vifm}
        \ devour ffplay -nodisp -autoexit %c,
        \ {Play using ffplay}
@@ -245,11 +249,6 @@ filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
         \ devour ffplay -fs -autoexit %f,
         \ {View using ffplay}
         \ ffplay -fs -autoexit %f,
-filetype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
-         \*.fl[icv],*.m2v,*.mov,*.webm,*.mts,*.m4v,*.r[am],*.qt,*.divx,
-         \*.as[fx]
-        \ {View using mpv}
-        \ mpv --gpu-context=drm %f
 
 
 if $DISPLAY == ""
@@ -258,6 +257,11 @@ if $DISPLAY == ""
               \*.as[fx]
             \ mediainfo %c,
             \ ffprobe -pretty %c 2>&1
+    filetype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
+            \*.fl[icv],*.m2v,*.mov,*.webm,*.mts,*.m4v,*.r[am],*.qt,*.divx,
+            \*.as[fx]
+            \ {View using mpv}
+            \ mpv --gpu-context=drm %f
 endif
 
 " Web
