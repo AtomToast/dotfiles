@@ -38,17 +38,18 @@ Plug 'kevinhwang91/nvim-bqf'
 Plug 'Yggdroot/indentLine'
 Plug 'chaoren/vim-wordmotion'
 Plug 'airblade/vim-rooter'
-Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'plasticboy/vim-markdown'
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+" Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'vifm/vifm.vim'
 Plug 'vimwiki/vimwiki'
+Plug 'jbyuki/instant.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'windwp/nvim-ts-autotag'
 Plug 'ziglang/zig.vim'
 Plug 'stevearc/vim-arduino'
+Plug 'kmonad/kmonad-vim'
 Plug 'elzr/vim-json'
 Plug 'elixir-editors/vim-elixir'
 Plug 'pangloss/vim-javascript'

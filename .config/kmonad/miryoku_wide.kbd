@@ -121,7 +121,7 @@
   _      _      _      _      _      _             _      _      _      _      _      _      _      _
   _      _      _      _      _      _             _      _      previoussong vold volu nextsong _
   _      _      _      _      _      _      _      _      _      _      _      _             _
-  _             _      _                    _                    playpause stop mute   _      _      _
+  _             _      _                    _                    stop   playpause mute   _      _      _
                                                                                       _      _      _
 )
 

@@ -7,7 +7,7 @@ lspconfig.zls.setup {
   capabilities = capabilities,
 }
 
-lspconfig.vimls.setup{}
+-- lspconfig.vimls.setup{}
 
 lspconfig.clangd.setup{}
 -- lspconfig.ccls.setup{}
@@ -117,12 +117,14 @@ lspconfig.sumneko_lua.setup {
 }
 
 lspconfig.cssls.setup {
+  cmd = {"css-languageserver"},
   capabilities = capabilities,
 }
 
 lspconfig.texlab.setup{}
 
 lspconfig.html.setup {
+  cmd = {"vscode-html-languageserver"},
   capabilities = capabilities,
   filetypes = { "html", "htmldjango" },
 }
@@ -145,7 +147,7 @@ lspconfig.yamlls.setup{}
 ------------------------------------------------------------------------
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
+  vim.diagnostic.on_publish_diagnostics, {
     virtual_text = false,
     signs = true,
     underline = true,
@@ -178,9 +180,9 @@ nnoremap <silent> K     <cmd>call <SID>show_documentation()<CR>
 nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent> go    <cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
-nnoremap <silent> ]c <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
-nnoremap <silent> [c <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+nnoremap <silent> go    <cmd>lua vim.diagnostic.set_loclist()<CR>
+nnoremap <silent> ]c <cmd>lua vim.diagnostic.goto_next()<CR>
+nnoremap <silent> [c <cmd>lua vim.diagnostic.goto_prev()<CR>
 nnoremap <silent> <leader>f    <cmd>lua vim.lsp.buf.formatting()<CR>
 vnoremap <silent> <leader>f    <cmd>lua vim.lsp.buf.range_formatting()<CR>
 nnoremap <silent> <leader>rn   <cmd>lua vim.lsp.buf.rename()<CR>
@@ -195,6 +197,8 @@ set nowritebackup
 " show diagnostics popup on hover
 set updatetime=100
 " autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
+
+nnoremap gK <cmd>lua vim.diagnostic.show_line_diagnostics()<CR>
 
 " automatically format on save
 autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)

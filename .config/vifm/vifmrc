@@ -468,7 +468,7 @@ filetype *.tudu tudu -f %c
 filextype *.pro qtcreator %f &
 
 " Directories
-fileviewer */ tree -CF %c
+fileviewer */ tree -CF %c | tail -1 && echo && tree --noreport -CF %c
 filextype */
         \ {View in thunar and hide vifm}
         \ devour Thunar %f &,

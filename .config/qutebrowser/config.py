@@ -269,7 +269,7 @@ config.set('content.media.video_capture', True, 'https://meet.jit.si')
 #   - true
 #   - false
 #   - ask
-config.set('content.notifications', True, 'https://meet.google.com')
+config.set('content.notifications.enabled', True, 'https://meet.google.com')
 
 # When to show the statusbar.
 # Type: String
@@ -293,7 +293,7 @@ c.tabs.background = True
 
 # Force `prefers-color-scheme: dark` colors for websites.
 # Type: Bool
-c.colors.webpage.prefers_color_scheme_dark = True
+c.colors.webpage.preferred_color_scheme = 'dark'
 
 # Render all web contents using a dark theme. Example configurations
 # from Chromium's `chrome://flags`:  - "With simple HSL/CIELAB/RGB-based

@@ -4,10 +4,12 @@ case $1 in
     -p | --pause)
         notify-send -u low -t 2000 "pausing dunst notifications"
         sleep 2
-        killall -SIGUSR1 dunst
+        # killall -SIGUSR1 dunst
+        dunstctl set-paused true
         ;;
     -u | --unpause)
-        killall -SIGUSR2 dunst
+        # killall -SIGUSR2 dunst
+        dunstctl set-paused false
         notify-send -u low -t 2000 "unpaused dunst notifications"
         ;;
     *)

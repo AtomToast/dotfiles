@@ -41,7 +41,7 @@ runtime config/keys.vim
   " runtime config/plugins/auto-pairs.vim
   " runtime config/plugins/vim-closetag.vim
   runtime config/plugins/netrw.vim
-  runtime config/plugins/firenvim.vim
+  " runtime config/plugins/firenvim.vim
   runtime config/plugins/quick-scope.vim
   runtime config/plugins/vimwiki.vim
   runtime config/plugins/vim-arduino.vim

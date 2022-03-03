@@ -57,6 +57,9 @@ endif
 " enable comment highlighting in json
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
+" set filetype of .S files to asm
+autocmd BufRead,BufNewFile *.S set filetype=asm
+
 " highlight yanks
 augroup highlight_yank
     autocmd!

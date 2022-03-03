@@ -75,7 +75,7 @@ zinit light "skywind3000/z.lua"
 
 zinit light "MichaelAquilina/zsh-auto-notify"
 
-zinit load "spwhitt/nix-zsh-completions"
+# zinit load "spwhitt/nix-zsh-completions"
 
 zinit snippet 'https://github.com/robbyrussell/oh-my-zsh/raw/master/plugins/git/git.plugin.zsh'
 
@@ -307,6 +307,8 @@ export FZF_CTRL_T_OPTS="--preview '(bat -p --color=always {} || tree -CF {}) 2> 
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 export FZF_ALT_C_OPTS="--preview 'tree -CF {} | head -200'"
 
-if [ -e /home/kjell/.nix-profile/etc/profile.d/nix.sh ]; then . /home/kjell/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
-eval "$(direnv hook zsh)"
+# if [ -e /home/kjell/.nix-profile/etc/profile.d/nix.sh ]; then . /home/kjell/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+# export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
+# eval "$(direnv hook zsh)"
+
+wmname LG3D
