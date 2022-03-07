@@ -49,8 +49,9 @@ batteryCapacityIcon100=""
 mailIcon=""
 spotifyPlayIcon=""
 spotifyPauseIcon=""
-cpuUsageIcon=""
-cpuTempIcon=""
+gpuIcon="﫛"
+cpuIcon=""
+tempIcon=""
 memoryIcon=""
 dateIcon=""
 timeIcon=""
@@ -134,14 +135,17 @@ player_status() {
     fi
 }
 
-cpu_temp() {
-    cputemp=$(sensors | grep Package | awk '{print $4}' | tr -d +)
-    echo "$cpuTempIcon $cputemp"
+gpu_stats() {
+    nvidia-smi > /dev/null || exit
+    gpuusage=$(nvidia-smi -q -d UTILIZATION | grep Gpu | awk '{print $3}')
+    gputemp=$(nvidia-smi -q -d TEMPERATURE | grep "GPU Current" | awk '{print $5}')
+    echo " $gpuIcon $gpuusage% $tempIcon $gputemp°C |"
 }
 
-cpu_usage() {
+cpu_stats() {
     cpuusage=$(top -bn1 | rg -o "Cpu\(s\):\s+\d+.\d" | rg -o "\d+\.\d")
-    echo "$cpuUsageIcon $cpuusage%"
+    cputemp=$(sensors | sed -nr 's/CPUTIN:\s*\+([[:digit:]]+).*/\1/p')
+    echo "$cpuIcon $cpuusage% $tempIcon $cputemp°C"
 }
 
 memory_usage() {
@@ -157,9 +161,9 @@ while true; do
     batteryStatusIcon=$(batteryStatus)
     mailCount=$(mail_count)
     playerStatus=$(player_status)
-    cpuTemp=$(cpu_temp)
-    cpuUsage=$(cpu_usage)
+    gpuStats=$(gpu_stats)
+    cpuStats=$(cpu_stats)
     memoryUsage=$(memory_usage)
-    xsetroot -name "$playerStatus$mailCount $memoryUsage | $cpuUsage | $cpuTemp | $batteryStatusIcon | $internetStatusIcon | $dateIcon $(date +"%F (%a) | $timeIcon %R ")"
+    xsetroot -name "$playerStatus$mailCount $memoryUsage |$gpuStats $cpuStats | $batteryStatusIcon | $internetStatusIcon | $dateIcon $(date +"%F (%a) | $timeIcon %R ")"
     sleep 1
 done
