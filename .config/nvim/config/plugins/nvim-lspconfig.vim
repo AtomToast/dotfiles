@@ -9,14 +9,22 @@ lspconfig.zls.setup {
 
 -- lspconfig.vimls.setup{}
 
-lspconfig.clangd.setup{}
+lspconfig.clangd.setup{
+  capabilities = capabilities,
+}
 -- lspconfig.ccls.setup{}
 
-lspconfig.gopls.setup{}
+lspconfig.gopls.setup{
+  capabilities = capabilities,
+}
 
-lspconfig.pyright.setup{}
+lspconfig.pyright.setup{
+  capabilities = capabilities,
+}
 
-lspconfig.rust_analyzer.setup{}
+lspconfig.rust_analyzer.setup{
+  capabilities = capabilities,
+}
 
 lspconfig.efm.setup{
   init_options = {documentFormatting = true},
@@ -129,7 +137,9 @@ lspconfig.html.setup {
   filetypes = { "html", "htmldjango" },
 }
 
-lspconfig.tsserver.setup{}
+lspconfig.tsserver.setup{
+  capabilities = capabilities,
+}
 
 lspconfig.jsonls.setup {
   cmd = {"vscode-json-languageserver", "--stdio"},
