@@ -201,3 +201,6 @@ super + minus
 
 super + shift + t
     trans --brief "$(xclip -selection primary -o)" | tee /tmp/translation | xclip -selection clipboard && notify-send "Translation" "$(cat /tmp/translation)"
+
+super + q
+    /home/kjell/clicker.sh

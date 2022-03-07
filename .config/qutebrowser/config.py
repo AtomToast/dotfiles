@@ -293,7 +293,7 @@ c.tabs.background = True
 
 # Force `prefers-color-scheme: dark` colors for websites.
 # Type: Bool
-c.colors.webpage.preferred_color_scheme = 'dark'
+# c.colors.webpage.prefers_color_scheme_dark = True
 
 # Render all web contents using a dark theme. Example configurations
 # from Chromium's `chrome://flags`:  - "With simple HSL/CIELAB/RGB-based
@@ -305,7 +305,7 @@ c.colors.webpage.preferred_color_scheme = 'dark'
 # `colors.webpage.darkmode.threshold.background` to 205.  - "With
 # selective inversion of everything": Combines the two variants   above.
 # Type: Bool
-c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.enabled = False
 
 # Restore sessions
 c.auto_save.session = True
