@@ -211,7 +211,4 @@ set updatetime=100
 nnoremap gK <cmd>lua vim.diagnostic.show_line_diagnostics()<CR>
 
 " automatically format on save
-autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)
-autocmd BufWritePost *.zig lua vim.lsp.buf.formatting_sync(nil, 1001)
-autocmd BufWritePost *.json lua vim.lsp.buf.formatting_sync(nil, 1001)
-autocmd BufWritePost *.c,*.h lua vim.lsp.buf.formatting_sync(nil, 1001)
+autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()
