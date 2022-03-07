@@ -157,7 +157,7 @@ lspconfig.yamlls.setup{}
 ------------------------------------------------------------------------
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.diagnostic.on_publish_diagnostics, {
+  vim.lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = false,
     signs = true,
     underline = true,
