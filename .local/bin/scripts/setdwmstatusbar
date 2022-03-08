@@ -110,7 +110,7 @@ batteryStatus() {
         batteryStatusIcon="$batteryErrorIcon"
     fi
 
-    timeRemaining=$(acpi | cut -d " " -f5- | sed -e 's/\(:[0-9]\+ \)/ /g')
+    timeRemaining=$(acpi | grep Discharging | cut -d " " -f5- | sed -e 's/\(:[0-9]\+ \)/ /g')
 
     echo "$batteryStatusIcon $batteryCapacity% $timeRemaining"
 }
@@ -144,8 +144,14 @@ gpu_stats() {
 
 cpu_stats() {
     cpuusage=$(top -bn1 | rg -o "Cpu\(s\):\s+\d+.\d" | rg -o "\d+\.\d")
-    cputemp=$(sensors | sed -nr 's/CPUTIN:\s*\+([[:digit:]]+).*/\1/p')
-    echo "$cpuIcon $cpuusage% $tempIcon $cputemp°C"
+    cputemp_amd=$(sensors | grep CPUTIN | awk '{print $2}' | tr -d +)
+    cputemp_int=$(sensors | grep Package | awk '{print $4}' | tr -d +)
+
+    [ -n "$cputemp_amd" ] && \
+        cputemp="$cputemp_amd" || \
+        cputemp="$cputemp_int"
+
+    echo "$cpuIcon $cpuusage% $tempIcon $cputemp"
 }
 
 memory_usage() {
