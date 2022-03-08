@@ -28,6 +28,7 @@ lspconfig.rust_analyzer.setup{
 
 lspconfig.efm.setup{
   init_options = {documentFormatting = true},
+  root_dir = require("lspconfig").util.root_pattern{".git/", "."},
   filetypes = {
     "lua",
     "python",
