@@ -209,7 +209,7 @@ set nowritebackup
 set updatetime=100
 " autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
 
-nnoremap gK <cmd>lua vim.diagnostic.show_line_diagnostics()<CR>
+nnoremap gK <cmd>lua vim.diagnostic.open_float({scope="cursor"})<CR>
 
 " automatically format on save
 autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()
