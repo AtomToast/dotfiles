@@ -33,7 +33,8 @@ runtime config/keys.vim
   runtime config/plugins/nvim-treesitter.vim
   runtime config/plugins/nvim-ts-autotag.vim
   runtime config/plugins/nvim-autopairs.vim
-  runtime config/plugins/nvim-compe.vim
+  " runtime config/plugins/nvim-compe.vim
+  runtime config/plugins/nvim-cmp.lua
   runtime config/plugins/lspkind-nvim.vim
   runtime config/plugins/rust-tools.nvim.lua
   runtime config/plugins/vim-vsnip.vim

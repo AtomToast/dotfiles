@@ -27,8 +27,5 @@ require'compe'.setup {
 vim.o.completeopt = "menuone,noselect"
 EOF
 
-" remove status line spam
-set shortmess+=c
-
 inoremap <silent><expr> <C-e> compe#close('<C-e>')
 inoremap <silent><expr> <C-n> compe#complete()

@@ -56,6 +56,9 @@ autocmd BufNewFile *.md execute "normal i# \<C-r>=ConvertName2Title()\<CR>"
 " set matches for insert mode completion
 set complete=.,w,b,u,t,i,kspell
 
+" remove status line spam
+set shortmess+=c
+
 " enable persistent undohistory
 set undofile
 
