@@ -9,7 +9,7 @@ xrdb -load ~/.Xresources &
 /usr/lib/kdeconnectd &
 clipmenud &
 setdwmstatusbar &
-setroot -z /home/kjell/Pictures/wallpapers/$(ls ~/Pictures/wallpapers | shuf -n1) &
+setroot -z $(find /home/kjell/Pictures/wallpapers/ -type f | shuf -n1) &
 blueman-applet &
 redshift -l 52.55:13.46 &
 # TODO: Figure out how to do enable loginctl unlock-session this without doas
