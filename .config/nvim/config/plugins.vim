@@ -68,6 +68,8 @@ Plug 'sevko/vim-nand2tetris-syntax'
 Plug 'rust-lang/rust.vim'
 Plug 'simrat39/rust-tools.nvim'
 Plug 'cespare/vim-toml'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'akinsho/flutter-tools.nvim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'neovimhaskell/haskell-vim'
 Plug 'LnL7/vim-nix'

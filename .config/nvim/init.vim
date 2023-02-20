@@ -37,6 +37,7 @@ runtime config/keys.vim
   runtime config/plugins/nvim-cmp.lua
   runtime config/plugins/lspkind-nvim.vim
   runtime config/plugins/rust-tools.nvim.lua
+  runtime config/plugins/flutter-tools.nvim.lua
   runtime config/plugins/vim-vsnip.vim
   " runtime config/plugins/coc.nvim.vim
   " runtime config/plugins/coc-fzf.vim
