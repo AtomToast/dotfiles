@@ -33,6 +33,10 @@ npairs.add_rules({
   Rule("|", "|", "zig")
 })
 
+npairs.add_rules({
+  Rule("$", "$", "vimwiki")
+})
+
 npairs.get_rule('"')[1]
  :with_pair(function()
     if vim.bo.filetype == 'vim' then
