@@ -79,6 +79,9 @@ autocmd BufWritePre * call StripTrailingWhitespace()
 " correct latex buffer filetype
 let g:tex_flavor = "latex"
 
+" set compiler for rust cargo and wgsl files
+autocmd BufEnter Cargo.lock,Cargo.toml,*.wgsl,*.rs compiler cargo
+
 " hide stuff inside of dvtms editor mode
 function! HideClutter() abort
   " turn off statusbar
