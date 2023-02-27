@@ -34,7 +34,7 @@ set splitbelow splitright
 set number relativenumber
 
 " configure tabs
-set autoindent
+set smartindent
 " Indenting defaults (does not override vim-sleuth's indenting detection)
 " Defaults to 4 spaces for most filetypes
 if get(g:, '_has_set_default_indent_settings', 0) == 0
