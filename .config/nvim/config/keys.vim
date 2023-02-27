@@ -34,9 +34,9 @@ vmap <leader>R :s//gI<left><left><left>
 " call make with a shortcut
 nmap <leader>mm :Make<CR>
 nmap <leader>mc :Make clean<CR>
-nmap <leader>mi :!sudo make install<CR>
-nmap <leader>mr :make run<CR>
-nmap <leader>mb :make build<CR>
+nmap <leader>mb :Make build<CR>
+nmap <leader>mr :Make run<CR>
+nmap <leader>mi :!sudo make install <CR>
 
 " edit new file under cursor
 nnoremap <leader>gf :e <cfile><CR>
