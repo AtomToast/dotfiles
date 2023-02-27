@@ -17,5 +17,6 @@ au FileType vimwiki nmap <buffer> <C-P> <Plug>VimwikiPrevLink
 au FileType vimwiki nmap <buffer> <A-s> :VimwikiSearchTags<space>
 " au FileType vimwiki set syntax=vimwiki
 au FileType vimwiki syntax on
+au FileType vimwiki set syntax=markdown " perhaps make this conditional on file extension
 au FileType vimwiki set nowrap
 
