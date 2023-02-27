@@ -6,6 +6,9 @@ cnoreabbrev Q q
 cnoreabbrev W w
 nnoremap Q <NOP>
 
+" remove an annoying binding, make reformatting current block nicer
+nnoremap gQ vipJgqq
+
 " create a shorter way of ending emails
 autocmd FileType mail inoreabbrev mfg Mit freundlichen Grüßen,<CR>Kjell Hoffhenke
 autocmd FileType mail inoreabbrev br Best Regards,<CR>Kjell Hoffhenke
