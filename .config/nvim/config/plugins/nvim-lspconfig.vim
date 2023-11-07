@@ -182,6 +182,7 @@ nnoremap <silent> [c <cmd>lua vim.diagnostic.goto_prev()<CR>
 nnoremap <silent> <leader>f    <cmd>lua vim.lsp.buf.formatting()<CR>
 vnoremap <silent> <leader>f    <cmd>lua vim.lsp.buf.range_formatting()<CR>
 nnoremap <silent> <leader>rn   <cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <silent> <leader>ca   <cmd>lua vim.lsp.buf.code_action()<CR>
 nnoremap <silent> <leader>a    <cmd>ClangdSwitchSourceHeader<CR>
 nnoremap <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 inoremap <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
