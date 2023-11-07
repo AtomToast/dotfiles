@@ -155,11 +155,11 @@ EOF
 set signcolumn=auto:4
 sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticSignError
 sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=DiagnosticSignWarn
-sign define DiagnosticSignInformation text= texthl=DiagnosticSignInformation linehl= numhl=DiagnosticSignInformation
+sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=DiagnosticSignInfo
 sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=DiagnosticSignHint
 highlight DiagnosticSignError guifg=#e73c50 guibg=#2D2E27 ctermfg=1 ctermbg=237
 highlight DiagnosticSignWarn guifg=#e7c547 guibg=#2D2E27 ctermfg=1 ctermbg=237
-highlight DiagnosticSignInformation guifg=#e6db74 guibg=#2D2E27 ctermfg=1 ctermbg=237
+highlight DiagnosticSignInfo guifg=#e6db74 guibg=#2D2E27 ctermfg=1 ctermbg=237
 highlight DiagnosticSignHint guifg=#66d9ef guibg=#2D2E27 ctermfg=1 ctermbg=237
 
 
