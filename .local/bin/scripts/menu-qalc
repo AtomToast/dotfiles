@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+
+# based on https://github.com/BarbUk/menu-qalc
+# Calculator for use with bemenu
+# Copying to the clipboard requires wl-clip
+
+usage() {
+    echo "$(tput bold)menu-qalc$(tput sgr0)"
+    echo "A calculator for bemenu(1)"
+    echo
+    echo "$(tput bold)Usage:$(tput sgr0)"
+    echo "    = 4+2"
+    echo "    = (4+2)/(4+3)"
+    echo "    = 4^2"
+    echo "    = sqrt(4)"
+    echo "    = c(2)"
+    echo
+    echo "$(tput bold)Change bemenu path:$(tput sgr0)"
+    echo "By default, if bemenu exists, it will be used. To force menu-qalc to"
+    echo "use a specific binary, use the --bemenu argument"
+    echo
+    echo "    = --bemenu=<bemenu_executable>"
+    echo
+    echo "$(tput bold)Passing arguments to bemenu:$(tput sgr0)"
+    echo "Any parameters after ' -- ' will be passed to bemenu."
+    echo
+    echo "    = -- <bemenu args>"
+    echo
+    echo "The answer can be copied to the clipboard and used for further calculations inside (or outside) bemenu."
+    echo
+    echo "If launched outside of bemenu the expression may need quotation marks."
+    exit
+}
+
+# Process CLI parameters
+for var in "$@"
+do
+    case $var in
+        -h|--help) usage ;;
+        -b=*|--bemenu=*)
+            menu="$(echo $var | cut -d'=' -f 2)";
+            ;;
+        --) break ;;
+    esac
+done
+
+# Grab the answer
+if [ -n "$1" ]; then
+    answer=$(echo "$1" | qalc +u8 -color=never -terse | awk '!/^>/ && !/^$/ {gsub(/^[ \t]+|[ \t]+$/, "", $0); print}')
+fi
+
+# Path to menu application
+if [ -z "${menu+1}" ]; then
+    if [[ -n $(command -v bemenu) ]]; then
+        menu=$(command -v bemenu)
+    else
+        >&2 echo "bemenu not found"
+        exit
+    fi
+fi
+
+# Determine args to pass to bemenu/rofi
+while [[ $# -gt 0 && $1 != "--" ]]; do
+    shift
+done
+[[ $1 == "--" ]] && shift
+
+action=$(echo -e "Copy to clipboard\nClear\nClose" | $menu "$@" -p "= $answer")
+
+case $action in
+    "Clear") $0 ;;
+    "Copy to clipboard") echo -n "$answer" | wl-copy -t text/plain; notify-send "Copied Result" "$answer" ;;
+    "Close") ;;
+    "") ;;
+    *) $0 "$answer $action" "--bemenu=$menu" "--" "$@" ;;
+esac

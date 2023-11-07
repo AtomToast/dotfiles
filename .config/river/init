@@ -1,0 +1,219 @@
+#!/bin/sh
+
+# make xdg-desktop-portal-wlr work
+riverctl spawn "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+
+## WM KEYBINDS ##
+riverctl map normal Super+Shift C close
+riverctl map normal Super+Shift Q exit
+
+riverctl map normal Super J focus-view next
+riverctl map normal Super K focus-view previous
+riverctl map normal Super+Shift J swap next
+riverctl map normal Super+Shift K swap previous
+
+riverctl map normal Super Period focus-output previous
+riverctl map normal Super Comma focus-output next
+riverctl map normal Super+Shift Period send-to-output previous
+riverctl map normal Super+Shift Comma send-to-output next
+
+riverctl map normal Super+Shift Return zoom
+
+riverctl map normal Super H send-layout-cmd rivercarro "main-ratio -0.05"
+riverctl map normal Super L send-layout-cmd rivercarro "main-ratio +0.05"
+riverctl map normal Super+Shift H send-layout-cmd rivercarro "main-count +1"
+riverctl map normal Super+Shift L send-layout-cmd rivercarro "main-count -1"
+
+riverctl map normal Super M send-layout-cmd rivercarro "main-location monocle"
+riverctl map normal Super T send-layout-cmd rivercarro "main-location left"
+riverctl map normal Super Up send-layout-cmd rivercarro "main-location top"
+riverctl map normal Super Right send-layout-cmd rivercarro "main-location right"
+riverctl map normal Super Down send-layout-cmd rivercarro "main-location bottom"
+riverctl map normal Super Left send-layout-cmd rivercarro "main-location left"
+
+riverctl map normal Super+Alt H     move left 100
+riverctl map normal Super+Alt J     move down 100
+riverctl map normal Super+Alt K     move up 100
+riverctl map normal Super+Alt L     move right 100
+riverctl map normal Super+Alt Left  move left 100
+riverctl map normal Super+Alt Down  move down 100
+riverctl map normal Super+Alt Up    move up 100
+riverctl map normal Super+Alt Right move right 100
+
+riverctl map normal Super+Alt+Shift H     snap left
+riverctl map normal Super+Alt+Shift J     snap down
+riverctl map normal Super+Alt+Shift K     snap up
+riverctl map normal Super+Alt+Shift L     snap right
+riverctl map normal Super+Alt+Shift Left  snap left
+riverctl map normal Super+Alt+Shift Down  snap down
+riverctl map normal Super+Alt+Shift Up    snap up
+riverctl map normal Super+Alt+Shift Right snap right
+
+riverctl map normal Super+Alt+Control H     resize horizontal -100
+riverctl map normal Super+Alt+Control J     resize vertical 100
+riverctl map normal Super+Alt+Control K     resize vertical -100
+riverctl map normal Super+Alt+Control L     resize horizontal 100
+riverctl map normal Super+Alt+Control Left  resize horizontal -100
+riverctl map normal Super+Alt+Control Down  resize vertical 100
+riverctl map normal Super+Alt+Control Up    resize vertical -100
+riverctl map normal Super+Alt+Control Right resize horizontal 100
+
+riverctl map-pointer normal Super BTN_LEFT move-view
+riverctl map-pointer normal Super BTN_RIGHT resize-view
+riverctl map-pointer normal Super BTN_MIDDLE toggle-float
+
+riverctl map normal Super Space toggle-float
+riverctl map normal Super F toggle-fullscreen
+
+
+for i in $(seq 1 9); do
+    tags=$((1 << ($i - 1)))
+
+    # Super+[1-9] to focus tag [0-8]
+    riverctl map normal Super $i set-focused-tags $tags
+
+    # Super+Shift+[1-9] to tag focused view with tag [0-8]
+    riverctl map normal Super+Shift $i set-view-tags $tags
+
+    # Super+Control+[1-9] to toggle focus of tag [0-8]
+    riverctl map normal Super+Control $i toggle-focused-tags $tags
+
+    # Super+Shift+Control+[1-9] to toggle tag [0-8] of focused view
+    riverctl map normal Super+Shift+Control $i toggle-view-tags $tags
+done
+
+# Super+0 to focus all tags
+# Super+Shift+0 to tag focused view with all tags
+all_tags=$(((1 << 32) - 1))
+riverctl map normal Super 0 set-focused-tags $all_tags
+riverctl map normal Super+Shift 0 set-view-tags $all_tags
+
+# Declare a passthrough mode. This mode has only a single mapping to return to
+# normal mode. This makes it useful for testing a nested wayland compositor
+riverctl declare-mode passthrough
+riverctl map normal Super F11 enter-mode passthrough
+riverctl map passthrough Super F11 enter-mode normal
+
+## APPLICATION KEYBINDS ##
+riverctl map normal Super Return spawn foot
+riverctl map normal Super P spawn "bemenu-run -p '' --hb '#f28534' --hf '#282828'"
+
+riverctl map normal Super X spawn 'dunstctl close'
+riverctl map normal Super+Shift X spawn 'dunstctl close-all'
+riverctl map normal Super S spawn 'dunstctl history-pop'
+riverctl map normal Super+Shift S spawn 'dunstctl context'
+riverctl map normal Super N spawn 'snoozedunst -u'
+riverctl map normal Super+Shift N spawn 'snoozedunst -p'
+
+riverctl map normal Super apostrophe spawn 'menu-qalc'
+riverctl map normal Super+Shift E spawn 'editconf'
+riverctl map normal Super+Shift H spawn 'openman'
+riverctl map normal Super minus spawn 'wl-color-picker'
+riverctl map normal Super+Shift T spawn 'primary-translate'
+riverctl map normal Super C spawn 'cliphist list | bemenu -p "clipboard history" -l 20 | cliphist decode | wl-copy'
+riverctl map normal Super+Control C spawn 'cliphist list | bemenu -p "delete from clipboard history" -l 20 | cliphist delete'
+riverctl map normal Super+Control P spawn '$TERMINAL -e pulsemixer'
+riverctl map normal Super B spawn 'DMENU_BLUETOOTH_LAUNCHER=bemenu dmenu-bluetooth'
+riverctl map normal Super+Shift B spawn 'blueman-manager'
+
+riverctl map normal Super F1 spawn '$TERMINAL $EDITOR $HOME/Nextcloud/Documents/vimwiki/index.md'
+riverctl map normal Super+Control F1 spawn '$TERMINAL $EDITOR +"VimwikiMakeDiaryNote"'
+riverctl map normal Super+Shift F1 spawn '$TERMINAL $FILEMANAGER $HOME/Nextcloud/Documents/vimwiki'
+riverctl map normal Super F2 spawn 'firefox'
+riverctl map normal Super+Shift F2 spawn 'firefox --private-window'
+riverctl map normal Super+Control F2 spawn 'chromium'
+riverctl map normal Super F3 spawn '$TERMINAL -e $HOME/.config/vifm/scripts/vifmrun'
+riverctl map normal Super F4 spawn '$TERMINAL -e khal interactive'
+riverctl map normal Super F5 spawn 'slack'
+riverctl map normal Super+Shift F5 spawn 'element-desktop'
+riverctl map normal Super F6 spawn 'signal-desktop --enable-features=UseOzonePlatform --ozone-platform-hint=auto --enable-webrtc-pipewire-capturer'
+riverctl map normal Super F7 spawn '$TERMINAL -e neomutt'
+riverctl map normal Super+Shift F7 spawn 'mailsync'
+riverctl map normal Super F8 spawn 'telegram-desktop'
+riverctl map normal Super F9 spawn 'discord'
+riverctl map normal Super F10 spawn '$TERMINAL -e ncspot'
+riverctl map normal Super+Shift F10 spawn '$TERMINAL -e lyrics'
+riverctl map normal Super F11 spawn '$TERMINAL -e nmtui'
+riverctl map normal Super F12 spawn '$TERMINAL -e htop'
+
+# Various media key mappings for both normal and locked mode which do not have a modifier
+for mode in normal locked; do
+    riverctl map $mode None XF86AudioRaiseVolume spawn 'pamixer -i 5'
+    riverctl map $mode None XF86AudioLowerVolume spawn 'pamixer -d 5'
+    riverctl map $mode None XF86AudioMute spawn 'pamixer --toggle-mute'
+
+    riverctl map $mode None XF86AudioMedia spawn 'playerctl play-pause'
+    riverctl map $mode None XF86AudioPlay spawn 'playerctl play-pause'
+    riverctl map $mode None XF86AudioPrev spawn 'playerctl previous'
+    riverctl map $mode None XF86AudioNext spawn 'playerctl next'
+    riverctl map $mode None Cancel spawn 'playerctl stop'
+
+    riverctl map $mode None XF86MonBrightnessUp spawn 'light -A 5'
+    riverctl map $mode None XF86MonBrightnessDown spawn 'light -U 5'
+
+    riverctl map $mode None Print spawn 'grim -g "$(slurp)" - | wl-copy -t "image/png"'
+    riverctl map $mode Shift Print spawn 'grim -g "$(slurp)" - | swappy -f -'
+done
+
+## APPEARANCE ##
+riverctl background-color 0x282828
+riverctl border-color-focused 0xf28534
+riverctl border-color-unfocused 0x3c3836
+riverctl border-color-urgent 0xf2594b
+riverctl border-width 2
+
+
+## INPUT ##
+riverctl set-repeat 50 300
+riverctl keyboard-layout eu
+
+riverctl xcursor-theme "Capitaine Cursors (Gruvbox)"
+riverctl hide-cursor when-typing enabled
+riverctl set-cursor-warp on-focus-change
+riverctl focus-follows-cursor normal
+riverctl input pointer-2362-628-PIXA3854:00_093A:0274_Touchpad tap enabled
+riverctl input pointer-2362-628-PIXA3854:00_093A:0274_Touchpad natural-scroll enabled
+riverctl input pointer-2362-628-PIXA3854:00_093A:0274_Touchpad disable-while-typing enabled
+
+## RULES ##
+riverctl rule-add -app-id 'firefox' ssd
+riverctl rule-add -app-id 'blueman-manager' ssd
+riverctl rule-add -app-id 'org.telegram.desktop' ssd
+riverctl rule-add -app-id 'org.pwmt.zathura' ssd
+riverctl rule-add -app-id 'leagueclientux.exe' ssd
+
+# signal wayland bug workaround
+riverctl rule-add -app-id "signal*" float
+riverctl rule-add -app-id "Signal*" float
+riverctl rule-add -app-id "ueberzugpp*" float
+
+riverctl rule-add -app-id 'firefox'              tag 000000010
+riverctl rule-add -app-id 'Slack'                tag 000010000
+riverctl rule-add -app-id 'signal'               tag 000100000
+riverctl rule-add -app-id 'Signal'               tag 000100000 # xwayland
+riverctl rule-add -app-id 'org.telegram.desktop' tag 010000000
+riverctl rule-add -app-id 'discord'              tag 100000000
+
+
+## AUTOSTART ##
+spawn_once() {
+    pgrep -f "${1}" > /dev/null || riverctl spawn "${*}"
+}
+
+# Set the default layout generator to be rivercarro and start it.
+# River will send the process group of the init executable SIGTERM on exit.
+riverctl default-layout rivercarro
+spawn_once rivercarro -inner-gaps 4 -outer-gaps 6 -main-ratio 0.55
+spawn_once dunst
+spawn_once waybar
+spawn_once swaybg -m fit -i /home/kjell/Downloads/3840x2160-dark-archlinux2.png
+spawn_once blueman-applet
+spawn_once lxqt-policykit-agent
+spawn_once swayidle -w timeout 300 'waylock -fork-on-lock' timeout 600 "wlopm --off '*'" resume "wlopm --on '*'" before-sleep 'waylock -fork-on-lock'
+spawn_once way-displays
+spawn_once wl-paste --watch cliphist store
+
+spawn_once discord --enable-features=UseOzonePlatform --ozone-platform=wayland
+spawn_once telegram-desktop --ozone-platform-hint=auto --enable-webrtc-pipewire-capturer
+spawn_once signal-desktop --use-tray-icon --enable-features=UseOzonePlatform --ozone-platform-hint=auto --enable-webrtc-pipewire-capturer
+sleep 5 && signal-desktop &# signal wayland bug workaround

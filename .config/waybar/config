@@ -1,0 +1,106 @@
+{
+    "height": 30,
+    "spacing": 4,
+
+    "modules-left": ["river/tags", "mpris" ,"river/window"],
+    // "modules-center": ["river/window"],
+    "modules-right": ["idle_inhibitor", "pulseaudio", "memory", "cpu", "temperature", "backlight", "battery", "network", "clock", "clock#clock2", "tray"],
+
+    "river/window": {
+        "format": "{}",
+        "max-length": 300
+    },
+    "mpris": {
+        "format": "{player_icon} {dynamic}",
+        "format-paused": "<i>{status_icon} {dynamic}</i>",
+        // "interval":1,
+        "player-icons": {
+            "default": "󰐊",
+            "mpv": "󰿏",
+            "spotify": ""
+        },
+        "status-icons": {
+            "paused": "󰏤"
+        },
+        "ignored-players": ["firefox"]
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        "icon-size": 17,
+        "spacing": 10
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%Y-%m-%d 󰃭}"
+    },
+    "clock#clock2": {
+        "tooltip-format": "{:%H:%M:%S}",
+        "format": "{:%H:%M }",
+        "interval":10
+    },
+    "cpu": {
+        "format": "{usage}%  ",
+    },
+    "memory": {
+        "format": "{used:0.1f}/{total:0.1f}  "
+    },
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""]
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon} ",
+        "format-charging": "{capacity}%  ",
+        "format-plugged": "{capacity}%  ",
+        "format-alt": "{time} {icon}",
+        "format-icons": [" ", " ", " ", " ", " "]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%)  ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ -1%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ +1%"
+    }
+}
+
