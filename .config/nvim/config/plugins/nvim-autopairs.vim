@@ -8,6 +8,7 @@ _G.MUtils= {}
 
 npairs.setup({
     check_ts = true,
+    map_cr = true,
 })
 
 require('nvim-treesitter.configs').setup {
