@@ -29,3 +29,4 @@ EOF
 
 inoremap <silent><expr> <C-e> compe#close('<C-e>')
 inoremap <silent><expr> <C-n> compe#complete()
+inoremap <silent><expr> <C-p> compe#complete()
