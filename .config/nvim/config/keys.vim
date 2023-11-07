@@ -41,6 +41,10 @@ nmap <leader>mb :Make build<CR>
 nmap <leader>mr :Make run<CR>
 nmap <leader>mi :!sudo make install <CR>
 
+" temp fix for flutter
+autocmd FileType dart nnoremap <leader>mr :FlutterRun -d linux<CR>
+autocmd FileType dart nnoremap <leader>mq :FlutterQuit<CR>
+
 " edit new file under cursor
 nnoremap <leader>gf :e <cfile><CR>
 
