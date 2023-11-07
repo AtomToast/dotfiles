@@ -22,7 +22,7 @@ autocmd TermOpen * startinsert
 autocmd BufEnter term://* startinsert
 
 " I'm a save addict
-au FocusLost * :wa
+au FocusLost *? :wa
 set autowriteall
 
 " automatically load changes to open files
