@@ -5,9 +5,12 @@ set overlap
 set xlsx_readformulas
 set half_page_scroll
 
-nmap "ZZ" ":wq<cr>"
-nmap "ZQ" ":q!<cr>"
-nmap "<C-D>" "<C-F>"
-nmap "<C-U>" "<C-B>"
-nmap " p" ":cpaste<cr>"
-nmap " y" ":ccopy<cr>"
+nnoremap "ZZ" ":wq<cr>"
+nnoremap "ZQ" ":q!<cr>"
+nnoremap "<C-D>" "<C-F>"
+nnoremap "<C-U>" "<C-B>"
+nnoremap " p" ":cpaste<cr>"
+nnoremap " y" ":ccopy<cr>"
+nnoremap " c" ":int recalc<cr>"
+nnoremap " O" ":set overlap<cr>"
+nnoremap " o" ":set nooverlap<cr>"
