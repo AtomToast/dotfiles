@@ -62,6 +62,9 @@ set shortmess+=c
 " enable persistent undohistory
 set undofile
 
+" stop being annoying mouse
+set mouse=
+
 " set spell check languages
 set spelllang=en_us,en_gb,de_20
 
