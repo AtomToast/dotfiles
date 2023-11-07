@@ -179,8 +179,8 @@ nnoremap <silent> gD    <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> go    <cmd>lua vim.diagnostic.set_loclist()<CR>
 nnoremap <silent> ]c <cmd>lua vim.diagnostic.goto_next()<CR>
 nnoremap <silent> [c <cmd>lua vim.diagnostic.goto_prev()<CR>
-nnoremap <silent> <leader>f    <cmd>lua vim.lsp.buf.formatting()<CR>
-vnoremap <silent> <leader>f    <cmd>lua vim.lsp.buf.range_formatting()<CR>
+nnoremap <silent> <leader>f    <cmd>lua vim.lsp.buf.format { async = true }<CR>
+vnoremap <silent> <leader>f    <cmd>lua vim.lsp.buf.format { async = true }<CR>
 nnoremap <silent> <leader>rn   <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent> <leader>ca   <cmd>lua vim.lsp.buf.code_action()<CR>
 nnoremap <silent> <leader>a    <cmd>ClangdSwitchSourceHeader<CR>
@@ -198,4 +198,5 @@ set updatetime=100
 nnoremap gK <cmd>lua vim.diagnostic.open_float({scope="cursor"})<CR>
 
 " automatically format on save
-autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()
+autocmd BufWritePre <buffer> lua vim.lsp.buf.format({async=true})
+autocmd BufWritePre *.rs :RustFmt
