@@ -30,6 +30,7 @@ runtime config/keys.vim
   runtime config/plugins/vim-wordmotion.vim
   runtime config/plugins/vim-speeddating.vim
   runtime config/plugins/nvim-lspconfig.vim
+  runtime config/plugins/mason.nvim.vim
   runtime config/plugins/nvim-treesitter.vim
   runtime config/plugins/nvim-ts-autotag.vim
   runtime config/plugins/nvim-autopairs.vim
