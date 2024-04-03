@@ -24,9 +24,6 @@ vim.opt.signcolumn = 'yes'
 -- Don't show useless completion info in status
 vim.opt.shortmess:append 'c'
 
--- Decrease update time
-vim.opt.updatetime = 250
-
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
 vim.opt.timeoutlen = 300
@@ -38,6 +35,11 @@ vim.opt.splitbelow = true
 -- Sets how neovim will display certain whitespace in the editor.
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+-- Please don't indent with 8 width tabs like wtf
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 
 -- Show which line your cursor is on
 vim.opt.cursorline = true

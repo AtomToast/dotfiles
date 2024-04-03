@@ -39,8 +39,8 @@ vim.keymap.set('n', '<leader>lp', vim.cmd.lprevious, { desc = 'Go to [P]revious 
 vim.keymap.set('n', '<leader>ll', vim.cmd.lwindow, { desc = 'Toggle location [L]ist window' })
 
 -- Search and replace (substitute)
-vim.keymap.set('n', '<leader>R', '<cmd>%s//gI<left><left><left>', { desc = 'Search and [R]eplace in whole file' })
-vim.keymap.set('v', '<leader>R', '<cmd>s//gI<left><left><left>', { desc = 'Search and [R]eplace in selection' })
+vim.keymap.set('n', '<leader>R', ':%s//gI<left><left><left>', { desc = 'Search and [R]eplace in whole file' })
+vim.keymap.set('v', '<leader>R', ':s//gI<left><left><left>', { desc = 'Search and [R]eplace in selection' })
 
 -- Create and edit new file under cursor
 vim.keymap.set('n', '<leader>gf', '<cmd>e <cfile><CR>', { desc = 'Create and edit new [F]ile under cursor' })
@@ -48,6 +48,10 @@ vim.keymap.set('n', '<leader>gf', '<cmd>e <cfile><CR>', { desc = 'Create and edi
 -- Insert semicolon at the end of the line
 vim.keymap.set('n', '<A-;>', 'mkA;<Esc>`k')
 vim.keymap.set('i', '<A-;>', '<Esc>mkA;<Esc>`ka')
+
+-- Insert comma at the end of the line
+vim.keymap.set('n', '<A-,>', 'mkA,<Esc>`k')
+vim.keymap.set('i', '<A-,>', '<Esc>mkA,<Esc>`ka')
 
 -- Make j and k behave like gj and gk
 vim.keymap.set('n', 'j', 'gj')
@@ -61,7 +65,7 @@ vim.keymap.set('n', '<leader>Z', '[s1z=', { desc = 'Fix last spelling mistake' }
 
 -- Replace and delete without copying the selection
 vim.keymap.set('v', '<leader>p', '"_dP', { desc = 'Replace the selection without replacing the clipboard' })
-vim.keymap.set({ 'n', 'v' }, '<leader>d', '"_d', { desc = 'Delete without copying the selection' })
+-- vim.keymap.set({ 'n', 'v' }, '<leader>d', '"_d', { desc = 'Delete without copying the selection' })
 
 -- Exit terminal mode in the builtin terminal with Ctrl+s
 vim.keymap.set('t', '<C-s>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })

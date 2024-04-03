@@ -22,6 +22,8 @@ require('lazy').setup {
 
   require 'plugins/conform',
 
+  require 'plugins/lint',
+
   require 'plugins/cmp',
 
   require 'plugins/gruvbox',
@@ -32,7 +34,9 @@ require('lazy').setup {
 
   require 'plugins/debug',
 
-  require 'plugins/indent_line',
+  -- require 'plugins/indent_line',
 
   require 'plugins/autopairs',
+
+  require 'plugins/grapple',
 }
