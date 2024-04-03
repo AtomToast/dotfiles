@@ -2,11 +2,11 @@ use_nerdfont = true
 
 [keybindings]
 "e" = "queue"
-" " = "playpause"
+"Space" = "playpause"
 "y" = "share selected"
-"Shift+Y" = "share current"
+"Shift+y" = "share current"
 "g" = "move top"
-"G" = "move bottom"
+"Shift+g" = "move bottom"
 "x" = "delete"
 "d" = "move down 5"
 "u" = "move up 5"
