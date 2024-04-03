@@ -12,11 +12,6 @@ type = discover
 path = ~/.calendars/google/*
 type = discover
 
-[[code_events]]
-path = ~/.calendars/icsfeed/code_events
-readonly = true
-color = dark blue
-
 [locale]
 timeformat = %H:%M
 dateformat = %Y-%m-%d
@@ -30,7 +25,8 @@ default_calendar = Personal
 
 [highlight_days]
 default_color = light red
-color = light red
+multiple = light green
+multiple_on_overflow = True
 
 [view]
 frame = width
