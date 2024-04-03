@@ -32,6 +32,11 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # add go to PATH
 export PATH="$HOME/go/bin:$PATH"
 
+# add npm to PATH
+NPM_PACKAGES="${HOME}/.local/share/npm-packages"
+export PATH="$PATH:$NPM_PACKAGES/bin"
+export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
+
 # add vifm scripts to path
 export PATH="$HOME/.config/vifm/scripts:$PATH"
 
@@ -48,6 +53,7 @@ export BROWSER="firefox"
 export READER="zathura"
 export FILEMANAGER="vifmrun"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
 
 # set desktop theme configuration options
 export GTK_USE_PORTAL=1

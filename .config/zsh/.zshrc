@@ -1,23 +1,10 @@
-### Added by Zinit's installer
-if [[ ! -f $HOME/.config/zsh/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.config/zsh/.zinit" && command chmod g-rwX "$HOME/.config/zsh/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.config/zsh/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f%b"
-fi
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
 
-source "$HOME/.config/zsh/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
-
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node
-
 ### End of Zinit's installer chunk
 
 
@@ -191,13 +178,13 @@ alias grep="rg"
 alias df="duf"
 alias ps="procs"
 alias doas="doas --"
-alias sudo="doas"
+#alias sudo="doas"
 alias vim="nvim"
 alias vi="nvim -u ~/.config/nvim/mini.vim"
 alias v="nvim"
-alias sv="doedit"
+alias sv="sudoedit"
 alias o="xdg-open"
-alias i="devour sxiv"
+alias i="devour imv"
 alias p="devour zathura"
 alias m="devour mpv"
 alias s="sc-im"
@@ -319,8 +306,50 @@ export FZF_CTRL_T_OPTS="--preview '(bat -p --color=always {} || tree -CF {}) 2> 
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 export FZF_ALT_C_OPTS="--preview 'tree -CF {} | head -200'"
 
-# if [ -e /home/kjell/.nix-profile/etc/profile.d/nix.sh ]; then . /home/kjell/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-# export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
-# eval "$(direnv hook zsh)"
+# Ctrl+Backspace to delete last word
+bindkey '^H' backward-kill-word
 
-wmname LG3D
+# Alt+Backspace and Alt+w deletes to slash
+backward-kill-dir () {
+    local WORDCHARS=${WORDCHARS/\/}
+    zle backward-kill-word
+    zle -f kill  # Ensures that after repeated backward-kill-dir, Ctrl+Y will restore all of them.
+}
+zle -N backward-kill-dir
+bindkey '^[^?' backward-kill-dir
+bindkey '^[w' backward-kill-dir
+
+# Alt+Left jumps to slash
+backward-word-dir () {
+    local WORDCHARS=${WORDCHARS/\/}
+    zle backward-word
+}
+zle -N backward-word-dir
+bindkey "^[[1;3D" backward-word-dir
+
+# Alt+Right jumps to slash
+forward-word-dir () {
+    local WORDCHARS=${WORDCHARS/\/}
+    zle forward-word
+}
+zle -N forward-word-dir
+bindkey "^[[1;3C" forward-word-dir
+
+# foot shell integration
+# promt jumping
+precmd() {
+  print -Pn "\e]133;A\e\\"
+}
+# new term directory
+function osc7-pwd() {
+    emulate -L zsh # also sets localoptions for us
+    setopt extendedglob
+    local LC_ALL=C
+    printf '\e]7;file://%s%s\e\' $HOST ${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}}
+}
+
+function chpwd-osc7-pwd() {
+    (( ZSH_SUBSHELL )) || osc7-pwd
+}
+add-zsh-hook -Uz chpwd chpwd-osc7-pwd
+
