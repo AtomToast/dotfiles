@@ -12,17 +12,17 @@
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
+        . "$HOME/.bashrc"
     fi
 fi
 
 # set PATH so it includes user's private scripts if it exists
-if [ -d "$HOME/.local/bin/scripts" ] ; then
+if [ -d "$HOME/.local/bin/scripts" ]; then
     PATH="$HOME/.local/bin/scripts:$PATH"
 fi
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
+if [ -d "$HOME/.local/bin" ]; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
@@ -56,8 +56,10 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 
 # set desktop theme configuration options
+export QT_QPA_PLATFORM=xcb
 export GTK_USE_PORTAL=1
 export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_STYLE_OVERRIDE=kvantum
 
 # set various default and config file paths
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -70,9 +72,7 @@ export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch-config"
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 export LESSHISTFILE="-"
 export GOPATH="$HOME/.local/share/go"
-[ "$(hostname)" = "shard-of-the-monolith" ] &&
-  export TEXMFDIST="/var/run/media/kjell/data/texmf-dist"
-
+export CHROME_EXECUTABLE="/usr/bin/firefox"
 
 # export MOZ_ENABLE_WAYLAND=1
 export TDESKTOP_DISABLE_TRAY_COUNTER=1
@@ -87,5 +87,5 @@ export FZF_DEFAULT_COMMAND='fd --type f --follow'
 stty erase ^H
 
 if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  exec startx > /dev/null 2>&1
+    exec startx > /dev/null 2>&1
 fi

@@ -111,15 +111,19 @@ XF86ScreenSaver
 super + shift + quotedbl
     = -- -i
 
+# selection to clipboard
 Print
     screenshot
 
+# fullscreen to clipboard
 super + Print
     screenshot -s
 
+# selection to imgur & clipboard
 control + Print
     screenshot -i
 
+# selection to "Pictures" directory
 shift + Print
     screenshot -o $HOME/Pictures
 
@@ -202,5 +206,11 @@ super + minus
 super + shift + t
     trans --brief "$(xclip -selection primary -o)" | tee /tmp/translation | xclip -selection clipboard && notify-send "Translation" "$(cat /tmp/translation)"
 
-super + q
-    /home/kjell/clicker.sh
+super + shift + plus
+    hass-cli service call --arguments entity_id=scene.real_shit scene.turn_on
+
+super + shift + underscore
+    hass-cli service call --arguments entity_id=scene.i_sleep scene.turn_on
+
+super + shift + bar
+    hass-cli service call --arguments entity_id=cover.kjell_rolladen homeassistant.toggle

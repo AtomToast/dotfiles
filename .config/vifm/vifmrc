@@ -485,9 +485,9 @@ fileviewer *[^../],.*[^../]
     \ bat --color always --wrap never --pager never %c -p 2>/dev/null ||
     " probably broken symlink
     \ exa --color always -l %c | cut -d' ' -f7-
-filextype *
-    \ {Open with XDG-Open}
-    \ xdg-open,
+" filextype *
+"     \ {Open with XDG-Open}
+"     \ xdg-open,
 
 " Syntax highlighting in preview
 "

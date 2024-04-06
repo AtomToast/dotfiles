@@ -28,32 +28,32 @@
 #     dateIcon="<D>"
 #     timeIcon="<T>"
 # else
-internetWifiIcon="直"
-internetEthernetIcon=""
-internetDownIcon="睊"
-batteryUnknownIcon=""
-batteryErrorIcon=""
-batteryFullIcon=""
-batteryChargingIcon=""
-batteryCapacityIcon00=""
-batteryCapacityIcon10=""
-batteryCapacityIcon20=""
-batteryCapacityIcon30=""
-batteryCapacityIcon40=""
-batteryCapacityIcon50=""
-batteryCapacityIcon60=""
-batteryCapacityIcon70=""
-batteryCapacityIcon80=""
-batteryCapacityIcon90=""
-batteryCapacityIcon100=""
-mailIcon=""
+internetWifiIcon="󰖩"
+internetEthernetIcon="󰈀"
+internetDownIcon="󰖪"
+batteryUnknownIcon="󰂑"
+batteryErrorIcon="󰂃"
+batteryFullIcon="󰂏"
+batteryChargingIcon="󰂄"
+batteryCapacityIcon00="󰂎"
+batteryCapacityIcon10="󰁺"
+batteryCapacityIcon20="󰁻"
+batteryCapacityIcon30="󰁼"
+batteryCapacityIcon40="󰁽"
+batteryCapacityIcon50="󰁾"
+batteryCapacityIcon60="󰁿"
+batteryCapacityIcon70="󰂀"
+batteryCapacityIcon80="󰂁"
+batteryCapacityIcon90="󰂂"
+batteryCapacityIcon100="󰁹"
+mailIcon="󰇰"
 spotifyPlayIcon=""
-spotifyPauseIcon=""
-gpuIcon="﫛"
-cpuIcon=""
+spotifyPauseIcon=""
+gpuIcon="󰗜"
+cpuIcon="󰒆"
 tempIcon=""
 memoryIcon=""
-dateIcon=""
+dateIcon="󰃶"
 timeIcon=""
 # fi
 
@@ -147,9 +147,9 @@ cpu_stats() {
     cputemp_amd=$(sensors | grep CPUTIN | awk '{print $2}' | tr -d +)
     cputemp_int=$(sensors | grep Package | awk '{print $4}' | tr -d +)
 
-    [ -n "$cputemp_amd" ] && \
-        cputemp="$cputemp_amd" || \
-        cputemp="$cputemp_int"
+    [ -n "$cputemp_amd" ] \
+        && cputemp="$cputemp_amd" \
+        || cputemp="$cputemp_int"
 
     echo "$cpuIcon $cpuusage% $tempIcon $cputemp"
 }

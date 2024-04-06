@@ -5,7 +5,9 @@ csum=$(sha1sum "$(which dwm)")
 new_csum=""
 while true; do
     if [ "$csum" != "$new_csum" ]; then
-        csum=$new_csum
+        if [ -n "$new_csum" ]; then
+            csum=$new_csum
+        fi
         dwm
     else
         exit 0

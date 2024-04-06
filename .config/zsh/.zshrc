@@ -176,7 +176,6 @@ alias llg="ll --grid"
 alias cat="bat"
 alias grep="rg"
 alias df="duf"
-alias ps="procs"
 alias doas="doas --"
 #alias sudo="doas"
 alias vim="nvim"
@@ -184,7 +183,11 @@ alias vi="nvim -u ~/.config/nvim/mini.vim"
 alias v="nvim"
 alias sv="sudoedit"
 alias o="xdg-open"
-alias i="devour imv"
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+  alias i="devour imv"
+else
+  alias i="devour sxiv -a"
+fi
 alias p="devour zathura"
 alias m="devour mpv"
 alias s="sc-im"
@@ -335,21 +338,6 @@ forward-word-dir () {
 zle -N forward-word-dir
 bindkey "^[[1;3C" forward-word-dir
 
-# foot shell integration
-# promt jumping
-precmd() {
-  print -Pn "\e]133;A\e\\"
-}
-# new term directory
-function osc7-pwd() {
-    emulate -L zsh # also sets localoptions for us
-    setopt extendedglob
-    local LC_ALL=C
-    printf '\e]7;file://%s%s\e\' $HOST ${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}}
-}
-
-function chpwd-osc7-pwd() {
-    (( ZSH_SUBSHELL )) || osc7-pwd
-}
-add-zsh-hook -Uz chpwd chpwd-osc7-pwd
+# Homeassistant cli autocompletion
+source <(_HASS_CLI_COMPLETE=zsh_source hass-cli)
 

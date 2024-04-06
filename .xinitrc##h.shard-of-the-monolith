@@ -9,12 +9,16 @@ clipmenud &
 setdwmstatusbar &
 setroot --restore &
 blueman-applet &
-noisetorch -i &
+(sleep 10; noisetorch -i) &
 redshift &
 # TODO: Figure out how to do enable loginctl unlock-session this without doas
 xss-lock -n dim-screen cornerlocker &
 nextcloud &
-signal-desktop --use-tray-icon --start-in-tray &
+discord --enable-gpu-rasterization &
+firefox &
+signal-desktop --use-tray-icon &
+telegram-desktop &
+dbus-update-activation-environment &
 picom --config /dev/null &
 wmname LG3D &
 

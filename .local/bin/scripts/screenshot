@@ -56,7 +56,7 @@ if [ $fullscreen -eq 0 ]; then
 fi
 
 if [ "$output" = "" ]; then
-    shotgun $sel - | xclip -selection clipboard -t image/png
+    maim $sel | xclip -selection clipboard -t image/png
     status=$(dunstify -A "gimp,Edit in GIMP" -t 3000 "  Saved screenshot to clipboard")
     if [ "$status" = "gimp" ]; then
         xclip -selection clipboard -t image/png -o > /tmp/screenshot.png
@@ -64,12 +64,12 @@ if [ "$output" = "" ]; then
         xclip -selection clipboard -t image/png < /tmp/screenshot.png
     fi
 else
-    shotgun $sel "$output"/"$name"
+    maim $sel "$output"/"$name"
     status=$(dunstify -A "gimp,Edit in GIMP" -t 3000 "  Saved screenshot to $output/$name")
     [ "$status" = "gimp" ] && gimp "$output/$name"
 fi
 
 if [ $imgur -eq 1 ]; then
-    shotgun $sel - | imgur
+    maim $sel | imgur
     notify-send -t 3000 "  Saved screenshot to imgur" "imgur url: '$(xclip -selection primary -o)'"
 fi
