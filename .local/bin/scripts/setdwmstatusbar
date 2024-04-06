@@ -73,6 +73,7 @@ internetStatus() {
 }
 
 batteryStatus() {
+    [ -d "/sys/class/power_supply/BAT0/" ] || exit
     batteryCapacity=$(cat /sys/class/power_supply/BAT0/capacity)
     batteryStatus=$(cat /sys/class/power_supply/BAT0/status)
 
@@ -112,7 +113,7 @@ batteryStatus() {
 
     timeRemaining=$(acpi | grep Discharging | cut -d " " -f5- | sed -e 's/\(:[0-9]\+ \)/ /g')
 
-    echo "$batteryStatusIcon $batteryCapacity% $timeRemaining"
+    echo "$batteryStatusIcon $batteryCapacity% $timeRemaining |"
 }
 
 mail_count() {
@@ -136,9 +137,13 @@ player_status() {
 }
 
 gpu_stats() {
-    nvidia-smi > /dev/null || exit
-    gpuusage=$(nvidia-smi -q -d UTILIZATION | grep Gpu | awk '{print $3}')
-    gputemp=$(nvidia-smi -q -d TEMPERATURE | grep "GPU Current" | awk '{print $5}')
+    if command -v nvidia-smi > /dev/null; then
+        gpuusage=$(nvidia-smi -q -d UTILIZATION | grep Gpu | awk '{print $3}')
+        gputemp=$(nvidia-smi -q -d TEMPERATURE | grep "GPU Current" | awk '{print $5}')
+    elif command -v amdgpu_top > /dev/null; then
+        gpuusage=$(amdgpu_top -gm | rg 'average_gfx_activity: (\d+),' -or '$1')
+        gputemp=$(amdgpu_top -gm | rg 'temperature_hotspot: (\d+),' -or '$1')
+    fi
     echo " $gpuIcon $gpuusage% $tempIcon $gputemp°C |"
 }
 
@@ -170,6 +175,6 @@ while true; do
     gpuStats=$(gpu_stats)
     cpuStats=$(cpu_stats)
     memoryUsage=$(memory_usage)
-    xsetroot -name "$playerStatus$mailCount $memoryUsage |$gpuStats $cpuStats | $batteryStatusIcon | $internetStatusIcon | $dateIcon $(date +"%F (%a) | $timeIcon %R ")"
+    xsetroot -name "$playerStatus$mailCount $memoryUsage |$gpuStats $cpuStats |$batteryStatusIcon $internetStatusIcon | $dateIcon $(date +"%F (%a) | $timeIcon %R ")"
     sleep 1
 done
