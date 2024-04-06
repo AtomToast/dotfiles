@@ -122,6 +122,7 @@ set statusline="  %t %T %8A %12u:%-7g %10s %24d %=%D %10a Free   "
 mark b ~/bin/
 mark h ~/
 mark g ~/git/
+mark G ~/Games/
 mark p ~/Pictures/
 mark d ~/Documents/
 mark v ~/Videos/
@@ -194,6 +195,10 @@ filextype *.pdf
     \ devour okular %c %i &,
     \ {View in Okular}
     \ okular %c %i &,
+\ {View in Libre Office and hide vifm}
+    \ devour libreoffice %c %i &,
+    \ {View in Libre Office}
+    \ libreoffice %c %i &,
 filetype *.pdf fbpdf2 %c
 if $DISPLAY == ""
     fileviewer *.pdf pdftotext -nopgbrk %c -
