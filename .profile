@@ -8,6 +8,8 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+[ "$HOST" = "der-gerahmte" ] && WAYLAND=1
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
@@ -47,8 +49,14 @@ export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.emacs.d/bin:$PATH"
 
 # set default programs
+if [ "$WAYLAND" ]; then
+    export TERMINAL="foot"
+    export MENU="bemenu"
+else
+    export TERMINAL="st"
+    export MENU="dmenu"
+fi
 export EDITOR="nvim"
-export TERMINAL="st"
 export BROWSER="firefox"
 export READER="zathura"
 export FILEMANAGER="vifmrun"
@@ -56,7 +64,11 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 
 # set desktop theme configuration options
-export QT_QPA_PLATFORM=xcb
+if [ "$WAYLAND" ]; then
+    export QT_QPA_PLATFORM="wayland;xcb"
+else
+    export QT_QPA_PLATFORM=xcb
+fi
 export GTK_USE_PORTAL=1
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export QT_STYLE_OVERRIDE=kvantum
@@ -74,9 +86,10 @@ export LESSHISTFILE="-"
 export GOPATH="$HOME/.local/share/go"
 export CHROME_EXECUTABLE="/usr/bin/firefox"
 
-# export MOZ_ENABLE_WAYLAND=1
+[ "$WAYLAND" ] && export MOZ_ENABLE_WAYLAND=1
 export TDESKTOP_DISABLE_TRAY_COUNTER=1
 export SUDO_ASKPASS="$HOME/bin/dmenupass"
+export BEMENU_OPTS='-i --fb "#282828" --ff "#ebdbb2" --nb "#282828" --nf "#ebdbb2" --tb "#282828" --hb "#282828" --tf "#fb4934" --hf "#fabd2f" --nf "#ebdbb2" --af "#ebdbb2" --ab "#282828" --bdr "#f28534" --fn "Hack Nerd Font" -H 26 -B 2'
 
 # export NIX_BUILD_SHELL="zsh"
 export GHCUP_USE_XDG_DIRS=1
@@ -87,5 +100,9 @@ export FZF_DEFAULT_COMMAND='fd --type f --follow'
 stty erase ^H
 
 if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-    exec startx > /dev/null 2>&1
+    if [ "$WAYLAND" ]; then
+        exec river > /dev/null 2>&1
+    else
+        exec startx > /dev/null 2>&1
+    fi
 fi

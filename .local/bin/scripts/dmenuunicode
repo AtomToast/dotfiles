@@ -2,14 +2,22 @@
 
 # The famous "get a menu of emojis to copy" script.
 
-chosen=$(grep -v "#" ~/.local/share/emoji | dmenu -i -l 20 -fn "Hack Nerd Font Mono::pixelsize=18:antialias=true:autohint=true")
+chosen=$(grep -v "#" ~/.local/share/emoji | $MENU -i -l 20 -fn "Hack Nerd Font Mono::pixelsize=18:antialias=true:autohint=true")
 
 [ "$chosen" != "" ] || exit
 
 c=$(echo "$chosen" | sed "s/ .*//")
-echo "$c" | tr -d '\n' | xclip -selection clipboard
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    echo "$c" | tr -d '\n' | wl-copy
+else
+    echo "$c" | tr -d '\n' | xclip -selection clipboard
+fi
 notify-send "'$c' copied to clipboard." &
 
 s=$(echo "$chosen" | sed "s/.*; //" | awk '{print $1}')
-echo "$s" | tr -d '\n' | xclip
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    echo "$s" | tr -d '\n' | wl-copy --primary
+else
+    echo "$s" | tr -d '\n' | xclip
+fi
 notify-send "'$s' copied to primary." &

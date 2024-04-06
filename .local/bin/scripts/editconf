@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 
-chosen="$HOME/$(yadm ls-files "$HOME" | dmenu -i -p "Edit:")" || exit
+chosen="$HOME/$(yadm ls-files "$HOME" | $MENU -i -p "Edit:")" || exit
 
 cd "${chosen%/*}" || exit
 

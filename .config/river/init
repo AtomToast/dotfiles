@@ -31,31 +31,31 @@ riverctl map normal Super Right send-layout-cmd rivercarro "main-location right"
 riverctl map normal Super Down send-layout-cmd rivercarro "main-location bottom"
 riverctl map normal Super Left send-layout-cmd rivercarro "main-location left"
 
-riverctl map normal Super+Alt H     move left 100
-riverctl map normal Super+Alt J     move down 100
-riverctl map normal Super+Alt K     move up 100
-riverctl map normal Super+Alt L     move right 100
-riverctl map normal Super+Alt Left  move left 100
-riverctl map normal Super+Alt Down  move down 100
-riverctl map normal Super+Alt Up    move up 100
+riverctl map normal Super+Alt H move left 100
+riverctl map normal Super+Alt J move down 100
+riverctl map normal Super+Alt K move up 100
+riverctl map normal Super+Alt L move right 100
+riverctl map normal Super+Alt Left move left 100
+riverctl map normal Super+Alt Down move down 100
+riverctl map normal Super+Alt Up move up 100
 riverctl map normal Super+Alt Right move right 100
 
-riverctl map normal Super+Alt+Shift H     snap left
-riverctl map normal Super+Alt+Shift J     snap down
-riverctl map normal Super+Alt+Shift K     snap up
-riverctl map normal Super+Alt+Shift L     snap right
-riverctl map normal Super+Alt+Shift Left  snap left
-riverctl map normal Super+Alt+Shift Down  snap down
-riverctl map normal Super+Alt+Shift Up    snap up
+riverctl map normal Super+Alt+Shift H snap left
+riverctl map normal Super+Alt+Shift J snap down
+riverctl map normal Super+Alt+Shift K snap up
+riverctl map normal Super+Alt+Shift L snap right
+riverctl map normal Super+Alt+Shift Left snap left
+riverctl map normal Super+Alt+Shift Down snap down
+riverctl map normal Super+Alt+Shift Up snap up
 riverctl map normal Super+Alt+Shift Right snap right
 
-riverctl map normal Super+Alt+Control H     resize horizontal -100
-riverctl map normal Super+Alt+Control J     resize vertical 100
-riverctl map normal Super+Alt+Control K     resize vertical -100
-riverctl map normal Super+Alt+Control L     resize horizontal 100
-riverctl map normal Super+Alt+Control Left  resize horizontal -100
-riverctl map normal Super+Alt+Control Down  resize vertical 100
-riverctl map normal Super+Alt+Control Up    resize vertical -100
+riverctl map normal Super+Alt+Control H resize horizontal -100
+riverctl map normal Super+Alt+Control J resize vertical 100
+riverctl map normal Super+Alt+Control K resize vertical -100
+riverctl map normal Super+Alt+Control L resize horizontal 100
+riverctl map normal Super+Alt+Control Left resize horizontal -100
+riverctl map normal Super+Alt+Control Down resize vertical 100
+riverctl map normal Super+Alt+Control Up resize vertical -100
 riverctl map normal Super+Alt+Control Right resize horizontal 100
 
 riverctl map-pointer normal Super BTN_LEFT move-view
@@ -64,7 +64,6 @@ riverctl map-pointer normal Super BTN_MIDDLE toggle-float
 
 riverctl map normal Super Space toggle-float
 riverctl map normal Super F toggle-fullscreen
-
 
 for i in $(seq 1 9); do
     tags=$((1 << ($i - 1)))
@@ -107,7 +106,6 @@ riverctl map normal Super+Shift N spawn 'snoozedunst -p'
 
 riverctl map normal Super apostrophe spawn 'menu-qalc'
 riverctl map normal Super+Shift E spawn 'editconf'
-riverctl map normal Super+Shift H spawn 'openman'
 riverctl map normal Super minus spawn 'wl-color-picker'
 riverctl map normal Super+Shift T spawn 'primary-translate'
 riverctl map normal Super C spawn 'cliphist list | bemenu -p "clipboard history" -l 20 | cliphist decode | wl-copy'
@@ -122,7 +120,7 @@ riverctl map normal Super+Shift F1 spawn '$TERMINAL $FILEMANAGER $HOME/Nextcloud
 riverctl map normal Super F2 spawn 'firefox'
 riverctl map normal Super+Shift F2 spawn 'firefox --private-window'
 riverctl map normal Super+Control F2 spawn 'chromium'
-riverctl map normal Super F3 spawn '$TERMINAL -e $HOME/.config/vifm/scripts/vifmrun'
+riverctl map normal Super F3 spawn '$TERMINAL -e bash -ic $HOME/.config/vifm/scripts/vifmrun'
 riverctl map normal Super F4 spawn '$TERMINAL -e khal interactive'
 riverctl map normal Super F5 spawn 'slack'
 riverctl map normal Super+Shift F5 spawn 'element-desktop'
@@ -135,6 +133,8 @@ riverctl map normal Super F10 spawn '$TERMINAL -e ncspot'
 riverctl map normal Super+Shift F10 spawn '$TERMINAL -e lyrics'
 riverctl map normal Super F11 spawn '$TERMINAL -e nmtui'
 riverctl map normal Super F12 spawn '$TERMINAL -e htop'
+
+riverctl map normal None XF86Tools spawn 'mpv /home/kjell/Nextcloud/Videos/Downloaded/gay_sex.mp4'
 
 # Various media key mappings for both normal and locked mode which do not have a modifier
 for mode in normal locked; do
@@ -162,7 +162,6 @@ riverctl border-color-unfocused 0x3c3836
 riverctl border-color-urgent 0xf2594b
 riverctl border-width 2
 
-
 ## INPUT ##
 riverctl set-repeat 50 300
 riverctl keyboard-layout eu
@@ -185,15 +184,21 @@ riverctl rule-add -app-id 'leagueclientux.exe' ssd
 # signal wayland bug workaround
 riverctl rule-add -app-id "signal*" float
 riverctl rule-add -app-id "Signal*" float
+riverctl rule-add -app-id "com.nextcloud.desktopclient.nextcloud" float
 riverctl rule-add -app-id "ueberzugpp*" float
+riverctl rule-add -title "gay_sex.mp4 - mpv" fullscreen
 
-riverctl rule-add -app-id 'firefox'              tag 000000010
-riverctl rule-add -app-id 'Slack'                tag 000010000
-riverctl rule-add -app-id 'signal'               tag 000100000
-riverctl rule-add -app-id 'Signal'               tag 000100000 # xwayland
-riverctl rule-add -app-id 'org.telegram.desktop' tag 010000000
-riverctl rule-add -app-id 'discord'              tag 100000000
+riverctl rule-add -app-id 'firefox' tags 000000010
+riverctl rule-add -app-id 'Slack' tags 000010000
+riverctl rule-add -app-id 'signal' tags 000100000
+riverctl rule-add -app-id 'Signal' tags 000100000 # xwayland
+riverctl rule-add -app-id 'org.telegram.desktop' tags 010000000
+riverctl rule-add -app-id 'discord' tags 100000000
 
+riverctl rule-add -title "Wine System Tray" dimensions 1 1
+riverctl rule-add -title "Wine System Tray" position 2560 1440
+riverctl rule-add -app-id "Signal*" position 0 31
+riverctl rule-add -app-id "signal*" position 0 31
 
 ## AUTOSTART ##
 spawn_once() {
@@ -208,12 +213,14 @@ spawn_once dunst
 spawn_once waybar
 spawn_once swaybg -m fit -i /home/kjell/Downloads/3840x2160-dark-archlinux2.png
 spawn_once blueman-applet
+spawn_once nextcloud
 spawn_once lxqt-policykit-agent
-spawn_once swayidle -w timeout 300 'waylock -fork-on-lock' timeout 600 "wlopm --off '*'" resume "wlopm --on '*'" before-sleep 'waylock -fork-on-lock'
+spawn_once "swayidle -w timeout 300 'waylock -fork-on-lock' timeout 600 \"wlopm --off '*'\" resume \"wlopm --on '*'\" before-sleep 'waylock -fork-on-lock'"
+spawn_once swaddle
 spawn_once way-displays
 spawn_once wl-paste --watch cliphist store
 
 spawn_once discord --enable-features=UseOzonePlatform --ozone-platform=wayland
 spawn_once telegram-desktop --ozone-platform-hint=auto --enable-webrtc-pipewire-capturer
 spawn_once signal-desktop --use-tray-icon --enable-features=UseOzonePlatform --ozone-platform-hint=auto --enable-webrtc-pipewire-capturer
-sleep 5 && signal-desktop &# signal wayland bug workaround
+sleep 5 && signal-desktop & # signal wayland bug workaround
