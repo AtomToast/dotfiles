@@ -31,6 +31,10 @@ return {
         },
       }
 
+      conform.formatters.shfmt = {
+        prepend_args = { '-i', '4', '-bn', '-sr', '-p', '-ci' },
+      }
+
       vim.keymap.set('n', '<leader>f', function()
         conform.format { async = true, timeout_ms = 500 }
       end, { desc = 'Format the current buffer' })
