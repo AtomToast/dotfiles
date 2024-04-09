@@ -70,8 +70,7 @@ else
     export QT_QPA_PLATFORM=xcb
 fi
 export GTK_USE_PORTAL=1
-export QT_QPA_PLATFORMTHEME="qt5ct"
-export QT_STYLE_OVERRIDE=kvantum
+export QT_QPA_PLATFORMTHEME="qt6ct"
 
 # set various default and config file paths
 export XDG_CONFIG_HOME="$HOME/.config"
