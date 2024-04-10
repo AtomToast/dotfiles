@@ -47,6 +47,10 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 5
 
+-- Speed up vimgrep
+vim.opt.grepprg = 'rg --vimgrep'
+vim.opt.grepformat = '%f:%l:%c:%m'
+
 -- Set spell checking languages
 vim.opt.spelllang = { 'en_us', 'en_gb', 'de_20' }
 
