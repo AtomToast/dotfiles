@@ -142,6 +142,9 @@ control + shift + Print
 super + shift + u
     dmenuunicode
 
+super + b
+    dmenu-bluetooth
+
 super + shift + b
     blueman-manager
 
