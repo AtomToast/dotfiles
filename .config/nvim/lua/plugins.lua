@@ -30,6 +30,8 @@ require('lazy').setup {
 
   require 'plugins/gruvbox',
 
+  require 'plugins/markdown-preview',
+
   require 'plugins/todo-comments',
 
   require 'plugins/treesitter',
