@@ -33,10 +33,17 @@ return {
     vim.keymap.set('n', '<F1>', dap.step_into, { desc = 'Debug: Step Into' })
     vim.keymap.set('n', '<F2>', dap.step_over, { desc = 'Debug: Step Over' })
     vim.keymap.set('n', '<F3>', dap.step_out, { desc = 'Debug: Step Out' })
+    vim.keymap.set('n', '<F4>', dap.step_back, { desc = 'Debug: Step Back' })
+    vim.keymap.set('n', '<F6>', dap.restart, { desc = 'Debug: Restart' })
+
+    vim.keymap.set({ 'n', 'v' }, '<leader>de', function()
+      dapui.eval(nil, { enter = true })
+    end, { silent = true, desc = 'Debug: Calculate expression' })
     vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
     vim.keymap.set('n', '<leader>B', function()
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
     end, { desc = 'Debug: Set Breakpoint' })
+    vim.keymap.set('n', '<leader>gb', dap.run_to_cursor, { desc = 'Debug: Run to Cursor' })
 
     dapui.setup {
       icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
@@ -58,9 +65,18 @@ return {
     -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
     vim.keymap.set('n', '<F7>', dapui.toggle, { desc = 'Debug: See last session result.' })
 
-    dap.listeners.after.event_initialized['dapui_config'] = dapui.open
-    dap.listeners.before.event_terminated['dapui_config'] = dapui.close
-    dap.listeners.before.event_exited['dapui_config'] = dapui.close
+    dap.listeners.before.attach.dapui_config = function()
+      dapui.open()
+    end
+    dap.listeners.before.launch.dapui_config = function()
+      dapui.open()
+    end
+    -- dap.listeners.before.event_terminated.dapui_config = function()
+    --   dapui.close()
+    -- end
+    -- dap.listeners.before.event_exited.dapui_config = function()
+    --   dapui.close()
+    -- end
 
     require('nvim-dap-virtual-text').setup {}
 
@@ -69,7 +85,22 @@ return {
 
     -- Python settings
     local python = require 'dap-python'
-    -- python.setup()
     python.test_runner = 'pytest'
+    local python_path = table.concat({ vim.fn.stdpath 'data', 'mason', 'packages', 'debugpy', 'venv', 'bin', 'python' }, '/'):gsub('//+', '/')
+    python.setup(python_path)
+
+    local config = { showReturnValue = true }
+    for i = 1, #dap.configurations.python do
+      dap.configurations.python[i] = vim.tbl_extend('force', dap.configurations.python[i], config)
+    end
+    vim.keymap.set('n', '<leader>dm', function()
+      python.test_method { config = config }
+    end, { desc = 'Debug Method above cursor' })
+    vim.keymap.set('n', '<leader>dc', function()
+      python.test_class { config = config }
+    end, { desc = 'Debug Class above cursor' })
+    vim.keymap.set('v', '<leader>ds', function()
+      python.debug_selection { config = config }
+    end, { desc = 'Debug selection' })
   end,
 }
