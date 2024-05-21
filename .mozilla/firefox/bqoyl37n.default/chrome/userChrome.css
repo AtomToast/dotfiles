@@ -77,12 +77,12 @@
     width: 100% !important;
     left: 0 !important;
     top: calc(
-      (var(--urlbar-toolbar-height) - var(--urlbar-height)) / 2
+      (var(--urlbar-container-height) - var(--urlbar-height)) / 2
     ) !important;
   }
   #urlbar[breakout]:not([open]) {
     bottom: calc(
-      (var(--urlbar-toolbar-height) - var(--urlbar-height)) / 2
+      (var(--urlbar-container-height) - var(--urlbar-height)) / 2
     ) !important;
   }
   .urlbarView {
