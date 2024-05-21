@@ -142,11 +142,11 @@ for mode in normal locked; do
     riverctl map $mode None XF86AudioLowerVolume spawn 'pamixer -d 5'
     riverctl map $mode None XF86AudioMute spawn 'pamixer --toggle-mute'
 
-    riverctl map $mode None XF86AudioMedia spawn 'playerctl play-pause'
-    riverctl map $mode None XF86AudioPlay spawn 'playerctl play-pause'
-    riverctl map $mode None XF86AudioPrev spawn 'playerctl previous'
-    riverctl map $mode None XF86AudioNext spawn 'playerctl next'
-    riverctl map $mode None Cancel spawn 'playerctl stop'
+    riverctl map $mode None XF86AudioMedia spawn 'playerctl --player=ncspot,spotify,mpv,firefox play-pause'
+    riverctl map $mode None XF86AudioPlay spawn 'playerctl --player=ncspot,spotify,mpv,firefox play-pause'
+    riverctl map $mode None XF86AudioPrev spawn 'playerctl --player=ncspot,spotify,mpv,firefox previous'
+    riverctl map $mode None XF86AudioNext spawn 'playerctl --player=ncspot,spotify,mpv,firefox next'
+    riverctl map $mode None Cancel spawn 'playerctl --player=ncspot,spotify,mpv,firefox stop'
 
     riverctl map $mode None XF86MonBrightnessUp spawn 'light -A 5'
     riverctl map $mode None XF86MonBrightnessDown spawn 'light -U 5'
