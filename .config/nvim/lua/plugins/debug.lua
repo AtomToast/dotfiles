@@ -1,9 +1,9 @@
 return {
   'mfussenegger/nvim-dap',
   dependencies = {
-    -- Creates a beautiful debugger UI
     'rcarriga/nvim-dap-ui',
     'theHamsta/nvim-dap-virtual-text',
+    'LiadOz/nvim-dap-repl-highlights',
     -- Dependency for dap-ui
     'nvim-neotest/nvim-nio',
 
@@ -29,41 +29,39 @@ return {
     }
 
     -- Basic debugging keymaps, feel free to change to your liking!
-    vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
     vim.keymap.set('n', '<F1>', dap.step_into, { desc = 'Debug: Step Into' })
     vim.keymap.set('n', '<F2>', dap.step_over, { desc = 'Debug: Step Over' })
     vim.keymap.set('n', '<F3>', dap.step_out, { desc = 'Debug: Step Out' })
     vim.keymap.set('n', '<F4>', dap.step_back, { desc = 'Debug: Step Back' })
+    vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
     vim.keymap.set('n', '<F6>', dap.restart, { desc = 'Debug: Restart' })
+    vim.keymap.set('n', '<F7>', dapui.toggle, { desc = 'Debug: Toggle DAP-UI' })
+    vim.keymap.set('n', '<F9>', dap.terminate, { desc = 'Debug: Terminate' })
 
     vim.keymap.set({ 'n', 'v' }, '<leader>de', function()
       dapui.eval(nil, { enter = true })
     end, { silent = true, desc = 'Debug: Calculate expression' })
+    vim.keymap.set('n', '<leader>dE', function()
+      dap.repl.execute(vim.fn.expand '<cexpr>')
+    end, { silent = true, desc = 'Debug: Execute expression' })
+    vim.keymap.set('v', '<leader>dE', function()
+      local lines = vim.fn.getregion(vim.fn.getpos '.', vim.fn.getpos 'v')
+      dap.repl.execute(table.concat(lines, '\n'))
+    end, { silent = true, desc = 'Debug: Execute expression' })
+    vim.keymap.set('n', '<leader>dd', dap.down, { silent = true, desc = 'Debug: Go Down the Stacktrace' })
+    vim.keymap.set('n', '<leader>du', dap.up, { silent = true, desc = 'Debug: Go Up the Stacktrace' })
     vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
     vim.keymap.set('n', '<leader>B', function()
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
     end, { desc = 'Debug: Set Breakpoint' })
-    vim.keymap.set('n', '<leader>gb', dap.run_to_cursor, { desc = 'Debug: Run to Cursor' })
+    vim.keymap.set('n', '<leader>gB', dap.run_to_cursor, { desc = 'Debug: Run to Cursor' })
 
     dapui.setup {
       icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
       controls = {
-        icons = {
-          pause = '⏸',
-          play = '▶',
-          step_into = '⏎',
-          step_over = '⏭',
-          step_out = '⏮',
-          step_back = 'b',
-          run_last = '▶▶',
-          terminate = '⏹',
-          disconnect = '⏏',
-        },
+        enabled = false,
       },
     }
-
-    -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
-    vim.keymap.set('n', '<F7>', dapui.toggle, { desc = 'Debug: See last session result.' })
 
     dap.listeners.before.attach.dapui_config = function()
       dapui.open()
@@ -79,6 +77,7 @@ return {
     -- end
 
     require('nvim-dap-virtual-text').setup {}
+    require('nvim-dap-repl-highlights').setup {}
 
     -- Install golang specific config
     require('dap-go').setup()
