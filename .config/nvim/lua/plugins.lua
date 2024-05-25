@@ -48,5 +48,9 @@ require('lazy').setup {
 
   require 'plugins/grapple',
 
+  require 'plugins/spider',
+
+  require 'plugins/textobjects',
+
   require 'plugins/wiki',
 }
