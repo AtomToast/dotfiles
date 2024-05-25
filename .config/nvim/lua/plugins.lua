@@ -12,6 +12,8 @@ require('lazy').setup {
 
   { 'numToStr/Comment.nvim', opts = {} },
 
+  require 'plugins/highlight-colors',
+
   require 'plugins/fugitive',
 
   require 'plugins/gitsigns',
