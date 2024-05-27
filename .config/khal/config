@@ -1,15 +1,15 @@
 [calendars]
 
 [[kjell_calendar_local]]
-path = ~/.calendars/nextcloud/*
+path = ~/.local/share/calendars/nextcloud/*
 type = discover
 
 [[kjell_contacts_local]]
-path = ~/.contacts/nextcloud/*
+path = ~/.local/share/contacts/nextcloud/*
 type = discover
 
 [[code_calendar_local]]
-path = ~/.calendars/google/*
+path = ~/.local/share/calendars/google/*
 type = discover
 
 [locale]
