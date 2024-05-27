@@ -4,6 +4,10 @@ set numeric_decimal=0
 set overlap
 set xlsx_readformulas
 set half_page_scroll
+{% if yadm.hostname == "der-gerahmte" %}
+set default_copy_to_clipboard_cmd="wl-copy -t text <"
+set default_paste_from_clipboard_cmd="wl-paste -t text"
+{% endif %}
 
 nnoremap "ZZ" ":wq<cr>"
 nnoremap "ZQ" ":q!<cr>"
