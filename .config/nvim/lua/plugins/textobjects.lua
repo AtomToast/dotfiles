@@ -44,7 +44,7 @@ return {
         { desc = 'indentation and greedy borders (with white space)' }
       )
 
-      vim.keymap.set({ 'o', 'x' }, 'I', "<cmd>lua require('various-textobjs').restOfIndentation()<CR>", { desc = 'Until the end of the current indentation' })
+      vim.keymap.set({ 'o', 'x' }, 'gI', "<cmd>lua require('various-textobjs').restOfIndentation()<CR>", { desc = 'Until the end of the current indentation' })
 
       vim.keymap.set({ 'o', 'x' }, 'iq', "<cmd>lua require('various-textobjs').anyQuote('inner')<CR>", { desc = 'any quoted string without the quotes' })
       vim.keymap.set({ 'o', 'x' }, 'aq', "<cmd>lua require('various-textobjs').anyQuote('outer')<CR>", { desc = 'any quoted string' })
