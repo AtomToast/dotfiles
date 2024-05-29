@@ -1,11 +1,26 @@
 {
     "height": 30,
     "spacing": 4,
-
-    "modules-left": ["river/tags", "mpris" ,"river/window"],
+    "modules-left": [
+        "river/tags",
+        "mpris",
+        "river/window"
+    ],
     // "modules-center": ["river/window"],
-    "modules-right": ["idle_inhibitor", "pulseaudio", "memory", "cpu", "temperature", "backlight", "power-profiles-daemon", "battery", "network", "clock", "clock#clock2", "tray"],
-
+    "modules-right": [
+        "idle_inhibitor",
+        "pulseaudio",
+        "memory",
+        "cpu",
+        "temperature",
+        "backlight",
+        "power-profiles-daemon",
+        "battery",
+        "network",
+        "clock",
+        "clock#clock2",
+        "tray"
+    ],
     "river/window": {
         "format": "{}",
         "max-length": 300
@@ -22,7 +37,9 @@
         "status-icons": {
             "paused": "󰏤"
         },
-        "ignored-players": ["firefox"]
+        "ignored-players": [
+            "firefox"
+        ]
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -42,10 +59,10 @@
     "clock#clock2": {
         "tooltip-format": "{:%H:%M:%S}",
         "format": "{:%H:%M }",
-        "interval":10
+        "interval": 10
     },
     "cpu": {
-        "format": "{usage}%  ",
+        "format": "{usage}%  "
     },
     "memory": {
         "format": "{used:0.1f}/{total:0.1f}  "
@@ -53,22 +70,36 @@
     "temperature": {
         "critical-threshold": 80,
         "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format-icons": [
+            "",
+            "",
+            ""
+        ]
     },
     "backlight": {
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
     },
     "power-profiles-daemon": {
         "format": "{icon} ",
         "tooltip-format": "Power profile: {profile}",
         "tooltip": true,
         "format-icons": {
-          "default": "",
-          "performance": "",
-          "balanced": "",
-          "power-saver": ""
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
         }
     },
     "battery": {
@@ -80,7 +111,13 @@
         "format-charging": "{capacity}%  ",
         "format-plugged": "{capacity}%  ",
         "format-alt": "{time} {icon}",
-        "format-icons": [" ", " ", " ", " ", " "]
+        "format-icons": [
+            " ",
+            " ",
+            " ",
+            " ",
+            " "
+        ]
     },
     "battery#bat2": {
         "bat": "BAT2"
@@ -107,11 +144,14 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": [
+                "",
+                "",
+                ""
+            ]
         },
         "on-click": "pavucontrol",
         "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ -1%",
         "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ +1%"
     }
 }
-
