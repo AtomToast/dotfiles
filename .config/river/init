@@ -221,6 +221,7 @@ spawn_once way-displays
 spawn_once udiskie -s
 spawn_once wl-paste --watch cliphist store
 
+spawn_once firefox
 spawn_once discord --enable-features=UseOzonePlatform --ozone-platform=wayland
 spawn_once telegram-desktop --ozone-platform-hint=auto --enable-webrtc-pipewire-capturer
 spawn_once signal-desktop --use-tray-icon --enable-features=UseOzonePlatform --ozone-platform-hint=auto --enable-webrtc-pipewire-capturer
