@@ -121,10 +121,10 @@ setopt NULL_GLOB
 # Disable ctrl+s freezing the terminal
 setopt noflowcontrol
 
-# shortcut to insert doas
-insert_doas() { zle beginning-of-line; zle -U "doas " }
-zle -N insert-doas insert_doas
-bindkey '^s'    insert-doas
+# shortcut to insert sudo
+insert_sudo() { zle beginning-of-line; zle -U "sudo " }
+zle -N insert-sudo insert_sudo
+bindkey '^s'    insert-sudo
 
 # ex - archive extractor
 # usage: ex <file>
