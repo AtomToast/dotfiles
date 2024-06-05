@@ -36,8 +36,10 @@ return {
       }
 
       vim.keymap.set('n', '<leader>f', function()
-        conform.format { async = true, timeout_ms = 500 }
+        conform.format { async = true, lsp_fallback = true, timeout_ms = 500 }
       end, { desc = 'Format the current buffer' })
+
+      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
     end,
   },
 }
