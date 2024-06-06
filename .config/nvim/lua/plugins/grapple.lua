@@ -1,7 +1,7 @@
 return {
   { -- Tag files and jump directly to them
     'cbochs/grapple.nvim',
-    opts = { scope = 'git' },
+    opts = { scope = 'git_branch' },
     config = function()
       require('grapple').setup {}
       vim.keymap.set('n', '<A-0>', '<cmd>Grapple toggle_tags<CR>', { desc = 'Show Tags list' })
