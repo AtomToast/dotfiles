@@ -402,6 +402,8 @@ filetype *.ftp
 filetype {*.7z},<application/x-7z-compressed>
        \ {Mount with fuse-7z}
        \ FUSE_MOUNT|fuse-7z %SOURCE_FILE %DESTINATION_DIR,
+       \ {Extract here}
+       \ 7z x %c,
 fileviewer {*.7z},<application/x-7z-compressed> 7z l %c
 
 " Office files
