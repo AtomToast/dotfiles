@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # based on https://github.com/BarbUk/menu-qalc
-# Calculator for use with bemenu
-# Copying to the clipboard requires wl-clip
+# Calculator for use with bemenu or dmenu
+# Copying to the clipboard requires wl-clip or xclip
 
 usage() {
     echo "$(tput bold)menu-qalc$(tput sgr0)"
@@ -29,23 +29,29 @@ usage() {
     echo "The answer can be copied to the clipboard and used for further calculations inside (or outside) bemenu."
     echo
     echo "If launched outside of bemenu the expression may need quotation marks."
+    echo
+    echo "$(tput bold)Using xclip:$(tput sgr0)"
+    echo "When used outside of wayland, use the --xclip flag to switch to xclip."
+    echo
+    echo "    = --xclip"
     exit
 }
 
 # Process CLI parameters
-for var in "$@"
-do
+for var in "$@"; do
     case $var in
-        -h|--help) usage ;;
-        -b=*|--bemenu=*)
-            menu="$(echo $var | cut -d'=' -f 2)";
+        -h | --help) usage ;;
+        -x | --xclip) xclip=1 ;;
+        -b=* | --bemenu=*)
+            menu="$(echo "$var" | cut -d'=' -f 2)"
             ;;
         --) break ;;
+        *) input="$var" ;;
     esac
 done
 
 # Grab the answer
-if [ -n "$1" ]; then
+if [ -n "$input" ]; then
     answer=$(echo "$1" | qalc +u8 -color=never -terse | awk '!/^>/ && !/^$/ {gsub(/^[ \t]+|[ \t]+$/, "", $0); print}')
 fi
 
@@ -53,6 +59,8 @@ fi
 if [ -z "${menu+1}" ]; then
     if [[ -n $(command -v bemenu) ]]; then
         menu=$(command -v bemenu)
+    elif [[ -n $(command -v dmenu) ]]; then
+        menu=$(command -v dmenu)
     else
         >&2 echo "bemenu not found"
         exit
@@ -69,7 +77,14 @@ action=$(echo -e "Copy to clipboard\nClear\nClose" | $menu "$@" -p "= $answer")
 
 case $action in
     "Clear") $0 ;;
-    "Copy to clipboard") echo -n "$answer" | wl-copy -t text/plain; notify-send "Copied Result" "$answer" ;;
+    "Copy to clipboard")
+        if [ -n "$xclip" ]; then
+            echo -n "$answer" | wl-copy -t text/plain
+        else
+            echo -n "$answer" | xclip -selection clipboard -t text/plain
+        fi
+        notify-send "Copied Result" "$answer"
+        ;;
     "Close") ;;
     "") ;;
     *) $0 "$answer $action" "--bemenu=$menu" "--" "$@" ;;
