@@ -51,6 +51,9 @@ vim.opt.scrolloff = 5
 vim.opt.grepprg = 'rg --vimgrep'
 vim.opt.grepformat = '%f:%l:%c:%m'
 
+-- don't insert a comment when the previous comment was not the beginning of the line
+vim.opt.formatoptions:append '/'
+
 -- Set spell checking languages
 vim.opt.spelllang = { 'en_us', 'en_gb', 'de_20' }
 
