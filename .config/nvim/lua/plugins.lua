@@ -22,6 +22,8 @@ require('lazy').setup {
 
   require 'plugins/telescope',
 
+  require 'plugins/oil',
+
   require 'plugins/lspconfig',
 
   require 'plugins/conform',
