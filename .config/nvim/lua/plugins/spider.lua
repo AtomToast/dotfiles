@@ -22,5 +22,10 @@ return {
         desc = 'Next end of subword',
       },
     },
+    config = function()
+      require('spider').setup()
+      -- Inconsistency with how vim works, adapt or perish?
+      vim.keymap.set('n', 'c<A-w>', "c<cmd>lua require('spider').motion('e')<CR>")
+    end,
   },
 }
