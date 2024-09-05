@@ -88,6 +88,16 @@ return {
     local python_path = table.concat({ vim.fn.stdpath 'data', 'mason', 'packages', 'debugpy', 'venv', 'bin', 'python' }, '/'):gsub('//+', '/')
     python.setup(python_path)
 
+    -- WORK
+    table.insert(dap.configurations.python, {
+      type = 'python',
+      request = 'launch',
+      name = 'Run all tests',
+      module = 'pytest',
+      args = { '--exitfirst', '-n', 'auto', '--dist', 'loadfile', 'server/test/mili' },
+      console = 'integratedTerminal',
+    })
+
     local config = { showReturnValue = true }
     for i = 1, #dap.configurations.python do
       dap.configurations.python[i] = vim.tbl_extend('force', dap.configurations.python[i], config)
