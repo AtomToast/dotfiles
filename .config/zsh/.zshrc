@@ -248,17 +248,14 @@ alias -g G="| grep"
 
 alias zf='z -I'      # use fzf to select in multiple matches
 
-fancy-ctrl-z () {
-  if [[ $#BUFFER -eq 0 ]]; then
-    BUFFER="fg"
-    zle accept-line
-  else
+ctrl-z-resume () {
+    fg
     zle push-input
-    zle clear-screen
-  fi
+    BUFFER=""
+    zle accept-line
 }
-zle -N fancy-ctrl-z
-bindkey '^Z' fancy-ctrl-z
+zle -N ctrl-z-resume
+bindkey '^Z' ctrl-z-resume
 
 # load emscripten stuff
 source "/home/kjell/git/wasm-test/emsdk/emsdk_env.sh" &> /dev/null
