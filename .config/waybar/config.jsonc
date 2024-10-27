@@ -181,7 +181,8 @@
                 ""
             ]
         },
-        "on-click": "pavucontrol",
+        "on-click": "$TERMINAL -e pulsemixer",
+        "on-click-right": "pamixer --toggle-mute",
         "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ -1%",
         "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ +1%"
     }
