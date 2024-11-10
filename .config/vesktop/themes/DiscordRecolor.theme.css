@@ -1,0 +1,229 @@
+/**
+ * @name DiscordRecolor
+ * @description Allows you to customize Discord's native Color Scheme
+ * @author DevilBro
+ * @version 1.0.0
+ * @authorId 278543574059057154
+ * @invite Jx3TjNS
+ * @donate https://www.paypal.me/MircoWittrien
+ * @patreon https://www.patreon.com/MircoWittrien
+ * @website https://mwittrien.github.io/
+ * @source https://github.com/mwittrien/BetterDiscordAddons/tree/master/Themes/DiscordRecolor/
+ * @updateUrl https://mwittrien.github.io/BetterDiscordAddons/Themes/DiscordRecolor/DiscordRecolor.theme.css
+ *
+ * @var checkbox			settingsicons_s			"User Settings Icons"					1
+ * @var text				font_s				"General Font"						"gg sans", "Noto Sans"
+ * @var text				accentcolor_s			"Blurple Color: [default] = 88, 101, 242"		88, 101, 242
+ * @var text				accentcolor2_s			"Boost Pink Color: [default] = 255, 115, 250"		255, 115, 250
+ * @var text				linkcolor_s			"Link Color: [default] = 0, 176, 244"			0, 176, 244
+ * @var text				mentioncolor_s			"Mentioned Color: [default] = 250, 166, 26"		250, 166, 26
+ * @var text				successcolor_s			"Success Color: [default] = 59, 165, 92"		59, 165, 92
+ * @var text				warningcolor_s			"Warning Color: [default] = 250, 166, 26"		250, 166, 26
+ * @var text				dangercolor_s			"Danger Color: [default] = 237, 66, 69"			237, 66, 69
+ * @var text				textbrightest_s			"Text Color 1: [default] = 255, 255, 255"		255, 255, 255
+ * @var text				textbrighter_s			"Text Color 2: [default] = 220, 221, 222"		222, 222, 222
+ * @var text				textbright_s			"Text Color 3: [default] = 185, 187, 190"		185, 185, 185
+ * @var text				textdark_s			"Text Color 4: [default] = 142, 146, 151"		140, 140, 140
+ * @var text				textdarker_s			"Text Color 5: [default] = 114, 118, 125"		115, 115, 115
+ * @var text				textdarkest_s			"Text Color 6: [default] = 79, 84, 92"			80, 80, 80
+ * @var text				backgroundaccent_s		"Background Accent: [default] = 64, 68, 75"		50, 50, 50
+ * @var text				backgroundprimary_s		"Background 1: [default] = 54, 57, 63"			30, 30, 30
+ * @var text				backgroundsecondary_s		"Background 2: [default] = 47, 49, 54"			20, 20, 20
+ * @var text				backgroundsecondaryalt_s	"Background 3: [default] = 41, 43, 47"			15, 15, 15
+ * @var text				backgroundtertiary_s		"Background 4: [default] = 32, 34, 37"			10, 10, 10
+ * @var text				backgroundfloating_s		"Background Elevated: [default] = 24, 25, 28"		0, 0, 0
+ */
+
+/* To change the colors, change the variables inside the root {}, do NOT change the @import url() */
+
+@import url(https://mwittrien.github.io/BetterDiscordAddons/Themes/DiscordRecolor/DiscordRecolor.css);
+
+/* All colors are in RGB format (red, green, blue) use: https://www.google.com/search?q=colorpicker	*/
+
+:root {
+  --settingsicons: 1; /*	Use Settings Icons in User Settings: 1 = yes, 0 = no							*/
+  --font: "gg sans", "Noto Sans"; /*	General Font												*/
+
+  --accentcolor: 214, 93, 14; /*	Blurple			-	default:	88,101,242		-	hex:	#5865f2		*/
+  --accentcolor2: 254, 128, 25; /*	Boostpink		-	default:	255,115,250		-	hex:	#ff73fa		*/
+  --linkcolor: 131, 165, 152; /*	Link Color		-	default:	0,176,244		-	hex:	#00b0f4		*/
+  --mentioncolor: 215, 153, 33; /*	Highlight Color		-	default:	250,166,26		-	hex:	#faa61a		*/
+  --successcolor: 184, 187, 38; /*	Success Color		-	default:	59,165,92		-	hex:	#3ba55c		*/
+  --warningcolor: 250, 189, 47; /*	Warning Color		-	default:	250,166,26		-	hex:	#faa61a		*/
+  --dangercolor: 251, 73, 52; /*	Danger Color		-	default:	237,66,69		-	hex:	#ed4245		*/
+
+  --textbrightest: 251, 241, 199; /*	Text Color 1		-	default:	255,255,255		-	hex:	#ffffff		*/
+  --textbrighter: 235, 219, 178; /*	Text Color 2		-	default:	220,221,222		-	hex:	#dcddde		*/
+  --textbright: 213, 196, 161; /*	Text Color 3		-	default:	185,187,190		-	hex:	#b9bbbe		*/
+  --textdark: 189, 174, 147; /*	Text Color 4		-	default:	142,146,151		-	hex:	#8e9297		*/
+  --textdarker: 168, 153, 132; /*	Text Color 5		-	default:	114,118,125		-	hex:	#72767d		*/
+  --textdarkest: 146, 131, 116; /*	Text Color 6		-	default:	79,84,92		-	hex:	#4f545c		*/
+
+  --backgroundaccent: 29, 32, 33; /*	Background Accent	-	default:	64,68,75		-	hex:	#40444b		*/
+  --backgroundprimary: 40, 40, 40; /*	Background 1		-	default:	54,57,63		-	hex:	#36393f		*/
+  --backgroundsecondary: 60, 56, 54; /*	Background 2		-	default:	47,49,54		-	hex:	#2f3136		*/
+  --backgroundsecondaryalt: 80, 73, 69; /*	Background 3		-	default:	41,43,47		-	hex:	#292b2f		*/
+  --backgroundtertiary: 102, 92, 84; /*	Background 4		-	default:	32,34,37		-	hex:	#202225		*/
+  --backgroundfloating: 124, 111, 100; /*	Background Elevated	-	default:	24,25,28		-	hex:	#18191c		*/
+}
+
+.userSettingsSecurity_ad4a7c .isEnabled_ad4a7c {
+  filter: invert(64%) sepia(100%) saturate(341%) hue-rotate(19deg)
+    brightness(93%) contrast(92%);
+}
+
+.wrapper_fea3ef {
+  background-color: var(--background-tertiary);
+}
+
+#app-mount .expandedFolderBackground_bc7085 {
+  background-color: var(--background-secondary-alt);
+}
+
+/*!
+  Theme: Gruvbox dark, soft
+  Author: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
+  License: ~ MIT (or more permissive) [via base16-schemes-source]
+  Maintainer: @highlightjs/core-team
+  Version: 2021.09.0
+  Reference: https://github.com/highlightjs/highlight.js/blob/main/src/styles/base16/gruvbox-dark-soft.css
+*/
+
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+}
+
+code.hljs {
+  padding: 3px 5px;
+}
+
+.theme-dark .hljs {
+  color: #d5c4a1;
+  background: #32302f;
+}
+
+.theme-dark .hljs::selection,
+.theme-dark .hljs ::selection {
+  background-color: #504945;
+  color: #d5c4a1;
+}
+
+/* purposely do not highlight these things */
+.theme-dark .hljs-formula,
+.theme-dark .hljs-params,
+.theme-dark .hljs-property {
+}
+
+/* base03 - #665c54 -  Comments, Invisibles, Line Highlighting */
+.theme-dark .hljs-comment {
+  color: #665c54;
+}
+
+/* base04 - #bdae93 -  Dark Foreground (Used for status bars) */
+.theme-dark .hljs-tag {
+  color: #bdae93;
+}
+
+/* base05 - #d5c4a1 -  Default Foreground, Caret, Delimiters, Operators */
+.theme-dark .hljs-subst,
+.theme-dark .hljs-punctuation,
+.theme-dark .hljs-operator {
+  color: #d5c4a1;
+}
+
+.theme-dark .hljs-operator {
+  opacity: 0.7;
+}
+
+/* base08 - Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted */
+.theme-dark .hljs-bullet,
+.theme-dark .hljs-variable,
+.theme-dark .hljs-template-variable,
+.theme-dark .hljs-selector-tag,
+.theme-dark .hljs-name,
+.theme-dark .hljs-deletion {
+  color: #fb4934;
+}
+
+/* base09 - Integers, Boolean, Constants, XML Attributes, Markup Link Url */
+.theme-dark .hljs-symbol,
+.theme-dark .hljs-number,
+.theme-dark .hljs-link,
+.theme-dark .hljs-attr,
+.theme-dark .hljs-variable.constant_,
+.theme-dark .hljs-literal {
+  color: #fe8019;
+}
+
+/* base0A - Classes, Markup Bold, Search Text Background */
+.theme-dark .hljs-title,
+.theme-dark .hljs-class .hljs-title,
+.theme-dark .hljs-title.class_ {
+  color: #fabd2f;
+}
+
+.theme-dark .hljs-strong {
+  font-weight: bold;
+  color: #fabd2f;
+}
+
+/* base0B - Strings, Inherited Class, Markup Code, Diff Inserted */
+.theme-dark .hljs-code,
+.theme-dark .hljs-addition,
+.theme-dark .hljs-title.class_.inherited__,
+.theme-dark .hljs-string {
+  color: #b8bb26;
+}
+
+/* base0C - Support, Regular Expressions, Escape Characters, Markup Quotes */
+.theme-dark .hljs-built_in,
+.theme-dark .hljs-doctag, /* guessing */
+.theme-dark .hljs-quote,
+.theme-dark .hljs-keyword.hljs-atrule,
+.theme-dark .hljs-regexp {
+  color: #8ec07c;
+}
+
+/* base0D - Functions, Methods, Attribute IDs, Headings */
+.theme-dark .hljs-function .hljs-title,
+.theme-dark .hljs-attribute,
+.ruby .hljs-property,
+.theme-dark .hljs-title.function_,
+.theme-dark .hljs-section {
+  color: #83a598;
+}
+
+/* base0E - Keywords, Storage, Selector, Markup Italic, Diff Changed */
+.theme-dark .hljs-type,
+/* .hljs-selector-id, */
+/* .hljs-selector-class, */
+/* .hljs-selector-attr, */
+/* .hljs-selector-pseudo, */
+.theme-dark .hljs-template-tag,
+.diff .hljs-meta,
+.theme-dark .hljs-keyword {
+  color: #d3869b;
+}
+.theme-dark .hljs-emphasis {
+  color: #d3869b;
+  font-style: italic;
+}
+
+/* base0F - Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?> */
+.theme-dark .hljs-meta,
+/*
+  prevent top level .keyword and .string scopes
+  from leaking into meta by accident
+*/
+.theme-dark .hljs-meta .hljs-keyword,
+.theme-dark .hljs-meta .hljs-string {
+  color: #d65d0e;
+}
+
+.theme-dark .hljs-meta .hljs-keyword,
+/* for v10 compatible themes */
+.theme-dark .hljs-meta-keyword {
+  font-weight: bold;
+}
