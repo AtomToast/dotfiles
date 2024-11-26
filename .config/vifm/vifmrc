@@ -198,8 +198,8 @@ filextype {*.pdf},<application/pdf>
         \ zathura %f %i,
         \ {View in Okular}
         \ okular %c %i,
-        \ {View in Libre Office}
-        \a libreoffice %c %i &,
+        \ {Edit in Libre Office}
+        \ libreoffice %c %i &,
 fileviewer {*.pdf},<application/pdf>
         \ vifmimg pdf %px %py %pw %ph %c
         \ %pc
