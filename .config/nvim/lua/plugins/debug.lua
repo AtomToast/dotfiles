@@ -58,7 +58,7 @@ return {
     vim.keymap.set('n', '<leader>gB', dap.run_to_cursor, { desc = 'Debug: Run to Cursor' })
 
     vim.fn.sign_define('DapBreakpoint', { text = '●', texthl = 'DapBreakpointSymbol', linehl = '', numhl = '' })
-    vim.fn.sign_define('DapStopped', { text = '', texthl = 'DapStoppedSymbol', linehl = 'DapStoppedSymbol', numhl = 'DapStoppedSymbol' })
+    vim.fn.sign_define('DapStopped', { text = '', texthl = 'DapStoppedSymbol', linehl = 'debugPC', numhl = 'DapStoppedSymbol' })
 
     dapui.setup {
       icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
