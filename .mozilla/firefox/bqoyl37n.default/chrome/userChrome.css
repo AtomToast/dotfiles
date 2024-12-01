@@ -1,4 +1,5 @@
-@-moz-document url("chrome://browser/content/browser.xhtml") {
+@-moz-document url("chrome://browser/content/browser.xhtml")
+{
   /* dark tabs by default */
   #browser vbox#appcontent tabbrowser #content,
   #tabbrowser-tabpanels,
@@ -43,7 +44,9 @@
     --thin-tab-width: 34px;
     --wide-tab-width: 200px;
   }
-  #sidebar-box:not([sidebarcommand="tabcenter-reborn_ariasuni-sidebar-action"]) {
+  #sidebar-box:not(
+      [sidebarcommand="tabcenter-reborn_ariasuni-sidebar-action"]
+    ) {
     min-width: var(--wide-tab-width) !important;
     max-width: none !important;
   }
@@ -73,19 +76,28 @@
 
   /* Make urlbar appear more compact */
   #urlbar[breakout] {
-    margin-inline-start: 0px !important;
-    width: 100% !important;
-    left: 0 !important;
-    top: calc(
+    margin-left: 0 !important;
+    width: var(--urlbar-width) !important;
+    margin-top: calc(
       (var(--urlbar-container-height) - var(--urlbar-height)) / 2
     ) !important;
+
+    > .urlbar-input-container {
+      height: var(--urlbar-height) !important;
+      padding-block: var(--urlbar-container-padding) !important;
+      padding-inline: var(--urlbar-container-padding) !important;
+      border-radius: var(--toolbarbutton-border-radius) !important;
+    }
   }
   #urlbar[breakout]:not([open]) {
-    bottom: calc(
+    margin-bottom: calc(
       (var(--urlbar-container-height) - var(--urlbar-height)) / 2
     ) !important;
   }
   .urlbarView {
+    margin-top: calc(
+      (var(--urlbar-container-height) - var(--urlbar-height)) / 2
+    ) !important;
     margin-inline: 0 !important;
     width: auto !important;
   }
@@ -97,6 +109,7 @@
   }
   #urlbar-background {
     animation: none !important;
+    border-color: var(--toolbar-field-border-color) !important;
   }
   #urlbar-input-container {
     padding: 0 !important;
