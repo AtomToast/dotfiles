@@ -111,7 +111,7 @@
   f12    f7     f8     f9     sys    _             _      _      _      _      _      _      _      _
   f11    f4     f5     f6     scrlck _             _      _      _      _      _      _      _
   f10    f1     f2     f3     pause  _      _      _      _      _      _      _             _
-         menu   _      _                    _                    _      _      _      _      _
+         menu   spc    tab                  _                    _      _      _      _      _
                                                                                       _
 )
 
