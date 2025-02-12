@@ -1,0 +1,12 @@
+#!/bin/sh
+
+mail_count=$(du -a "$HOME"/.local/share/mail/*/INBOX/new/* 2> /dev/null | sed -n '$=' | tr -d '0')
+
+mail_tooltip=$(grep -h -e "^From: " -e "^Subject: " "$HOME"/.local/share/mail/*/INBOX/new/* | sed 'n;G')
+
+jq --null-input \
+    --unbuffered \
+    --compact-output \
+    --arg text "$mail_count" \
+    --arg tooltip "$mail_tooltip" \
+    '{"text": $text, "tooltip": $tooltip}'
