@@ -45,7 +45,7 @@ button:hover {
 }
 
 #tags button {
-  padding: 0 5px;
+  padding: 0 0px;
   background-color: transparent;
   color: #ebdbb2;
 }
@@ -61,6 +61,7 @@ button:hover {
 #tags button.focused {
   background-color: #458588;
   color: #282828;
+  font-weight: bold;
 }
 
 #tags button.urgent {
