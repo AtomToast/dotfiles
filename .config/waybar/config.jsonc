@@ -91,7 +91,7 @@
     "clock#clock2": {
         "tooltip-format": "{:%H:%M:%S}",
         "format": "{:%H:%M }",
-        "interval": 10
+        "interval": 1
     },
     "cpu": {
         "format": "{usage}% "
@@ -100,6 +100,7 @@
         "format": "{used:0.1f}/{total:0.1f} "
     },
     "temperature": {
+        "thermal-zone": 3,
         "critical-threshold": 80,
         "format": "{temperatureC}°C {icon}",
         "format-icons": [
