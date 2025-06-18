@@ -8,7 +8,7 @@ return {
     npairs.setup { check_ts = true }
 
     local ts_conds = require 'nvim-autopairs.ts-conds'
-    npairs.add_rule(Rule('|', '|', 'zig'):with_pair(ts_conds.is_ts_node { 'WhileStatement', 'IfStatement' }))
+    npairs.add_rule(Rule('|', '|', 'zig'):with_pair(ts_conds.is_ts_node { 'for_statement', 'if_statement', 'while_statement' })) -- for statement doesn't work since it's an error without a payload capture
 
     -- If you want to automatically add `(` after selecting a function or method
     local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
