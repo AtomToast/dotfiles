@@ -32,8 +32,11 @@ x-scheme-handler/discord-712465656758665259=discord-712465656758665259.desktop
 x-scheme-handler/tg=org.telegram.desktop.desktop
 x-scheme-handler/discord-430794114037055489=discord-430794114037055489.desktop
 x-scheme-handler/fcade=fcade-quark.desktop
+x-scheme-handler/tonsite=org.telegram.desktop.desktop
+x-scheme-handler/discord=vesktop.desktop
 
 [Added Associations]
 application/octet-stream=nvim.desktop;torrent.desktop;
 application/x-bittorrent=torrent.desktop;
 x-scheme-handler/tg=userapp-Telegram Desktop-SDZFW0.desktop;userapp-Telegram Desktop-OV5N10.desktop;userapp-Telegram Desktop-U567V1.desktop;userapp-Telegram Desktop-RXBCW1.desktop;org.telegram.desktop.desktop;
+x-scheme-handler/tonsite=org.telegram.desktop.desktop;
