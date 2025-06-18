@@ -8,6 +8,8 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup {
   'tpope/vim-sleuth',
 
+  'kmonad/kmonad-vim',
+
   -- TODO: add <space>F binding
   'oberblastmeister/zoom.nvim',
 
