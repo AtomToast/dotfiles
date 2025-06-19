@@ -45,7 +45,9 @@ button:hover {
 }
 
 #tags button {
-  padding: 0 0px;
+  padding: 0 5px;
+  min-width: 16px;
+  min-height: 24px;
   background-color: transparent;
   color: #ebdbb2;
 }
