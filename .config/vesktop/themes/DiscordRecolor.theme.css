@@ -218,7 +218,7 @@ code.hljs {
 /* base0D - Functions, Methods, Attribute IDs, Headings */
 .theme-dark .hljs-function .hljs-title,
 .theme-dark .hljs-attribute,
-.ruby .hljs-property,
+.theme-dark .ruby .hljs-property,
 .theme-dark .hljs-title.function_,
 .theme-dark .hljs-section {
   color: #83a598;
@@ -231,7 +231,7 @@ code.hljs {
 /* .hljs-selector-attr, */
 /* .hljs-selector-pseudo, */
 .theme-dark .hljs-template-tag,
-.diff .hljs-meta,
+.theme-dark .diff .hljs-meta,
 .theme-dark .hljs-keyword {
   color: #d3869b;
 }
@@ -254,5 +254,153 @@ code.hljs {
 .theme-dark .hljs-meta .hljs-keyword,
 /* for v10 compatible themes */
 .theme-dark .hljs-meta-keyword {
+  font-weight: bold;
+}
+
+/*!
+  Theme: Gruvbox light, medium
+  Author: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
+  License: ~ MIT (or more permissive) [via base16-schemes-source]
+  Maintainer: @highlightjs/core-team
+  Version: 2021.09.0
+  Reference: https://github.com/highlightjs/highlight.js/blob/main/src/styles/base16/gruvbox-light-medium.css
+*/
+
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+}
+
+code.hljs {
+  padding: 3px 5px;
+}
+
+.theme-light .hljs {
+  color: #504945;
+  background: #fbf1c7;
+}
+
+.theme-light .hljs::selection,
+.theme-light .hljs ::selection {
+  background-color: #d5c4a1;
+  color: #504945;
+}
+
+/* purposely do not highlight these things */
+.theme-light .hljs-formula,
+.theme-light .hljs-params,
+.theme-light .hljs-property {
+}
+
+/* base03 - #bdae93 -  Comments, Invisibles, Line Highlighting */
+.theme-light .hljs-comment {
+  color: #bdae93;
+}
+
+/* base04 - #665c54 -  Dark Foreground (Used for status bars) */
+.theme-light .hljs-tag {
+  color: #665c54;
+}
+
+/* base05 - #504945 -  Default Foreground, Caret, Delimiters, Operators */
+.theme-light .hljs-subst,
+.theme-light .hljs-punctuation,
+.theme-light .hljs-operator {
+  color: #504945;
+}
+
+.theme-light .hljs-operator {
+  opacity: 0.7;
+}
+
+/* base08 - Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted */
+.theme-light .hljs-bullet,
+.theme-light .hljs-variable,
+.theme-light .hljs-template-variable,
+.theme-light .hljs-selector-tag,
+.theme-light .hljs-name,
+.theme-light .hljs-deletion {
+  color: #9d0006;
+}
+
+/* base09 - Integers, Boolean, Constants, XML Attributes, Markup Link Url */
+.theme-light .hljs-symbol,
+.theme-light .hljs-number,
+.theme-light .hljs-link,
+.theme-light .hljs-attr,
+.theme-light .hljs-variable.constant_,
+.theme-light .hljs-literal {
+  color: #af3a03;
+}
+
+/* base0A - Classes, Markup Bold, Search Text Background */
+.theme-light .hljs-title,
+.theme-light .hljs-class .hljs-title,
+.theme-light .hljs-title.class_ {
+  color: #b57614;
+}
+
+.theme-light .hljs-strong {
+  font-weight: bold;
+  color: #b57614;
+}
+
+/* base0B - Strings, Inherited Class, Markup Code, Diff Inserted */
+.theme-light .hljs-code,
+.theme-light .hljs-addition,
+.theme-light .hljs-title.class_.inherited__,
+.theme-light .hljs-string {
+  color: #79740e;
+}
+
+/* base0C - Support, Regular Expressions, Escape Characters, Markup Quotes */
+.theme-light .hljs-built_in,
+.theme-light .hljs-doctag, /* guessing */
+.theme-light .hljs-quote,
+.theme-light .hljs-keyword.hljs-atrule,
+.theme-light .hljs-regexp {
+  color: #427b58;
+}
+
+/* base0D - Functions, Methods, Attribute IDs, Headings */
+.theme-light .hljs-function .hljs-title,
+.theme-light .hljs-attribute,
+.theme-light .ruby .hljs-property,
+.theme-light .hljs-title.function_,
+.theme-light .hljs-section {
+  color: #076678;
+}
+
+/* base0E - Keywords, Storage, Selector, Markup Italic, Diff Changed */
+.theme-light .hljs-type,
+/* .hljs-selector-id, */
+/* .hljs-selector-class, */
+/* .hljs-selector-attr, */
+/* .hljs-selector-pseudo, */
+.theme-light .hljs-template-tag,
+.theme-light .diff .hljs-meta,
+.theme-light .hljs-keyword {
+  color: #8f3f71;
+}
+.theme-light .hljs-emphasis {
+  color: #8f3f71;
+  font-style: italic;
+}
+
+/* base0F - Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?> */
+.theme-light .hljs-meta,
+/*
+  prevent top level .keyword and .string scopes
+  from leaking into meta by accident
+*/
+.theme-light .hljs-meta .hljs-keyword,
+.theme-light .hljs-meta .hljs-string {
+  color: #d65d0e;
+}
+
+.theme-light .hljs-meta .hljs-keyword,
+/* for v10 compatible themes */
+.theme-light .hljs-meta-keyword {
   font-weight: bold;
 }
