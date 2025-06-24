@@ -40,10 +40,13 @@
 
 /* All colors are in RGB format (red, green, blue) use: https://www.google.com/search?q=colorpicker	*/
 
-.theme-dark {
+:root {
   --settingsicons: 1;
   --font: "gg sans", "Noto Sans";
+  --font-code: "Hack Nerd Font", "monospace";
+}
 
+.theme-dark {
   --accentcolor: 214, 93, 14; /*		#d65d0e	default: #5865f2 */
   --accentcolor2: 254, 128, 25; /*		#fe8019	default: #ff73fa */
   --linkcolor: 131, 165, 152; /*		#83a598	default: #00b0f4 */
@@ -68,9 +71,6 @@
 }
 
 .theme-light {
-  --settingsicons: 1;
-  --font: "gg sans", "Noto Sans";
-
   --accentcolor: 214, 93, 14; /*		#d65d0e	default: #5865f2 */
   --accentcolor2: 175, 58, 3; /*		#af3a03	default: #ff73fa */
   --linkcolor: 7, 102, 120; /*			#076678	default: #00b0f4 */
