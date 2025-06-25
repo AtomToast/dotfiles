@@ -109,7 +109,22 @@
   background-color: var(--background-secondary-alt);
 }
 
-/*!
+.theme-light:not(.custom-user-profile-theme),
+.theme-dark:not(.custom-user-profile-theme),
+.theme-amoled:not(.custom-user-profile-theme),
+.visual-refresh.theme-light:not(.custom-user-profile-theme),
+.visual-refresh.theme-dark:not(.custom-user-profile-theme),
+.visual-refresh.theme-amoled:not(.custom-user-profile-theme),
+.visual-refresh .theme-light:not(.custom-user-profile-theme),
+.visual-refresh .theme-dark:not(.custom-user-profile-theme),
+.visual-refresh .theme-amoled:not(.custom-user-profile-theme) {
+  --background-code: rgb(var(--backgroundprimary_v));
+  --font-code: "Hack Nerd Font";
+}
+
+/** Replaced by vesktop shiki plugin */
+@media DISABLED {
+  /*!
   Theme: Gruvbox dark, soft
   Author: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
   License: ~ MIT (or more permissive) [via base16-schemes-source]
@@ -118,114 +133,114 @@
   Reference: https://github.com/highlightjs/highlight.js/blob/main/src/styles/base16/gruvbox-dark-soft.css
 */
 
-pre code.hljs {
-  display: block;
-  overflow-x: auto;
-  padding: 1em;
-}
+  pre code.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 1em;
+  }
 
-code.hljs {
-  padding: 3px 5px;
-}
+  code.hljs {
+    padding: 3px 5px;
+  }
 
-.theme-dark .hljs {
-  color: #d5c4a1;
-  background: #32302f;
-}
+  .theme-dark .hljs {
+    color: #d5c4a1;
+    background: #32302f;
+  }
 
-.theme-dark .hljs::selection,
-.theme-dark .hljs ::selection {
-  background-color: #504945;
-  color: #d5c4a1;
-}
+  .theme-dark .hljs::selection,
+  .theme-dark .hljs ::selection {
+    background-color: #504945;
+    color: #d5c4a1;
+  }
 
-/* purposely do not highlight these things */
-.theme-dark .hljs-formula,
-.theme-dark .hljs-params,
-.theme-dark .hljs-property {
-}
+  /* purposely do not highlight these things */
+  .theme-dark .hljs-formula,
+  .theme-dark .hljs-params,
+  .theme-dark .hljs-property {
+  }
 
-/* base03 - #665c54 -  Comments, Invisibles, Line Highlighting */
-.theme-dark .hljs-comment {
-  color: #665c54;
-}
+  /* base03 - #665c54 -  Comments, Invisibles, Line Highlighting */
+  .theme-dark .hljs-comment {
+    color: #665c54;
+  }
 
-/* base04 - #bdae93 -  Dark Foreground (Used for status bars) */
-.theme-dark .hljs-tag {
-  color: #bdae93;
-}
+  /* base04 - #bdae93 -  Dark Foreground (Used for status bars) */
+  .theme-dark .hljs-tag {
+    color: #bdae93;
+  }
 
-/* base05 - #d5c4a1 -  Default Foreground, Caret, Delimiters, Operators */
-.theme-dark .hljs-subst,
-.theme-dark .hljs-punctuation,
-.theme-dark .hljs-operator {
-  color: #d5c4a1;
-}
+  /* base05 - #d5c4a1 -  Default Foreground, Caret, Delimiters, Operators */
+  .theme-dark .hljs-subst,
+  .theme-dark .hljs-punctuation,
+  .theme-dark .hljs-operator {
+    color: #d5c4a1;
+  }
 
-.theme-dark .hljs-operator {
-  opacity: 0.7;
-}
+  .theme-dark .hljs-operator {
+    opacity: 0.7;
+  }
 
-/* base08 - Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted */
-.theme-dark .hljs-bullet,
-.theme-dark .hljs-variable,
-.theme-dark .hljs-template-variable,
-.theme-dark .hljs-selector-tag,
-.theme-dark .hljs-name,
-.theme-dark .hljs-deletion {
-  color: #fb4934;
-}
+  /* base08 - Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted */
+  .theme-dark .hljs-bullet,
+  .theme-dark .hljs-variable,
+  .theme-dark .hljs-template-variable,
+  .theme-dark .hljs-selector-tag,
+  .theme-dark .hljs-name,
+  .theme-dark .hljs-deletion {
+    color: #fb4934;
+  }
 
-/* base09 - Integers, Boolean, Constants, XML Attributes, Markup Link Url */
-.theme-dark .hljs-symbol,
-.theme-dark .hljs-number,
-.theme-dark .hljs-link,
-.theme-dark .hljs-attr,
-.theme-dark .hljs-variable.constant_,
-.theme-dark .hljs-literal {
-  color: #fe8019;
-}
+  /* base09 - Integers, Boolean, Constants, XML Attributes, Markup Link Url */
+  .theme-dark .hljs-symbol,
+  .theme-dark .hljs-number,
+  .theme-dark .hljs-link,
+  .theme-dark .hljs-attr,
+  .theme-dark .hljs-variable.constant_,
+  .theme-dark .hljs-literal {
+    color: #fe8019;
+  }
 
-/* base0A - Classes, Markup Bold, Search Text Background */
-.theme-dark .hljs-title,
-.theme-dark .hljs-class .hljs-title,
-.theme-dark .hljs-title.class_ {
-  color: #fabd2f;
-}
+  /* base0A - Classes, Markup Bold, Search Text Background */
+  .theme-dark .hljs-title,
+  .theme-dark .hljs-class .hljs-title,
+  .theme-dark .hljs-title.class_ {
+    color: #fabd2f;
+  }
 
-.theme-dark .hljs-strong {
-  font-weight: bold;
-  color: #fabd2f;
-}
+  .theme-dark .hljs-strong {
+    font-weight: bold;
+    color: #fabd2f;
+  }
 
-/* base0B - Strings, Inherited Class, Markup Code, Diff Inserted */
-.theme-dark .hljs-code,
-.theme-dark .hljs-addition,
-.theme-dark .hljs-title.class_.inherited__,
-.theme-dark .hljs-string {
-  color: #b8bb26;
-}
+  /* base0B - Strings, Inherited Class, Markup Code, Diff Inserted */
+  .theme-dark .hljs-code,
+  .theme-dark .hljs-addition,
+  .theme-dark .hljs-title.class_.inherited__,
+  .theme-dark .hljs-string {
+    color: #b8bb26;
+  }
 
-/* base0C - Support, Regular Expressions, Escape Characters, Markup Quotes */
-.theme-dark .hljs-built_in,
+  /* base0C - Support, Regular Expressions, Escape Characters, Markup Quotes */
+  .theme-dark .hljs-built_in,
 .theme-dark .hljs-doctag, /* guessing */
 .theme-dark .hljs-quote,
 .theme-dark .hljs-keyword.hljs-atrule,
 .theme-dark .hljs-regexp {
-  color: #8ec07c;
-}
+    color: #8ec07c;
+  }
 
-/* base0D - Functions, Methods, Attribute IDs, Headings */
-.theme-dark .hljs-function .hljs-title,
-.theme-dark .hljs-attribute,
-.theme-dark .ruby .hljs-property,
-.theme-dark .hljs-title.function_,
-.theme-dark .hljs-section {
-  color: #83a598;
-}
+  /* base0D - Functions, Methods, Attribute IDs, Headings */
+  .theme-dark .hljs-function .hljs-title,
+  .theme-dark .hljs-attribute,
+  .theme-dark .ruby .hljs-property,
+  .theme-dark .hljs-title.function_,
+  .theme-dark .hljs-section {
+    color: #83a598;
+  }
 
-/* base0E - Keywords, Storage, Selector, Markup Italic, Diff Changed */
-.theme-dark .hljs-type,
+  /* base0E - Keywords, Storage, Selector, Markup Italic, Diff Changed */
+  .theme-dark .hljs-type,
 /* .hljs-selector-id, */
 /* .hljs-selector-class, */
 /* .hljs-selector-attr, */
@@ -233,28 +248,29 @@ code.hljs {
 .theme-dark .hljs-template-tag,
 .theme-dark .diff .hljs-meta,
 .theme-dark .hljs-keyword {
-  color: #d3869b;
-}
-.theme-dark .hljs-emphasis {
-  color: #d3869b;
-  font-style: italic;
-}
+    color: #d3869b;
+  }
+  .theme-dark .hljs-emphasis {
+    color: #d3869b;
+    font-style: italic;
+  }
 
-/* base0F - Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?> */
-.theme-dark .hljs-meta,
+  /* base0F - Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?> */
+  .theme-dark .hljs-meta,
 /*
   prevent top level .keyword and .string scopes
   from leaking into meta by accident
 */
 .theme-dark .hljs-meta .hljs-keyword,
 .theme-dark .hljs-meta .hljs-string {
-  color: #d65d0e;
-}
+    color: #d65d0e;
+  }
 
-.theme-dark .hljs-meta .hljs-keyword,
+  .theme-dark .hljs-meta .hljs-keyword,
 /* for v10 compatible themes */
 .theme-dark .hljs-meta-keyword {
-  font-weight: bold;
+    font-weight: bold;
+  }
 }
 
 /*!
