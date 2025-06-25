@@ -17,7 +17,7 @@ nextcloud &
 vesktop --enable-gpu-rasterization &
 firefox &
 signal-desktop --use-tray-icon &
-telegram-desktop &
+Telegram &
 dbus-update-activation-environment &
 udiskie -s &
 picom --config /dev/null &
