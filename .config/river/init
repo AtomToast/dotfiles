@@ -131,7 +131,7 @@ riverctl map normal Super F8 spawn 'telegram-desktop'
 riverctl map normal Super F9 spawn 'discord'
 riverctl map normal Super F10 spawn '$TERMINAL -e ncspot'
 riverctl map normal Super+Shift F10 spawn '$TERMINAL -e lyrics'
-riverctl map normal Super F11 spawn '$TERMINAL -e nmtui'
+riverctl map normal Super F11 spawn '$TERMINAL -e bash -ic nmtui'
 riverctl map normal Super F12 spawn '$TERMINAL -e htop'
 
 riverctl map normal None XF86Tools spawn 'mpv /home/kjell/Nextcloud/Videos/Downloaded/gay_sex.mp4'
