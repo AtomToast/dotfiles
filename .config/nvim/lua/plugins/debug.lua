@@ -25,6 +25,7 @@ return {
       ensure_installed = {
         'python',
         'delve',
+        'codelldb',
       },
     }
 
@@ -84,6 +85,76 @@ return {
 
     -- Install golang specific config
     require('dap-go').setup()
+
+    -- configure codelldb adapter
+    dap.adapters.codelldb = {
+      type = 'server',
+      port = '${port}',
+      executable = {
+        command = 'codelldb',
+        args = { '--port', '${port}' },
+      },
+    }
+
+    -- setup a debugger config for zig projects
+    dap.configurations.zig = {
+      {
+        name = 'Launch',
+        type = 'codelldb',
+        request = 'launch',
+        program = '${workspaceFolder}/zig-out/bin/${workspaceFolderBasename}',
+        cwd = '${workspaceFolder}',
+        stopOnEntry = false,
+        args = {},
+      },
+      {
+        name = 'Debug tests in current file',
+        type = 'codelldb',
+        request = 'launch',
+        cwd = '${workspaceFolder}',
+        program = function()
+          vim.fn.system { 'zig', 'test', '--test-no-exec', '-femit-bin=zig-out/bin/test-binary', vim.api.nvim_buf_get_name(0) }
+          -- local out = vim.fn.system { 'zig', 'test', '-femit-bin=zig-out/bin/test-binary', vim.api.nvim_buf_get_name(0) }
+          -- if vim.v.shell_error ~= 0 then
+          --   vim.notify(out, vim.log.levels.ERROR)
+          --   return nil
+          -- end
+          -- local lines = vim.split(out, '\n')
+          -- vim.print(vim.inspect(lines))
+          return 'zig-out/bin/test-binary'
+        end,
+        console = 'integratedTerminal',
+      },
+      {
+        name = 'Debug test under cursor',
+        type = 'codelldb',
+        request = 'launch',
+        cwd = '${workspaceFolder}',
+        program = function()
+          local ts_query = [[
+            (test_declaration
+              (string
+                (string_content) @name))
+          ]]
+          local filetype = vim.bo.filetype
+          local bufnr = vim.api.nvim_get_current_buf()
+          local query = vim.treesitter.query.parse(filetype, ts_query)
+          local parser = vim.treesitter.get_parser(bufnr, filetype)
+          local tree = parser:parse()[1]
+          local root = tree:root()
+          local stop = vim.api.nvim_win_get_cursor(0)[1]
+          local testname = nil
+
+          for _, node in query:iter_captures(root, bufnr, 0, stop) do
+            testname = vim.treesitter.get_node_text(node, 0)
+          end
+
+          vim.fn.system { 'zig', 'test', '--test-no-exec', '--test-filter', testname, '-femit-bin=zig-out/bin/test-binary', vim.api.nvim_buf_get_name(0) }
+          return 'zig-out/bin/test-binary'
+        end,
+        console = 'integratedTerminal',
+      },
+    }
 
     -- Python settings
     local python = require 'dap-python'
