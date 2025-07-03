@@ -41,53 +41,25 @@ return {
           -- Diagnostic keymaps
           map('<leader>cd', vim.diagnostic.setqflist, 'Open diagnostic quickfix list')
           map('<leader>ld', vim.diagnostic.setloclist, 'Open diagnostic location list')
-          map(']d', function()
-            vim.diagnostic.goto_next { float = true }
-          end, 'Jumps to the next diagnostic in the current buffer')
-          map('[d', function()
-            vim.diagnostic.goto_prev { float = true }
-          end, 'Jumps to the previous diagnostic in the current buffer')
 
           -- To jump back from definition, press <C-t>.
-          map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+          map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
           map('<C-]>', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-          map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-          map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-          map('gR', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-          map('gt', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
-          map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-          map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+          map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+          map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+          map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+          map('grt', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
           map('<leader>a', '<cmd>ClangdSwitchSourceHeader<CR>', 'Switch to [A]lternate File')
 
           -- Fuzzy find all the symbols in your current document.
           --  Symbols are things like variables, functions, types, etc.
-          map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+          map('gO', require('telescope.builtin').lsp_document_symbols, 'Document Symbols')
 
           -- Fuzzy find all the symbols in your current workspace
           --  Similar to document symbols, except searches over your whole project.
-          map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+          map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace Symbols')
 
-          -- Hightlight references under cursor
-          local client = vim.lsp.get_client_by_id(event.data.client_id)
-          if client and client.server_capabilities.documentHighlightProvider then
-            map('<leader>rh', vim.lsp.buf.document_highlight, '[H]ighlight [R]eferences')
-
-            vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-              buffer = event.buf,
-              callback = vim.lsp.buf.clear_references,
-            })
-          end
-
-          -- Opens a popup that displays documentation about the word under your cursor
-          -- Opens help file if in help document
-          local function show_documentation()
-            if vim.bo.filetype:match 'help' or vim.bo.filetype:match 'vim' then
-              vim.cmd(' ' .. vim.fn.expand '<cword>')
-            else
-              vim.lsp.buf.hover()
-            end
-          end
-          map('K', show_documentation, 'Hover Documentation')
+          -- Signature help
           vim.keymap.set({ 'n', 'i' }, '<C-k>', vim.lsp.buf.signature_help, { buffer = event.buf, desc = 'LSP: Show signature help' })
         end,
       })
