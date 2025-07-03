@@ -59,12 +59,12 @@
   --textdarker: 168, 153, 132; /*		#a89984	default: #72767d */
   --textdarkest: 146, 131, 116; /*		#928374	default: #4f545c */
 
-  --backgroundaccent: 29, 32, 33; /*		#1d2021	default: #40444b */
-  --backgroundprimary: 40, 40, 40; /*		#282828	default: #36393f */
-  --backgroundsecondary: 60, 56, 54; /*		#3c3836	default: #2f3136 */
-  --backgroundsecondaryalt: 80, 73, 69; /*	#504945	default: #292b2f */
-  --backgroundtertiary: 102, 92, 84; /*		#665c54	default: #202225 */
-  --backgroundfloating: 124, 111, 100; /*	#7c6f64	default: #18191c */
+  --backgroundaccent: 124, 111, 100; /*		#7c6f64	default: #40444b */
+  --backgroundprimary: 102, 92, 84; /*		#665c54	default: #36393f */
+  --backgroundsecondary: 80, 73, 69; /*		#504945	default: #2f3136 */
+  --backgroundsecondaryalt: 60, 56, 54; /*	#3c3836	default: #292b2f */
+  --backgroundtertiary: 40, 40, 40; /*		#282828	default: #202225 */
+  --backgroundfloating: 29, 32, 33; /*		#1d2021	default: #18191c */
 }
 
 .theme-light {
@@ -86,12 +86,12 @@
   --textdarker: 124, 111, 100; /*		#7c6f64	default: #72767d */
   --textdarkest: 146, 131, 116; /*		#928374	default: #4f545c */
 
-  --backgroundaccent: 249, 245, 215; /*		#f9f5d7	default: #40444b */
-  --backgroundprimary: 251, 241, 199; /*	#fbf1c7	default: #36393f */
-  --backgroundsecondary: 235, 219, 178; /*	#ebdbb2	default: #2f3136 */
-  --backgroundsecondaryalt: 213, 196, 161; /*	#d5c4a1	default: #292b2f */
-  --backgroundtertiary: 189, 174, 147; /*	#bdae93	default: #202225 */
-  --backgroundfloating: 168, 153, 132; /*	#a89984	default: #18191c */
+  --backgroundaccent: 168, 153, 132; /*		#a89984	default: #40444b */
+  --backgroundprimary: 189, 174, 147; /*	#bdae93	default: #36393f */
+  --backgroundsecondary: 213, 196, 161; /*	#d5c4a1	default: #2f3136 */
+  --backgroundsecondaryalt: 235, 219, 178; /*	#ebdbb2	default: #292b2f */
+  --backgroundtertiary: 251, 241, 199; /*	#fbf1c7	default: #202225 */
+  --backgroundfloating: 249, 245, 215; /*	#f9f5d7	default: #18191c */
 }
 
 /* Custom fixes */
