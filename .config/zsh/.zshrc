@@ -1,3 +1,11 @@
+# enable instant prompt
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# load powerlevel10k config
+[[ -f ~/.config/zsh/.p10k.zsh ]] && source ~/.config/zsh/.p10k.zsh
+
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
@@ -71,11 +79,6 @@ zinit load 'ziglang/shell-completions'
 
 zinit ice blockf
 zinit load zsh-users/zsh-completions
-
-# enable instant prompt
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
 
 # Turn stderror red (uses stderred)
 # export LD_PRELOAD=/usr/lib/libstderred.so
@@ -175,7 +178,6 @@ alias llt="ll --tree --level=2"
 alias llg="ll --grid"
 alias cat="bat"
 alias grep="rg"
-alias df="duf"
 alias doas="doas --"
 #alias sudo="doas"
 alias vim="nvim"
@@ -257,9 +259,6 @@ fancy-ctrl-z () {
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
-
-# load powerlevel10k config
-[[ -f ~/.config/zsh/.p10k.zsh ]] && source ~/.config/zsh/.p10k.zsh
 
 # load emscripten stuff
 source "/home/kjell/git/wasm-test/emsdk/emsdk_env.sh" &> /dev/null
