@@ -14,10 +14,7 @@ XF86AudioMicMute
 
 # Brightness Control keys
 XF86MonBrightness{Up,Down}
-    dunstify -r 2594 -u low -t 500 "Brightness $(light -G | cut -d '.' -f1)%"
-# XF86MonBrightness{Up,Down}
-#     light {-A,-U} 5; dunstify -r 2594 -u low -t 500 "Brightness $(light -G | cut -d '.' -f1)%"
-    # brightnessctl -q set {+5%,5%-}; brightnessnotify
+    light {-A,-U} 5; dunstify -r 2594 -u low -t 500 "Brightness $(light -G | cut -d '.' -f1)%"
 
 super + x
     dunstctl close
