@@ -77,11 +77,16 @@
     },
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%Y-%m-%d 󰃭}"
+        "format": "{:%Y-%m-%d (%a) 󰃭}",
+        "calendar": {
+            "format": {
+                "today": "<span background='#d5c4a1' color='#282828'><b>{}</b></span>"
+            }
+        }
     },
     "clock#clock2": {
         "tooltip-format": "{:%H:%M:%S}",
-        "format": "{:%H:%M }",
+        "format": "{:%H:%M 󰅐}",
         "interval": 10
     },
     "cpu": {
@@ -154,6 +159,9 @@
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
+        "ignored-sinks": [
+            "Easy Effects Sink"
+        ],
         "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
