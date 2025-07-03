@@ -3,6 +3,7 @@
     "spacing": 4,
     "modules-left": [
         "river/tags",
+        "river/layout",
         "mpris",
         "river/window"
     ],
@@ -21,6 +22,19 @@
         "clock#clock2",
         "tray"
     ],
+    "river/layout": {
+        "format": "{icon}",
+        "format-icons": {
+            "left": "[]=",
+            "bottom": "TTT",
+            "top": "ꓕꓕꓕ",
+            "right": "=[]",
+            "monocle": "[M]"
+        },
+        "min-length": 3,
+        "on-click": "riverctl send-layout-cmd rivercarro 'main-location-cycle left,monocle'",
+        "on-click-right": "riverctl send-layout-cmd rivercarro 'main-location-cycle left,bottom,top,right'"
+    },
     "river/window": {
         "format": "{}",
         "max-length": 300

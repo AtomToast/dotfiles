@@ -79,6 +79,11 @@ button:hover {
   margin-right: 0;
 }
 
+#layout {
+  font-family: Hack Nerd Font Mono;
+}
+
+#layout,
 #clock,
 #battery,
 #cpu,
