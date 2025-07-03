@@ -12,6 +12,8 @@ require('lazy').setup {
 
   { 'numToStr/Comment.nvim', opts = {} },
 
+  require 'plugins/fugitive',
+
   require 'plugins/gitsigns',
 
   require 'plugins/which-key',
