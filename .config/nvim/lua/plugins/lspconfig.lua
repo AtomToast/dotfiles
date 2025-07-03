@@ -47,10 +47,10 @@ return {
           map('<leader>cd', vim.diagnostic.setqflist, 'Open diagnostic quickfix list')
           map('<leader>ld', vim.diagnostic.setloclist, 'Open diagnostic location list')
           map(']d', function()
-            vim.diagnostic.jump { count = 1, float = true }
+            vim.diagnostic.goto_next { float = true }
           end, 'Jumps to the next diagnostic in the current buffer')
           map('[d', function()
-            vim.diagnostic.jump { count = -1, float = true }
+            vim.diagnostic.goto_prev { float = true }
           end, 'Jumps to the previous diagnostic in the current buffer')
 
           -- To jump back from definition, press <C-t>.
