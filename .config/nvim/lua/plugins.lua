@@ -8,9 +8,15 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup {
   'tpope/vim-sleuth',
 
+  -- TODO: add <space>F binding
+  'oberblastmeister/zoom.nvim',
+
   { 'kylechui/nvim-surround', opts = {} },
 
   { 'numToStr/Comment.nvim', opts = {} },
+
+  -- WORK
+  { 'akinsho/flutter-tools.nvim', opts = {} },
 
   require 'plugins/highlight-colors',
 
@@ -44,6 +50,7 @@ require('lazy').setup {
 
   require 'plugins/dadbod',
 
+  -- TODO: replace with hlchunk
   -- require 'plugins/indent_line',
 
   require 'plugins/autopairs',
@@ -56,3 +63,5 @@ require('lazy').setup {
 
   require 'plugins/wiki',
 }
+
+-- TODO: check this out https://github.com/stevearc/dressing.nvim
