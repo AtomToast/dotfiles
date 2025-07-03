@@ -44,10 +44,14 @@ return {
           end
 
           -- Diagnostic keymaps
-          map('[d', vim.diagnostic.goto_prev, 'Go to previous [D]iagnostic message')
-          map(']d', vim.diagnostic.goto_next, 'Go to next [D]iagnostic message')
-          map('gK', vim.diagnostic.open_float, 'Show diagnostic [E]rror messages')
-          map('<leader>q', vim.diagnostic.setloclist, 'Open diagnostic [Q]uickfix list')
+          map('<leader>cd', vim.diagnostic.setqflist, 'Open diagnostic quickfix list')
+          map('<leader>ld', vim.diagnostic.setloclist, 'Open diagnostic location list')
+          map(']d', function()
+            vim.diagnostic.jump { count = 1, float = true }
+          end, 'Jumps to the next diagnostic in the current buffer')
+          map('[d', function()
+            vim.diagnostic.jump { count = -1, float = true }
+          end, 'Jumps to the previous diagnostic in the current buffer')
 
           -- To jump back from definition, press <C-t>.
           map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
