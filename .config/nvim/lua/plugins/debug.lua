@@ -114,12 +114,11 @@ return {
         request = 'launch',
         cwd = '${workspaceFolder}',
         program = function()
-          vim.fn.system { 'zig', 'test', '--test-no-exec', '-femit-bin=zig-out/bin/test-binary', vim.api.nvim_buf_get_name(0) }
-          -- local out = vim.fn.system { 'zig', 'test', '-femit-bin=zig-out/bin/test-binary', vim.api.nvim_buf_get_name(0) }
-          -- if vim.v.shell_error ~= 0 then
-          --   vim.notify(out, vim.log.levels.ERROR)
-          --   return nil
-          -- end
+          local out = vim.fn.system { 'zig', 'test', '--test-no-exec', '-femit-bin=zig-out/bin/test-binary', vim.api.nvim_buf_get_name(0) }
+          if vim.v.shell_error ~= 0 then
+            vim.notify(out, vim.log.levels.ERROR)
+            return nil
+          end
           -- local lines = vim.split(out, '\n')
           -- vim.print(vim.inspect(lines))
           return 'zig-out/bin/test-binary'
@@ -150,7 +149,12 @@ return {
             testname = vim.treesitter.get_node_text(node, 0)
           end
 
-          vim.fn.system { 'zig', 'test', '--test-no-exec', '--test-filter', testname, '-femit-bin=zig-out/bin/test-binary', vim.api.nvim_buf_get_name(0) }
+          local out =
+            vim.fn.system { 'zig', 'test', '--test-no-exec', '--test-filter', testname, '-femit-bin=zig-out/bin/test-binary', vim.api.nvim_buf_get_name(0) }
+          if vim.v.shell_error ~= 0 then
+            vim.notify(out, vim.log.levels.ERROR)
+            return nil
+          end
           return 'zig-out/bin/test-binary'
         end,
         console = 'integratedTerminal',
