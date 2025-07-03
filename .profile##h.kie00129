@@ -1,0 +1,113 @@
+# ~/.profile: executed by the command interpreter for login shells.
+# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
+# exists.
+# see /usr/share/doc/bash/examples/startup-files for examples.
+# the files are located in the bash-doc package.
+
+# the default umask is set in /etc/profile; for setting the umask
+# for ssh logins, install and configure the libpam-umask package.
+#umask 022
+
+[ "$HOST" = "der-gerahmte" ] && WAYLAND=1
+
+# if running bash
+if [ -n "$BASH_VERSION" ]; then
+    # include .bashrc if it exists
+    if [ -f "$HOME/.bashrc" ]; then
+        . "$HOME/.bashrc"
+    fi
+fi
+
+# set PATH so it includes user's private scripts if it exists
+if [ -d "$HOME/.local/bin/scripts" ]; then
+    PATH="$HOME/.local/bin/scripts:$PATH"
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ]; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+# set XDG_DATA_DIRS
+export XDG_DATA_DIRS="/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:$XDG_DATA_DIRS"
+
+# add cargo to PATH
+. "$HOME/.cargo/env"
+
+# add flutter to PATH
+export PATH="$HOME/.flutter/bin:$PATH"
+
+# add go to PATH
+export PATH="$HOME/go/bin:$PATH"
+
+# add npm to PATH
+NPM_PACKAGES="${HOME}/.local/share/npm-packages"
+export PATH="$PATH:$NPM_PACKAGES/bin"
+export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
+
+# add vifm scripts to path
+export PATH="$HOME/.config/vifm/scripts:$PATH"
+
+# add flatpak dir to path
+export PATH="/var/lib/flatpak/exports/bin:$PATH"
+
+# add flatpak data dir
+export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:/home/kjell/.local/share/flatpak/exports/share:$XDG_DATA_DIRS"
+
+# set default programs
+if [ "$WAYLAND" ]; then
+    export TERMINAL="foot"
+    export MENU="bemenu"
+else
+    export TERMINAL="st"
+    export MENU="dmenu"
+fi
+export EDITOR="nvim"
+export BROWSER="firefox"
+export READER="zathura"
+export FILEMANAGER="vifmrun"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
+
+# set desktop theme configuration options
+if [ "$WAYLAND" ]; then
+    export QT_QPA_PLATFORM="wayland;xcb"
+else
+    export QT_QPA_PLATFORM=xcb
+fi
+export GTK_USE_PORTAL=1
+export QT_QPA_PLATFORMTHEME="qt6ct"
+
+# set various default and config file paths
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export _ZL_DATA="$XDG_CACHE_HOME/.z"
+export INPUTRC="$XDG_CONFIG_HOME/inputrc"
+export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch-config"
+export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
+export LESSHISTFILE="-"
+export GOPATH="$HOME/.local/share/go"
+export CHROME_EXECUTABLE="/usr/bin/google-chrome-stable"
+
+[ "$WAYLAND" ] && export MOZ_ENABLE_WAYLAND=1
+export TDESKTOP_DISABLE_TRAY_COUNTER=1
+export SUDO_ASKPASS="$HOME/bin/dmenupass"
+export BEMENU_OPTS='-i --fb "#282828" --ff "#ebdbb2" --nb "#282828" --nf "#ebdbb2" --tb "#282828" --hb "#282828" --tf "#fb4934" --hf "#fabd2f" --nf "#ebdbb2" --af "#ebdbb2" --ab "#282828" --bdr "#f28534" --fn "Hack Nerd Font" -H 26 -B 2'
+
+# export NIX_BUILD_SHELL="zsh"
+export GHCUP_USE_XDG_DIRS=1
+
+export FZF_DEFAULT_COMMAND='fd --type f --follow'
+
+# Make ctrl+h do the thing in some stupid applications
+# stty erase ^H
+
+if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+    if [ "$WAYLAND" ]; then
+        exec river > /dev/null 2>&1
+    else
+        exec startx > /dev/null 2>&1
+    fi
+fi
