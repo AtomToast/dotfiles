@@ -4,7 +4,7 @@
 
     "modules-left": ["river/tags", "mpris" ,"river/window"],
     // "modules-center": ["river/window"],
-    "modules-right": ["idle_inhibitor", "pulseaudio", "memory", "cpu", "temperature", "backlight", "battery", "network", "clock", "clock#clock2", "tray"],
+    "modules-right": ["idle_inhibitor", "pulseaudio", "memory", "cpu", "temperature", "backlight", "power-profiles-daemon", "battery", "network", "clock", "clock#clock2", "tray"],
 
     "river/window": {
         "format": "{}",
@@ -60,12 +60,23 @@
         "format": "{percent}% {icon}",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
+    "power-profiles-daemon": {
+        "format": "{icon} ",
+        "tooltip-format": "Power profile: {profile}",
+        "tooltip": true,
+        "format-icons": {
+          "default": "",
+          "performance": "",
+          "balanced": "",
+          "power-saver": ""
+        }
+    },
     "battery": {
         "states": {
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon} ",
+        "format": "{capacity}% {icon}",
         "format-charging": "{capacity}%  ",
         "format-plugged": "{capacity}%  ",
         "format-alt": "{time} {icon}",
