@@ -188,12 +188,12 @@ riverctl rule-add -app-id "com.nextcloud.desktopclient.nextcloud" float
 riverctl rule-add -app-id "ueberzugpp*" float
 riverctl rule-add -title "gay_sex.mp4 - mpv" fullscreen
 
-riverctl rule-add -app-id 'firefox' tags 000000010
-riverctl rule-add -app-id 'Slack' tags 000010000
-riverctl rule-add -app-id 'signal' tags 000100000
-riverctl rule-add -app-id 'Signal' tags 000100000 # xwayland
-riverctl rule-add -app-id 'org.telegram.desktop' tags 010000000
-riverctl rule-add -app-id 'discord' tags 100000000
+riverctl rule-add -app-id 'firefox' tags $((1 << 1))
+riverctl rule-add -app-id 'Slack' tags $((1 << 4))
+riverctl rule-add -app-id 'signal' tags $((1 << 5))
+riverctl rule-add -app-id 'Signal' tags $((1 << 5)) # xwayland
+riverctl rule-add -app-id 'org.telegram.desktop' tags $((1 << 6))
+riverctl rule-add -app-id 'discord' tags $((1 << 9))
 
 riverctl rule-add -title "Wine System Tray" dimensions 1 1
 riverctl rule-add -title "Wine System Tray" position 2560 1440
