@@ -5,6 +5,8 @@ return {
       require('oil').setup {
         keymaps = {
           ['<BS>'] = 'actions.parent',
+          ['<C-s>'] = false,
+          ['<C-v>'] = { 'actions.select', opts = { vertical = true } },
         },
       }
 
