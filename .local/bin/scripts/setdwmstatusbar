@@ -113,7 +113,7 @@ batteryStatus() {
 
     timeRemaining=$(acpi | grep Discharging | cut -d " " -f5- | sed -e 's/\(:[0-9]\+ \)/ /g')
 
-    echo "$batteryStatusIcon $batteryCapacity% $timeRemaining |"
+    echo " $batteryStatusIcon $batteryCapacity% $timeRemaining |"
 }
 
 mail_count() {
@@ -143,6 +143,8 @@ gpu_stats() {
     elif command -v amdgpu_top > /dev/null; then
         gpuusage=$(amdgpu_top -gm | rg 'average_gfx_activity: (\d+),' -or '$1')
         gputemp=$(amdgpu_top -gm | rg 'temperature_hotspot: (\d+),' -or '$1')
+    else
+        exit
     fi
     echo " $gpuIcon $gpuusage% $tempIcon $gputemp°C |"
 }
