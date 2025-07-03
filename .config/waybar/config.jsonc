@@ -46,19 +46,19 @@
         "format-paused": "<i>{status_icon} {dynamic}</i>",
         // "interval":1,
         "player-icons": {
-            "default": "󰐊",
-            "mpv": "󰿏",
+            "default": "",
+            "mpv": "",
             "spotify": ""
         },
         "status-icons": {
-            "paused": "󰏤"
+            "paused": ""
         },
         "ignored-players": [
             "firefox"
         ]
     },
     "custom/mail": {
-        "format": "{} 󰇰",
+        "format": "{} ",
         "exec": "du -a ~/.local/share/mail/*/INBOX/new/* 2> /dev/null | sed -n '$=' | tr -d '0'",
         "on-click": "$TERMINAL -e neomutt",
         "on-click-right": "mailsync",
@@ -77,24 +77,25 @@
         "spacing": 10
     },
     "clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%Y-%m-%d (%a) 󰃭}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "format": "{:%Y-%m-%d (%a) }",
         "calendar": {
             "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
                 "today": "<span background='#d5c4a1' color='#282828'><b>{}</b></span>"
             }
         }
     },
     "clock#clock2": {
         "tooltip-format": "{:%H:%M:%S}",
-        "format": "{:%H:%M 󰅐}",
+        "format": "{:%H:%M }",
         "interval": 10
     },
     "cpu": {
-        "format": "{usage}%  "
+        "format": "{usage}% "
     },
     "memory": {
-        "format": "{used:0.1f}/{total:0.1f}  "
+        "format": "{used:0.1f}/{total:0.1f} "
     },
     "temperature": {
         "critical-threshold": 80,
@@ -121,7 +122,7 @@
         ]
     },
     "power-profiles-daemon": {
-        "format": "{icon} ",
+        "format": "{icon}",
         "tooltip-format": "Power profile: {profile}",
         "tooltip": true,
         "format-icons": {
@@ -152,23 +153,23 @@
             "critical": 15
         },
         "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}%  ",
-        "format-plugged": "{capacity}%  ",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         "format-icons": [
-            " ",
-            " ",
-            " ",
-            " ",
-            " "
+            "",
+            "",
+            "",
+            "",
+            ""
         ]
     },
     "network": {
-        "format-wifi": "{essid} ({signalStrength}%)  ",
+        "format-wifi": "{essid} ({signalStrength}%) ",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
+        "format-disconnected": "Disconnected ",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
