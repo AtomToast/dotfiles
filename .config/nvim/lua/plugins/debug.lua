@@ -80,7 +80,7 @@ return {
     -- end
 
     require('nvim-dap-virtual-text').setup {}
-    require('nvim-dap-repl-highlights').setup {}
+    require('nvim-dap-repl-highlights').setup()
 
     -- Install golang specific config
     require('dap-go').setup()
@@ -95,9 +95,9 @@ return {
     table.insert(dap.configurations.python, {
       type = 'python',
       request = 'launch',
-      name = 'Run all tests',
+      name = 'Python: Run all tests',
       module = 'pytest',
-      args = { '--exitfirst', '-n', 'auto', '--dist', 'loadfile', 'server/test/mili' },
+      args = { '--cov', '--cov-report=', '--cov-config=pyproject.toml', '--exitfirst', '-n', 'auto', '--dist', 'loadfile', 'server/test/mili' },
       console = 'integratedTerminal',
     })
 
