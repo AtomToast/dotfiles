@@ -11,6 +11,7 @@
         "mpris",
         "custom/mail",
         "idle_inhibitor",
+        "bluetooth",
         "pulseaudio",
         "memory",
         "cpu",
@@ -130,6 +131,21 @@
             "power-saver": ""
         }
     },
+    "bluetooth": {
+        "on-click": "DMENU_BLUETOOTH_LAUNCHER=bemenu dmenu-bluetooth",
+        "on-click-right": "blueman-manager",
+        "format": "",
+        "format-disabled": "",
+        "format-connected": "{num_connections} ",
+        "format-connected-battery": "{device_alias} ({device_battery_percentage}%) 󰥉",
+        "format-device-preference": [
+            "Schmipfel"
+        ],
+        "tooltip-format": "{num_connections} connected",
+        "tooltip-format-connected": "{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias} ({device_battery_percentage}%)"
+    },
     "battery": {
         "states": {
             "warning": 30,
@@ -146,9 +162,6 @@
             " ",
             " "
         ]
-    },
-    "battery#bat2": {
-        "bat": "BAT2"
     },
     "network": {
         "format-wifi": "{essid} ({signalStrength}%)  ",
@@ -169,7 +182,7 @@
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
-            "headphone": "",
+            "headphone": "",
             "hands-free": "",
             "headset": "",
             "phone": "",
