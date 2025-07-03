@@ -305,6 +305,9 @@ source /usr/share/doc/fzf/examples/key-bindings.zsh
 # set up kubectl completion
 source <(kubectl completion zsh)
 
+# mise completion
+source <(mise completion zsh)
+
 bindkey '^F' fzf-cd-widget
 
 # set up previews
@@ -345,8 +348,7 @@ bindkey "^[[1;3C" forward-word-dir
 source <(_HASS_CLI_COMPLETE=zsh_source hass-cli)
 
 
-# auto enable dev env
-# TODO: more robust direnv setup
+# auto enable tox dev env
 if [[ -d ./.tox/dev ]] ; then
   source ./.tox/dev/bin/activate
 fi
@@ -368,3 +370,5 @@ enable-tox-dev-env() {
   fi
 }
 add-zsh-hook chpwd enable-tox-dev-env
+
+eval "$(mise activate zsh)"
