@@ -59,7 +59,9 @@
     },
     "custom/mail": {
         "format": "{} ",
-        "exec": "du -a ~/.local/share/mail/*/INBOX/new/* 2> /dev/null | sed -n '$=' | tr -d '0'",
+        "return-type": "json",
+        "escape": true,
+        "exec": "waybar_mailhelper",
         "on-click": "$TERMINAL -e neomutt",
         "on-click-right": "mailsync",
         "interval": 1,
