@@ -591,7 +591,7 @@ if has('win')
     nnoremap yp :!echo %"d:gs!\!/! %i | clip<cr>
     " Yank path to current file to Windows clipboard with forward slashes
     nnoremap yf :!echo %"c:gs!\!/! %i | clip<cr>
-elseif $WAYLAND_DISPLAY
+elseif $WAYLAND_DISPLAY != ''
     if executable('wl-copy')
         " Yank current directory path into primary and selection clipboards
         nnoremap yd :!echo -n %d | wl-copy %i &&
@@ -600,7 +600,7 @@ elseif $WAYLAND_DISPLAY
         nnoremap yf :!echo -n %c:p | wl-copy %i &&
                     \ echo -n %c:p | wl-copy -p %i<cr>
     endif
-elseif $DISPLAY
+elseif $DISPLAY != ''
     if executable('xclip')
         " Yank current directory path into the clipboard
         nnoremap yd :!echo %d | xclip %i<cr>
@@ -671,9 +671,9 @@ nnoremap zs :sync<cr>
 nnoremap zS :sync!<cr>
 
 " set current file as wallpaper
-if $WAYLAND_DISPLAY
+if $WAYLAND_DISPLAY != ''
     nnoremap W :!killall swaybg; swaybg -m fit -i %f &;disown<cr>
-elseif $DISPLAY
+elseif $DISPLAY != ''
     nnoremap W :!setroot -z %f<cr>
 endif
 
