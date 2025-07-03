@@ -5,15 +5,24 @@ return {
       'rshkarin/mason-nvim-lint',
     },
     config = function()
-      require('lint').linters_by_ft = {
+      local lint = require 'lint'
+      lint.linters_by_ft = {
         sh = { 'shellcheck' },
         vim = { 'vint' },
+        python = { 'mypy', 'ruff' },
       }
-      require('mason-nvim-lint').setup()
 
-      vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
+      -- WORK
+      require('mason-nvim-lint').setup {
+        ignore_install = { 'mypy', 'ruff' },
+      }
+
+      vim.api.nvim_create_autocmd({ 'BufWritePost', 'BufEnter' }, {
+        -- WORK
+        pattern = '{*}' .. '{' .. '*/test/*' .. '}\\@<!', --exclude test directory
+        group = vim.api.nvim_create_augroup('lint', { clear = true }),
         callback = function()
-          require('lint').try_lint()
+          lint.try_lint()
         end,
       })
     end,
