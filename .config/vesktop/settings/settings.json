@@ -3,6 +3,7 @@
     "autoUpdateNotification": true,
     "useQuickCss": true,
     "themeLinks": [],
+    "eagerPatches": false,
     "enabledThemes": [
         "DiscordRecolor.theme.css"
     ],
@@ -19,6 +20,9 @@
         "CommandsAPI": {
             "enabled": true
         },
+        "DynamicImageModalAPI": {
+            "enabled": false
+        },
         "MemberListDecoratorsAPI": {
             "enabled": false
         },
@@ -29,7 +33,7 @@
             "enabled": false
         },
         "MessageEventsAPI": {
-            "enabled": true
+            "enabled": false
         },
         "MessagePopoverAPI": {
             "enabled": false
@@ -43,7 +47,13 @@
         "UserSettingsAPI": {
             "enabled": true
         },
+        "AccountPanelServerProfile": {
+            "enabled": false
+        },
         "AlwaysAnimate": {
+            "enabled": false
+        },
+        "AlwaysExpandRoles": {
             "enabled": false
         },
         "AlwaysTrust": {
@@ -56,9 +66,6 @@
             "enabled": false
         },
         "WebRichPresence (arRPC)": {
-            "enabled": false
-        },
-        "AutomodContext": {
             "enabled": false
         },
         "BANger": {
@@ -101,7 +108,7 @@
             "enabled": false
         },
         "ClearURLs": {
-            "enabled": true
+            "enabled": false
         },
         "ClientTheme": {
             "enabled": false
@@ -116,6 +123,9 @@
             "enabled": false
         },
         "CopyEmojiMarkdown": {
+            "enabled": false
+        },
+        "CopyFileContents": {
             "enabled": false
         },
         "CopyUserURLs": {
@@ -145,9 +155,6 @@
         "DontRoundMyTimestamps": {
             "enabled": false
         },
-        "EmoteCloner": {
-            "enabled": false
-        },
         "Experiments": {
             "enabled": false
         },
@@ -169,6 +176,9 @@
         "FixCodeblockGap": {
             "enabled": false
         },
+        "FixImagesQuality": {
+            "enabled": false
+        },
         "FixSpotifyEmbeds": {
             "enabled": false
         },
@@ -184,6 +194,12 @@
         "FriendsSince": {
             "enabled": false
         },
+        "FullSearchContext": {
+            "enabled": false
+        },
+        "FullUserInChatbox": {
+            "enabled": false
+        },
         "GameActivityToggle": {
             "enabled": false
         },
@@ -191,6 +207,9 @@
             "enabled": false
         },
         "GreetStickerPicker": {
+            "enabled": false
+        },
+        "HideMedia": {
             "enabled": false
         },
         "iLoveSpam": {
@@ -209,6 +228,9 @@
             "enabled": false
         },
         "InvisibleChat": {
+            "enabled": false
+        },
+        "IrcColors": {
             "enabled": false
         },
         "KeepCurrentChannel": {
@@ -247,9 +269,6 @@
         "MoreKaomoji": {
             "enabled": false
         },
-        "MoreUserTags": {
-            "enabled": false
-        },
         "Moyai": {
             "enabled": false
         },
@@ -262,13 +281,13 @@
         "NoBlockedMessages": {
             "enabled": false
         },
-        "NoDefaultHangStatus": {
-            "enabled": false
-        },
         "NoDevtoolsWarning": {
             "enabled": false
         },
         "NoF1": {
+            "enabled": false
+        },
+        "NoMaskedUrlPaste": {
             "enabled": false
         },
         "NoMosaic": {
@@ -284,9 +303,6 @@
             "enabled": false
         },
         "NoReplyMention": {
-            "enabled": false
-        },
-        "NoScreensharePreview": {
             "enabled": false
         },
         "NoServerEmojis": {
@@ -365,9 +381,7 @@
             "enabled": false
         },
         "ReplaceGoogleSearch": {
-            "enabled": true,
-            "customEngineName": "Duckduckgo",
-            "customEngineURL": ""
+            "enabled": false
         },
         "ReplyTimestamp": {
             "enabled": false
@@ -441,6 +455,9 @@
         "StartupTimings": {
             "enabled": false
         },
+        "StickerPaste": {
+            "enabled": false
+        },
         "StreamerModeOnStream": {
             "enabled": false
         },
@@ -451,9 +468,6 @@
             "enabled": false
         },
         "ThemeAttributes": {
-            "enabled": false
-        },
-        "TimeBarAllActivities": {
             "enabled": false
         },
         "Translate": {
@@ -472,6 +486,9 @@
             "enabled": false
         },
         "UnsuppressEmbeds": {
+            "enabled": false
+        },
+        "UserMessagesPronouns": {
             "enabled": false
         },
         "UserVoiceShow": {
@@ -507,6 +524,9 @@
         "VoiceMessages": {
             "enabled": false
         },
+        "VolumeBooster": {
+            "enabled": false
+        },
         "WebKeybinds": {
             "enabled": true
         },
@@ -520,54 +540,29 @@
             "enabled": false
         },
         "YoutubeAdblock": {
+            "enabled": false
+        },
+        "BadgeAPI": {
             "enabled": true
         },
         "NoTrack": {
             "enabled": true,
             "disableAnalytics": true
         },
-        "WebContextMenus": {
-            "enabled": true,
-            "addBack": true
-        },
         "Settings": {
             "enabled": true,
             "settingsLocation": "aboveNitro"
         },
+        "DisableDeepLinks": {
+            "enabled": true
+        },
         "SupportHelper": {
             "enabled": true
         },
-        "AlwaysExpandRoles": {
-            "enabled": false
+        "WebContextMenus": {
+            "enabled": true
         },
-        "FullSearchContext": {
-            "enabled": false
-        },
-        "AccountPanelServerProfile": {
-            "enabled": false
-        },
-        "CopyFileContents": {
-            "enabled": false
-        },
-        "NoMaskedUrlPaste": {
-            "enabled": false
-        },
-        "StickerPaste": {
-            "enabled": false
-        },
-        "VolumeBooster": {
-            "enabled": false
-        },
-        "UserMessagesPronouns": {
-            "enabled": false
-        },
-        "DynamicImageModalAPI": {
-            "enabled": false
-        },
-        "FixImagesQuality": {
-            "enabled": false
-        },
-        "HideMedia": {
+        "ExpressionCloner": {
             "enabled": false
         }
     },
@@ -581,6 +576,6 @@
         "authenticated": false,
         "url": "https://api.vencord.dev/",
         "settingsSync": false,
-        "settingsSyncVersion": 1738582755229
+        "settingsSyncVersion": 1750276558514
     }
 }

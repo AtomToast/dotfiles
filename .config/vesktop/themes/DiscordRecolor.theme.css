@@ -67,6 +67,8 @@
   --backgroundfloating: 124, 111, 100; /*	Background Elevated	-	default:	24,25,28		-	hex:	#18191c		*/
 }
 
+/* Custom fixes */
+
 .userSettingsSecurity_ad4a7c .isEnabled_ad4a7c {
   filter: invert(64%) sepia(100%) saturate(341%) hue-rotate(19deg)
     brightness(93%) contrast(92%);
