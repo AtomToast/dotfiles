@@ -38,6 +38,8 @@ require('lazy').setup {
 
   require 'plugins/debug',
 
+  require 'plugins/dadbod',
+
   -- require 'plugins/indent_line',
 
   require 'plugins/autopairs',
