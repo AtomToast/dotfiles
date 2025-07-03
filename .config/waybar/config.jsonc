@@ -4,11 +4,11 @@
     "modules-left": [
         "river/tags",
         "river/layout",
-        "mpris",
         "river/window"
     ],
     // "modules-center": ["river/mode"],
     "modules-right": [
+        "mpris",
         "custom/mail",
         "idle_inhibitor",
         "pulseaudio",
