@@ -52,11 +52,12 @@ shift $((OPTIND - 1))
 [ "${1:-}" = "--" ] && shift
 
 if [ $fullscreen -eq 0 ]; then
-    sel=$(slop -f "-i %i -g %g")
+    s_flag="-s"
 fi
 
 if [ "$output" = "" ]; then
-    maim $sel | xclip -selection clipboard -t image/png
+    # perhaps try unbuffered (https://www.reddit.com/r/emacs/comments/da9h10/why_does_shellcommand_hang_using_xclip_filter_to/)
+    maim "$s_flag" | xclip -selection clipboard -t image/png > /dev/null 2>&1
     status=$(dunstify -A "gimp,Edit in GIMP" -t 3000 "  Saved screenshot to clipboard")
     if [ "$status" = "gimp" ]; then
         xclip -selection clipboard -t image/png -o > /tmp/screenshot.png
@@ -64,12 +65,12 @@ if [ "$output" = "" ]; then
         xclip -selection clipboard -t image/png < /tmp/screenshot.png
     fi
 else
-    maim $sel "$output"/"$name"
+    maim "$s_flag" "$output"/"$name"
     status=$(dunstify -A "gimp,Edit in GIMP" -t 3000 "  Saved screenshot to $output/$name")
     [ "$status" = "gimp" ] && gimp "$output/$name"
 fi
 
 if [ $imgur -eq 1 ]; then
-    maim $sel | imgur
+    maim "$s_flag" | imgur
     notify-send -t 3000 "  Saved screenshot to imgur" "imgur url: '$(xclip -selection primary -o)'"
 fi
