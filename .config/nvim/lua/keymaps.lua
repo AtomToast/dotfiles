@@ -90,6 +90,14 @@ vim.keymap.set({ 'n', 't', 'i' }, '<C-A-Down>', '<cmd>resize -2<CR>')
 vim.keymap.set({ 'n', 't', 'i' }, '<C-A-Up>', '<cmd>resize +2<CR>')
 vim.keymap.set({ 'n', 't', 'i' }, '<C-A-Right>', '<cmd>vertical resize -2<CR>')
 
+-- 'q' closes more temp buffers
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'checkhealth', 'fugitive*', 'git', 'help', 'lspinfo', 'netrw', 'oil', 'notify', 'qf', 'query' },
+  callback = function()
+    vim.keymap.set('n', 'q', vim.cmd.close, { desc = 'Close the current buffer', buffer = true })
+  end,
+})
+
 -- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
