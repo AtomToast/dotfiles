@@ -56,7 +56,7 @@
     transition: all 200ms !important;
     min-width: var(--thin-tab-width) !important;
     max-width: var(--thin-tab-width) !important;
-    z-index: 2;
+    z-index: 3;
   }
   #sidebar-box[sidebarcommand="tabcenter-reborn_ariasuni-sidebar-action"]:hover,
   #sidebar-box[sidebarcommand="tabcenter-reborn_ariasuni-sidebar-action"]
@@ -64,7 +64,7 @@
     transition: all 200ms !important;
     min-width: var(--wide-tab-width) !important;
     max-width: var(--wide-tab-width) !important;
-    z-index: 1;
+    z-index: 3;
   }
 
   /* Negative right-margin to keep page from being pushed to the side. */
@@ -119,6 +119,6 @@
     padding-block: var(--urlbar-icon-padding);
   }
   .urlbarView > .search-one-offs:not([hidden]) {
-    padding-block: 0px !important;
+    padding-block: 1px !important;
   }
 }
