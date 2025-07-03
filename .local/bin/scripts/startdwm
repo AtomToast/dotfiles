@@ -1,5 +1,27 @@
 #!/bin/sh
 
+dunst &
+sxhkd -m 1 &
+xbanish &
+setdwmstatusbar &
+xwallpaper --zoom /home/kjell/Downloads/gruvbox-dark-ubuntu.png &
+xrdb -load ~/.Xresources &
+blueman-applet &
+redshift -l 52.55:13.46 &
+xss-lock cornerlocker &
+picom --config /dev/null &
+# eval "$(keychain --eval --quiet id_ed25519_ki_elements id_ed25519)"
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+eval "$(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)"
+xrandr --output DP-3-5 --primary --mode 2560x1440 --rate 59.95 --pos 1920x0 --output DP-3-6 --pos 0x360 --output eDP-1 --off
+
+firefox &
+telegram-desktop &
+flatpak run org.signal.Signal --use-tray-icon &
+flatpak run com.discordapp.Discord &
+google-chrome-stable &
+# google-chrome-stable --app="https://mail.google.com/chat/u/0/#chat/home" &
+
 # relaunch DWM if the binary changes, otherwise bail
 csum=$(sha1sum "$(which dwm)")
 new_csum=""
