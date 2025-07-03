@@ -59,8 +59,8 @@ timeIcon=""
 # fi
 
 internetStatus() {
-    ethernetStatus=$(cat "$1/operstate")
-    wifiStatus=$(cat "$2/operstate")
+    ethernetStatus=$(find /sys/class/net -name "enp*" -exec cat "{}/operstate" \; | grep up)
+    wifiStatus=$(find /sys/class/net -name "wlp*" -exec cat "{}/operstate" \; | grep up)
 
     if [ "$ethernetStatus" = "up" ]; then
         internetStatusIcon="$internetEthernetIcon"
@@ -178,10 +178,8 @@ memory_usage() {
     echo "$memoryIcon $usedmem/$totalmem"
 }
 
-ethernetDevice=$(find /sys/class/net -name "enp*")
-wifiDevice=$(find /sys/class/net -name "wlp*")
 while true; do
-    internetStatusIcon=$(internetStatus "$ethernetDevice" "$wifiDevice")
+    internetStatusIcon=$(internetStatus)
     batteryStatusIcon=$(batteryStatus)
     dotfilesNewCommitCount=$(dotfile_new_commit_count)
     mailCount=$(mail_count)
