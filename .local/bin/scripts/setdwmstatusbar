@@ -175,6 +175,6 @@ while true; do
     gpuStats=$(gpu_stats)
     cpuStats=$(cpu_stats)
     memoryUsage=$(memory_usage)
-    xsetroot -name "$playerStatus$mailCount $memoryUsage |$gpuStats $cpuStats |$batteryStatusIcon $internetStatusIcon | $dateIcon $(date +"%F (%a) | $timeIcon %R ")"
+    xsetroot -name "$playerStatus$mailCount $memoryUsage |$gpuStats $cpuStats |$batteryStatusIcon $internetStatusIcon | $dateIcon $(date +"%F (%a) | $timeIcon %R ")|"
     sleep 1
 done
