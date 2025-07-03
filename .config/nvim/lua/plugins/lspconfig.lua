@@ -64,40 +64,27 @@ return {
         end,
       })
 
+      local severity_icons = { '', '', '', '' }
       vim.diagnostic.config {
+        severity_sort = true,
         virtual_text = {
           prefix = function(diagnostic)
-            if diagnostic.severity == vim.diagnostic.severity.ERROR then
-              return ''
-            elseif diagnostic.severity == vim.diagnostic.severity.WARN then
-              return ''
-            elseif diagnostic.severity == vim.diagnostic.severity.INFO then
-              return ''
-            elseif diagnostic.severity == vim.diagnostic.severity.HINT then
-              return ''
-            else
-              return '■'
-            end
+            return severity_icons[diagnostic.severity] or '■'
           end,
         },
         signs = {
-          text = { ['ERROR'] = '', ['WARN'] = '', ['INFO'] = '', ['HINT'] = '' },
-          -- FIXME: how to set this now?
-          -- texthl = { ['ERROR'] = 'DiagnosticSignError', ['WARN'] = 'DiagnosticSignWarn', ['INFO'] = 'DiagnosticSignHint', ['HINT'] = 'DiagnosticSignInfo' },
+          text = severity_icons,
           numhl = {
-            -- FIXME: Why can't I use the text here as above?
-            -- https://github.com/neovim/neovim/pull/26193
             [vim.diagnostic.severity.ERROR] = 'DiagnosticSignError',
             [vim.diagnostic.severity.WARN] = 'DiagnosticSignWarn',
             [vim.diagnostic.severity.INFO] = 'DiagnosticSignHint',
             [vim.diagnostic.severity.HINT] = 'DiagnosticSignInfo',
           },
         },
+        jump = {
+          float = true,
+        },
       }
-      -- vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError', linehl = '', numhl = 'DiagnosticSignError' })
-      -- vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn', linehl = '', numhl = 'DiagnosticSignWarn' })
-      -- vim.fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticSignInfo', linehl = '', numhl = 'DiagnosticSignInfo' })
-      -- vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSignHint', linehl = '', numhl = 'DiagnosticSignHint' })
 
       vim.lsp.inlay_hint.enable()
 
