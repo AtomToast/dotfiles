@@ -63,9 +63,8 @@ vim.keymap.set('n', '<leader>z', '1z=', { desc = 'Apply first spelling suggestio
 -- Fix last spelling mistake
 vim.keymap.set('n', '<leader>Z', '[s1z=', { desc = 'Fix last spelling mistake' })
 
--- Replace and delete without copying the selection
+-- Replace without copying the selection
 vim.keymap.set('v', '<leader>p', '"_dP', { desc = 'Replace the selection without replacing the clipboard' })
--- vim.keymap.set({ 'n', 'v' }, '<leader>d', '"_d', { desc = 'Delete without copying the selection' })
 
 -- Exit terminal mode in the builtin terminal with Ctrl+s
 vim.keymap.set('t', '<C-s>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
