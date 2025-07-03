@@ -142,7 +142,7 @@ return {
         rust_analyzer = {},
         html = {},
         cssls = {},
-        tsserver = {},
+        ts_ls = {},
         jsonls = {},
         yamlls = {},
         texlab = {},
