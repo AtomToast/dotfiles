@@ -218,6 +218,7 @@ spawn_once lxqt-policykit-agent
 spawn_once "swayidle -w timeout 300 'waylock -fork-on-lock' timeout 600 \"wlopm --off '*'\" resume \"wlopm --on '*'\" before-sleep 'waylock -fork-on-lock'"
 spawn_once swaddle
 spawn_once way-displays
+spawn_once udiskie -s
 spawn_once wl-paste --watch cliphist store
 
 spawn_once discord --enable-features=UseOzonePlatform --ozone-platform=wayland
