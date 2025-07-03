@@ -1,15 +1,15 @@
 #!/bin/env bash
 
 [ -z "$1" ] \
-    && url=$(xclip -selection clipboard -o | cut -d "&" -f1) \
+    && url=$(wl-paste | cut -d "&" -f1) \
     || url=$("$1" | cut -d "&" -f1)
 
-notify-send -t 4000 "輸 Starting download" "fetching title for $url"
+notify-send -t 4000 " Starting download" "fetching title for $url"
 
 title=$(yt-dlp --get-title "$url")
 
-if $TERMINAL -t "$title - yt-dlp" -e bash -c "youtube-dl $url"; then
-    notify-send -t 4000 "輸 Youtube download successful" "Finished downloading '$title'"
+if $TERMINAL -T "$title - yt-dlp" -e bash -c "yt-dlp $url"; then
+    notify-send -t 4000 " Youtube download successful" "Finished downloading '$title'"
 else
-    notify-send 4000 "輸 Failed youtube download" "Did not finish downloading '$title'"
+    notify-send 4000 " Failed youtube download" "Did not finish downloading '$title'"
 fi

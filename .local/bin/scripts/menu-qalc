@@ -78,7 +78,7 @@ action=$(echo -e "Copy to clipboard\nClear\nClose" | $menu "$@" -p "= $answer")
 case $action in
     "Clear") $0 ;;
     "Copy to clipboard")
-        if [ -n "$xclip" ]; then
+        if [[ -n $(command -v wl-copy) ]]; then
             echo -n "$answer" | wl-copy -t text/plain
         else
             echo -n "$answer" | xclip -selection clipboard -t text/plain

@@ -4,7 +4,7 @@ cd "$HOME/Videos/youtube" || exit
 
 amount=$(fd . | wc -l)
 
-chosen=$(fd . | dmenu -i -l 20 -p "輸 Choose a video to play ($amount found)")
+chosen=$(fd . | $MENU -i -l 20 -p " Choose a video to play ($amount found)")
 
 [ "$chosen" != "" ] || exit
 
