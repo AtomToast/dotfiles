@@ -30,7 +30,7 @@ return {
           map('<C-]>', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
           map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-          map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+          map('gR', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
           map('gt', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
           map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
           map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
