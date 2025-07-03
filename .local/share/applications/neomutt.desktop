@@ -1,0 +1,12 @@
+[Desktop Entry]
+Categories=Office;Network;Email;
+Name=neomutt
+GenericName=neomutt
+Icon=neomutt
+Exec=$TERMINAL -e neomutt %u
+Terminal=false
+Type=Application
+Categories=Utility;TextEditor;
+MimeType=x-scheme-handler/mailto;
+NoDisplay=false
+StartupNotify=false
