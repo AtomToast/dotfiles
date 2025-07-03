@@ -19,6 +19,7 @@ firefox &
 signal-desktop --use-tray-icon &
 telegram-desktop &
 dbus-update-activation-environment &
+udiskie -s &
 picom --config /dev/null &
 wmname LG3D &
 
