@@ -208,7 +208,7 @@ spawn_once() {
 # Set the default layout generator to be rivercarro and start it.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivercarro
-spawn_once rivercarro -inner-gaps 4 -outer-gaps 6 -main-ratio 0.55
+spawn_once rivercarro -inner-gaps 4 -outer-gaps 6 -main-ratio 0.55 -per-tag
 spawn_once dunst
 spawn_once waybar
 spawn_once swaybg -m fit -i /home/kjell/Downloads/3840x2160-dark-archlinux2.png
