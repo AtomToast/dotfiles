@@ -46,6 +46,7 @@ batteryCapacityIcon70="󰂀"
 batteryCapacityIcon80="󰂁"
 batteryCapacityIcon90="󰂂"
 batteryCapacityIcon100="󰁹"
+dotfilesIcon=""
 mailIcon="󰇰"
 spotifyPlayIcon=""
 spotifyPauseIcon=""
@@ -116,6 +117,16 @@ batteryStatus() {
     echo " $batteryStatusIcon $batteryCapacity% $timeRemaining |"
 }
 
+dotfile_new_commit_count() {
+    # NOTE: run yadm fetch as a crontab
+    count=$(yadm rev-list HEAD...origin/master --count)
+    if [ "$count" -eq 0 ]; then
+        echo ""
+    else
+        echo " $dotfilesIcon $count |"
+    fi
+}
+
 mail_count() {
     count=$(du -a ~/.local/share/mail/*/INBOX/new/* 2> /dev/null | sed -n '$=')
     if [ "$count" = "" ]; then
@@ -172,11 +183,12 @@ wifiDevice=$(find /sys/class/net -name "wlp*")
 while true; do
     internetStatusIcon=$(internetStatus "$ethernetDevice" "$wifiDevice")
     batteryStatusIcon=$(batteryStatus)
+    dotfilesNewCommitCount=$(dotfile_new_commit_count)
     mailCount=$(mail_count)
     playerStatus=$(player_status)
     gpuStats=$(gpu_stats)
     cpuStats=$(cpu_stats)
     memoryUsage=$(memory_usage)
-    xsetroot -name "$playerStatus$mailCount $memoryUsage |$gpuStats $cpuStats |$batteryStatusIcon $internetStatusIcon | $dateIcon $(date +"%F (%a) | $timeIcon %R ")|"
+    xsetroot -name "$playerStatus$dotfilesNewCommitCount$mailCount $memoryUsage |$gpuStats $cpuStats |$batteryStatusIcon $internetStatusIcon | $dateIcon $(date +"%F (%a) | $timeIcon %R ")|"
     sleep 1
 done
