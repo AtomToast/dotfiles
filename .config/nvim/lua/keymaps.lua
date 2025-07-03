@@ -24,11 +24,11 @@ vim.keymap.set('n', '<leader>S', '<cmd>setlocal spell!<CR>', { desc = 'Toggle sp
 vim.keymap.set({ 'n', 'v', 'i' }, '<C-s>', '<cmd>update<CR><cmd>nohlsearch<CR>')
 
 -- Call make with a shortcut
-vim.keymap.set('n', '<leader>mm', ':Make<CR>', { desc = 'Run default make command' })
-vim.keymap.set('n', '<leader>mc', ':Make clean<CR>', { desc = 'Run make clean' })
-vim.keymap.set('n', '<leader>mb', ':Make build<CR>', { desc = 'Run make build' })
-vim.keymap.set('n', '<leader>mr', ':Make run<CR>', { desc = 'Run make run' })
-vim.keymap.set('n', '<leader>mi', ':!sudo make install <CR>', { desc = 'Run sudo make install' })
+vim.keymap.set('n', '<leader>mm', ':silent make<bar>cwindow<CR>', { desc = 'Run default make command' })
+vim.keymap.set('n', '<leader>mc', ':silent make clean<bar>cwindow<CR>', { desc = 'Run make clean' })
+vim.keymap.set('n', '<leader>mb', ':silent make build<bar>cwindow<CR>', { desc = 'Run make build' })
+vim.keymap.set('n', '<leader>mr', ':silent make run<bar>cwindow<CR>', { desc = 'Run make run' })
+vim.keymap.set('n', '<leader>mi', ':!sudo make install<bar>cwindow<CR>', { desc = 'Run sudo make install' })
 
 -- Quickfix list shortcuts
 vim.keymap.set('n', '<leader>cn', vim.cmd.cnext, { desc = 'Go to [N]ext error in quickfix list' })
