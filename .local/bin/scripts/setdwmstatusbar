@@ -59,7 +59,7 @@ timeIcon=""
 # fi
 
 internetStatus() {
-    ethernetStatus=$(find /sys/class/net -name "enp*" -exec cat "{}/operstate" \; | grep up)
+    ethernetStatus=$(find /sys/class/net -name "en[px]*" -exec cat "{}/operstate" \; | grep up)
     wifiStatus=$(find /sys/class/net -name "wlp*" -exec cat "{}/operstate" \; | grep up)
 
     if [ "$ethernetStatus" = "up" ]; then
