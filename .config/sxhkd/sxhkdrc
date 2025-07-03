@@ -106,7 +106,7 @@ XF86ScreenSaver
     slock
 
 super + shift + quotedbl
-    = -- -i
+    menu-qalc -b=dmenu -x -- -i
 
 # selection to clipboard
 Print
