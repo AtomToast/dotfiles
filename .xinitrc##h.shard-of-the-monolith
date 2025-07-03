@@ -4,7 +4,7 @@ xbanish &
 /usr/lib/xdg-desktop-portal-kde &
 dunst &
 xrdb -load ~/.Xresources &
-/usr/lib/kdeconnectd &
+kdeconnectd &
 clipmenud &
 setdwmstatusbar &
 setroot --restore &
@@ -14,7 +14,7 @@ redshift &
 # TODO: Figure out how to do enable loginctl unlock-session this without doas
 xss-lock -n dim-screen cornerlocker &
 nextcloud &
-discord --enable-gpu-rasterization &
+vesktop --enable-gpu-rasterization &
 firefox &
 signal-desktop --use-tray-icon &
 telegram-desktop &
@@ -22,5 +22,6 @@ dbus-update-activation-environment &
 udiskie -s &
 picom --config /dev/null &
 wmname LG3D &
+mailsync &
 
 startdwm
