@@ -113,6 +113,7 @@ riverctl map normal Super+Control C spawn 'cliphist list | bemenu -p "delete fro
 riverctl map normal Super+Control P spawn '$TERMINAL -e pulsemixer'
 riverctl map normal Super B spawn 'DMENU_BLUETOOTH_LAUNCHER=bemenu dmenu-bluetooth'
 riverctl map normal Super+Shift B spawn 'blueman-manager'
+riverctl map normal Super+Shift U spawn 'dmenuunicode'
 
 riverctl map normal Super F1 spawn '$TERMINAL $EDITOR $HOME/Nextcloud/Documents/vimwiki/index.md'
 riverctl map normal Super+Control F1 spawn '$TERMINAL $EDITOR +"WikiJournal"'
