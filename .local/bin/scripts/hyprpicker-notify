@@ -1,0 +1,4 @@
+#!/bin/sh
+
+color=$(hyprpicker -a)
+notify-send -h int:value:100 -h "string:hlcolor:$color" "Copied color code" "$color"
