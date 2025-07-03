@@ -8,6 +8,22 @@ vim.opt.showmode = false
 -- Sync clipboard between OS and Neovim.
 vim.opt.clipboard = 'unnamedplus'
 
+-- Use osc52 in ssh sessions (taken from https://codeberg.org/mfussenegger/dotfiles/src/branch/master/vim/dot-config/nvim/init.lua#L91)
+if os.getenv 'SSH_CLIENT' then
+  local osc52 = require 'vim.ui.clipboard.osc52'
+  vim.g.clipboard = {
+    name = 'OSC 52',
+    copy = {
+      ['+'] = osc52.copy '+',
+      ['*'] = osc52.copy '*',
+    },
+    paste = {
+      ['+'] = osc52.paste '+',
+      ['*'] = osc52.paste '*',
+    },
+  }
+end
+
 -- Enable break indent
 vim.opt.breakindent = true
 
