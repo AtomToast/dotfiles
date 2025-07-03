@@ -115,7 +115,7 @@ riverctl map normal Super B spawn 'DMENU_BLUETOOTH_LAUNCHER=bemenu dmenu-bluetoo
 riverctl map normal Super+Shift B spawn 'blueman-manager'
 
 riverctl map normal Super F1 spawn '$TERMINAL $EDITOR $HOME/Nextcloud/Documents/vimwiki/index.md'
-riverctl map normal Super+Control F1 spawn '$TERMINAL $EDITOR +"VimwikiMakeDiaryNote"'
+riverctl map normal Super+Control F1 spawn '$TERMINAL $EDITOR +"WikiJournal"'
 riverctl map normal Super+Shift F1 spawn '$TERMINAL $FILEMANAGER $HOME/Nextcloud/Documents/vimwiki'
 riverctl map normal Super F2 spawn 'firefox'
 riverctl map normal Super+Shift F2 spawn 'firefox --private-window'
