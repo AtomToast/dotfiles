@@ -292,6 +292,9 @@ export AUTO_NOTIFY_WHITELIST=("pacman" "yay" "make" "yarn" "pip" "paru")
 # load tetris for the lulz
 autoload -Uz tetriscurses
 
+# enable comments in interactive shell
+set -k
+
 # set cursor depending on mode \
 MODE_CURSOR_VICMD="block" \
 MODE_CURSOR_VIINS="bar" \
