@@ -14,6 +14,7 @@ return {
     -- Add your own debuggers here
     'leoluz/nvim-dap-go',
     'mfussenegger/nvim-dap-python',
+    'julianolf/nvim-dap-lldb',
   },
   config = function()
     local dap = require 'dap'
