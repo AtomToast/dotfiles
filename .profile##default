@@ -35,7 +35,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 
 # add npm to PATH
-NPM_PACKAGES="${HOME}/.local/share/npm-packages"
+export NPM_PACKAGES="${HOME}/.local/share/npm-packages"
 export PATH="$PATH:$NPM_PACKAGES/bin"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 

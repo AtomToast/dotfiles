@@ -8,7 +8,7 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-[ "$HOST" = "der-gerahmte" ] && WAYLAND=1
+[ "$HOST" = "der-gerahmte" ] || [ "$HOST" = "kie00129" ] && WAYLAND=1
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
@@ -41,7 +41,7 @@ export PATH="$HOME/.flutter/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 
 # add npm to PATH
-NPM_PACKAGES="${HOME}/.local/share/npm-packages"
+export NPM_PACKAGES="${HOME}/.local/share/npm-packages"
 export PATH="$PATH:$NPM_PACKAGES/bin"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 
